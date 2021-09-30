@@ -16,10 +16,7 @@ public class SideBar extends BasePage{
     }
 
     public WebElement getSideBarItem(String name){
-        return sideBarItems.stream()
-                .filter(element -> name.equals(element.getText()))
-                .findAny()
-                .orElse(null);
+        return getItemFromMenu(sideBarItems, name);
     }
 
     public List<WebElement> getSideBarItems() {
