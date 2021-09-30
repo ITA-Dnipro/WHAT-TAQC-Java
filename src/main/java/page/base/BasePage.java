@@ -19,7 +19,7 @@ public abstract class BasePage {
         field.sendKeys(text);
     }
 
-    protected void clickItem(WebElement element){
+    protected void clickElement(WebElement element){
         element.click();
     }
 }
