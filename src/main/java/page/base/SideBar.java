@@ -15,11 +15,32 @@ public class SideBar extends BasePage{
         super(driver);
     }
 
-    public WebElement getSideBarItem(String name){
-        return getItemFromMenu(sideBarItems, name);
+    public WebElement getSideBarItem(SideMenuItem item){
+        return getItemFromMenu(sideBarItems, item.itemName);
     }
 
     public List<WebElement> getSideBarItems() {
         return sideBarItems;
+    }
+
+    public enum SideMenuItem{
+        STUDENTS("Students"),
+        MENTORS("Mentors"),
+        SECRETARIES("Secretaries"),
+        LESSONS("Lessons"),
+        GROUPS("Groups"),
+        COURSES("Courses"),
+        SCHEDULE("Schedule"),
+        ASSIGNMENT("Assignment");
+
+        private final String itemName;
+
+        SideMenuItem(String itemName) {
+            this.itemName = itemName;
+        }
+
+        public String getItemName() {
+            return itemName;
+        }
     }
 }
