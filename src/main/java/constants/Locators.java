@@ -55,5 +55,48 @@ public class Locators {
         String CANCEL_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Cancel')]";
         String SAVE_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Save')]";
     }
+    public interface MentorsTablePage {
+        String ADD_MENTOR_BUTTON_XPATH = "//span[text()='Add a mentor']";
+        String DISABLE_MENTORS_SWITCH_XPATH = "//input[@id='disabledMentors']";
+        String SEARCH_INPUT_FIELD_XPATH = "//input[@class='search__searchInput___34nMl']";
+        String SORT_NAME_ARROW_XPATH = "//span[text()='Name']";
+        String SORT_SURNAME_ARROW_XPATH = "//span[text()='Surname']";
+        String SORT_EMAIL_ARROW_XPATH = "//span[text()='Email']";
+        String EDIT_BUTTON_XPATH = "//td[@class='text-center']";
+        String MENTORS_ROW_XPATH = "//td[not(contains(@class,'text-center'))]";
+        String SWITCH_VIEW_BUTTONS_XPATH = "//button[@class = 'btn btn-secondary']";
+    }
+    public interface ListOfMentorsPage{
+        String ADD_MENTOR_BUTTON_XPATH = "//span[text()='Add a mentor']";
+        String DISABLE_MENTORS_SWITCH_XPATH = "//input[@id='disabledMentors']";
+        String SEARCH_INPUT_FIELD_XPATH = "//input[@class='search__searchInput___34nMl']";
+        String SWITCH_VIEW_BUTTONS_XPATH = "//button[@class = 'btn btn-secondary']";
+        String MENTORS_CARD_XPATH="//div[@class='card']";
+        String EDIT_BUTTON_XPATH="//*[@class='blocks__scale___2EfN8']";
+    }
+    public interface MentorsDetailsPage{
+        String MENTORS_DETAILS_TAB_XPATH="//a[text()='Mentor details']";
+        String EDIT_MENTOR_TAB_XPATH="//a[text()='Edit a mentor']";
+        String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
+    }
+    public interface EditMentorsDetailsPage{
+        String MENTORS_DETAILS_TAB_XPATH="//a[text()='Mentor details']";
+        String EDIT_MENTOR_TAB_XPATH="//a[text()='Edit a mentor']";
+        String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
+        String FIRSTNAME_INPUT_FIELD_XPATH="//input[@id='firstName']";
+        String SECONDNAME_INPUT_FIELD_XPATH="//input[@id='lastName']";
+        String EMAIL_INPUT_FIELD_XPATH="//input[@id='email']";
+        String GROUPS_INPUT_FIELD_XPATH="//input[@id='groupsInput']";
+        String LIST_GROUPS_XPATH="//datalist[@id='group-list']";
+        String DELETE_GROUP_BUTTON_XPATH="//button[contains(@class,'delGroup')]";
+        String ADD_GROUP_BUTTON_XPATH="//button[@id='addGroup']";
+        String COURSE_INPUT_FIELD_XPATH= "//input[@id='coursesInput']";
+        String LIST_COURSES_XPATH="//datalist[@id='course-list']";
+        String DELETE_COURSE_BUTTON_XPATH= "//button[contains(@class,'delCourse')]";
+        String ADD_COURSE_BUTTON_XPATH="//button[@id='addCourse']";
+        String DISABLE_BUTTON_XPATH="//button[text()='Disable']";
+        String CLEAR_BUTTON_XPATH="//button[text()='Clear']";
+        String SAVE_BUTTON_XPATH= "//button[text()='Save']";
+    }
 
 }
