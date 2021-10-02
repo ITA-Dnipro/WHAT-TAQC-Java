@@ -55,5 +55,13 @@ public class Locators {
         String CANCEL_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Cancel')]";
         String SAVE_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Save')]";
     }
-
+    public interface StudentsPage {
+        String TABLE_STUDENTS_XPATH = "//tbody";
+        String PAGE_TITLE_TAG_NAME = "h2";
+        String TABLE_HEAD_FIRST_NAME_XPATH = "//span[@data-sorting-param='firstName']";
+        String TABLE_HEAD_LAST_NAME_XPATH = "//span[@data-sorting-param='lastName']";
+        String TABLE_HEAD_EMAIL_XPATH = "//span[@data-sorting-param='email']";
+        String TABLE_ROW_TAG_NAME = "tr";
+        String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput";
+    }
 }
