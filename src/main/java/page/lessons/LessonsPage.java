@@ -3,9 +3,9 @@ package page.lessons;
 import org.openqa.selenium.WebDriver;
 import page.base.Page;
 
-public class AddLessonPage extends Page {
+public class LessonsPage extends Page {
 
-    public AddLessonPage(WebDriver driver) {
+    public LessonsPage(WebDriver driver) {
         super(driver);
     }
 }
