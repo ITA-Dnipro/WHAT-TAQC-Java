@@ -6,11 +6,15 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public abstract class BasePage {
+/**
+ * The base object for customer page elements
+ * @author fresh-ash
+ * */
+public abstract class BaseObject {
 
     protected WebDriver driver;
 
-    public BasePage(WebDriver driver) {
+    public BaseObject(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
