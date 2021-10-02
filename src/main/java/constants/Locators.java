@@ -2,13 +2,14 @@ package constants;
 
 public class Locators {
 
-    private Locators(){}
+    private Locators() {
+    }
 
-    public interface CommonElements{
+    public interface CommonElements {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
 
-    public interface Lessons{
+    public interface Lessons {
         String ADD_LESSON_BUTTON_XPATH = "//button[contains(.,'Add a lesson')]";
         String ADD_THEME_BUTTON_CSS_SELECTOR = ".btn-warning";
         String FILTER_BUTTON_XPATH = "//button[contains(.,'Filter')]";
@@ -41,13 +42,13 @@ public class Locators {
         String SAVE_BUTTON_XPATH = "//button[@type='submit']";
     }
 
-    public interface AddCoursePage{
+    public interface AddCoursePage {
         String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@data-testid='cancelBtn']";
         String SAVE_BUTTON_XPATH = "//button[@id='addCourseSubmit']";
     }
 
-    public interface ChangePasswordPage{
+    public interface ChangePasswordPage {
         String EMAIL_INPUT_FIELD_XPATH = "//*[@id='email']";
         String CURRENT_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='currentPassword']";
         String NEW_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='newPassword']";
@@ -55,6 +56,7 @@ public class Locators {
         String CANCEL_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Cancel')]";
         String SAVE_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Save')]";
     }
+
     public interface StudentsPage {
         String TABLE_STUDENTS_XPATH = "//tbody";
         String PAGE_TITLE_TAG_NAME = "h2";
@@ -64,6 +66,7 @@ public class Locators {
         String TABLE_ROW_TAG_NAME = "tr";
         String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput";
     }
+
     public interface Header {
         String LOGO_XPATH = "//*[contains(@class,'logo')]";
         String ICON_XPATH = "//*[contains(@class,'icon')]";
@@ -72,7 +75,5 @@ public class Locators {
         String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(text(), 'Change password')]]";
         String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(text(), 'Log Out')]]";
         String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
-
-
     }
 }
