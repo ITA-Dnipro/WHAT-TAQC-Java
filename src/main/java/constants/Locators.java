@@ -65,11 +65,14 @@ public class Locators {
         String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput";
     }
     public interface Header {
+        String LOGO_XPATH = "//*[contains(@class,'logo')]";
+        String ICON_XPATH = "//*[contains(@class,'icon')]";
         String FULL_NAME_XPATH = "//*[contains(@class,'fullname')]";
         String DROP_DOWN_MENU_MY_PROFILE_XPATH = "//li[a[contains(text(), 'My profile')]]";
         String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(text(), 'Change password')]]";
         String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(text(), 'Log Out')]]";
-        String ICON_XPATH = "//*[contains(@class,'icon')]";
-        String LOGO_XPATH = "//*[contains(@class,'logo')]";
+        String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
+
+
     }
 }
