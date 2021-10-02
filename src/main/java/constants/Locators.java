@@ -1,19 +1,14 @@
 package constants;
 
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
-
 public class Locators {
 
-    private Locators() {
-    }
+    private Locators(){}
 
-    public interface CommonElements {
+    public interface CommonElements{
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
 
-    public interface Lessons {
+    public interface Lessons{
         String ADD_LESSON_BUTTON_XPATH = "//button[contains(.,'Add a lesson')]";
         String ADD_THEME_BUTTON_CSS_SELECTOR = ".btn-warning";
         String FILTER_BUTTON_XPATH = "//button[contains(.,'Filter')]";
@@ -24,7 +19,7 @@ public class Locators {
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
     }
 
-    interface Courses {
+    public interface Courses {
         String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']";
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
@@ -32,11 +27,11 @@ public class Locators {
         String COURSES_TABLE_LIST_MENTOR_STUDENT_XPATH = "//td";
         String COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH = "//td[not(contains(@class,'text-center'))]";
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
-        String COURSES_PAGINATION_XPATH = "//li[@class='page-item']"; $x("//div[@class='row mr-0']//button[text()='<']");
+        String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
         String CHANGE_ROWS_NUMBER_XPATH = "//*[@id='change-visible-people']";
     }
 
-    interface CourseDetailsPage {
+    public interface CourseDetailsPage {
         String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
         String COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Course details')]";
         String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Edit course details')]";
@@ -46,18 +41,19 @@ public class Locators {
         String SAVE_BUTTON_XPATH = "//button[@type='submit']";
     }
 
-    interface AddCoursePage{
+    public interface AddCoursePage{
         String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@data-testid='cancelBtn']";
         String SAVE_BUTTON_XPATH = "//button[@id='addCourseSubmit']";
     }
 
-    interface ChangePasswordPage{
+    public interface ChangePasswordPage{
         String EMAIL_INPUT_FIELD_XPATH = "//*[@id='email']";
         String CURRENT_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='currentPassword']";
         String NEW_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='newPassword']";
-        String CONFIRM_PASSWORD_INPUT_FIELD = "//*[@id='confirmNewPassword']";
+        String CONFIRM_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='confirmNewPassword']";
         String CANCEL_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Cancel')]";
         String SAVE_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Save')]";
     }
+
 }
