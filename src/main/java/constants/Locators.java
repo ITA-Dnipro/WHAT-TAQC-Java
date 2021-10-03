@@ -12,7 +12,9 @@ public class Locators {
         String ADD_LESSON_BUTTON_XPATH = "//button[contains(.,'Add a lesson')]";
         String ADD_THEME_BUTTON_CSS_SELECTOR = ".btn-warning";
         String FILTER_BUTTON_XPATH = "//button[contains(.,'Filter')]";
-        String SWITCH_VIEW_BUTTONS_XPATH = "//button[@class = 'btn btn-secondary']";
+        String SEARCH_INPUT_FIELD_CSS_SELECTOR = ".search__searchInput___34nMl";
+        String LIST_VIEW_BUTTON_XPATH = "//button[@class='btn btn-secondary']//*[contains(@href, 'List')]";
+        String CARD_VIEW_BUTTON_XPATH = "//button[@class='btn btn-secondary']//*[contains(@href, 'Card')]";
         String TABLE_HEAD_THEME_NAME_XPATH = "//span[text()='themeName']";
         String TABLE_HEAD_LESSON_DATE_XPATH = "//span[text()='lessonDate']";
         String TABLE_HEAD_LESSON_TIME_XPATH = "//span[text()='lessonTime']";
