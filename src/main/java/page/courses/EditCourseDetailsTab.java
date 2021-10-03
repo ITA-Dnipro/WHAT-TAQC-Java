@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+
 import static constants.Locators.CourseDetailsPage.*;
 
 public class EditCourseDetailsTab extends Page {
@@ -33,10 +34,10 @@ public class EditCourseDetailsTab extends Page {
     @FindBy(xpath = DELETE_BUTTON_CONFIRM_ACTION_XPATH)
     private WebElement deleteButton;
 
-    @FindBy (xpath = CLEAR_BUTTON_XPATH)
+    @FindBy(xpath = CLEAR_BUTTON_XPATH)
     private WebElement clearButton;
 
-    @FindBy (xpath = SAVE_BUTTON_XPATH)
+    @FindBy(xpath = SAVE_BUTTON_XPATH)
     private WebElement saveButton;
 
     public Courses outFromEditCourseDetails() {

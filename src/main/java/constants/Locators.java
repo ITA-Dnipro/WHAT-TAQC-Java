@@ -57,6 +57,9 @@ public class Locators {
         String CONFIRM_PASSWORD_INPUT_FIELD_ID = "confirmNewPassword";
         String CANCEL_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Cancel')]";
         String SAVE_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Save')]";
+        String CANCEL_BUTTON_CONFIRM_ACTION_XPATH = "//button[contains(@class,'bRf5m')and contains(text(),'Cancel')]";
+        String CONFIRM_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='submit'and contains(text(),'Confirm')]";
+        String CLOSE_CONFIRM_ACTION_XPATH = "//button[@class='close']";
     }
 
 }

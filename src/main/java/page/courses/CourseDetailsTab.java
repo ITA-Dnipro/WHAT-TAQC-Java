@@ -5,7 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 
-import static constants.Locators.CourseDetailsPage.*;
+import static constants.Locators.CourseDetailsPage.ARROW_BUTTON_XPATH;
+import static constants.Locators.CourseDetailsPage.EDIT_COURSE_DETAILS_TAB_XPATH;
 
 public class CourseDetailsTab extends Page {
 

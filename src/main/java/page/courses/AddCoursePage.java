@@ -13,13 +13,13 @@ public class AddCoursePage extends Page {
         super(driver);
     }
 
-    @FindBy (xpath = COURSE_NAME_INPUT_FIELD_XPATH)
+    @FindBy(xpath = COURSE_NAME_INPUT_FIELD_XPATH)
     private WebElement courseNameInput;
 
-    @FindBy (xpath = SAVE_BUTTON_XPATH)
+    @FindBy(xpath = SAVE_BUTTON_XPATH)
     private WebElement addCourseSaveButton;
 
-    @FindBy (xpath = CANCEL_BUTTON_ADD_COURSE_XPATH)
+    @FindBy(xpath = CANCEL_BUTTON_ADD_COURSE_XPATH)
     WebElement cancelFromAddCoursePage;
 
     public AddCoursePage inputAddCourseName(String courseName) {
@@ -32,7 +32,7 @@ public class AddCoursePage extends Page {
         return new Courses(driver);
     }
 
-    public Courses cancelAddCoursePage () {
+    public Courses cancelAddCoursePage() {
         clickElement(cancelFromAddCoursePage);
         return new Courses(driver);
     }

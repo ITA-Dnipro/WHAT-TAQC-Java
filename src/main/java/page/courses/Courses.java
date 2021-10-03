@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+
 import java.util.List;
 
 import static constants.Locators.Courses.*;
@@ -11,25 +12,25 @@ import static constants.Locators.Courses.*;
 public class Courses extends Page {
 
     @FindBy(xpath = EDIT_BUTTON_ADMIN_SECRETARY_XPATH)
-    private List <WebElement> editButton;
+    private List<WebElement> editButton;
 
-    @FindBy (xpath = COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH)
-    private List <WebElement> courseRow;
+    @FindBy(xpath = COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH)
+    private List<WebElement> courseRow;
 
-    @FindBy (xpath = ADD_COURSE_BUTTON_XPATH)
+    @FindBy(xpath = ADD_COURSE_BUTTON_XPATH)
     private WebElement addCourseButton;
 
-    @FindBy (xpath = SEARCH_FIELD_XPATH)
+    @FindBy(xpath = SEARCH_FIELD_XPATH)
     private WebElement searchField;
 
-    @FindBy (xpath = SORT_TITLE_BUTTON_XPATH)
+    @FindBy(xpath = SORT_TITLE_BUTTON_XPATH)
     private WebElement titleSort;
 
-    @FindBy (id = CHANGE_ROWS_NUMBER_BUTTON_ID)
-    private List <WebElement> displayRowsValue;
+    @FindBy(id = CHANGE_ROWS_NUMBER_BUTTON_ID)
+    private List<WebElement> displayRowsValue;
 
-    @FindBy (xpath = COURSES_PAGINATION_XPATH)
-    private List <WebElement> paginationList;
+    @FindBy(xpath = COURSES_PAGINATION_XPATH)
+    private List<WebElement> paginationList;
 
     public Courses(WebDriver driver) {
         super(driver);
@@ -66,12 +67,12 @@ public class Courses extends Page {
         return this;
     }
 
-    public enum RowsNumbers{
+    public enum RowsNumbers {
         NINE("9"),
         TWENTY_SEVEN("27"),
         FORTY_FIVE("45"),
-        SEVENTY_TWO ("72"),
-        NINETY_NINE ("99");
+        SEVENTY_TWO("72"),
+        NINETY_NINE("99");
 
         private final String rowsNumber;
 
