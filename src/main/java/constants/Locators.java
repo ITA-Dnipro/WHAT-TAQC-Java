@@ -8,6 +8,15 @@ public class Locators {
     public interface CommonElements {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
+    public interface Header {
+        String LOGO_XPATH = "//*[contains(@class,'logo')]";
+        String ICON_XPATH = "//*[contains(@class,'icon')]";
+        String FULL_NAME_XPATH = "//*[contains(@class,'fullname')]";
+        String DROP_DOWN_MENU_MY_PROFILE_XPATH = "//li[a[contains(text(), 'My profile')]]";
+        String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(text(), 'Change password')]]";
+        String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(text(), 'Log Out')]]";
+        String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
+    }
 
     public interface Lessons {
         String ADD_LESSON_BUTTON_XPATH = "//button[contains(.,'Add a lesson')]";
@@ -58,22 +67,31 @@ public class Locators {
     }
 
     public interface StudentsPage {
-        String TABLE_STUDENTS_XPATH = "//tbody";
         String PAGE_TITLE_TAG_NAME = "h2";
+        String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput";
+        String SHOW_DISABLED_SWITCHER_ID = "show-disabled-check";
+        String ADD_STUDENT_BUTTON_XPATH = "//*[contains(text(), 'Add a student')]";
+        String TABLE_STUDENTS_XPATH = "//tbody";
         String TABLE_HEAD_FIRST_NAME_XPATH = "//span[@data-sorting-param='firstName']";
         String TABLE_HEAD_LAST_NAME_XPATH = "//span[@data-sorting-param='lastName']";
         String TABLE_HEAD_EMAIL_XPATH = "//span[@data-sorting-param='email']";
         String TABLE_ROW_TAG_NAME = "tr";
-        String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput";
+    }
+    public interface StudentsDetailsEditDetailsPage {
+        String ARROW_BUTTON_XPATH = "//*[@class='nav nav-tabs']//*[@href='/students']";
+        String STUDENT_DETAILS_TAB_XPATH = "//*[text()='Student details']";
+        String STUDENT_EDIT_TAB_XPATH = "//*[text()='Edit student details']";
+
+        public interface StudentDetailsTab{
+            String FIRST_NAME_XPATH = "//*[text()='First name: ']//following::span[1]";
+            String LAST_NAME_XPATH = "//*[text()='Last name: ']//following::span[1]";
+            String EMAIL_XPATH = "//*[text()='Email: ']//following::span[1]";
+            String LIST_GROUPS_XPATH = "//*[text()='Group(s): ']//following::div[1]//child::span//a";
+            String LIST_LESSONS_XPATH = "//*[text()='Lesson(s): ']//following::div[1]//child::span//a";
+        }
+        public interface StudentEditDetailsTab{
+        }
     }
 
-    public interface Header {
-        String LOGO_XPATH = "//*[contains(@class,'logo')]";
-        String ICON_XPATH = "//*[contains(@class,'icon')]";
-        String FULL_NAME_XPATH = "//*[contains(@class,'fullname')]";
-        String DROP_DOWN_MENU_MY_PROFILE_XPATH = "//li[a[contains(text(), 'My profile')]]";
-        String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(text(), 'Change password')]]";
-        String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(text(), 'Log Out')]]";
-        String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
-    }
+
 }
