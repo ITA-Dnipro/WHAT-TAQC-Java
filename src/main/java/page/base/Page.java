@@ -12,8 +12,6 @@ import java.util.logging.Logger;
  */
 public abstract class Page extends BaseObject {
 
-    protected Logger log;
-
     public Header header;
 
     protected SideBar sideBar;
@@ -22,11 +20,5 @@ public abstract class Page extends BaseObject {
         super(driver);
         sideBar = new SideBar(driver);
         header = new Header(driver);
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        log.info("Close driver");
-        driver.quit();
     }
 }

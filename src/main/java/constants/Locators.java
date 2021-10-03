@@ -59,7 +59,7 @@ public class Locators {
     }
 
     public interface Courses {
-        String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']//";
+        String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']";
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
         String SORT_TITLE_BUTTON_XPATH = "//span[@data-sorting-param='name']";
@@ -67,7 +67,6 @@ public class Locators {
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
         String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
-//
     }
 
     public interface CourseDetailsPage {
