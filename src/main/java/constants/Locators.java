@@ -52,8 +52,6 @@ public class Locators {
         String SECRETARIES_LAY_OFF_BUTTON_XPATH = "//button[contains(text (), 'Lay off')]";
         String SECRETARIES_CLEAR_BUTTON_XPATH = "//button[contains(text (), 'Clear')]";
         String SECRETARIES_SAVE_BUTTON_XPATH = "//button[contains(text (), 'Save')]";
-
-
     }
 
     public interface UnassignedUsers {
@@ -190,9 +188,9 @@ public class Locators {
             String GROUPS_INPUT_FIELD_XPATH = "//input[@name='groupsInput']";
             String GROUPS_PLUS_BUTTON_XPATH = "//button[text()= '+']";
             String GROUPS_LIST_XPATH = "//ul[@class='d-flex flex-wrap justify-content-between p-0']//child::li";
-            String EXCLUDE_BUTTON = "//button[text()= 'Exclude']";
-            String CLEAR_BUTTON = "//button[text()= 'Clear']";
-            String SAVE_BUTTON = "//button[text()= 'Save']";
+            String EXCLUDE_BUTTON_XPATH = "//button[text()= 'Exclude']";
+            String CLEAR_BUTTON_XPATH = "//button[text()= 'Clear']";
+            String SAVE_BUTTON_XPATH = "//button[text()= 'Save']";
         }
     }
 }
