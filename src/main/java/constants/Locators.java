@@ -2,7 +2,8 @@ package constants;
 
 public class Locators {
 
-    private Locators(){}
+    private Locators() {
+    }
 
     public interface CommonElements {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
@@ -136,5 +137,23 @@ public class Locators {
         String CLEAR_BUTTON_XPATH="//button[text()='Clear']";
         String SAVE_BUTTON_XPATH= "//button[text()='Save']";
     }
+    public interface StudentsPage {
+        String TABLE_STUDENTS_XPATH = "//tbody";
+        String PAGE_TITLE_TAG_NAME = "h2";
+        String TABLE_HEAD_FIRST_NAME_XPATH = "//span[@data-sorting-param='firstName']";
+        String TABLE_HEAD_LAST_NAME_XPATH = "//span[@data-sorting-param='lastName']";
+        String TABLE_HEAD_EMAIL_XPATH = "//span[@data-sorting-param='email']";
+        String TABLE_ROW_TAG_NAME = "tr";
+        String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput";
+    }
 
+    public interface Header {
+        String LOGO_XPATH = "//*[contains(@class,'logo')]";
+        String ICON_XPATH = "//*[contains(@class,'icon')]";
+        String FULL_NAME_XPATH = "//*[contains(@class,'fullname')]";
+        String DROP_DOWN_MENU_MY_PROFILE_XPATH = "//li[a[contains(text(), 'My profile')]]";
+        String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(text(), 'Change password')]]";
+        String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(text(), 'Log Out')]]";
+        String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
+    }
 }
