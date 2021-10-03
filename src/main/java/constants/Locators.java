@@ -18,7 +18,7 @@ public class Locators {
         String TABLE_HEAD_LESSON_TIME_XPATH = "//span[text()='lessonTime']";
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
     }
-
+    
     public interface Secretaries {
         String ADD_SECRETARY_BUTTON_XPATH = "//span[contains(text(),'Add a secretary')]";
         String SWITCH_VIEW_DISABLED_SECRETARIES_XPATH = "//label[contains(@class, 'custom-control-label list-of-secretaries')]";
@@ -41,6 +41,7 @@ public class Locators {
         String SECRETARIES_LAY_OFF_BUTTON_XPATH = "//button[contains(text (), 'Lay off')]";
         String SECRETARIES_CLEAR_BUTTON_XPATH = "//button[contains(text (), 'Clear')]";
         String SECRETARIES_SAVE_BUTTON_XPATH = "//button[contains(text (), 'Save')]";
+
 
     }
     public interface UnassignedUsers {
