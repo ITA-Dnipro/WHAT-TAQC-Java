@@ -72,11 +72,10 @@ public class Locators {
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
         String SORT_TITLE_BUTTON_XPATH = "//span[@data-sorting-param='name']";
-        String COURSES_TABLE_LIST_MENTOR_STUDENT_XPATH = "//td";
         String COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH = "//td[not(contains(@class,'text-center'))]";
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
-        String CHANGE_ROWS_NUMBER_XPATH = "//*[@id='change-visible-people']";
+        String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
     }
 
     public interface CourseDetailsPage {
@@ -87,6 +86,9 @@ public class Locators {
         String DELETE_BUTTON_XPATH = "//button[contains(text(),'Delete')]";
         String CLEAR_BUTTON_XPATH = "//button[@type='reset']";
         String SAVE_BUTTON_XPATH = "//button[@type='submit']";
+        String CANCEL_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='button'and contains(text(),'Cancel')]";
+        String DELETE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='submit'and contains(text(),'Delete')]";
+        String CLOSE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@class='close']";
     }
 
     public interface AddCoursePage {
@@ -96,12 +98,15 @@ public class Locators {
     }
 
     public interface ChangePasswordPage {
-        String EMAIL_INPUT_FIELD_XPATH = "//*[@id='email']";
+        String EMAIL_INPUT_FIELD_ID = "email";
         String CURRENT_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='currentPassword']";
-        String NEW_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='newPassword']";
-        String CONFIRM_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='confirmNewPassword']";
+        String NEW_PASSWORD_INPUT_FIELD_ID = "newPassword";
+        String CONFIRM_PASSWORD_INPUT_FIELD_ID = "confirmNewPassword";
         String CANCEL_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Cancel')]";
         String SAVE_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Save')]";
+        String CANCEL_BUTTON_CONFIRM_ACTION_XPATH = "//button[contains(@class,'bRf5m')and contains(text(),'Cancel')]";
+        String CONFIRM_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='submit'and contains(text(),'Confirm')]";
+        String CLOSE_CONFIRM_ACTION_XPATH = "//button[@class='close']";
     }
     public interface MentorsTablePage {
         String ADD_MENTOR_BUTTON_XPATH = "//span[text()='Add a mentor']";
