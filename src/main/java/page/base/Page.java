@@ -1,6 +1,9 @@
 package page.base;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+
+import java.util.logging.Logger;
 
 /**
  * The base class for authorized users page objects.
@@ -10,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 public abstract class Page extends BaseObject {
 
     public Header header;
+
     protected SideBar sideBar;
 
     public Page(WebDriver driver) {
@@ -17,5 +21,4 @@ public abstract class Page extends BaseObject {
         sideBar = new SideBar(driver);
         header = new Header(driver);
     }
-
 }
