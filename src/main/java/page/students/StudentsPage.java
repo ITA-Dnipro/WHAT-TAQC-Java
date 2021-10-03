@@ -16,28 +16,28 @@ import static constants.Locators.StudentsPage.*;
 
 public class StudentsPage extends Page {
 
-    @FindBy (tagName = PAGE_TITLE_TAG_NAME)
+    @FindBy(tagName = PAGE_TITLE_TAG_NAME)
     protected WebElement pageName;
-    @FindBy (className = SEARCH_INPUT_BOX_CLASSNAME)
+    @FindBy(className = SEARCH_INPUT_BOX_CLASSNAME)
     protected WebElement searchInputFieldBox;
-    @FindBy (id = SHOW_DISABLED_SWITCHER_ID)
+    @FindBy(id = SHOW_DISABLED_SWITCHER_ID)
     protected WebElement showDisabledSwitcher;
-    @FindBy (xpath = ADD_STUDENT_BUTTON_XPATH)
+    @FindBy(xpath = ADD_STUDENT_BUTTON_XPATH)
     protected WebElement addStudentButton;
-    @FindBy (xpath = TABLE_STUDENTS_XPATH)
+    @FindBy(xpath = TABLE_STUDENTS_XPATH)
     protected WebElement tableStudents;
-    @FindBy (xpath = TABLE_HEAD_FIRST_NAME_XPATH)
+    @FindBy(xpath = TABLE_HEAD_FIRST_NAME_XPATH)
     protected WebElement tableHeadFirstName;
-    @FindBy (xpath = TABLE_HEAD_LAST_NAME_XPATH)
+    @FindBy(xpath = TABLE_HEAD_LAST_NAME_XPATH)
     protected WebElement tableHeadLastName;
-    @FindBy (xpath = TABLE_HEAD_EMAIL_XPATH)
+    @FindBy(xpath = TABLE_HEAD_EMAIL_XPATH)
     protected WebElement tableHeadEmail;
 
-    public StudentsPage(WebDriver driver){
+    public StudentsPage(WebDriver driver) {
         super(driver);
     }
 
-    public List<List<String>> getItemsFromTable(){
+    public List<List<String>> getItemsFromTable() {
         List<WebElement> tableStudentsRows = new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions
                         .visibilityOfNestedElementsLocatedBy(tableStudents, By.tagName(TABLE_ROW_TAG_NAME)));
@@ -50,8 +50,9 @@ public class StudentsPage extends Page {
                 .collect(Collectors.toList());
         return list;
     }
+//    public StudentsDetailsEditDetailsPage.StudentEditDetailsTab
 
-    public void addStudent(){
+    public void addStudent() {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions
                         .elementToBeClickable(addStudentButton));
