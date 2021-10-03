@@ -4,11 +4,11 @@ public class Locators {
 
     private Locators(){}
 
-    public interface CommonElements{
+    public interface CommonElements {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
 
-    public interface Lessons{
+    public interface Lessons {
         String ADD_LESSON_BUTTON_XPATH = "//button[contains(.,'Add a lesson')]";
         String ADD_THEME_BUTTON_CSS_SELECTOR = ".btn-warning";
         String FILTER_BUTTON_XPATH = "//button[contains(.,'Filter')]";
@@ -18,8 +18,8 @@ public class Locators {
         String TABLE_HEAD_LESSON_TIME_XPATH = "//span[text()='lessonTime']";
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
     }
-
-    public interface Secretaries{
+    
+    public interface Secretaries {
         String ADD_SECRETARY_BUTTON_XPATH = "//span[contains(text(),'Add a secretary')]";
         String SWITCH_VIEW_DISABLED_SECRETARIES_XPATH = "//label[contains(@class, 'custom-control-label list-of-secretaries')]";
         String SEARCH_WINDOW_SECRETARIES_NAME_XPATH ="//div[@class ='search__search___13vn_']";
@@ -31,7 +31,7 @@ public class Locators {
         String SECRETARY_PAGE_TABLE_XPATH = "//table[@class='table table-hover']";
     }
 
-    public interface EditSecretary{
+    public interface EditSecretary {
         String ARROW_BUTTON_XPATH = "//*[@class ='bi bi-arrow-left']";
         String SECRETARY_DETAILS_TAB_XPATH = "//a [contains (@class,'nav-item nav-link tab__tab___1xEn9 tab__active___3e65x')] ";
         String EDIT_SECRETARY_TAB_XPATH = "//a [contains (@class,'nav-item nav-link tab__tab___1xEn9 tab__active___3e65x')]";
@@ -43,7 +43,7 @@ public class Locators {
         String SECRETARIES_SAVE_BUTTON_XPATH = "//button[contains(text (), 'Save')]";
 
     }
-    public interface UnassignedUsers{
+    public interface UnassignedUsers {
         String UNASSIGNED_USERS_SEARCH_WINDOW_PERSONS_NAME_XPATH ="//input[@class='search__searchInput___34nMl']";
         String UNASSIGNED_USERS_PAGINATION_XPATH = "//li[@class='page-item']";
         String UNASSIGNED_USERS_TABLE_HEAD_NAME_XPATH = "//span[contains(text(),'Name')]";
@@ -54,6 +54,43 @@ public class Locators {
         String UNASSIGNED_USERS_CHOOSE_MENTOR_ROLE_XPATH = "////option [contains (@value, '2')]";
         String UNASSIGNED_USERS_CHOOSE_SECRETARY_ROLE_XPATH = "////option [contains (@value, '3')]";
         String UNASSIGNED_USERS_ADD_ROLE_BUTTON_XPATH = "//button[contains(text (), 'Add role')]";
+    }
+  
+    public interface Courses {
+        String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']";
+        String SEARCH_FIELD_XPATH = "//input[@type='text']";
+        String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
+        String SORT_TITLE_BUTTON_XPATH = "//span[@data-sorting-param='name']";
+        String COURSES_TABLE_LIST_MENTOR_STUDENT_XPATH = "//td";
+        String COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH = "//td[not(contains(@class,'text-center'))]";
+        String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
+        String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
+        String CHANGE_ROWS_NUMBER_XPATH = "//*[@id='change-visible-people']";
+    }
 
-//
+    public interface CourseDetailsPage {
+        String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
+        String COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Course details')]";
+        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Edit course details')]";
+        String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
+        String DELETE_BUTTON_XPATH = "//button[contains(text(),'Delete')]";
+        String CLEAR_BUTTON_XPATH = "//button[@type='reset']";
+        String SAVE_BUTTON_XPATH = "//button[@type='submit']";
+    }
+
+    public interface AddCoursePage {
+        String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
+        String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@data-testid='cancelBtn']";
+        String SAVE_BUTTON_XPATH = "//button[@id='addCourseSubmit']";
+    }
+
+    public interface ChangePasswordPage {
+        String EMAIL_INPUT_FIELD_XPATH = "//*[@id='email']";
+        String CURRENT_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='currentPassword']";
+        String NEW_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='newPassword']";
+        String CONFIRM_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='confirmNewPassword']";
+        String CANCEL_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Cancel')]";
+        String SAVE_BUTTON_CHANGE_PASSWORD_XPATH = "//button[contains(text(),'Save')]";
+    }
+
 }
