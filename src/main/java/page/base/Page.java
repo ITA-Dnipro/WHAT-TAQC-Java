@@ -11,12 +11,17 @@ import java.util.logging.Logger;
  * @author fresh-ash
  */
 public abstract class Page extends BaseObject {
+
     protected Logger log;
+
+    public Header header;
+
     protected SideBar sideBar;
 
     public Page(WebDriver driver) {
         super(driver);
         sideBar = new SideBar(driver);
+        header = new Header(driver);
     }
 
     @AfterClass(alwaysRun = true)
