@@ -13,13 +13,15 @@ public class Locators {
         String ADD_LESSON_BUTTON_XPATH = "//button[contains(.,'Add a lesson')]";
         String ADD_THEME_BUTTON_CSS_SELECTOR = ".btn-warning";
         String FILTER_BUTTON_XPATH = "//button[contains(.,'Filter')]";
-        String SWITCH_VIEW_BUTTONS_XPATH = "//button[@class = 'btn btn-secondary']";
+        String SEARCH_INPUT_FIELD_CSS_SELECTOR = ".search__searchInput___34nMl";
+        String LIST_VIEW_BUTTON_XPATH = "//button[@class='btn btn-secondary']//*[contains(@href, 'List')]";
+        String CARD_VIEW_BUTTON_XPATH = "//button[@class='btn btn-secondary']//*[contains(@href, 'Card')]";
         String TABLE_HEAD_THEME_NAME_XPATH = "//span[text()='themeName']";
         String TABLE_HEAD_LESSON_DATE_XPATH = "//span[text()='lessonDate']";
         String TABLE_HEAD_LESSON_TIME_XPATH = "//span[text()='lessonTime']";
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
     }
-    
+
     public interface Secretaries {
         String ADD_SECRETARY_BUTTON_XPATH = "//span[contains(text(),'Add a secretary')]";
         String SWITCH_VIEW_DISABLED_SECRETARIES_XPATH = "//label[contains(@class, 'custom-control-label list-of-secretaries')]";
@@ -30,6 +32,34 @@ public class Locators {
         String SECRETARY_PAGE_TITLE_XPATH = "//h2[text()='Secretaries']";
         String SECRETARY_EDIT_ICON_XPATH = "//td[@class='text-center']";
         String SECRETARY_PAGE_TABLE_XPATH = "//table[@class='table table-hover']";
+    }
+
+    public interface AddLesson{
+        String PAGE_TITLE_XPATH = "//h3[text()='Add a Lesson']";
+        String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+        String CLASS_REGISTER_BUTTON_ID = "class-register-btn";
+        String LESSON_THEME_INPUT_FIELD_ID = "inputLessonTheme";
+        String GROUP_NAME_INPUT_FIELD_ID = "inputGroupName";
+        String LESSON_TIME_INPUT_FIELD_ID = "choose-date-time";
+        String MENTOR_EMAIL_INPUT_FIELD_ID = "mentorEmail";
+        String LIST_OF_GROUPS_XPATH = "//datalist[@id='group-list']/option";
+        String LIST_OF_MENTORS_XPATH = "//datalist[@id='mentor-list']/option";
+    }
+
+    public interface EditLesson{
+        String PAGE_TITLE_XPATH = "//h3[text()='Edit a Lesson']";
+        String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+    }
+
+    public interface ClassBook{
+        String LIST_OF_STUDENTS_XPATH = "//p[@class='edit-lesson__link___Hgvq4']";
+        String LIST_OF_MARKS_XPATH = "//input[@class='form-control edit-lesson__mode___3T2Dn']";
+        String LIST_OF_PRESENCE_TIP_XPATH = "//input[@class='edit-lesson__mode___3T2Dn']";
+        String SAVE_BUTTON_XPATH = "//button[@type='submit']";
+    }
+
+    public interface LessonDetails{
+        String CANCEL_BUTTON_XPATH = "//button[@type='button']";
     }
 
     public interface EditSecretary {
