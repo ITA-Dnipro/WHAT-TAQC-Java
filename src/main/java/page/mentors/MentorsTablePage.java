@@ -31,31 +31,45 @@ public class MentorsTablePage extends Page implements Locators.MentorsTablePage 
     @FindBy(xpath = MENTORS_ROW_XPATH)
     protected List<WebElement> mentorsRow;
     @FindBy(xpath = SWITCH_VIEW_BUTTONS_XPATH)
-    protected WebElement switchViewButton;
+    protected List<WebElement> switchViewButton;
+
+    public MentorsTablePage showDisableMentors() {
+        clickElement(disableMentorsSwitch);
+        return this;
+    }
+    public MentorsTablePage showMentorsCard(int index){
+        clickElement(switchViewButton.get(index));
+        return this;
+    }
 
     public MentorsTablePage inputSearchMentor(String nameSurname) {
         fillField(searchInputField, nameSurname);
         return this;
     }
-    public MentorsTablePage sortByName(){
+
+    public MentorsTablePage sortByName() {
         clickElement(sortNameArrow);
         return this;
     }
-    public MentorsTablePage sortBySurname(){
+
+    public MentorsTablePage sortBySurname() {
         clickElement(sortSurnameArrow);
         return this;
     }
-    public MentorsTablePage sortByEmail(){
+
+    public MentorsTablePage sortByEmail() {
         clickElement(sortEmailArrow);
         return this;
     }
-    public MentorsTablePage viewMentorsDetails(int index){
+
+    public MentorsDetailsPage viewMentorsDetails(int index) {
         clickElement(mentorsRow.get(index));
-        return this;
+        return new MentorsDetailsPage(driver);
     }
-    public MentorsTablePage editMentors(int index){
+
+    public EditMentorsDetailsPage editMentors(int index) {
         clickElement(editButtonXpath.get(index));
-        return this;
+        return new EditMentorsDetailsPage(driver);
     }
 
 }
