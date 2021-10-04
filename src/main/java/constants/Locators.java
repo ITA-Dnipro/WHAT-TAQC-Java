@@ -152,8 +152,6 @@ public class Locators {
         String MENTORS_CARD_XPATH="//div[@class='card']";
     }
 
-
-
     public interface ListOfMentorsPage {
         String ADD_MENTOR_BUTTON_XPATH = "//span[text()='Add a mentor']";
         String DISABLE_MENTORS_SWITCH_XPATH = "//input[@id='disabledMentors']";
