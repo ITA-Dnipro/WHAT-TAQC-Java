@@ -139,15 +139,9 @@ public class Locators {
         String EDIT_BUTTON_XPATH = "//td[@class='text-center']";
         String MENTORS_ROW_XPATH = "//td[not(contains(@class,'text-center'))]";
         String SWITCH_VIEW_BUTTONS_XPATH = "//button[@class = 'btn btn-secondary']";
-    }
-    public interface ListOfMentorsPage{
-        String ADD_MENTOR_BUTTON_XPATH = "//span[text()='Add a mentor']";
-        String DISABLE_MENTORS_SWITCH_XPATH = "//input[@id='disabledMentors']";
-        String SEARCH_INPUT_FIELD_XPATH = "//input[@class='search__searchInput___34nMl']";
-        String SWITCH_VIEW_BUTTONS_XPATH = "//button[@class = 'btn btn-secondary']";
         String MENTORS_CARD_XPATH="//div[@class='card']";
-        String EDIT_BUTTON_XPATH="//*[@class='blocks__scale___2EfN8']";
     }
+
     public interface MentorsDetailsPage{
         String MENTORS_DETAILS_TAB_XPATH="//a[text()='Mentor details']";
         String EDIT_MENTOR_TAB_XPATH="//a[text()='Edit a mentor']";
@@ -190,5 +184,8 @@ public class Locators {
         String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(text(), 'Change password')]]";
         String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(text(), 'Log Out')]]";
         String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
+    }
+    public interface MyProfile{
+        String CHANGE_PASSWORD_BUTTON="//button";
     }
 }
