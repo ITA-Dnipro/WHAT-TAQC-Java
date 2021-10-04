@@ -26,6 +26,15 @@ public abstract class BaseObject {
         field.sendKeys(text);
     }
 
+    protected void fillUserFirstNameLastNameEmailFields(User user,
+                                                        WebElement firstNameInputField,
+                                                        WebElement lastNameInputField,
+                                                        WebElement emailInputField) {
+        fillField(firstNameInputField, user.getFirstName());
+        fillField(lastNameInputField, user.getLastName());
+        fillField(emailInputField, user.getEmail());
+    }
+
     protected WebElement getItemFromMenu(List<WebElement> webElementList, String name) {
         return webElementList.stream()
                 .filter(element -> name.equals(element.getText()))
@@ -36,4 +45,6 @@ public abstract class BaseObject {
     protected void clickElement(WebElement element) {
         element.click();
     }
+
+
 }
