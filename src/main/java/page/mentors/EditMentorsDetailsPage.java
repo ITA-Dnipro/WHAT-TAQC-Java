@@ -17,9 +17,9 @@ public class EditMentorsDetailsPage extends Page implements Locators.EditMentors
     WebElement editMentorsTab;
     @FindBy(xpath = ARROW_BUTTON_XPATH)
     WebElement arrowButton;
-    @FindBy(xpath = FIRSTNAME_INPUT_FIELD_XPATH)
+    @FindBy(xpath = FIRST_NAME_INPUT_FIELD_XPATH)
     WebElement firstNameInputField;
-    @FindBy(xpath = SECONDNAME_INPUT_FIELD_XPATH)
+    @FindBy(xpath = SECOND_NAME_INPUT_FIELD_XPATH)
     WebElement secondNameInputField;
     @FindBy(xpath = EMAIL_INPUT_FIELD_XPATH)
     WebElement emailInputField;

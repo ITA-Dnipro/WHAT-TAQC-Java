@@ -102,7 +102,7 @@ public class Locators {
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
         String SORT_TITLE_BUTTON_XPATH = "//span[@data-sorting-param='name']";
-        String COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH = "//td[not(contains(@class,'text-center'))]";
+        String COURSES_TABLE_LIST_ADMIN_SECRETARY_XPATH = "//td[not(contains(@class,'text-center'))]";
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
         String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
@@ -171,8 +171,8 @@ public class Locators {
         String MENTORS_DETAILS_TAB_XPATH = "//a[text()='Mentor details']";
         String EDIT_MENTOR_TAB_XPATH = "//a[text()='Edit a mentor']";
         String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
-        String FIRSTNAME_INPUT_FIELD_XPATH = "//input[@id='firstName']";
-        String SECONDNAME_INPUT_FIELD_XPATH = "//input[@id='lastName']";
+        String FIRST_NAME_INPUT_FIELD_XPATH = "//input[@id='firstName']";
+        String SECOND_NAME_INPUT_FIELD_XPATH = "//input[@id='lastName']";
         String EMAIL_INPUT_FIELD_XPATH = "//input[@id='email']";
         String GROUPS_INPUT_FIELD_XPATH = "//input[@id='groupsInput']";
         String LIST_GROUPS_XPATH = "//datalist[@id='group-list']";
