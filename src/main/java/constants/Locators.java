@@ -62,6 +62,8 @@ public class Locators {
     public interface EditLesson{
         String PAGE_TITLE_XPATH = "//h3[text()='Edit a Lesson']";
         String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+        String LESSON_THEME_INPUT_FIELD_ID = "inputLessonTheme";
+        String LESSON_TIME_INPUT_FIELD_ID = "choose-date/time";
         String EDIT_LESSON_THEME_ERROR_CLASS = "edit-lesson__error___3MZKw";
     }
 
