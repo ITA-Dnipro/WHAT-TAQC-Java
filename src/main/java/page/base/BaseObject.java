@@ -36,4 +36,6 @@ public abstract class BaseObject {
     protected void clickElement(WebElement element) {
         element.click();
     }
+
+
 }

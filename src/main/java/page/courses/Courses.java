@@ -14,7 +14,7 @@ public class Courses extends Page {
     @FindBy(xpath = EDIT_BUTTON_ADMIN_SECRETARY_XPATH)
     private List<WebElement> editButton;
 
-    @FindBy(xpath = COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH)
+    @FindBy(xpath = COURSES_TABLE_LIST_ADMIN_SECRETARY_XPATH)
     private List<WebElement> courseRow;
 
     @FindBy(xpath = ADD_COURSE_BUTTON_XPATH)

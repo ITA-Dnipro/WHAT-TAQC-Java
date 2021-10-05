@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
  */
 public abstract class Page extends BaseObject {
 
-    public Header header;
+    protected Header header;
 
     protected SideBar sideBar;
 

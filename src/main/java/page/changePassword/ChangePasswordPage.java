@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+import page.mentors.MentorsTablePage;
+import page.myProfile.MyProfilePage;
 
 import static constants.Locators.ChangePasswordPage.*;
 
