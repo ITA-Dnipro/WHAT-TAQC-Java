@@ -54,11 +54,15 @@ public class Locators {
         String MENTOR_EMAIL_INPUT_FIELD_ID = "mentorEmail";
         String LIST_OF_GROUPS_XPATH = "//datalist[@id='group-list']/option";
         String LIST_OF_MENTORS_XPATH = "//datalist[@id='mentor-list']/option";
+        String LESSON_THEME_ERROR_CLASS = "add-lesson__error___2dTXe";
+        String GROUP_NAME_ERROR_ID = "group-error";
+        String MENTOR_MAIL_ERROR_ID = "mentor-error";
     }
 
     public interface EditLesson{
         String PAGE_TITLE_XPATH = "//h3[text()='Edit a Lesson']";
         String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+        String EDIT_LESSON_THEME_ERROR_CLASS = "edit-lesson__error___3MZKw";
     }
 
     public interface ClassBook{
@@ -70,6 +74,9 @@ public class Locators {
 
     public interface LessonDetails{
         String CANCEL_BUTTON_XPATH = "//button[@type='button']";
+        String MENTOR_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'mentors')]";
+        String GROUP_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'groups')]";
+        String LIST_OF_STUDENTS_CLASS = "lesson-details__link___1nOLw";
     }
 
     public interface EditSecretary {
