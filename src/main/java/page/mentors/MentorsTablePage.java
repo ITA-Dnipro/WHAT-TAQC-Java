@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
-
 import java.util.List;
+import static constants.Locators.MentorsTablePage.*;
 
-public class MentorsTablePage extends Page implements Locators.MentorsTablePage {
+public class MentorsTablePage extends Page  {
 
     public MentorsTablePage(WebDriver driver) {
         super(driver);
