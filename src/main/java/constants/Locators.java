@@ -54,11 +54,17 @@ public class Locators {
         String MENTOR_EMAIL_INPUT_FIELD_ID = "mentorEmail";
         String LIST_OF_GROUPS_XPATH = "//datalist[@id='group-list']/option";
         String LIST_OF_MENTORS_XPATH = "//datalist[@id='mentor-list']/option";
+        String LESSON_THEME_ERROR_CLASS = "add-lesson__error___2dTXe";
+        String GROUP_NAME_ERROR_ID = "group-error";
+        String MENTOR_MAIL_ERROR_ID = "mentor-error";
     }
 
     public interface EditLesson{
         String PAGE_TITLE_XPATH = "//h3[text()='Edit a Lesson']";
         String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+        String LESSON_THEME_INPUT_FIELD_ID = "inputLessonTheme";
+        String LESSON_TIME_INPUT_FIELD_ID = "choose-date/time";
+        String EDIT_LESSON_THEME_ERROR_CLASS = "edit-lesson__error___3MZKw";
     }
 
     public interface ClassBook{
@@ -70,6 +76,9 @@ public class Locators {
 
     public interface LessonDetails{
         String CANCEL_BUTTON_XPATH = "//button[@type='button']";
+        String MENTOR_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'mentors')]";
+        String GROUP_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'groups')]";
+        String LIST_OF_STUDENTS_CLASS = "lesson-details__link___1nOLw";
     }
 
     public interface EditSecretary {
@@ -102,7 +111,7 @@ public class Locators {
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
         String SORT_TITLE_BUTTON_XPATH = "//span[@data-sorting-param='name']";
-        String COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH = "//td[not(contains(@class,'text-center'))]";
+        String COURSES_TABLE_LIST_ADMIN_SECRETARY_XPATH = "//td[not(contains(@class,'text-center'))]";
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
         String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
@@ -149,6 +158,7 @@ public class Locators {
         String EDIT_BUTTON_XPATH = "//td[@class='text-center']";
         String MENTORS_ROW_XPATH = "//td[not(contains(@class,'text-center'))]";
         String SWITCH_VIEW_BUTTONS_XPATH = "//button[@class = 'btn btn-secondary']";
+        String MENTORS_CARD_XPATH="//div[@class='card']";
     }
 
     public interface ListOfMentorsPage {
@@ -170,8 +180,8 @@ public class Locators {
         String MENTORS_DETAILS_TAB_XPATH = "//a[text()='Mentor details']";
         String EDIT_MENTOR_TAB_XPATH = "//a[text()='Edit a mentor']";
         String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
-        String FIRSTNAME_INPUT_FIELD_XPATH = "//input[@id='firstName']";
-        String SECONDNAME_INPUT_FIELD_XPATH = "//input[@id='lastName']";
+        String FIRST_NAME_INPUT_FIELD_XPATH = "//input[@id='firstName']";
+        String SECOND_NAME_INPUT_FIELD_XPATH = "//input[@id='lastName']";
         String EMAIL_INPUT_FIELD_XPATH = "//input[@id='email']";
         String GROUPS_INPUT_FIELD_XPATH = "//input[@id='groupsInput']";
         String LIST_GROUPS_XPATH = "//datalist[@id='group-list']";
@@ -222,5 +232,8 @@ public class Locators {
             String CLEAR_BUTTON_XPATH = "//button[text()= 'Clear']";
             String SAVE_BUTTON_XPATH = "//button[text()= 'Save']";
         }
+    }
+    public interface MyProfile{
+        String CHANGE_PASSWORD_BUTTON="//button";
     }
 }

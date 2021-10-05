@@ -4,9 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
-
 import java.util.List;
-
 import static constants.Locators.AddLesson.*;
 
 public class AddLessonPage extends Page {
@@ -35,10 +33,20 @@ public class AddLessonPage extends Page {
     @FindBy(xpath = LIST_OF_MENTORS_XPATH)
     List<WebElement> listOfMentors;
 
+    @FindBy(className = LESSON_THEME_ERROR_CLASS)
+    WebElement themeError;
+
+    @FindBy(id = GROUP_NAME_ERROR_ID)
+    WebElement groupError;
+
+    @FindBy(id = MENTOR_MAIL_ERROR_ID)
+    WebElement mailError;
+
     ClassBookFeature classBook;
 
     public AddLessonPage(WebDriver driver) {
         super(driver);
+        classBook = new ClassBookFeature(driver);
     }
 
     public AddLessonPage fillLessonTheme(String theme){
@@ -66,13 +74,13 @@ public class AddLessonPage extends Page {
         return new LessonsPage(driver);
     }
 
-    public AddLessonPage uploadClassBook(){
-        return this;
-    }
-
-    //Should be with logic?
     public AddLessonPage clickClassRegisterButton(){
         clickElement(classRegisterButton);
         return this;
+    }
+
+    public LessonsPage clickSaveButton(){
+        classBook.clickSaveButton();
+        return new LessonsPage(driver);
     }
 }
