@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  */
 public abstract class Page extends BaseObject {
 
-    public Header header;
+    protected Header header;
 
     protected SideBar sideBar;
 
