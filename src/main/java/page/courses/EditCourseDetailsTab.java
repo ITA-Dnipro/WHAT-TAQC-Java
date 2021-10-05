@@ -50,6 +50,10 @@ public class EditCourseDetailsTab extends Page {
         return new CourseDetailsTab(driver);
     }
 
+    public WebElement getCourseNameInput() {
+        return courseNameInput;
+    }
+
     public EditCourseDetailsTab fillCourseName(String courseName) {
         fillField(courseNameInput, courseName);
         return this;

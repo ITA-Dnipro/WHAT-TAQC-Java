@@ -9,6 +9,14 @@ public class Locators {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
 
+    public interface Auth {
+        String EMAIL_INPUT_FIELD_ID = "email";
+        String PASSWORD_INPUT_FIELD_ID = "password";
+        String SIGN_IN_BUTTON_XPATH = "//button[@type='submit']";
+        String FORGOT_PASSWORD_LINK_XPATH = "//a[text()='Fogot Password?']";
+        String REGISTRATION_LINK_XPATH = "//a[text()='Registration']";
+    }
+
     public interface Lessons {
         String ADD_LESSON_BUTTON_XPATH = "//button[contains(.,'Add a lesson')]";
         String ADD_THEME_BUTTON_CSS_SELECTOR = ".btn-warning";
@@ -66,7 +74,9 @@ public class Locators {
         String COURSES_TABLE_LIST_ADMIN_SECRETAR_XPATH = "//td[not(contains(@class,'text-center'))]";
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
+//        String COURSES_PAGINATION_XPATH = "//div[contains(@class,'col-4')]//button[text()='<']";
         String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
+        String LIST_OF_ROWS_NUMBERS_XPATH = "//*[@id='change-visible-people']/option";
     }
 
     public interface CourseDetailsPage {

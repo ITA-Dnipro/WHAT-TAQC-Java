@@ -1,9 +1,6 @@
 package page.base;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-
-import java.util.logging.Logger;
 
 /**
  * The base class for authorized users page objects.

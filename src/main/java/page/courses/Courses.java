@@ -27,21 +27,27 @@ public class Courses extends Page {
     private WebElement titleSort;
 
     @FindBy(id = CHANGE_ROWS_NUMBER_BUTTON_ID)
-    private List<WebElement> displayRowsValue;
+    private WebElement displayRowsValue;
+
+    @FindBy(xpath = LIST_OF_ROWS_NUMBERS_XPATH)
+    private List<WebElement> rowsNumberList;
 
     @FindBy(xpath = COURSES_PAGINATION_XPATH)
     private List<WebElement> paginationList;
+
+    @FindBy(xpath = VIEW_TABLE_CARD_XPATH)
+    private WebElement switcherCoursesTable;
 
     public Courses(WebDriver driver) {
         super(driver);
     }
 
-    private EditCourseDetailsTab editCourseDetailsTab(int numberRow) {
+    public EditCourseDetailsTab editCourseDetailsTab(int numberRow) {
         clickElement(editButton.get(numberRow));
         return new EditCourseDetailsTab(driver);
     }
 
-    private CourseDetailsTab courseDetailsTab(int numberRow) {
+    public CourseDetailsTab courseDetailsTab(int numberRow) {
         clickElement(courseRow.get(numberRow));
         return new CourseDetailsTab(driver);
     }
@@ -61,32 +67,19 @@ public class Courses extends Page {
         return this;
     }
 
-    public Courses changeDisplayRowsNumber(RowsNumbers rowsNumber) {
-        getItemFromMenu(displayRowsValue, String.valueOf(rowsNumber));
-        clickElement(displayRowsValue.get(Integer.parseInt(String.valueOf(rowsNumber))));
+    public Courses changeDisplayRowsNumber(String rowsNumber) {
+        clickElement(displayRowsValue);
+        getItemFromMenu(rowsNumberList, rowsNumber).click();
         return this;
-    }
-
-    public enum RowsNumbers {
-        NINE("9"),
-        TWENTY_SEVEN("27"),
-        FORTY_FIVE("45"),
-        SEVENTY_TWO("72"),
-        NINETY_NINE("99");
-
-        private final String rowsNumber;
-
-        RowsNumbers(String rowsNumber) {
-            this.rowsNumber = rowsNumber;
-        }
-
-        public String getRowsNumber() {
-            return rowsNumber;
-        }
     }
 
     public Courses switchingCoursesPage(int indexCoursePage) {
         clickElement(paginationList.get(indexCoursePage));
+        return this;
+    }
+
+    public Courses switchingCoursesLook() {
+        clickElement(switcherCoursesTable);
         return this;
     }
 }

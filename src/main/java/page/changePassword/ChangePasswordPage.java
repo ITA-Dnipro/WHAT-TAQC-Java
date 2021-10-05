@@ -1,4 +1,4 @@
-package page.ChangePassword;
+package page.changePassword;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -60,9 +60,9 @@ public class ChangePasswordPage extends Page {
         return this;
     }
 
-    public MyProfile cancelChangePassword() {
+    public MyProfilePage cancelChangePassword() {
         clickElement(cancelButton);
-        return new MyProfile(driver);
+        return new MyProfilePage(driver);
     }
 
     public ChangePasswordPage saveChangePassword() {
@@ -75,9 +75,9 @@ public class ChangePasswordPage extends Page {
         return this;
     }
 
-    public MentorsPage saveChangedPassword() {
+    public MentorsTablePage saveChangedPassword() {
         clickElement(confirmButton);
-        return new MentorsPage(driver);
+        return new MentorsTablePage(driver);
     }
 
     public ChangePasswordPage closeConfirmAction() {
