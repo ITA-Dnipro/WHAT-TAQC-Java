@@ -27,7 +27,7 @@ public class BaseTest {
         driver.quit();
     }
 
-    private void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutInSeconds) {
+    protected void waitFor(ExpectedCondition<WebElement> condition, Integer timeOutInSeconds) {
         timeOutInSeconds = timeOutInSeconds != null ? timeOutInSeconds : 30;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds));
         wait.until(condition);

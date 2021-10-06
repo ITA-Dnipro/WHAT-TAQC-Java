@@ -19,6 +19,11 @@ public class SideBar extends BaseObject {
         return getItemFromMenu(sideBarItems, item.itemName);
     }
 
+    public Page clickSideBarItem(SideMenuItem item, Page page){
+        getItemFromMenu(sideBarItems, item.itemName).click();
+        return page;
+    }
+
     public List<WebElement> getSideBarItems() {
         return sideBarItems;
     }

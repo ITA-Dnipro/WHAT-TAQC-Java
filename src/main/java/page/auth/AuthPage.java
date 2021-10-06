@@ -7,7 +7,6 @@ import page.base.Page;
 
 import static constants.Locators.Auth.*;
 
-
 public class AuthPage extends Page {
 
     public AuthPage(WebDriver driver) {
@@ -30,7 +29,7 @@ public class AuthPage extends Page {
 
     private WebElement registrationLink;
 
-    public Object logInRole(String email, String password, Object newPage) {
+    public Page logInRole(String email, String password, Page newPage) {
         fillField(emailWebElement, email);
         fillField(passwordInput, password);
         clickElement(signInButton);
