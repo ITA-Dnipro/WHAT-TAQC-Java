@@ -1,53 +1,54 @@
 package page.mentors;
 
-import constants.Locators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 
-public class EditMentorsDetailsPage extends Page implements Locators.EditMentorsDetailsPage {
+import static constants.Locators.EditMentorsDetailsPage.*;
+
+public class EditMentorsDetailsPage extends Page {
     public EditMentorsDetailsPage(WebDriver driver) {
         super(driver);
     }
 
     @FindBy(xpath = MENTORS_DETAILS_TAB_XPATH)
-    WebElement mentorsDetailsTab;
+    protected WebElement mentorsDetailsTab;
     @FindBy(xpath = EDIT_MENTOR_TAB_XPATH)
-    WebElement editMentorsTab;
+    protected WebElement editMentorsTab;
     @FindBy(xpath = ARROW_BUTTON_XPATH)
-    WebElement arrowButton;
+    protected WebElement arrowButton;
     @FindBy(xpath = FIRST_NAME_INPUT_FIELD_XPATH)
-    WebElement firstNameInputField;
+    protected WebElement firstNameInputField;
     @FindBy(xpath = SECOND_NAME_INPUT_FIELD_XPATH)
-    WebElement secondNameInputField;
+    protected WebElement secondNameInputField;
     @FindBy(xpath = EMAIL_INPUT_FIELD_XPATH)
-    WebElement emailInputField;
+    protected WebElement emailInputField;
     @FindBy(xpath = GROUPS_INPUT_FIELD_XPATH)
-    WebElement groupsInputField;
+    protected WebElement groupsInputField;
     @FindBy(xpath = DELETE_GROUP_BUTTON_XPATH)
-    WebElement deleteGroupButton;
+    protected WebElement deleteGroupButton;
     @FindBy(xpath = ADD_GROUP_BUTTON_XPATH)
-    WebElement addGroupButton;
+    protected WebElement addGroupButton;
     @FindBy(xpath = COURSE_INPUT_FIELD_XPATH)
-    WebElement courseInputField;
+    protected WebElement courseInputField;
     @FindBy(xpath = DELETE_COURSE_BUTTON_XPATH)
-    WebElement deleteCourseButton;
+    protected WebElement deleteCourseButton;
     @FindBy(xpath = ADD_COURSE_BUTTON_XPATH)
-    WebElement addCourseButton;
+    protected WebElement addCourseButton;
     @FindBy(xpath = DISABLE_BUTTON_XPATH)
-    WebElement disableButton;
+    protected WebElement disableButton;
     @FindBy(xpath = CLEAR_BUTTON_XPATH)
-    WebElement clearButton;
+    protected WebElement clearButton;
     @FindBy(xpath = SAVE_BUTTON_XPATH)
-    WebElement saveButton;
+    protected WebElement saveButton;
 
     public MentorsTablePage backToMentorsTable() {
         clickElement(arrowButton);
         return new MentorsTablePage(driver);
     }
 
-    public MentorsDetailsPage viewMentorsDetailTab() {
+    public MentorsDetailsPage  openMentorDetailPage() {
         clickElement(mentorsDetailsTab);
         return new MentorsDetailsPage(driver);
     }
@@ -102,9 +103,9 @@ public class EditMentorsDetailsPage extends Page implements Locators.EditMentors
         return this;
     }
 
-    public MentorsDetailsPage removeMentor() {
+    public MentorsTablePage removeMentor() {
         clickElement(disableButton);
-        return new MentorsDetailsPage(driver);
+        return new MentorsTablePage(driver);
     }
 
     public EditMentorsDetailsPage clearFields() {
@@ -112,8 +113,8 @@ public class EditMentorsDetailsPage extends Page implements Locators.EditMentors
         return this;
     }
 
-    public MentorsDetailsPage saveMentor() {
+    public MentorsTablePage saveMentor() {
         clickElement(saveButton);
-        return new MentorsDetailsPage(driver);
+        return new MentorsTablePage(driver);
     }
 }
