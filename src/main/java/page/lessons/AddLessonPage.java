@@ -83,4 +83,5 @@ public class AddLessonPage extends Page {
         classBook.clickSaveButton();
         return new LessonsPage(driver);
     }
+
 }
