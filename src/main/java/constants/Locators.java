@@ -30,6 +30,7 @@ public class Locators {
         String TABLE_HEAD_LESSON_DATE_XPATH = "//span[text()='lessonDate']";
         String TABLE_HEAD_LESSON_TIME_XPATH = "//span[text()='lessonTime']";
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
+        String TABLE_ROWS_XPATH = "//tbody//tr";
     }
 
     public interface Secretaries {
