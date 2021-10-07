@@ -97,12 +97,12 @@ public class StudentsDetailsEditDetailsPage extends Page {
             super(driver);
         }
 
-        public StudentsPage editStudentFirstNameLastNameEmail(Student student) {
-//            fillUserFirstNameLastNameEmailFields(student, firstNameInputField,
-//                    lastNameInputField, emailInputField);
+     /*   public StudentsPage editStudentFirstNameLastNameEmail(Student student) {
+            fillUserFirstNameLastNameEmailFields(student, firstNameInputField,
+                    lastNameInputField, emailInputField);
             clickElement(saveButton);
             return new StudentsPage(super.driver);
-        }
+        }*/
     }
 
     public StudentsPage returnToStudentsPage() {
