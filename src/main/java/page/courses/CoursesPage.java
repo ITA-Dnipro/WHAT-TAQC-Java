@@ -4,12 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+//import sun.jvm.hotspot.utilities.Assert;
+import org.testng.Assert;
 
 import java.util.List;
 
 import static constants.Locators.Courses.*;
 
-public class Courses extends Page {
+public class CoursesPage extends Page {
 
     @FindBy(xpath = EDIT_BUTTON_ADMIN_SECRETARY_XPATH)
     private List<WebElement> editButton;
@@ -38,7 +40,7 @@ public class Courses extends Page {
     @FindBy(xpath = VIEW_TABLE_CARD_XPATH)
     private WebElement switcherCoursesTable;
 
-    public Courses(WebDriver driver) {
+    public CoursesPage(WebDriver driver) {
         super(driver);
     }
 
@@ -57,28 +59,28 @@ public class Courses extends Page {
         return new AddCoursePage(driver);
     }
 
-    public Courses fillCourseSearchField(String courseName) {
+    public CoursesPage fillCourseSearchField(String courseName) {
         fillField(searchField, courseName);
         return this;
     }
 
-    public Courses titleSortResult() {
+    public CoursesPage titleSortResult() {
         clickElement(titleSort);
         return this;
     }
 
-    public Courses changeDisplayRowsNumber(String rowsNumber) {
+    public CoursesPage changeDisplayRowsNumber(String rowsNumber) {
         clickElement(displayRowsValue);
         getItemFromMenu(rowsNumberList, rowsNumber).click();
         return this;
     }
 
-    public Courses switchingCoursesPage(int indexCoursePage) {
+    public CoursesPage switchingCoursesPage(int indexCoursePage) {
         clickElement(paginationList.get(indexCoursePage));
         return this;
     }
 
-    public Courses switchingCoursesLook() {
+    public CoursesPage switchingCoursesLook() {
         clickElement(switcherCoursesTable);
         return this;
     }

@@ -10,7 +10,7 @@ import java.time.Duration;
 
 import static constants.Locators.Header.*;
 
-public class Header extends BaseObject {
+public class Header extends BasePage {
     @FindBy(xpath = LOGO_XPATH)
     private WebElement logo;
     @FindBy(xpath = ICON_XPATH)

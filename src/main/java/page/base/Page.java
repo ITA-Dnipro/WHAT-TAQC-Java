@@ -7,11 +7,15 @@ import org.openqa.selenium.WebDriver;
  *
  * @author fresh-ash
  */
-public abstract class Page extends BaseObject {
+public abstract class Page extends BasePage {
 
     protected Header header;
 
     protected SideBar sideBar;
+
+    public SideBar getSideBar() {
+        return sideBar;
+    }
 
     public Page(WebDriver driver) {
         super(driver);

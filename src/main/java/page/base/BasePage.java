@@ -11,11 +11,11 @@ import java.util.List;
  *
  * @author fresh-ash
  */
-public abstract class BaseObject {
+public abstract class BasePage {
 
     protected WebDriver driver;
 
-    public BaseObject(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

@@ -26,13 +26,12 @@ public class AuthPage extends Page {
     private WebElement forgotPasswordLink;
 
     @FindBy(xpath = REGISTRATION_LINK_XPATH)
-
     private WebElement registrationLink;
 
-    public Page logInRole(String email, String password, Page newPage) {
-        fillField(emailWebElement, email);
-        fillField(passwordInput, password);
-        clickElement(signInButton);
+    public <T> T logInRole(String email, String password, T newPage) {
+        fillEmailInput(email)
+                .fillPasswordInput(password)
+                .clickElement(signInButton);
         return newPage;
     }
 
@@ -41,8 +40,12 @@ public class AuthPage extends Page {
         return this;
     }
 
-    public Page fillPasswordInputAndSignIn(String password, Page newPage) {
+    public AuthPage fillPasswordInput(String password) {
         fillField(passwordInput, password);
+        return this;
+    }
+
+    public <T> T clickSignIn(T newPage) {
         clickElement(signInButton);
         return newPage;
     }

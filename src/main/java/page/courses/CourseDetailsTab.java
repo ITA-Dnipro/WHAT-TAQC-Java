@@ -20,9 +20,9 @@ public class CourseDetailsTab extends Page {
      @FindBy (xpath = EDIT_COURSE_DETAILS_TAB_XPATH)
      private WebElement editCourseTab;
 
-    public Courses outFromCourseDetails() {
+    public CoursesPage outFromCourseDetails() {
         clickElement(arrowButton);
-        return new Courses(driver);
+        return new CoursesPage(driver);
     }
 
     public EditCourseDetailsTab redirectToEditCourseDetailsTab() {

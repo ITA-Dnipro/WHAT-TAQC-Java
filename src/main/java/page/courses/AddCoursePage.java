@@ -27,13 +27,13 @@ public class AddCoursePage extends Page {
         return this;
     }
 
-    public Courses saveNewCourse() {
+    public CoursesPage saveNewCourse() {
         clickElement(addCourseSaveButton);
-        return new Courses(driver);
+        return new CoursesPage(driver);
     }
 
-    public Courses cancelAddCoursePage() {
+    public CoursesPage cancelAddCoursePage() {
         clickElement(cancelFromAddCoursePage);
-        return new Courses(driver);
+        return new CoursesPage(driver);
     }
 }

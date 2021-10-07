@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import static constants.Locators.CommonElements.*;
 
-public class SideBar extends BaseObject {
+public class SideBar extends BasePage {
 
     @FindBy(xpath = SIDE_BAR_XPATH)
     private List<WebElement> sideBarItems;
@@ -19,7 +19,7 @@ public class SideBar extends BaseObject {
         return getItemFromMenu(sideBarItems, item.itemName);
     }
 
-    public Page clickSideBarItem(SideMenuItem item, Page page){
+    public <T> T clickSideBarItem(SideMenuItem item, T page){
         getItemFromMenu(sideBarItems, item.itemName).click();
         return page;
     }

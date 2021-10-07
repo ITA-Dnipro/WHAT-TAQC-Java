@@ -40,9 +40,9 @@ public class EditCourseDetailsTab extends Page {
     @FindBy(xpath = SAVE_BUTTON_XPATH)
     private WebElement saveButton;
 
-    public Courses outFromEditCourseDetails() {
+    public CoursesPage outFromEditCourseDetails() {
         clickElement(arrowButton);
-        return new Courses(driver);
+        return new CoursesPage(driver);
     }
 
     public CourseDetailsTab redirectToCourseDetailsTab() {
@@ -74,9 +74,9 @@ public class EditCourseDetailsTab extends Page {
         return this;
     }
 
-    public Courses confirmDeleteCourse() {
+    public CoursesPage confirmDeleteCourse() {
         clickElement(deleteButtonEditCourseTab);
-        return new Courses(driver);
+        return new CoursesPage(driver);
     }
 
     public EditCourseDetailsTab clearChanges() {
@@ -84,8 +84,8 @@ public class EditCourseDetailsTab extends Page {
         return this;
     }
 
-    public Courses saveChangeCurseName() {
+    public CoursesPage saveChangeCurseName() {
         clickElement(saveButton);
-        return new Courses(driver);
+        return new CoursesPage(driver);
     }
 }
