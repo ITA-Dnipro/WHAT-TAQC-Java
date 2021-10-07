@@ -5,12 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 import static constants.Locators.Header.*;
 
-public class Header extends BaseObject {
+public class Header extends BasePage {
     @FindBy(xpath = LOGO_XPATH)
     private WebElement logo;
     @FindBy(xpath = ICON_XPATH)
