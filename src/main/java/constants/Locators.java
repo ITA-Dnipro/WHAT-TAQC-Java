@@ -5,6 +5,12 @@ public class Locators {
     private Locators() {
     }
 
+    public interface Auth {
+        String EMAIL_INPUT_FIELD_NAME = "email";
+        String PASSWORD_INPUT_FIELD_NAME = "password";
+        String SIGN_IN_BUTTON = "//button[@type='submit']";
+    }
+
     public interface CommonElements {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
