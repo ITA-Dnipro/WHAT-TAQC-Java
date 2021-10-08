@@ -9,6 +9,12 @@ public class Locators {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
 
+    public interface HomePageUrl {
+        String ADMIN_HOME_PAGE = "http://localhost:8080/students";
+
+
+    }
+
     public interface Header {
         String LOGO_XPATH = "//*[contains(@class,'logo')]";
         String ICON_XPATH = "//*[contains(@class,'icon')]";

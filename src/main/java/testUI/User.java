@@ -1,22 +1,30 @@
-package page.base;
+package testUI;
+
+import org.openqa.selenium.WebDriver;
+import page.base.Page;
 
 public abstract class User {
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private String role;
 
-    public User(String firstName, String lastName, String email, String password, String role) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public abstract <T extends Page> T getHomePageAdmin(WebDriver driver);
+
+    public User(String email, String password, String lastName, String firstName) {
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.lastName = lastName;
+        this.firstName = firstName;
     }
 
-    public String getBasePage() {
-        return role;
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getPassword() {
@@ -31,7 +39,5 @@ public abstract class User {
         return lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
+
 }

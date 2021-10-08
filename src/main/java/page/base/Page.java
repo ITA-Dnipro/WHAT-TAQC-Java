@@ -1,6 +1,8 @@
 package page.base;
 
 import org.openqa.selenium.WebDriver;
+import page.auth.AuthPage;
+import testUI.User;
 
 /**
  * The base class for authorized users page objects.
@@ -22,4 +24,5 @@ public abstract class Page extends BasePage {
         sideBar = new SideBar(driver);
         header = new Header(driver);
     }
+
 }
