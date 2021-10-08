@@ -13,7 +13,7 @@ public class LogIn extends BasePage{
     @FindBy(name = PASSWORD_INPUT_FIELD_NAME)
     WebElement passInput;
 
-    @FindBy(xpath = SIGN_IN_BUTTON)
+    @FindBy(xpath = SIGN_IN_BUTTON_XPATH)
     WebElement signInButton;
 
     public LogIn(WebDriver driver) {
