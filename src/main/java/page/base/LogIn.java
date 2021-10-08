@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import static constants.Locators.Auth.*;
 
-public class LogIn extends Page{
+public class LogIn extends BasePage{
 
     @FindBy(name = EMAIL_INPUT_FIELD_NAME)
     WebElement mailInput;
