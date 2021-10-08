@@ -8,7 +8,7 @@ public class Locators {
     public interface Auth {
         String EMAIL_INPUT_FIELD_NAME = "email";
         String PASSWORD_INPUT_FIELD_NAME = "password";
-        String SIGN_IN_BUTTON = "//button[@type='submit']";
+        String SIGN_IN_BUTTON_XPATH = "//button[@type='submit']";
     }
 
     public interface CommonElements {
