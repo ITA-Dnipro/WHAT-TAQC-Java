@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
 import lessons.data.AddLessonData;
 import lessons.data.User;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,7 +14,6 @@ import page.base.LogIn;
 import page.lessons.AddLessonPage;
 import page.lessons.LessonsPage;
 import java.io.File;
-
 
 public class AddLesson_VerifyAddLesson_CorrectData_UsedAdminMentorRole extends BaseTest {
 
@@ -40,6 +41,9 @@ public class AddLesson_VerifyAddLesson_CorrectData_UsedAdminMentorRole extends B
 
     @Test(dataProvider = "log-in")
     public void addLesson(User user, AddLessonData data){
+
+        String expectedResult = "×\nClose alert\nThe lesson has been added successfully!";
+
         logIn.fillMail(user.getMail())
                 .fillPass(user.getPass())
                 .clickLogInButton();
@@ -53,6 +57,10 @@ public class AddLesson_VerifyAddLesson_CorrectData_UsedAdminMentorRole extends B
                 .clickClassRegisterButton()
                 .clickSaveButton();
         wait.until(url -> driver.getCurrentUrl().equals(Endpoints.LESSONS));
+        wait.until(ExpectedConditions.visibilityOf(lessons.getAlert()));
+
+        Assert.assertEquals(lessons.getAlertText(), expectedResult);
+
         lessons.getHeader().logOut();
     }
 }

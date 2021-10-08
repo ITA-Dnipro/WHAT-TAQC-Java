@@ -7,8 +7,7 @@ import page.base.Page;
 
 import java.util.List;
 
-import static constants.Locators.Lessons.ADD_LESSON_BUTTON_XPATH;
-import static constants.Locators.Lessons.TABLE_ROWS_XPATH;
+import static constants.Locators.Lessons.*;
 
 public class LessonsPage extends Page {
 
@@ -19,6 +18,8 @@ public class LessonsPage extends Page {
     List<WebElement> rows;
 
 
+    @FindBy(xpath = ALERT_XPATH)
+    WebElement alert;
 
     public LessonsPage(WebDriver driver) {
         super(driver);
@@ -31,5 +32,13 @@ public class LessonsPage extends Page {
 
     public Integer getRowsCount(){
         return rows.size();
+    }
+
+    public String getAlertText(){
+        return alert.getText();
+    }
+
+    public WebElement getAlert() {
+        return alert;
     }
 }

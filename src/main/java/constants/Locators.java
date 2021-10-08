@@ -37,6 +37,7 @@ public class Locators {
         String TABLE_HEAD_LESSON_TIME_XPATH = "//span[text()='lessonTime']";
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
         String TABLE_ROWS_XPATH = "//tbody//tr";
+        String ALERT_XPATH =  "//div[@role = 'alert']";
     }
 
     public interface Secretaries {
