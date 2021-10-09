@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page.myProfile.MyProfilePage;
+
 import java.time.Duration;
 
 import static constants.Locators.Header.*;
@@ -53,15 +55,17 @@ public class Header extends BasePage {
                 dropDownMenuMyProfile, dropDownMenuChangePassword, dropDownMenuLogOut));
     }
 
-    public void openMyprofileByDropdownMenu() {
+    public MyProfilePage openMyProfileByDropdownMenu() {
         openDropDownMenu();
         clickElement(dropDownMenuMyProfile);
+        return new MyProfilePage(driver);
     }
 
-    public void openMyprofileByIcon() {
+    public MyProfilePage openMyProfileByIcon() {
         new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.elementToBeClickable(icon));
         clickElement(icon);
+        return new MyProfilePage(driver);
     }
 
     public void changePassword() {

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 import java.time.Duration;
 
@@ -15,7 +16,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    @BeforeSuite
+    @BeforeTest
     protected static void setup() {
         WebDriverManager.chromedriver().setup();
     }
@@ -23,8 +24,8 @@ public class BaseTest {
     @BeforeClass
     protected void setupTest() {
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     @AfterTest

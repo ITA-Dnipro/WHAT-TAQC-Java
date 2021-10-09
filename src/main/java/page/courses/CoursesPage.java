@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+import org.testng.Assert;
 
 import java.util.List;
 
@@ -29,14 +30,17 @@ public class CoursesPage extends Page {
     @FindBy(id = CHANGE_ROWS_NUMBER_BUTTON_ID)
     private WebElement displayRowsValue;
 
-    @FindBy(xpath = LIST_OF_ROWS_NUMBERS_XPATH)
-    private List<WebElement> rowsNumberList;
+    @FindBy(xpath = LIST_OF_VISIBLE_ROWS_NUMBERS_XPATH)
+    private List<WebElement> numberOfVisibleUsersList;
 
     @FindBy(xpath = COURSES_PAGINATION_XPATH)
     private List<WebElement> paginationList;
 
     @FindBy(xpath = VIEW_TABLE_CARD_XPATH)
     private WebElement switcherCoursesTable;
+
+    @FindBy(xpath = TABLE_ROWS_LIST_XPATH)
+    private List<WebElement> rowsList;
 
     public CoursesPage(WebDriver driver) {
         super(driver);
@@ -69,7 +73,7 @@ public class CoursesPage extends Page {
 
     public CoursesPage changeDisplayRowsNumber(String rowsNumber) {
         clickElement(displayRowsValue);
-        getItemFromMenu(rowsNumberList, rowsNumber).click();
+        getItemFromMenu(numberOfVisibleUsersList, rowsNumber).click();
         return this;
     }
 
@@ -82,4 +86,9 @@ public class CoursesPage extends Page {
         clickElement(switcherCoursesTable);
         return this;
     }
+
+    public List<WebElement> getCoursesRowsList() {
+        return rowsList;
+    }
+
 }

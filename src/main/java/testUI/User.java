@@ -9,7 +9,7 @@ public abstract class User {
     private String email;
     private String password;
 
-    public abstract <T extends Page> T getHomePageAdmin(WebDriver driver);
+//    public abstract <T extends Page> T getHomePageAdmin(WebDriver driver);
 
     public User(String email, String password, String lastName, String firstName) {
         this.email = email;

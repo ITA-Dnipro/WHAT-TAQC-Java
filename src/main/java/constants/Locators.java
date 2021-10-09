@@ -18,7 +18,6 @@ public class Locators {
     public interface HomePageUrl {
         String ADMIN_HOME_PAGE = "http://localhost:8080/students";
 
-
     }
 
     public interface Header {
@@ -31,7 +30,7 @@ public class Locators {
         String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
     }
 
-    public interface Auth {
+    public interface AuthMax {
         String EMAIL_INPUT_FIELD_ID = "email";
         String PASSWORD_INPUT_FIELD_ID = "password";
         String SIGN_IN_BUTTON_XPATH = "//button[@type='submit']";
@@ -139,7 +138,8 @@ public class Locators {
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
 //        String COURSES_PAGINATION_XPATH = "//div[contains(@class,'col-4')]//button[text()='<']";
         String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
-        String LIST_OF_ROWS_NUMBERS_XPATH = "//*[@id='change-visible-people']/option";
+        String LIST_OF_VISIBLE_ROWS_NUMBERS_XPATH = "//*[@id='change-visible-people']/option";
+        String TABLE_ROWS_LIST_XPATH = "//tbody//tr";
     }
 
     public interface CourseDetailsPage {
