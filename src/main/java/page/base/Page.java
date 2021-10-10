@@ -18,4 +18,12 @@ public abstract class Page extends BasePage {
         sideBar = new SideBar(driver);
         header = new Header(driver);
     }
+
+    public Header getHeader() {
+        return header;
+    }
+
+    public SideBar getSideBar() {
+        return sideBar;
+    }
 }

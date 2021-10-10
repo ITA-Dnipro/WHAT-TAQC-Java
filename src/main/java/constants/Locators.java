@@ -5,6 +5,12 @@ public class Locators {
     private Locators() {
     }
 
+    public interface Auth {
+        String EMAIL_INPUT_FIELD_NAME = "email";
+        String PASSWORD_INPUT_FIELD_NAME = "password";
+        String SIGN_IN_BUTTON_XPATH = "//button[@type='submit']";
+    }
+
     public interface CommonElements {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
@@ -30,6 +36,8 @@ public class Locators {
         String TABLE_HEAD_LESSON_DATE_XPATH = "//span[text()='lessonDate']";
         String TABLE_HEAD_LESSON_TIME_XPATH = "//span[text()='lessonTime']";
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
+        String TABLE_ROWS_XPATH = "//tbody//tr";
+        String ALERT_XPATH =  "//div[@role = 'alert']";
     }
 
     public interface Secretaries {
