@@ -1,5 +1,6 @@
 package page.changePassword;
 
+import constants.ErrorMessages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,7 @@ import page.base.Page;
 import page.mentors.MentorsTablePage;
 import page.myProfile.MyProfilePage;
 
+import static constants.ErrorMessages.ChangePassword.CURRENT_PASSWORD_ERROR_XPATH;
 import static constants.Locators.ChangePasswordPage.*;
 
 public class ChangePasswordPage extends Page {
@@ -37,6 +39,9 @@ public class ChangePasswordPage extends Page {
 
     @FindBy(xpath = CLOSE_CONFIRM_ACTION_XPATH)
     private WebElement closeConfirmAction;
+
+    @FindBy (xpath = CURRENT_PASSWORD_ERROR_XPATH)
+    private WebElement errMessageCurrPassword;
 
     public ChangePasswordPage(WebDriver driver) {
         super(driver);
@@ -86,5 +91,9 @@ public class ChangePasswordPage extends Page {
     public ChangePasswordPage closeConfirmAction() {
         clickElement(closeConfirmAction);
         return this;
+    }
+
+    public String getCurrentPasswordError() {
+        return errMessageCurrPassword.getText();
     }
 }

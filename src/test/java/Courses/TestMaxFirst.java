@@ -1,14 +1,11 @@
-package base.Courses;
+package Courses;
 
 import base.BaseTest;
-import constants.Locators;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import page.auth.AuthPage;
 import page.base.SideBar;
 import page.courses.CoursesPage;
-import page.students.StudentsPage;
 import testUI.Admin;
 import testUI.User;
 
