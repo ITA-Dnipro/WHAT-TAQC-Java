@@ -50,7 +50,6 @@ public class StudentsPage extends Page {
                 .collect(Collectors.toList());
         return list;
     }
-//    public StudentsDetailsEditDetailsPage.StudentEditDetailsTab
 
     public void addStudent() {
         new WebDriverWait(driver, Duration.ofSeconds(5))
