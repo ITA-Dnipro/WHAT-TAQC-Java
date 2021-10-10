@@ -214,6 +214,7 @@ public class Locators {
         String TABLE_HEAD_LAST_NAME_XPATH = "//span[@data-sorting-param='lastName']";
         String TABLE_HEAD_EMAIL_XPATH = "//span[@data-sorting-param='email']";
         String TABLE_ROW_TAG_NAME = "tr";
+        String TABLE_CELL_TAG_NAME = "td";
     }
 
     public interface StudentsDetailsEditDetailsPage {
