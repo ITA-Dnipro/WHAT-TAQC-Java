@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page.auth.AuthPage;
+import page.changePassword.ChangePasswordPage;
 import page.myProfile.MyProfilePage;
 
 import java.time.Duration;
@@ -68,13 +70,15 @@ public class Header extends BasePage {
         return new MyProfilePage(driver);
     }
 
-    public void changePassword() {
+    public ChangePasswordPage changePassword() {
         openDropDownMenu();
         clickElement(dropDownMenuChangePassword);
+        return new ChangePasswordPage(driver);
     }
 
-    public void logOut() {
+    public AuthPage logOut() {
         openDropDownMenu();
         clickElement(dropDownMenuLogOut);
+        return new AuthPage(driver);
     }
 }

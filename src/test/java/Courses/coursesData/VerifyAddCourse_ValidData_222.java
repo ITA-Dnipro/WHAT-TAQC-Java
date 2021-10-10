@@ -1,24 +1,16 @@
-package base.Courses.coursesData;
+package Courses.coursesData;
 
 import base.BaseTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
-import constants.Locators;
 import lessons.data.User;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import page.auth.AuthPage;
 import page.base.LogIn;
 import page.courses.CoursesPage;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.annotation.ElementType;
 
 public class VerifyAddCourse_ValidData_222 extends BaseTest {
 

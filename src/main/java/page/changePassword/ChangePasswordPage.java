@@ -17,7 +17,7 @@ public class ChangePasswordPage extends Page {
     @FindBy(xpath = CURRENT_PASSWORD_INPUT_FIELD_XPATH)
     private WebElement currentPasswordField;
 
-    @FindBy(xpath = NEW_PASSWORD_INPUT_FIELD_ID)
+    @FindBy(id = NEW_PASSWORD_INPUT_FIELD_ID)
     private WebElement newPasswordField;
 
     @FindBy(id = CONFIRM_PASSWORD_INPUT_FIELD_ID)
@@ -77,9 +77,10 @@ public class ChangePasswordPage extends Page {
         return this;
     }
 
-    public MentorsTablePage saveChangedPassword() {
+    public Page confirmChangedPassword() {
         clickElement(confirmButton);
-        return new MentorsTablePage(driver);
+        return new Page(driver) {
+        };
     }
 
     public ChangePasswordPage closeConfirmAction() {

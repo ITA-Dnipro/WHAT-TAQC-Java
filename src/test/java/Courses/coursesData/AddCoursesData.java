@@ -1,4 +1,4 @@
-package base.Courses.coursesData;
+package Courses.coursesData;
 
 public class AddCoursesData {
 

@@ -73,9 +73,9 @@ public class AuthPage extends Page {
         return this;
     }
 
-    public <T> T clickSignIn(T newPage) {
+    public Page clickSignIn() {
         clickElement(signInButton);
-        return newPage;
+        return this;
     }
 
     public ForgotPasswordPage redirectToForgotPasswordPage() {

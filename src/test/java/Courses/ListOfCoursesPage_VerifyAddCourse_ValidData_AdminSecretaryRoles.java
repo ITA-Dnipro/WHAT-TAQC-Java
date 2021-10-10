@@ -1,8 +1,8 @@
-package base.Courses;
+package Courses;
 
 import base.BaseTest;
-import base.Courses.coursesData.AddCoursesData;
-import base.Courses.coursesData.UserForCourses;
+import Courses.coursesData.AddCoursesData;
+import Courses.coursesData.UserForCourses;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
 import org.testng.Assert;
@@ -32,6 +32,7 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
                 new File("./src/main/resources/credentials.json"), UserForCourses[].class);
         courseNameList = mapper.readValue(
                 new File("./src/main/resources/courses/addCourses/AddCourses_ValidData.json"), AddCoursesData[].class);
+
         login.fillMail(userList[0].getMail())
                 .fillPass(userList[0].getPass())
                 .clickLogInButton();
@@ -40,8 +41,7 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
 
     @DataProvider(name = "changeName")
     public Object[][] provideCredentials() {
-        return new Object[][]{{userList[0], courseNameList[0]}, {userList[1], courseNameList[1]},
-                {userList[1], courseNameList[3]}, {userList[1], courseNameList[4]}};
+        return new Object[][]{{userList[0], courseNameList[0]}, {userList[0], courseNameList[1]}};
     }
 
     @Test(dataProvider = "changeName")

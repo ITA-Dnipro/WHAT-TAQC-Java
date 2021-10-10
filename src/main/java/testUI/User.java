@@ -1,8 +1,5 @@
 package testUI;
 
-import org.openqa.selenium.WebDriver;
-import page.base.Page;
-
 public abstract class User {
     private String firstName;
     private String lastName;
