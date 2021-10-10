@@ -5,14 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class TestHelper {
+import java.time.Duration;
+
+public class Waiter {
 
     WebDriverWait wait;
     WebDriver driver;
 
-    public TestHelper(WebDriverWait wait, WebDriver driver) {
-        this.wait = wait;
+    public Waiter(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public void waitDownloadPage(String url){
