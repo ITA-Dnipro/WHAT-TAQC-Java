@@ -21,7 +21,7 @@ public class Waiter {
         wait.until(redirect -> driver.getCurrentUrl().equals(url));
     }
 
-    public void waitForRedirect(String currentURL){
+    public void waitForRedirectFrom(String currentURL){
         wait.until(redirect -> !(driver.getCurrentUrl().equals(currentURL)));
     }
 

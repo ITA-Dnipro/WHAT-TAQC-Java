@@ -45,7 +45,7 @@ public class AddLesson_VerifyErrorMessages extends BaseTest {
 
     @Test(dataProvider = "errors")
     public void verifyErrors(AddLessonErrors errors){
-        helper.waitForRedirect(Endpoints.AUTH);
+        helper.waitForRedirectFrom(Endpoints.AUTH);
         driver.get(Endpoints.ADD_LESSON);
 
         SoftAssert softAssert = new SoftAssert();

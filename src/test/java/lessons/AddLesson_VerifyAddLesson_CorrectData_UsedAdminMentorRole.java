@@ -47,7 +47,7 @@ public class AddLesson_VerifyAddLesson_CorrectData_UsedAdminMentorRole extends B
                 .fillPass(user.getPass())
                 .clickLogInButton();
 
-        helper.waitForRedirect(Endpoints.AUTH);
+        helper.waitForRedirectFrom(Endpoints.AUTH);
         driver.get(Endpoints.LESSONS);
 
         AddLessonPage addLessonPage = lessons.clickAddLessonButton();
