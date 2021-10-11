@@ -39,7 +39,7 @@ public class RegistrationPage extends BasePage {
         return new LogIn(driver);
     }
 
-    public LogIn returnToLogIn() {
+    public LogIn returnToLogInPage() {
         clickElement(logInLinkedText);
         return new LogIn(driver);
     }
