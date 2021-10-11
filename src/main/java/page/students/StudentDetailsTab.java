@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static constants.Locators.StudentsDetailsEditDetailsPage.StudentDetailsTab.*;
+import static constants.Locators.StudentDetailsTab.*;
 
 public class StudentDetailsTab extends StudentsEditDetailsPage {
     @FindBy(xpath = FIRST_NAME_XPATH)
