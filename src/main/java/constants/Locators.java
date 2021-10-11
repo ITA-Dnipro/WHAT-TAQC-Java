@@ -48,6 +48,7 @@ public class Locators {
         String TABLE_HEAD_THEME_NAME_XPATH = "//span[text()='themeName']";
         String TABLE_HEAD_LESSON_DATE_XPATH = "//span[text()='lessonDate']";
         String TABLE_HEAD_LESSON_TIME_XPATH = "//span[text()='lessonTime']";
+        String EDIT_LESSON_PENCIL_ICON_XPATH = "//td[@class = 'text-center']";
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
         String TABLE_ROWS_XPATH = "//tbody//tr";
         String ALERT_XPATH =  "//div[@role = 'alert']";

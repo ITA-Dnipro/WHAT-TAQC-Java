@@ -5,11 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
 import lessons.data.AddLessonData;
 import lessons.data.User;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import page.base.LogIn;
 import page.lessons.AddLessonPage;
 import page.lessons.LessonsPage;
@@ -47,19 +46,23 @@ public class AddLesson_VerifyAddLesson_CorrectData_UsedAdminMentorRole extends B
         logIn.fillMail(user.getMail())
                 .fillPass(user.getPass())
                 .clickLogInButton();
-        wait.until(url -> !(driver.getCurrentUrl().equals(Endpoints.AUTH)));
+
+        helper.waitForRedirectFrom(Endpoints.AUTH);
         driver.get(Endpoints.LESSONS);
+
         AddLessonPage addLessonPage = lessons.clickAddLessonButton();
-        addLessonPage.fillLessonTheme(data.getTheme())
-                .fillGroupName(data.getG_name())
+        SoftAssert softAssert = new SoftAssert();
+        addLessonPage.setSoftAssert(softAssert);
+        addLessonPage.fillLessonTheme(data.getTheme(), null)
+                .fillGroupName(data.getG_name(), null)
                 .fillDateInput(data.getDate())
-                .fillEmailInput(data.getEmail())
+                .fillEmailInput(data.getEmail(), null)
                 .clickClassRegisterButton()
                 .clickSaveButton();
-        wait.until(url -> driver.getCurrentUrl().equals(Endpoints.LESSONS));
-        wait.until(ExpectedConditions.visibilityOf(lessons.getAlert()));
-
-        Assert.assertEquals(lessons.getAlertText(), expectedResult);
+        helper.waitDownloadPage(Endpoints.LESSONS);
+        helper.waitForVisibilityOfElement(lessons.getAlert());
+        softAssert.assertEquals(lessons.getAlertText(), expectedResult);
+        softAssert.assertAll();
 
         lessons.getHeader().logOut();
     }
