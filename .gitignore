@@ -21,3 +21,4 @@ bin-release/
 target/
 what-taqc.iml
 AuthPage.java
+/src/main/resources/credentials/
