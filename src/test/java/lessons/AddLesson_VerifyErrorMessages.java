@@ -20,7 +20,6 @@ public class AddLesson_VerifyErrorMessages extends BaseTest {
 
     LogIn logIn;
     LessonsPage lessons;
-    ObjectMapper mapper;
     Object[][] list;
 
     @BeforeClass
@@ -28,8 +27,7 @@ public class AddLesson_VerifyErrorMessages extends BaseTest {
         driver.get(Endpoints.BASE_URL);
         logIn = new LogIn(driver);
         lessons = new LessonsPage(driver);
-        mapper = new ObjectMapper();
-        AddLessonErrors[] data = mapper.readValue(
+        AddLessonErrors[] data = helper.getMapper().readValue(
                 new File(PathsToFiles.Lessons.ADD_LESSON_ERRORS), AddLessonErrors[].class);
         list = new Object[data.length][1];
         for (int i = 0; i < data.length; i++){
