@@ -18,25 +18,24 @@ import java.io.IOException;
 public class AddLesson_VerifyErrorMessages extends BaseTest {
 
     LogIn logIn;
-    LessonsPage lessons;
     Object[][] list;
+    AddLessonErrors[] data;
 
     @BeforeClass
     public void preconditions() throws IOException {
         driver.get(Endpoints.BASE_URL);
         logIn = new LogIn(driver);
-        lessons = new LessonsPage(driver);
-        AddLessonErrors[] data = helper.getMapper().readValue(
+        data = helper.getMapper().readValue(
                 new File(PathsToFiles.Lessons.ADD_LESSON_ERRORS), AddLessonErrors[].class);
         list = new Object[data.length][1];
-        for (int i = 0; i < data.length; i++){
-            list[i][0] = data[i];
-        }
         helper.logInAs(Role.ADMIN);
     }
 
     @DataProvider(name = "errors")
     public Object[][] provideCredentials(){
+        for (int i = 0; i < data.length; i++){
+            list[i][0] = data[i];
+        }
         return list;
     }
 
