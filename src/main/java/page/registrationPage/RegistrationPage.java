@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import page.base.BasePage;
 import page.base.LogIn;
 
-import static constants.Locators.RegistrationPage.*
+import static constants.Locators.RegistrationPage.*;
 
 public class RegistrationPage extends BasePage {
 
-    @FindBy (xpath = FIRST_NAME_INPUT_FIELD_XPATH)
+    @FindBy(xpath = FIRST_NAME_INPUT_FIELD_XPATH)
     WebElement firstNameInputField;
     @FindBy(xpath = LAST_NAME_INPUT_FIELD_XPATH)
     WebElement lastNameInputField;
@@ -29,7 +29,7 @@ public class RegistrationPage extends BasePage {
         super(driver);
     }
 
-    public LogIn registerUser (UserRegistration user){
+    public LogIn registerUser(UserRegistration user) {
         fillField(firstNameInputField, user.getFirstName());
         fillField(lastNameInputField, user.getLastName());
         fillField(emailInputField, user.getEmail());
@@ -39,7 +39,7 @@ public class RegistrationPage extends BasePage {
         return new LogIn(driver);
     }
 
-    public LogIn returnToLogIn(){
+    public LogIn returnToLogIn() {
         clickElement(logInLinkedText);
         return new LogIn(driver);
     }
