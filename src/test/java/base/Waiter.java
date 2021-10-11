@@ -28,4 +28,8 @@ public class Waiter {
     public void waitForVisibilityOfElement(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
     }
+
+    public void waitForToBeClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 }

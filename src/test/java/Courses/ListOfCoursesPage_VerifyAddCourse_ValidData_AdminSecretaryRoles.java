@@ -36,7 +36,7 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
         login.fillMail(userList[0].getMail())
                 .fillPass(userList[0].getPass())
                 .clickLogInButton();
-        wait.until(url -> !(driver.getCurrentUrl().equals(Endpoints.AUTH)));
+//        wait.until(url -> !(driver.getCurrentUrl().equals(Endpoints.AUTH)));
     }
 
     @DataProvider(name = "changeName")
@@ -48,7 +48,7 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
     public void addCourse(UserForCourses user, AddCoursesData data) throws InterruptedException {
         coursesPage = new CoursesPage(driver);
         driver.get(Endpoints.COURSES);
-        wait.until(url -> (driver.getCurrentUrl().equals(Endpoints.COURSES)));
+//        wait.until(url -> (driver.getCurrentUrl().equals(Endpoints.COURSES)));
         this.coursesPage.addCoursePage()
                 .inputAddCourseName(data.getСourseName())
                 .saveNewCourse().fillCourseSearchField(data.getСourseName());

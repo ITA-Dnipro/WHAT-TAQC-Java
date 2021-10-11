@@ -15,6 +15,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import page.base.Header;
 import page.base.LogIn;
 import page.base.LoseFocus;
@@ -47,7 +48,7 @@ public class ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUser extends
         login.fillMail(user.getMail())
                 .fillPass(user.getPass())
                 .clickLogInButton();
-        wait.until(url -> !(driver.getCurrentUrl().equals(Endpoints.AUTH)));
+        helper.waitForRedirectFrom(Endpoints.AUTH);
     }
 
     @DataProvider(name = "change-password")
@@ -66,20 +67,21 @@ public class ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUser extends
     public void changePassword_InvalidData_Test(UserChangePassword user,
                                                   ChangePasswordInvalidData password) throws InterruptedException {
         coursesPage = new CoursesPage(driver);
+        SoftAssert softAssert = new SoftAssert();
         header = new Header(driver);
         loseFocus = new LoseFocus(driver);
         changePasswordPage = new ChangePasswordPage(driver);
-//        user = new UserChangePassword("umnik@gmail.com", "Umnik_123");
         driver.get(Endpoints.COURSES);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(Locators.Header.FULL_NAME_XPATH)));
             this.coursesPage
                     .getHeader()
                     .changePassword()
                     .fillCurrentPasswordField(password.getCurrantPassword());
             loseFocus.loseFocus();
-            Thread.sleep(3000);
-        Assert.assertEquals(changePasswordPage.getCurrentPasswordError(), "This field is required");
-
+        softAssert.assertEquals(changePasswordPage.getCurrentPasswordError(), "This field is required");
+        this.changePasswordPage
+                .fillNewPasswordField(password.getNewPassword());
+            loseFocus.loseFocus();
+//            softAssert.assertEquals(changePasswordPage.g);
 
 
 //        fillNewPasswordField(newPassword.getNewPassword())

@@ -25,7 +25,7 @@ public class VerifyAddCourse_ValidData_222 extends BaseTest {
         driver.get(Endpoints.BASE_URL);
         login.fillMail("james.smith@example.com")
                 .fillPass("_JkcG9dB").clickLogInButton();
-        wait.until(url -> !(driver.getCurrentUrl().equals(Endpoints.AUTH)));
+//        wait.until(url -> !(driver.getCurrentUrl().equals(Endpoints.AUTH)));
     }
 
     @Test()

@@ -96,4 +96,8 @@ public class ChangePasswordPage extends Page {
     public String getCurrentPasswordError() {
         return errMessageCurrPassword.getText();
     }
+
+//    public String getNewPasswordError() {
+//
+//    }
 }

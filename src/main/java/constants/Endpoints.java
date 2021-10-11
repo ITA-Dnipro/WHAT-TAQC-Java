@@ -1,7 +1,5 @@
 package constants;
 
-import java.util.SplittableRandom;
-
 public class Endpoints {
 
     private Endpoints() {}
