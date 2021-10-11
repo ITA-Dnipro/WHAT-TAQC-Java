@@ -50,9 +50,6 @@ public class EditLessonPage extends Page {
     private void verifyError(String errorMessage, List<WebElement> error){
         if (error.size() != 0)
             softAssert.assertEquals(error.get(0).getText(), errorMessage);
-        else {
-            System.out.println("OK!");
-        }
     }
 
     public LessonsPage clickSaveButton(){
