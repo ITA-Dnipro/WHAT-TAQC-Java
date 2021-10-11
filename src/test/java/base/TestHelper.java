@@ -49,6 +49,12 @@ public class TestHelper {
         return defaultPages.get(user.getRoleName());
     }
 
+    public LogIn logOut(Page page){
+       // waitForVisibilityOfElement(page.getHeader().getDropMenuElement);
+        page.getHeader().logOut();
+        return new LogIn(driver);
+    }
+
 
     private void initDefaultPages(){
         this.defaultPages = new HashMap<>();

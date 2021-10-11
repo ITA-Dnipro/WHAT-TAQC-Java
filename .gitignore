@@ -20,4 +20,4 @@ bin-release/
 
 target/
 what-taqc.iml
-/src/main/resources/credentials/
+src/main/resources/credentials/

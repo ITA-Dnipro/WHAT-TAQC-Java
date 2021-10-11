@@ -7,7 +7,6 @@ import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.base.LogIn;
-import page.lessons.EditLessonPage;
 import page.lessons.LessonsPage;
 
 public class EditLesson_VerifyErrorMessages extends BaseTest {
@@ -26,11 +25,8 @@ public class EditLesson_VerifyErrorMessages extends BaseTest {
     }
 
     @Test
-    public void verifyErrors(){
+    public void verifyErrors() {
         helper.waitForRedirectFrom(Endpoints.AUTH);
         driver.get(Endpoints.LESSONS);
-        EditLessonPage editLessonPage = lessons.clickEditIcon(0);
-        editLessonPage.fillLessonThemeInput("", "This field is required");
-
     }
 }
