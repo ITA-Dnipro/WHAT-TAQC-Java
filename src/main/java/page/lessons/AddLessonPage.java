@@ -1,13 +1,18 @@
 package page.lessons;
 
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
 import page.base.Page;
 import java.util.List;
 import static constants.Locators.AddLesson.*;
 
 public class AddLessonPage extends Page {
+
+    @FindBy(xpath = PAGE_TITLE_XPATH)
+    WebElement pageTitle;
 
     @FindBy(xpath = CANCEL_BUTTON_XPATH)
     WebElement cancelButton;
@@ -43,19 +48,22 @@ public class AddLessonPage extends Page {
     WebElement mailError;
 
     ClassBookFeature classBook;
+    SoftAssert softAssert;
 
     public AddLessonPage(WebDriver driver) {
         super(driver);
         classBook = new ClassBookFeature(driver);
     }
 
-    public AddLessonPage fillLessonTheme(String theme){
+    public AddLessonPage fillLessonTheme(String theme, String errorMessage){
         fillField(lessonThemeInput, theme);
+        verifyError(errorMessage, themeError);
         return this;
     }
 
-    public AddLessonPage fillGroupName(String group){
+    public AddLessonPage fillGroupName(String group, String errorMessage){
         fillField(groupNameInput, group);
+        verifyError(errorMessage, groupError);
         return this;
     }
 
@@ -64,8 +72,9 @@ public class AddLessonPage extends Page {
         return this;
     }
 
-    public AddLessonPage fillEmailInput(String email){
+    public AddLessonPage fillEmailInput(String email, String errorMessage){
         fillField(emailInput, email);
+        verifyError(errorMessage, mailError);
         return this;
     }
 
@@ -82,5 +91,39 @@ public class AddLessonPage extends Page {
     public LessonsPage clickSaveButton(){
         classBook.clickSaveButton();
         return new LessonsPage(driver);
+    }
+
+    private void verifyError(String errorMessage, WebElement error){
+        loseFocus();
+        try {
+            softAssert.assertEquals(error.getText(), errorMessage);
+        }
+        catch (NotFoundException e){
+            //TODO Where is LOGGER?!
+        }
+    }
+
+    public WebElement getThemeError() {
+        return themeError;
+    }
+
+    public WebElement getGroupError() {
+        return groupError;
+    }
+
+    public WebElement getMailError() {
+        return mailError;
+    }
+
+    public SoftAssert getSoftAssert() {
+        return softAssert;
+    }
+
+    private void loseFocus(){
+        pageTitle.click();
+    }
+
+    public void setSoftAssert(SoftAssert softAssert) {
+        this.softAssert = softAssert;
     }
 }

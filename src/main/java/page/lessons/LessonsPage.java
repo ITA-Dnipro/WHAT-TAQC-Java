@@ -17,6 +17,8 @@ public class LessonsPage extends Page {
     @FindBy(xpath = TABLE_ROWS_XPATH)
     List<WebElement> rows;
 
+    @FindBy(xpath = EDIT_LESSON_PENCIL_ICON_XPATH)
+    List<WebElement> edit;
 
     @FindBy(xpath = ALERT_XPATH)
     WebElement alert;
@@ -36,6 +38,11 @@ public class LessonsPage extends Page {
 
     public String getAlertText(){
         return alert.getText();
+    }
+
+    public EditLessonPage clickEditIcon(int id){
+        edit.get(id).click();
+        return new EditLessonPage(driver);
     }
 
     public WebElement getAlert() {
