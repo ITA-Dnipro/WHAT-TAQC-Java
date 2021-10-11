@@ -102,16 +102,19 @@ public class Locators {
     }
 
     public interface UnassignedUsers {
-        String UNASSIGNED_USERS_SEARCH_WINDOW_PERSONS_NAME_XPATH = "//input[@class='search__searchInput___34nMl']";
+        String UNASSIGNED_USERS_SEARCH_INPUT_FIELD_XPATH = "//input";
         String UNASSIGNED_USERS_PAGINATION_XPATH = "//li[@class='page-item']";
         String UNASSIGNED_USERS_TABLE_HEAD_NAME_XPATH = "//span[contains(text(),'Name')]";
         String UNASSIGNED_USERS_TABLE_HEAD_SURNAME_XPATH = "//span[contains(text(),'Surname')]";
         String UNASSIGNED_USERS_TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
-        String UNASSIGNED_USERS_CHOOSE_ROLE_XPATH = "//select[@class='unassigned-list__select___UNLgl']";
-        String UNASSIGNED_USERS_CHOOSE_STUDENT_ROLE_XPATH = "////option [contains (@value, '1')]";
-        String UNASSIGNED_USERS_CHOOSE_MENTOR_ROLE_XPATH = "////option [contains (@value, '2')]";
-        String UNASSIGNED_USERS_CHOOSE_SECRETARY_ROLE_XPATH = "////option [contains (@value, '3')]";
-        String UNASSIGNED_USERS_ADD_ROLE_BUTTON_XPATH = "//button[contains(text (), 'Add role')]";
+        String UNASSIGNED_USERS_ROLE_DROPDOWN_MENU_XPATH = "//select[@class='unassigned-list__select___UNLgl']";
+        String UNASSIGNED_USERS_STUDENT_ROLE_XPATH = "//option [contains ( .,'student')]";
+        String UNASSIGNED_USERS_MENTOR_ROLE_XPATH = "//option [contains ( .,'mentor')]";
+        String UNASSIGNED_USERS_SECRETARY_ROLE_XPATH = "//option [contains ( .,'secretary')]";
+        String UNASSIGNED_USERS_ADD_ROLE_BUTTON_XPATH = "//button[contains(., 'Add role')]";
+        String TABLE_UNASSIGNED_USERS_XPATH = "//tbody";
+        String TABLE_ROW_TAG_NAME = "tr";
+        String TABLE_CELL_TAG_NAME = "td";
     }
 
     public interface Courses {
@@ -254,5 +257,7 @@ public class Locators {
         String CONFIRM_PASSWORD_INPUT_FIELD_XPATH = "//input[@name='confirmPassword']";
         String SIGN_UP_BUTTON_XPATH = "//button[text()= 'Sign up']";
         String LOG_IN_XPATH = "//a[@href='/auth']";
+        String MODAL_WINDOW = "//*[contains(@class,'modal-content')]";
+        String MODAL_WINDOW_BUTTON = "//button[.='Back']";
     }
 }
