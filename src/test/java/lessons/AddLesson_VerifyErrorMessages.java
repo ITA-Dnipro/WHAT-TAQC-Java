@@ -1,8 +1,9 @@
 package lessons;
 
 import base.BaseTest;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import base.Role;
 import constants.Endpoints;
+import constants.PathsToFiles;
 import lessons.data.AddLessonErrors;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -10,36 +11,30 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import page.base.LogIn;
 import page.lessons.AddLessonPage;
-import page.lessons.LessonsPage;
 import java.io.File;
 import java.io.IOException;
 
 public class AddLesson_VerifyErrorMessages extends BaseTest {
 
     LogIn logIn;
-    LessonsPage lessons;
-    ObjectMapper mapper;
     Object[][] list;
+    AddLessonErrors[] data;
 
     @BeforeClass
     public void preconditions() throws IOException {
         driver.get(Endpoints.BASE_URL);
         logIn = new LogIn(driver);
-        lessons = new LessonsPage(driver);
-        mapper = new ObjectMapper();
-        AddLessonErrors[] data = mapper.readValue(
-                new File("./src/main/resources/lessons/AddLessonErrors.json"), AddLessonErrors[].class);
+        data = helper.getMapper().readValue(
+                new File(PathsToFiles.Lessons.ADD_LESSON_ERRORS), AddLessonErrors[].class);
         list = new Object[data.length][1];
-        for (int i = 0; i < data.length; i++){
-            list[i][0] = data[i];
-        }
-        logIn.fillMail("james.smith@example.com")
-                .fillPass("_JkcG9dB")
-                .clickLogInButton();
+        helper.logInAs(Role.ADMIN);
     }
 
     @DataProvider(name = "errors")
     public Object[][] provideCredentials(){
+        for (int i = 0; i < data.length; i++){
+            list[i][0] = data[i];
+        }
         return list;
     }
 

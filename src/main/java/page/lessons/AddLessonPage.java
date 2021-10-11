@@ -99,7 +99,7 @@ public class AddLessonPage extends Page {
             softAssert.assertEquals(error.getText(), errorMessage);
         }
         catch (NotFoundException e){
-            //Where is LOGGER?!
+            //TODO Where is LOGGER?!
         }
     }
 
