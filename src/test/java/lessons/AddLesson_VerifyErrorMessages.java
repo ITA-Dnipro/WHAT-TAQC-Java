@@ -2,7 +2,6 @@ package lessons;
 
 import base.BaseTest;
 import base.Role;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
 import constants.PathsToFiles;
 import lessons.data.AddLessonErrors;
