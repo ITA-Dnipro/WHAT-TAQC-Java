@@ -1,10 +1,10 @@
 package lessons;
 
 import base.BaseTest;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import base.Role;
 import constants.Endpoints;
+import constants.PathsToFiles;
 import lessons.data.AddLessonData;
-import lessons.data.User;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -18,8 +18,6 @@ public class AddLesson_VerifyAddLesson_CorrectData_UsedAdminMentorRole extends B
 
     LogIn logIn;
     LessonsPage lessons;
-    ObjectMapper mapper = new ObjectMapper();
-    User[] userList;
     AddLessonData data;
 
     @BeforeClass
@@ -27,25 +25,21 @@ public class AddLesson_VerifyAddLesson_CorrectData_UsedAdminMentorRole extends B
         driver.get(Endpoints.BASE_URL);
         logIn = new LogIn(driver);
         lessons = new LessonsPage(driver);
-        userList = mapper.readValue(
-                new File("./src/main/resources/credentials.json"), User[].class);
-        data = mapper.readValue(
-                new File("./src/main/resources/lessons/AddLessonCorrectData.json"), AddLessonData.class);
+        data = helper.getMapper().readValue(
+                new File(PathsToFiles.Lessons.ADD_LESSON_CORRECT_DATA), AddLessonData.class);
     }
 
     @DataProvider(name = "log-in")
     public Object[][] provideCredentials(){
-        return new Object[][]{{userList[0], data}, {userList[1], data}};
+        return new Object[][]{{Role.ADMIN, data}, {Role.MENTOR, data}};
     }
 
     @Test(dataProvider = "log-in")
-    public void addLesson(User user, AddLessonData data){
+    public void addLesson(Role role, AddLessonData data){
 
         String expectedResult = "×\nClose alert\nThe lesson has been added successfully!";
 
-        logIn.fillMail(user.getMail())
-                .fillPass(user.getPass())
-                .clickLogInButton();
+        helper.logInAs(role);
 
         helper.waitForRedirectFrom(Endpoints.AUTH);
         driver.get(Endpoints.LESSONS);

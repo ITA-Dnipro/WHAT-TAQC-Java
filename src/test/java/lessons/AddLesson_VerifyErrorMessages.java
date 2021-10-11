@@ -1,8 +1,10 @@
 package lessons;
 
 import base.BaseTest;
+import base.Role;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
+import constants.PathsToFiles;
 import lessons.data.AddLessonErrors;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -28,14 +30,12 @@ public class AddLesson_VerifyErrorMessages extends BaseTest {
         lessons = new LessonsPage(driver);
         mapper = new ObjectMapper();
         AddLessonErrors[] data = mapper.readValue(
-                new File("./src/main/resources/lessons/AddLessonErrors.json"), AddLessonErrors[].class);
+                new File(PathsToFiles.Lessons.ADD_LESSON_ERRORS), AddLessonErrors[].class);
         list = new Object[data.length][1];
         for (int i = 0; i < data.length; i++){
             list[i][0] = data[i];
         }
-        logIn.fillMail("james.smith@example.com")
-                .fillPass("_JkcG9dB")
-                .clickLogInButton();
+        helper.logInAs(Role.ADMIN);
     }
 
     @DataProvider(name = "errors")

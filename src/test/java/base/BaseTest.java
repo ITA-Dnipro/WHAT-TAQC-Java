@@ -11,7 +11,7 @@ import java.time.Duration;
 public class BaseTest {
 
     protected WebDriver driver;
-    protected Waiter helper;
+    protected TestHelper helper;
 
     @BeforeSuite
     protected static void setup() {
@@ -22,7 +22,7 @@ public class BaseTest {
     protected void setupTest() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        helper = new Waiter(driver);
+        helper = new TestHelper(driver);
     }
 
     @AfterTest

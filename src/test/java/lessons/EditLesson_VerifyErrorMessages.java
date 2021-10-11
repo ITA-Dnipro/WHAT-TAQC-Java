@@ -1,6 +1,7 @@
 package lessons;
 
 import base.BaseTest;
+import base.Role;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
@@ -21,9 +22,7 @@ public class EditLesson_VerifyErrorMessages extends BaseTest {
         driver.get(Endpoints.BASE_URL);
         logIn = new LogIn(driver);
         lessons = new LessonsPage(driver);
-        logIn.fillMail("james.smith@example.com")
-                .fillPass("_JkcG9dB")
-                .clickLogInButton();
+        helper.logInAs(Role.ADMIN);
     }
 
     @Test
