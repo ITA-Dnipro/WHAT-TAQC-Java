@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import page.base.LogIn;
 import page.lessons.AddLessonPage;
-import page.lessons.LessonsPage;
 import java.io.File;
 import java.io.IOException;
 

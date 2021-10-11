@@ -9,21 +9,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import page.base.LogIn;
 import page.lessons.AddLessonPage;
 import page.lessons.LessonsPage;
 import java.io.File;
 
 public class AddLesson_VerifyAddLesson_CorrectData_UsedAdminMentorRole extends BaseTest {
 
-    LogIn logIn;
     LessonsPage lessons;
     AddLessonData data;
 
     @BeforeClass
     public void preconditions() throws Exception{
         driver.get(Endpoints.BASE_URL);
-        logIn = new LogIn(driver);
         lessons = new LessonsPage(driver);
         data = helper.getMapper().readValue(
                 new File(PathsToFiles.Lessons.ADD_LESSON_CORRECT_DATA), AddLessonData.class);
