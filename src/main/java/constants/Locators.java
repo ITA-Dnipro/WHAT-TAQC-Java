@@ -19,9 +19,9 @@ public class Locators {
         String LOGO_XPATH = "//*[contains(@class,'logo')]";
         String ICON_XPATH = "//*[contains(@class,'icon')]";
         String FULL_NAME_XPATH = "//*[contains(@class,'fullname')]";
-        String DROP_DOWN_MENU_MY_PROFILE_XPATH = "//li[a[contains(text(), 'My profile')]]";
-        String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(text(), 'Change password')]]";
-        String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(text(), 'Log Out')]]";
+        String DROP_DOWN_MENU_MY_PROFILE_XPATH = "//li[a[contains(., 'My profile')]]";
+        String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(., 'Change password')]]";
+        String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(., 'Log Out')]]";
         String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
     }
 
@@ -103,19 +103,16 @@ public class Locators {
     }
 
     public interface UnassignedUsers {
-        String UNASSIGNED_USERS_SEARCH_INPUT_FIELD_XPATH = "//input";
-        String UNASSIGNED_USERS_PAGINATION_XPATH = "//li[@class='page-item']";
-        String UNASSIGNED_USERS_TABLE_HEAD_NAME_XPATH = "//span[contains(text(),'Name')]";
-        String UNASSIGNED_USERS_TABLE_HEAD_SURNAME_XPATH = "//span[contains(text(),'Surname')]";
-        String UNASSIGNED_USERS_TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
-        String UNASSIGNED_USERS_ROLE_DROPDOWN_MENU_XPATH = "//select[@class='unassigned-list__select___UNLgl']";
-        String UNASSIGNED_USERS_STUDENT_ROLE_XPATH = "//option [contains ( .,'student')]";
-        String UNASSIGNED_USERS_MENTOR_ROLE_XPATH = "//option [contains ( .,'mentor')]";
-        String UNASSIGNED_USERS_SECRETARY_ROLE_XPATH = "//option [contains ( .,'secretary')]";
-        String UNASSIGNED_USERS_ADD_ROLE_BUTTON_XPATH = "//button[contains(., 'Add role')]";
+        String SEARCH_INPUT_FIELD_XPATH = "//input";
+        String TABLE_HEAD_NAME_XPATH = "//span[contains(text(),'Name')]";
+        String TABLE_HEAD_SURNAME_XPATH = "//span[contains(text(),'Surname')]";
+        String TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
         String TABLE_UNASSIGNED_USERS_XPATH = "//tbody";
         String TABLE_ROW_TAG_NAME = "tr";
         String TABLE_CELL_TAG_NAME = "td";
+        String TABLE_ROLES_DROPDOWN_MENU_TAG_NAME = "select";
+        String TABLE_ROLE_DROPDOWN_MENU_OPTIONS_TAG_NAME = "option";
+        String TABLE_ADD_ROLE_BUTTON_TAG_NAME = "button";
     }
 
     public interface Courses {
