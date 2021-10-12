@@ -12,9 +12,13 @@ public class BaseTest {
     protected WebDriver driver;
     protected TestHelper helper;
 
+    @BeforeSuite
+    protected static void setup() {
+        WebDriverManager.chromedriver().setup();
+    }
+
     @BeforeClass
     protected void setupTest() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         helper = new TestHelper(driver);
