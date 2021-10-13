@@ -23,7 +23,7 @@ public class SideBar extends BasePage {
         return sideBarItems;
     }
 
-    public enum SideMenuItem{
+    public enum SideMenuItem {
         STUDENTS("Students"),
         MENTORS("Mentors"),
         SECRETARIES("Secretaries"),
