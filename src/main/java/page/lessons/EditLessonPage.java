@@ -1,12 +1,12 @@
 package page.lessons;
 
+import org.apache.log4j.Logger;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
 import page.base.Page;
-import java.util.List;
-
 import static constants.Locators.EditLesson.*;
 
 public class EditLessonPage extends Page {
@@ -18,7 +18,9 @@ public class EditLessonPage extends Page {
     WebElement timeInput;
 
     @FindBy(className = EDIT_LESSON_THEME_ERROR_CLASS)
-    List<WebElement> error;
+    WebElement error;
+
+    private static final Logger logger = Logger.getLogger(EditLessonPage.class.getName());
 
     ClassBookFeature classBook;
     SoftAssert softAssert;
@@ -47,9 +49,20 @@ public class EditLessonPage extends Page {
         this.softAssert = softAssert;
     }
 
-    private void verifyError(String errorMessage, List<WebElement> error){
-        if (error.size() != 0)
-            softAssert.assertEquals(error.get(0).getText(), errorMessage);
+    private void verifyError(String errorMessage, WebElement error){
+        try {
+            softAssert.assertEquals(error.getText(), errorMessage);
+            logger.info(error.getText());
+        }
+        catch (NotFoundException e){
+            softAssert.assertTrue(false);
+            logger.info("No ERROR! But should be: " + errorMessage);
+        }
+
+    }
+
+    public WebElement getLessonThemeInput() {
+        return lessonThemeInput;
     }
 
     public LessonsPage clickSaveButton(){

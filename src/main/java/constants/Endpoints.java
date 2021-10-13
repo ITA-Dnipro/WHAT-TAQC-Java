@@ -8,4 +8,5 @@ public class Endpoints {
     public static final String LESSONS = BASE_URL + "/lessons";
     public static final String ADD_LESSON = LESSONS + "/add";
     public static final String AUTH = BASE_URL + "/auth";
+    public static final String EDIT_LESSON = LESSONS + "/edit/";
 }

@@ -1,5 +1,6 @@
 package page.lessons;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,6 +51,8 @@ public class AddLessonPage extends Page {
     ClassBookFeature classBook;
     SoftAssert softAssert;
 
+    private static final Logger logger = Logger.getLogger(AddLessonPage.class.getName());
+
     public AddLessonPage(WebDriver driver) {
         super(driver);
         classBook = new ClassBookFeature(driver);
@@ -57,12 +60,14 @@ public class AddLessonPage extends Page {
 
     public AddLessonPage fillLessonTheme(String theme, String errorMessage){
         fillField(lessonThemeInput, theme);
+        logger.info(lessonThemeInput.getText());
         verifyError(errorMessage, themeError);
         return this;
     }
 
     public AddLessonPage fillGroupName(String group, String errorMessage){
         fillField(groupNameInput, group);
+        logger.info(groupNameInput.getText());
         verifyError(errorMessage, groupError);
         return this;
     }
@@ -74,6 +79,7 @@ public class AddLessonPage extends Page {
 
     public AddLessonPage fillEmailInput(String email, String errorMessage){
         fillField(emailInput, email);
+        logger.info(emailInput.getText());
         verifyError(errorMessage, mailError);
         return this;
     }
@@ -96,11 +102,16 @@ public class AddLessonPage extends Page {
     private void verifyError(String errorMessage, WebElement error){
         loseFocus();
         try {
+            logger.info(error.getText());
             softAssert.assertEquals(error.getText(), errorMessage);
         }
         catch (NotFoundException e){
-            //TODO Where is LOGGER?!
+            logger.info("NO ERROR!");
         }
+    }
+
+    public WebElement getLessonThemeInput() {
+        return lessonThemeInput;
     }
 
     public WebElement getThemeError() {
