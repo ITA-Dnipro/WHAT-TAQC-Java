@@ -1,4 +1,4 @@
-package lessons.data;
+package base;
 
 public class User {
 

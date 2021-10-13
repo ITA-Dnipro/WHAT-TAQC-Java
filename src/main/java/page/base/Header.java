@@ -3,13 +3,8 @@ package page.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import page.auth.AuthPage;
-import page.changePassword.ChangePasswordPage;
+import page.ChangePassword.ChangePasswordPage;
 import page.myProfile.MyProfilePage;
-
-import java.time.Duration;
 
 import static constants.Locators.Header.*;
 
@@ -33,39 +28,16 @@ public class Header extends BasePage {
         super(driver);
     }
 
-    public enum HeaderItem {
-        MY_PROFILE("My profile"),
-        CHANGE_PASSWORD("Change password"),
-        LOG_OUT("Log Out");
-
-        private final String itemName;
-
-        HeaderItem(String itemName) {
-            this.itemName = itemName;
-        }
-
-        public String getItemName() {
-            return itemName;
-        }
-    }
-
     public void openDropDownMenu() {
-        fullName = new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.elementToBeClickable(fullName));
-        clickElement(fullName);
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfAllElements(
-                dropDownMenuMyProfile, dropDownMenuChangePassword, dropDownMenuLogOut));
+        clickElement(triangleIcon);
     }
 
-    public MyProfilePage openMyProfileByDropdownMenu() {
+    public void openMyProfileByDropdownMenu() {
         openDropDownMenu();
         clickElement(dropDownMenuMyProfile);
-        return new MyProfilePage(driver);
     }
 
     public MyProfilePage openMyProfileByIcon() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.elementToBeClickable(icon));
         clickElement(icon);
         return new MyProfilePage(driver);
     }
@@ -76,9 +48,9 @@ public class Header extends BasePage {
         return new ChangePasswordPage(driver);
     }
 
-    public AuthPage logOut() {
+    public LogIn logOut() {
         openDropDownMenu();
         clickElement(dropDownMenuLogOut);
-        return new AuthPage(driver);
+        return new LogIn(driver);
     }
 }

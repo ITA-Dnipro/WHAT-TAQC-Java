@@ -1,5 +1,6 @@
 package page.base;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -21,9 +22,12 @@ public abstract class BasePage {
     }
 
     protected void fillField(WebElement field, String text) {
-        field.click();
-        field.clear();
-        field.sendKeys(text);
+        if(field.getAttribute("disabled") == null
+                && field.getAttribute("readonly") == null){
+            field.click();
+            hardClear(field);
+            field.sendKeys(text);
+       }
     }
 
     protected WebElement getItemFromMenu(List<WebElement> webElementList, String name) {
@@ -37,5 +41,7 @@ public abstract class BasePage {
         element.click();
     }
 
-
+    private void hardClear(WebElement field){
+        field.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
+    }
 }

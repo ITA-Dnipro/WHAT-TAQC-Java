@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import page.base.LogIn;
 import page.lessons.AddLessonPage;
 import java.io.File;
 import java.io.IOException;
@@ -38,7 +37,6 @@ public class AddLesson_VerifyErrorMessages extends BaseTest {
 
     @Test(dataProvider = "errors")
     public void verifyErrors(AddLessonErrors errors){
-        helper.waitForRedirectFrom(Endpoints.AUTH);
         driver.get(Endpoints.ADD_LESSON);
 
         SoftAssert softAssert = new SoftAssert();
@@ -47,8 +45,8 @@ public class AddLesson_VerifyErrorMessages extends BaseTest {
         addLessonPage.setSoftAssert(softAssert);
         addLessonPage.fillLessonTheme(errors.getTheme(), errors.getTheme_result())
                 .fillGroupName(errors.getG_name(), errors.getG_name_result())
-                .fillEmailInput(errors.getEmail(), errors.getEmail_result())
-                .clickClassRegisterButton();
+                .fillEmailInput(errors.getEmail(), errors.getEmail_result());
+
         softAssert.assertAll();
     }
 }

@@ -2,8 +2,8 @@ package base;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import constants.Endpoints;
 import constants.PathsToFiles;
-import lessons.data.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -46,11 +46,17 @@ public class TestHelper {
         logIn.fillMail(users.get(user.getRoleName()).getMail())
                 .fillPass(users.get(user.getRoleName()).getPass())
                 .clickLogInButton();
+        waitForRedirectFrom(Endpoints.AUTH);
         return defaultPages.get(user.getRoleName());
     }
 
     public User getUserByRole(Role role) {
         return users.get(role.getRoleName());
+    }
+    public LogIn logOut(Page page){
+       // waitForVisibilityOfElement(page.getHeader().getDropMenuElement);
+        page.getHeader().logOut();
+        return new LogIn(driver);
     }
 
     private void initDefaultPages(){

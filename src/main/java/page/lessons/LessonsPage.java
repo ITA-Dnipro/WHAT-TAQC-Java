@@ -45,6 +45,10 @@ public class LessonsPage extends Page {
         return new EditLessonPage(driver);
     }
 
+    public List<WebElement> getEdit() {
+        return edit;
+    }
+
     public WebElement getAlert() {
         return alert;
     }

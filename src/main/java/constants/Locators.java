@@ -24,9 +24,9 @@ public class Locators {
         String LOGO_XPATH = "//*[contains(@class,'logo')]";
         String ICON_XPATH = "//*[contains(@class,'icon')]";
         String FULL_NAME_XPATH = "//*[contains(@class,'fullname')]";
-        String DROP_DOWN_MENU_MY_PROFILE_XPATH = "//li[a[contains(text(), 'My profile')]]";
-        String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(text(), 'Change password')]]";
-        String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(text(), 'Log Out')]]";
+        String DROP_DOWN_MENU_MY_PROFILE_XPATH = "//li[a[contains(., 'My profile')]]";
+        String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(., 'Change password')]]";
+        String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(., 'Log Out')]]";
         String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
     }
 
@@ -51,7 +51,7 @@ public class Locators {
         String EDIT_LESSON_PENCIL_ICON_XPATH = "//td[@class = 'text-center']";
         String PAGE_TITLE_XPATH = "//h2[text()='Lessons']";
         String TABLE_ROWS_XPATH = "//tbody//tr";
-        String ALERT_XPATH =  "//div[@role = 'alert']";
+        String ALERT_XPATH = "//div[@role = 'alert']";
     }
 
     public interface Secretaries {
@@ -66,7 +66,7 @@ public class Locators {
         String SECRETARY_PAGE_TABLE_XPATH = "//table[@class='table table-hover']";
     }
 
-    public interface AddLesson{
+    public interface AddLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Add a Lesson']";
         String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
         String CLASS_REGISTER_BUTTON_ID = "class-register-btn";
@@ -81,7 +81,7 @@ public class Locators {
         String MENTOR_MAIL_ERROR_ID = "mentor-error";
     }
 
-    public interface EditLesson{
+    public interface EditLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Edit a Lesson']";
         String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
         String LESSON_THEME_INPUT_FIELD_ID = "inputLessonTheme";
@@ -89,14 +89,14 @@ public class Locators {
         String EDIT_LESSON_THEME_ERROR_CLASS = "edit-lesson__error___3MZKw";
     }
 
-    public interface ClassBook{
+    public interface ClassBook {
         String LIST_OF_STUDENTS_XPATH = "//p[@class='edit-lesson__link___Hgvq4']";
         String LIST_OF_MARKS_XPATH = "//input[@class='form-control edit-lesson__mode___3T2Dn']";
         String LIST_OF_PRESENCE_TIP_XPATH = "//input[@class='edit-lesson__mode___3T2Dn']";
         String SAVE_BUTTON_XPATH = "//button[@type='submit']";
     }
 
-    public interface LessonDetails{
+    public interface LessonDetails {
         String CANCEL_BUTTON_XPATH = "//button[@type='button']";
         String MENTOR_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'mentors')]";
         String GROUP_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'groups')]";
@@ -117,16 +117,16 @@ public class Locators {
 
     }
     public interface UnassignedUsers {
-        String UNASSIGNED_USERS_SEARCH_WINDOW_PERSONS_NAME_XPATH = "//input[@class='search__searchInput___34nMl']";
-        String UNASSIGNED_USERS_PAGINATION_XPATH = "//li[@class='page-item']";
-        String UNASSIGNED_USERS_TABLE_HEAD_NAME_XPATH = "//span[contains(text(),'Name')]";
-        String UNASSIGNED_USERS_TABLE_HEAD_SURNAME_XPATH = "//span[contains(text(),'Surname')]";
-        String UNASSIGNED_USERS_TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
-        String UNASSIGNED_USERS_CHOOSE_ROLE_XPATH = "//select[@class='unassigned-list__select___UNLgl']";
-        String UNASSIGNED_USERS_CHOOSE_STUDENT_ROLE_XPATH = "////option [contains (@value, '1')]";
-        String UNASSIGNED_USERS_CHOOSE_MENTOR_ROLE_XPATH = "////option [contains (@value, '2')]";
-        String UNASSIGNED_USERS_CHOOSE_SECRETARY_ROLE_XPATH = "////option [contains (@value, '3')]";
-        String UNASSIGNED_USERS_ADD_ROLE_BUTTON_XPATH = "//button[contains(text (), 'Add role')]";
+        String SEARCH_INPUT_FIELD_XPATH = "//input";
+        String TABLE_HEAD_NAME_XPATH = "//span[contains(text(),'Name')]";
+        String TABLE_HEAD_SURNAME_XPATH = "//span[contains(text(),'Surname')]";
+        String TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
+        String TABLE_UNASSIGNED_USERS_XPATH = "//tbody";
+        String TABLE_ROW_TAG_NAME = "tr";
+        String TABLE_CELL_TAG_NAME = "td";
+        String TABLE_ROLES_DROPDOWN_MENU_TAG_NAME = "select";
+        String TABLE_ROLE_DROPDOWN_MENU_OPTIONS_TAG_NAME = "option";
+        String TABLE_ADD_ROLE_BUTTON_TAG_NAME = "button";
     }
 
     public interface Courses {
@@ -187,7 +187,7 @@ public class Locators {
         String EDIT_BUTTON_XPATH = "//td[@class='text-center']";
         String MENTORS_ROW_XPATH = "//td[not(contains(@class,'text-center'))]";
         String SWITCH_VIEW_BUTTONS_XPATH = "//button[@class = 'btn btn-secondary']";
-        String MENTORS_CARD_XPATH="//div[@class='card']";
+        String MENTORS_CARD_XPATH = "//div[@class='card']";
     }
 
     public interface ListOfMentorsPage {
@@ -235,34 +235,47 @@ public class Locators {
         String TABLE_HEAD_LAST_NAME_XPATH = "//span[@data-sorting-param='lastName']";
         String TABLE_HEAD_EMAIL_XPATH = "//span[@data-sorting-param='email']";
         String TABLE_ROW_TAG_NAME = "tr";
+        String TABLE_CELL_TAG_NAME = "td";
     }
 
-    public interface StudentsDetailsEditDetailsPage {
+    public interface StudentsEditDetailsPage {
         String ARROW_BUTTON_XPATH = "//*[@class='nav nav-tabs']//*[@href='/students']";
         String STUDENT_DETAILS_TAB_XPATH = "//*[text()='Student details']";
         String STUDENT_EDIT_TAB_XPATH = "//*[text()='Edit student details']";
-
-        public interface StudentDetailsTab {
-            String FIRST_NAME_XPATH = "//*[text()='First name: ']//following::span[1]";
-            String LAST_NAME_XPATH = "//*[text()='Last name: ']//following::span[1]";
-            String EMAIL_XPATH = "//*[text()='Email: ']//following::span[1]";
-            String LIST_GROUPS_XPATH = "//*[text()='Group(s): ']//following::div[1]//child::span//a";
-            String LIST_LESSONS_XPATH = "//*[text()='Lesson(s): ']//following::div[1]//child::span//a";
-        }
-
-        public interface StudentEditDetailsTab {
-            String FIRST_NAME_INPUT_FIELD_XPATH = "//input[@name='firstName']";
-            String LAST_NAME_INPUT_FIELD_XPATH = "//input[@name='lastName']";
-            String EMAIL_INPUT_FIELD_XPATH = "//input[@name='email']";
-            String GROUPS_INPUT_FIELD_XPATH = "//input[@name='groupsInput']";
-            String GROUPS_PLUS_BUTTON_XPATH = "//button[text()= '+']";
-            String GROUPS_LIST_XPATH = "//ul[@class='d-flex flex-wrap justify-content-between p-0']//child::li";
-            String EXCLUDE_BUTTON_XPATH = "//button[text()= 'Exclude']";
-            String CLEAR_BUTTON_XPATH = "//button[text()= 'Clear']";
-            String SAVE_BUTTON_XPATH = "//button[text()= 'Save']";
-        }
     }
-    public interface MyProfile{
-        String CHANGE_PASSWORD_BUTTON="//button";
+
+    public interface StudentDetailsTab {
+        String FIRST_NAME_XPATH = "//*[text()='First name: ']//following::span[1]";
+        String LAST_NAME_XPATH = "//*[text()='Last name: ']//following::span[1]";
+        String EMAIL_XPATH = "//*[text()='Email: ']//following::span[1]";
+        String LIST_GROUPS_XPATH = "//*[text()='Group(s): ']//following::div[1]//child::span//a";
+    }
+
+    public interface StudentEditDetailsTab {
+        String FIRST_NAME_INPUT_FIELD_XPATH = "//input[@name='firstName']";
+        String LAST_NAME_INPUT_FIELD_XPATH = "//input[@name='lastName']";
+        String EMAIL_INPUT_FIELD_XPATH = "//input[@name='email']";
+        String GROUPS_INPUT_FIELD_XPATH = "//input[@name='groupsInput']";
+        String GROUPS_PLUS_BUTTON_XPATH = "//button[text()= '+']";
+        String GROUPS_LIST_XPATH = "//ul[@class='d-flex flex-wrap justify-content-between p-0']//child::li";
+        String EXCLUDE_BUTTON_XPATH = "//button[text()= 'Exclude']";
+        String CLEAR_BUTTON_XPATH = "//button[text()= 'Clear']";
+        String SAVE_BUTTON_XPATH = "//button[text()= 'Save']";
+    }
+
+    public interface MyProfile {
+        String CHANGE_PASSWORD_BUTTON = "//button";
+    }
+
+    public interface RegistrationPage {
+        String FIRST_NAME_INPUT_FIELD_XPATH = "//input[@name='firstName']";
+        String LAST_NAME_INPUT_FIELD_XPATH = "//input[@name='lastName']";
+        String EMAIL_INPUT_FIELD_XPATH = "//input[@name='email']";
+        String PASSWORD_INPUT_FIELD_XPATH = "//input[@name='password']";
+        String CONFIRM_PASSWORD_INPUT_FIELD_XPATH = "//input[@name='confirmPassword']";
+        String SIGN_UP_BUTTON_XPATH = "//button[text()= 'Sign up']";
+        String LOG_IN_XPATH = "//a[@href='/auth']";
+        String MODAL_WINDOW = "//*[contains(@class,'modal-content')]";
+        String MODAL_WINDOW_BUTTON = "//button[.='Back']";
     }
 }
