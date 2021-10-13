@@ -1,24 +1,14 @@
 package changePassword;
 
 import base.BaseTest;
+import base.Role;
 import changePassword.dataPasswords.data.ChangePasswordInvalidData;
-import changePassword.dataPasswords.data.ChangePasswordValidData;
-import changePassword.dataPasswords.data.UserChangePassword;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
-import constants.ErrorMessages;
-import constants.Locators;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
+import constants.PathsToFiles;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import page.base.Header;
-import page.base.LogIn;
-import page.base.LoseFocus;
 import page.changePassword.ChangePasswordPage;
 import page.courses.CoursesPage;
 
@@ -27,69 +17,46 @@ import java.io.IOException;
 
 public class ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUser extends BaseTest {
 
-    private ObjectMapper mapper = new ObjectMapper();
     private ChangePasswordInvalidData[] passwordsList;
-    private UserChangePassword user;
-    private LogIn login;
     private CoursesPage coursesPage;
-    private Header header;
-    LoseFocus loseFocus;
     ChangePasswordPage changePasswordPage;
+    Object[][] list;
 
 
     @BeforeClass
-    public void preconditions () throws IOException {
+    public void preconditions() throws IOException {
         driver.get(Endpoints.BASE_URL);
-        login = new LogIn(driver);
-        passwordsList = mapper.readValue(
-                new File("./src/main/resources/changePassword/ChangePassword_InvalidData.json"),
-                    ChangePasswordInvalidData[].class);
-        user = new UserChangePassword("umnik@gmail.com", "Umnik_123");
-        login.fillMail(user.getMail())
-                .fillPass(user.getPass())
-                .clickLogInButton();
+        passwordsList = helper.getMapper().readValue(
+                new File(PathsToFiles.ChangePassword.CHANGE_PASSWORD_INVALID_DATA),
+                ChangePasswordInvalidData[].class);
+        list = new Object[passwordsList.length][1];
+        helper.logInAs(Role.MENTOR);
         helper.waitForRedirectFrom(Endpoints.AUTH);
     }
 
     @DataProvider(name = "change-password")
     public Object[][] providerCredentials() {
-        return new Object[][]{
-                {user, passwordsList[0]}, {user, passwordsList[1]},
-//                {user, passwordsList[2]}, {user, passwordsList[3]},
-//                {user, passwordsList[4]}, {user, passwordsList[5]},
-//                {user, passwordsList[6]}, {user, passwordsList[7]},
-//                {user, passwordsList[8]}, {user, passwordsList[9]},
-//                {user, passwordsList[10]}, {user, passwordsList[11]},
-        };
+        for (int i = 0; i < list.length; i++) {
+            list[i][0] = passwordsList[i];
+        }
+        return list;
     }
 
     @Test(dataProvider = "change-password")
-    public void changePassword_InvalidData_Test(UserChangePassword user,
-                                                  ChangePasswordInvalidData password) throws InterruptedException {
-        coursesPage = new CoursesPage(driver);
+    public void changePassword_InvalidData_Test(ChangePasswordInvalidData password) {
         SoftAssert softAssert = new SoftAssert();
-        header = new Header(driver);
-        loseFocus = new LoseFocus(driver);
+        coursesPage = new CoursesPage(driver);
         changePasswordPage = new ChangePasswordPage(driver);
+
         driver.get(Endpoints.COURSES);
-            this.coursesPage
-                    .getHeader()
-                    .changePassword()
-                    .fillCurrentPasswordField(password.getCurrantPassword());
-            loseFocus.loseFocus();
-        softAssert.assertEquals(changePasswordPage.getCurrentPasswordError(), "This field is required");
-        this.changePasswordPage
-                .fillNewPasswordField(password.getNewPassword());
-            loseFocus.loseFocus();
-//            softAssert.assertEquals(changePasswordPage.g);
 
-
-//        fillNewPasswordField(newPassword.getNewPassword())
-//                    .fillConfirmPasswordField(confirmPassword.getConfirmPassword())
-//                    .saveChangePassword()
-//                    .confirmChangedPassword()
-//                    .getHeader().logOut().fillEmailInput(user.getMail())
-//                    .fillPasswordInput(user.getPass()).clickSignIn();
-
+        coursesPage
+                .getHeader()
+                .changePassword()
+                .fillCurrentPasswordField(password.getCurrantPassword(), password.getCurrantPasswordResult())
+                .fillNewPasswordField(password.getNewPassword(), password.getNewPasswordResult())
+                .fillConfirmPasswordField(password.getConfirmPassword(), password.getConfirmPasswordResult())
+                .cancelChangePassword();
+        softAssert.assertAll();
     }
 }

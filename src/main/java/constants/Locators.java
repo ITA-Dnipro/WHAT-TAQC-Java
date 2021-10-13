@@ -130,6 +130,7 @@ public class Locators {
     }
 
     public interface Courses {
+        String COURSE_TITLE_XPATH = "//h2[.='Courses']";
         String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']";
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
@@ -141,6 +142,7 @@ public class Locators {
         String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
         String LIST_OF_VISIBLE_ROWS_NUMBERS_XPATH = "//*[@id='change-visible-people']/option";
         String TABLE_ROWS_LIST_XPATH = "//tbody//tr";
+        String ALERT_ADD_COURSE_XPATH = "//div[@role='alert']";
     }
 
     public interface CourseDetailsPage {
@@ -163,6 +165,7 @@ public class Locators {
     }
 
     public interface ChangePasswordPage {
+        String PAGE_TITLE_XPATH = "//h3[.='Change Password']";
         String EMAIL_INPUT_FIELD_ID = "email";
         String CURRENT_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='currentPassword']";
         String NEW_PASSWORD_INPUT_FIELD_ID = "newPassword";

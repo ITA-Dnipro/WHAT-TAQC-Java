@@ -16,14 +16,12 @@ import java.io.IOException;
 
 public class AddLesson_VerifyErrorMessages extends BaseTest {
 
-    LogIn logIn;
     Object[][] list;
     AddLessonErrors[] data;
 
     @BeforeClass
     public void preconditions() throws IOException {
         driver.get(Endpoints.BASE_URL);
-        logIn = new LogIn(driver);
         data = helper.getMapper().readValue(
                 new File(PathsToFiles.Lessons.ADD_LESSON_ERRORS), AddLessonErrors[].class);
         list = new Object[data.length][1];

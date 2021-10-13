@@ -49,6 +49,9 @@ public class TestHelper {
         return defaultPages.get(user.getRoleName());
     }
 
+    public User getUserByRole(Role role) {
+        return users.get(role.getRoleName());
+    }
 
     private void initDefaultPages(){
         this.defaultPages = new HashMap<>();

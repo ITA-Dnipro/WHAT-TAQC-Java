@@ -1,14 +1,14 @@
 package page.changePassword;
 
-import constants.ErrorMessages;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
 import page.base.Page;
-import page.mentors.MentorsTablePage;
 import page.myProfile.MyProfilePage;
 
-import static constants.ErrorMessages.ChangePassword.CURRENT_PASSWORD_ERROR_XPATH;
+import static constants.ErrorMessages.GetChangePasswordErrorMessage.*;
 import static constants.Locators.ChangePasswordPage.*;
 
 public class ChangePasswordPage extends Page {
@@ -40,8 +40,19 @@ public class ChangePasswordPage extends Page {
     @FindBy(xpath = CLOSE_CONFIRM_ACTION_XPATH)
     private WebElement closeConfirmAction;
 
-    @FindBy (xpath = CURRENT_PASSWORD_ERROR_XPATH)
+    @FindBy(xpath = CURRENT_PASSWORD_ERROR_XPATH)
     private WebElement errMessageCurrPassword;
+
+    @FindBy(xpath = NEW_PASSWORD_ERROR_PROVIDE_XPATH)
+    private WebElement errMessageNewPassword;
+
+    @FindBy(xpath = CONFIRM_PASSWORD_ERROR_XPATH)
+    private WebElement errMessageConfirmPassword;
+
+    @FindBy(xpath = PAGE_TITLE_XPATH)
+    WebElement loseFocus;
+
+    SoftAssert softAssert = new SoftAssert();
 
     public ChangePasswordPage(WebDriver driver) {
         super(driver);
@@ -52,18 +63,21 @@ public class ChangePasswordPage extends Page {
         return this;
     }
 
-    public ChangePasswordPage fillCurrentPasswordField(String currentPassword) {
+    public ChangePasswordPage fillCurrentPasswordField(String currentPassword, String errorMessage) {
         fillField(currentPasswordField, currentPassword);
+        verifyErrors(errorMessage, errMessageCurrPassword);
         return this;
     }
 
-    public ChangePasswordPage fillNewPasswordField(String newPassword) {
+    public ChangePasswordPage fillNewPasswordField(String newPassword, String errorMessage) {
         fillField(newPasswordField, newPassword);
+        verifyErrors(errorMessage, errMessageNewPassword);
         return this;
     }
 
-    public ChangePasswordPage fillConfirmPasswordField(String confirmPassword) {
+    public ChangePasswordPage fillConfirmPasswordField(String confirmPassword, String errorMessage) {
         fillField(confirmPasswordField, confirmPassword);
+        verifyErrors(errorMessage, errMessageConfirmPassword);
         return this;
     }
 
@@ -82,9 +96,9 @@ public class ChangePasswordPage extends Page {
         return this;
     }
 
-    public Page confirmChangedPassword() {
+    public MyProfilePage confirmChangedPassword() {
         clickElement(confirmButton);
-        return new Page(driver) {
+        return new MyProfilePage(driver) {
         };
     }
 
@@ -97,7 +111,25 @@ public class ChangePasswordPage extends Page {
         return errMessageCurrPassword.getText();
     }
 
-//    public String getNewPasswordError() {
-//
-//    }
+    public String getNewPasswordError() {
+        return errMessageNewPassword.getText();
+    }
+
+    public String getConfirmPasswordError() {
+        return errMessageConfirmPassword.getText();
+    }
+
+    private void verifyErrors( String errorMessage, WebElement error) {
+        loseFocus();
+        try {
+            softAssert.assertEquals(error.getText(), errorMessage);
+        }
+        catch (NotFoundException e){
+            //TODO Logger!
+        }
+    }
+
+    public void loseFocus() {
+        loseFocus.click();
+    }
 }

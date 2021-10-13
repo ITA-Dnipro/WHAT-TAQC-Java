@@ -1,16 +1,15 @@
 package changePassword;
 
 import base.BaseTest;
+import base.Role;
+import base.TestHelper;
 import changePassword.dataPasswords.data.ChangePasswordValidData;
-import changePassword.dataPasswords.data.UserChangePassword;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import constants.PathsToFiles;
+import lessons.data.User;
+import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 import page.auth.AuthPage;
-import page.base.Header;
-import page.base.LogIn;
 import page.courses.CoursesPage;
 
 import java.io.File;
@@ -18,66 +17,84 @@ import java.io.IOException;
 
 public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends BaseTest {
 
-    private ObjectMapper mapper = new ObjectMapper();
     private ChangePasswordValidData[] passwordsList;
-    private UserChangePassword user;
-    private LogIn login;
+    private TestHelper testHelper;
     private CoursesPage coursesPage;
-    private Header header;
-
+    Object[][] list;
+    User mentor;
+    private String currentPassword;
 
     @BeforeClass
-    public void preconditions() throws IOException, InterruptedException {
+    public void preconditions() throws IOException {
         driver.get(Endpoints.BASE_URL);
-        login = new LogIn(driver);
-        passwordsList = mapper.readValue(
-                new File("./src/main/resources/changePassword/ChangePasswordWithPasswords.json"),
+        mentor = new User();
+        passwordsList = helper.getMapper().readValue(
+                new File(PathsToFiles.ChangePassword.CHANGE_PASSWORD_VALID_DATA),
                 ChangePasswordValidData[].class);
-        user = new UserChangePassword("umnik@gmail.com", "Umnik_123");
-        login.fillMail(user.getMail())
-                .fillPass(user.getPass())
-                .clickLogInButton();
-        Thread.sleep(2000);
+        list = new Object[passwordsList.length][1];
+        helper.logInAs(Role.MENTOR);
+        currentPassword = helper.getUserByRole(Role.MENTOR).getPass();
     }
 
     @DataProvider(name = "log_in")
-    public Object[][] providerCredantials() {
-        return new Object[][]{
-                {passwordsList[0], passwordsList[0]},
-                {passwordsList[1], passwordsList[1]},
-                {passwordsList[2], passwordsList[2]},
-                {passwordsList[3], passwordsList[3]},
-                {passwordsList[4], passwordsList[4]},
-        };
+    public Object[][] provideCredentials() {
+
+        for (int i = 0; i < passwordsList.length; i++) {
+            list[i][0] = passwordsList[i];
+        }
+        return list;
     }
 
-    @Test(dataProvider = "log_in")
-    public void changePassword_ValidData_Test(ChangePasswordValidData newPassword,
-                                              ChangePasswordValidData confirmPassword) {
-        coursesPage = new CoursesPage(driver);
-        header = new Header(driver);
-        user = new UserChangePassword("umnik@gmail.com", "Umnik_123");
-        driver.get(Endpoints.COURSES);
-        AuthPage authPage = new AuthPage(driver);
+//    @Test(dataProvider = "log_in")
+//    public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) {
+//        mentor = new User();
+//
+//        helper.waitForRedirectFrom(Endpoints.AUTH);
+//        SoftAssert softAssert = new SoftAssert();
+//        coursesPage = new CoursesPage(driver);
+//        AuthPage authPage = new AuthPage(driver);
+//        testHelper = new TestHelper(driver);
+//
+//        driver.get(Endpoints.COURSES);
+//        coursesPage
+//                .getHeader()
+//                .changePassword()
+//                .fillCurrentPasswordField(currentPassword, null)
+//                .fillNewPasswordField(newPassword.getNewPassword(), null)
+//                .fillConfirmPasswordField(newPassword.getConfirmPassword(), null)
+//                .saveChangePassword()
+//                .confirmChangedPassword()
+//                .getHeader()
+//                .logOut();
+////        currentPassword = newPassword.getNewPassword();
+//        helper.waitDownloadPage("http://localhost:8080/auth");
+//
+//        authPage
+//                .fillEmailInput(testHelper.getUserByRole(Role.MENTOR).getMail())
+//                .fillPasswordInput(currentPassword)
+//                .clickSignIn();
+//        softAssert.assertAll();
+//        helper.waitForRedirectFrom("http://localhost:8080/auth");
+//        coursesPage
+//                .getHeader()
+//                .logOut();
+//    }
+//    @AfterMethod
+//            .getHeader()
+//                .changePassword()
+//                .fillCurrentPasswordField(newPassword.getNewPassword(), null)
+//            .fillNewPasswordField(currentPassword, null)
+//            .fillConfirmPasswordField(currentPassword, null)
+//            .saveChangePassword()
+//                .confirmChangedPassword()
+//                .getHeader()
+//                .logOut();
+//    logout
 
-        this.coursesPage
-                .getHeader()
-                .changePassword()
-                .fillCurrentPasswordField(user.getPass())
-                .fillNewPasswordField(newPassword.getNewPassword())
-                .fillConfirmPasswordField(confirmPassword.getConfirmPassword())
-                .saveChangePassword()
-                .confirmChangedPassword()
-                .getHeader()
-                .logOut();
 
-        helper.waitDownloadPage("http://localhost:8080/auth");
-
-        authPage
-                .fillEmailInput(user.getMail())
-                .fillPasswordInput(newPassword.getNewPassword()).clickSignIn();
-
-        helper.waitForRedirectFrom("http://localhost:8080/auth");
-
+    public void changePassword() {
+        String Vasya;
     }
 }
+
+

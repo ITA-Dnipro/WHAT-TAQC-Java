@@ -41,6 +41,12 @@ public class CoursesPage extends Page {
     @FindBy(xpath = TABLE_ROWS_LIST_XPATH)
     private List<WebElement> rowsList;
 
+    @FindBy(xpath = COURSE_TITLE_XPATH)
+    WebElement loseFocus;
+
+    @FindBy (xpath = ALERT_ADD_COURSE_XPATH)
+    WebElement alertAddCourse;
+
     public CoursesPage(WebDriver driver) {
         super(driver);
     }
@@ -90,4 +96,11 @@ public class CoursesPage extends Page {
         return rowsList;
     }
 
+    public void loseFocus() {
+        loseFocus.click();
+    }
+
+    public WebElement alertAddCourse() {
+        return alertAddCourse;
+    }
 }
