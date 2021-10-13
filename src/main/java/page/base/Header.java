@@ -3,9 +3,8 @@ package page.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+import page.ChangePassword.ChangePasswordPage;
+import page.myProfile.MyProfilePage;
 
 import static constants.Locators.Header.*;
 
@@ -29,48 +28,29 @@ public class Header extends BasePage {
         super(driver);
     }
 
-    public enum HeaderItem {
-        MY_PROFILE("My profile"),
-        CHANGE_PASSWORD("Change password"),
-        LOG_OUT("Log Out");
-
-        private final String itemName;
-
-        HeaderItem(String itemName) {
-            this.itemName = itemName;
-        }
-
-        public String getItemName() {
-            return itemName;
-        }
-    }
-
     public void openDropDownMenu() {
-        fullName = new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.elementToBeClickable(fullName));
-        clickElement(fullName);
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfAllElements(
-                dropDownMenuMyProfile, dropDownMenuChangePassword, dropDownMenuLogOut));
+        clickElement(triangleIcon);
     }
 
-    public void openMyprofileByDropdownMenu() {
+    public void openMyProfileByDropdownMenu() {
         openDropDownMenu();
         clickElement(dropDownMenuMyProfile);
     }
 
-    public void openMyprofileByIcon() {
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.elementToBeClickable(icon));
+    public MyProfilePage openMyProfileByIcon() {
         clickElement(icon);
+        return new MyProfilePage(driver);
     }
 
-    public void changePassword() {
+    public ChangePasswordPage changePassword() {
         openDropDownMenu();
         clickElement(dropDownMenuChangePassword);
+        return new ChangePasswordPage(driver);
     }
 
-    public void logOut() {
+    public LogIn logOut() {
         openDropDownMenu();
         clickElement(dropDownMenuLogOut);
+        return new LogIn(driver);
     }
 }
