@@ -7,9 +7,8 @@ import changePassword.dataPasswords.data.ChangePasswordValidData;
 import constants.Endpoints;
 import constants.PathsToFiles;
 import lessons.data.User;
-import org.testng.annotations.*;
-import org.testng.asserts.SoftAssert;
-import page.auth.AuthPage;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import page.courses.CoursesPage;
 
 import java.io.File;
