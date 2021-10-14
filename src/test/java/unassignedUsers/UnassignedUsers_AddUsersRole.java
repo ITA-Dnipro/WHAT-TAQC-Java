@@ -9,7 +9,7 @@ import page.registrationPage.User;
 import page.unassignedUsers.Role;
 import page.unassignedUsers.UnassignedUsersPage;
 
-import static base.Role.ADMIN;
+import static util.Role.ADMIN;
 import static constants.Endpoints.*;
 
 public class UnassignedUsers_AddUsersRole extends BaseTest {

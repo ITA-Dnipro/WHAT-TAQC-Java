@@ -11,7 +11,7 @@ import page.registrationPage.RegistrationPage;
 import page.registrationPage.User;
 import page.unassignedUsers.UnassignedUsersPage;
 
-import static base.Role.ADMIN;
+import static util.Role.ADMIN;
 import static constants.Endpoints.*;
 
 public class RegistrationPage_VerifyRegisterUser_ValidData extends BaseTest {

@@ -1,4 +1,4 @@
-package base;
+package util;
 
 public enum Role {
         ADMIN("admin"),

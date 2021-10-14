@@ -4,6 +4,7 @@ import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import static constants.Locators.Auth.*;
 
 public class LogIn extends BasePage{
@@ -29,6 +30,10 @@ public class LogIn extends BasePage{
     public LogIn fillPass(String pass){
         fillField(passInput, pass);
         return this;
+    }
+
+    public boolean isAt(){
+        return driver.getCurrentUrl().equals(Endpoints.AUTH);
     }
 
     public void clickLogInButton(){

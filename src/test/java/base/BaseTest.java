@@ -6,12 +6,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import util.TestHelper;
+import util.Users;
+
 import java.time.Duration;
 
 public class BaseTest {
 
     protected WebDriver driver;
     protected TestHelper helper;
+    protected Users users;
 
     @BeforeSuite
     protected static void setup() {
@@ -23,6 +27,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         helper = new TestHelper(driver);
+        users = new Users();
     }
 
     @AfterClass

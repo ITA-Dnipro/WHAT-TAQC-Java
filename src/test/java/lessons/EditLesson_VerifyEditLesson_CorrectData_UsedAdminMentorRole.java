@@ -1,7 +1,7 @@
 package lessons;
 
 import base.BaseTest;
-import base.Role;
+import util.Role;
 import constants.Endpoints;
 import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeClass;

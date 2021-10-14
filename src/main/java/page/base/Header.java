@@ -3,9 +3,6 @@ package page.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import page.ChangePassword.ChangePasswordPage;
-import page.myProfile.MyProfilePage;
-
 import static constants.Locators.Header.*;
 
 public class Header extends BasePage {
@@ -28,29 +25,4 @@ public class Header extends BasePage {
         super(driver);
     }
 
-    public void openDropDownMenu() {
-        clickElement(triangleIcon);
-    }
-
-    public void openMyProfileByDropdownMenu() {
-        openDropDownMenu();
-        clickElement(dropDownMenuMyProfile);
-    }
-
-    public MyProfilePage openMyProfileByIcon() {
-        clickElement(icon);
-        return new MyProfilePage(driver);
-    }
-
-    public ChangePasswordPage changePassword() {
-        openDropDownMenu();
-        clickElement(dropDownMenuChangePassword);
-        return new ChangePasswordPage(driver);
-    }
-
-    public LogIn logOut() {
-        openDropDownMenu();
-        clickElement(dropDownMenuLogOut);
-        return new LogIn(driver);
-    }
 }

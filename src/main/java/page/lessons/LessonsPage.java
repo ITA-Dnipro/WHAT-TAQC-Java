@@ -1,10 +1,10 @@
 package page.lessons;
 
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
-
 import java.util.List;
 
 import static constants.Locators.Lessons.*;
@@ -25,6 +25,15 @@ public class LessonsPage extends Page {
 
     public LessonsPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public boolean isAt() {
+        return driver.getCurrentUrl().equals(Endpoints.LESSONS);
+    }
+
+    public static LessonsPage init(WebDriver driver){
+        return new LessonsPage(driver);
     }
 
     public AddLessonPage clickAddLessonButton(){

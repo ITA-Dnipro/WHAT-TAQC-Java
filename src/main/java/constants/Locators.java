@@ -88,6 +88,7 @@ public class Locators {
         String MENTOR_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'mentors')]";
         String GROUP_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'groups')]";
         String LIST_OF_STUDENTS_CLASS = "lesson-details__link___1nOLw";
+        String TITLE_XPATH = "//h3[text()='Lesson details']";
     }
 
     public interface EditSecretary {

@@ -2,6 +2,10 @@ package page.base;
 
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
+import static org.awaitility.Awaitility.await;
+
 /**
  * The base class for authorized users page objects.
  *
@@ -26,4 +30,16 @@ public abstract class Page extends BasePage {
         return sideBar;
     }
 
+    public abstract boolean isAt();
+
+    public boolean isAt(long timeout, TimeUnit timeunit){
+        try{
+            await().atMost(timeout, timeunit)
+                    .ignoreExceptions()
+                    .until(() -> isAt());
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
 }

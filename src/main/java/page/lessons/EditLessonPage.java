@@ -20,6 +20,9 @@ public class EditLessonPage extends Page {
     @FindBy(className = EDIT_LESSON_THEME_ERROR_CLASS)
     WebElement error;
 
+    @FindBy(xpath = PAGE_TITLE_XPATH)
+    WebElement title;
+
     private static final Logger logger = Logger.getLogger(EditLessonPage.class.getName());
 
     ClassBookFeature classBook;
@@ -28,6 +31,15 @@ public class EditLessonPage extends Page {
     public EditLessonPage(WebDriver driver) {
         super(driver);
         classBook = new ClassBookFeature(driver);
+    }
+
+    @Override
+    public boolean isAt() {
+        return title.getText().equals("Edit lesson");
+    }
+
+    public static EditLessonPage init(WebDriver driver){
+        return new EditLessonPage(driver);
     }
 
     public EditLessonPage fillLessonThemeInput(String data, String errorMessage){

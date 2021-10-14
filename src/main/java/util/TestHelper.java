@@ -1,4 +1,4 @@
-package base;
+package util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,6 +12,7 @@ import page.base.LogIn;
 import page.base.Page;
 import page.lessons.LessonsPage;
 import page.students.StudentsPage;
+
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
@@ -23,7 +24,7 @@ public class TestHelper {
     WebDriverWait wait;
     WebDriver driver;
     ObjectMapper mapper;
-    Map<String, User> users;
+    Map<String, User> users ;
     Map<String, Page> defaultPages;
 
     public TestHelper(WebDriver driver) {
@@ -41,19 +42,23 @@ public class TestHelper {
         }
     }
 
-    public Page logInAs(Role user){
+    public < T extends Page> T logInAs(Role user){
         LogIn logIn = new LogIn(driver);
         logIn.fillMail(users.get(user.getRoleName()).getMail())
                 .fillPass(users.get(user.getRoleName()).getPass())
                 .clickLogInButton();
         waitForRedirectFrom(Endpoints.AUTH);
-        return defaultPages.get(user.getRoleName());
+        return (T) defaultPages.get(user.getRoleName());
     }
 
     public LogIn logOut(Page page){
        // waitForVisibilityOfElement(page.getHeader().getDropMenuElement);
         page.getHeader().logOut();
         return new LogIn(driver);
+    }
+
+    public User getUserByRole(Role role){
+        return users.get(role.getRoleName());
     }
 
     private void initDefaultPages(){
