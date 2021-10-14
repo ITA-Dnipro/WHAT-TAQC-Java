@@ -8,6 +8,7 @@ import page.StudentsPage;
 import page.lessons.LessonsPage;
 import util.Admin;
 import util.Mentor;
+import util.Role;
 import util.User;
 
 import java.util.HashMap;
@@ -51,10 +52,8 @@ public class LogIn extends BasePage{
      }
 
 
-     public <T extends Page> T logInAs(User user, Class<T> type){
-         fillMail(user.getMail())
-                 .fillPass(user.getPass())
-                 .clickLogInButton();
+     public <T extends Page> T logInAs(Role role, Class<T> type){
+
          return type.cast(defaultPages.get("admin"));
 
      }
