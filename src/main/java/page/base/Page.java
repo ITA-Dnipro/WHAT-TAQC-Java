@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 public abstract class Page extends BasePage {
 
     protected Header header;
-
     protected SideBar sideBar;
 
     public Page(WebDriver driver) {
@@ -26,4 +25,5 @@ public abstract class Page extends BasePage {
     public SideBar getSideBar() {
         return sideBar;
     }
+
 }
