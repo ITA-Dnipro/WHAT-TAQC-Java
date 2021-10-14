@@ -1,12 +1,18 @@
 package util;
 
-public class User {
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import page.base.Page;
 
-    private String mail;
-    private String pass;
+import java.io.IOException;
 
+public abstract class User {
 
-    public String getMail() {
+    protected String mail;
+    protected String pass;
+
+    public String getMail(){
         return mail;
     }
 
@@ -21,4 +27,6 @@ public class User {
     public void setPass(String pass) {
         this.pass = pass;
     }
+
+    public abstract Object basePage(WebDriver driver);
 }

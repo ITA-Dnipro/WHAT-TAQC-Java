@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import page.base.LogIn;
 import page.base.Page;
 import page.lessons.LessonsPage;
-import page.students.StudentsPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,11 +50,7 @@ public class TestHelper {
         return (T) defaultPages.get(user.getRoleName());
     }
 
-    public LogIn logOut(Page page){
-       // waitForVisibilityOfElement(page.getHeader().getDropMenuElement);
-        page.getHeader().logOut();
-        return new LogIn(driver);
-    }
+
 
     public User getUserByRole(Role role){
         return users.get(role.getRoleName());
@@ -63,7 +58,6 @@ public class TestHelper {
 
     private void initDefaultPages(){
         this.defaultPages = new HashMap<>();
-        defaultPages.put("admin", new StudentsPage(driver));
         defaultPages.put("mentor", new LessonsPage(driver));
     }
 

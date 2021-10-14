@@ -4,6 +4,14 @@ import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import page.StudentsPage;
+import page.lessons.LessonsPage;
+import util.Admin;
+import util.Mentor;
+import util.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static constants.Locators.Auth.*;
 
@@ -18,8 +26,14 @@ public class LogIn extends BasePage{
     @FindBy(xpath = SIGN_IN_BUTTON_XPATH)
     WebElement signInButton;
 
+    Map <String, Page> defaultPages;
+
     public LogIn(WebDriver driver) {
         super(driver);
+        defaultPages = new HashMap<>();
+        defaultPages.put("admin", new StudentsPage(driver));
+        defaultPages.put("mentor", new LessonsPage(driver));
+
     }
 
     public LogIn fillMail(String mail){
@@ -31,6 +45,19 @@ public class LogIn extends BasePage{
         fillField(passInput, pass);
         return this;
     }
+
+     public static LogIn init(WebDriver driver){
+        return new LogIn(driver);
+     }
+
+
+     public <T extends Page> T logInAs(User user, Class<T> type){
+         fillMail(user.getMail())
+                 .fillPass(user.getPass())
+                 .clickLogInButton();
+         return type.cast(defaultPages.get("admin"));
+
+     }
 
     public boolean isAt(){
         return driver.getCurrentUrl().equals(Endpoints.AUTH);
