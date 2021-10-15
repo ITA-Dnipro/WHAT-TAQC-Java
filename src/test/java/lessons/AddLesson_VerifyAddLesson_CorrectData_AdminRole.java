@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.StudentsPage;
-import page.base.Auth;
+import unauthorizedPages.Auth;
 import page.lessons.LessonsPage;
 import util.Role;
 import java.io.IOException;

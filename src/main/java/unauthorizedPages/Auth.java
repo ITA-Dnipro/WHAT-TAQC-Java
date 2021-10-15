@@ -1,4 +1,4 @@
-package page.base;
+package unauthorizedPages;
 
 import constants.Endpoints;
 import constants.PathsToFiles;
@@ -6,16 +6,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.StudentsPage;
+import page.base.BasePage;
+import page.base.Page;
 import page.lessons.LessonsPage;
 import util.Role;
 import util.User;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import static constants.Locators.Auth.*;
 
-public class Auth extends BasePage{
+public class Auth extends BasePage {
 
     @FindBy(name = EMAIL_INPUT_FIELD_NAME)
     WebElement mailInput;
@@ -25,8 +28,10 @@ public class Auth extends BasePage{
 
     @FindBy(xpath = SIGN_IN_BUTTON_XPATH)
     WebElement signInButton;
+    @FindBy(xpath = REGISTRATION_LINK_XPATH)
+    WebElement registrationLink;
 
-    Map <String, Page> defaultPages;
+    Map<String, Page> defaultPages;
     Map<String, User> users;
 
 
@@ -37,39 +42,43 @@ public class Auth extends BasePage{
         initDefaultPages();
     }
 
-    public Auth fillMail(String mail){
+    public Auth fillMail(String mail) {
         fillField(mailInput, mail);
         return this;
     }
 
-    public Auth fillPass(String pass){
+    public Auth fillPass(String pass) {
         fillField(passInput, pass);
         return this;
     }
 
-     public static Auth init(WebDriver driver) throws IOException {
+    public RegistrationPage clickRegistrationLink() {
+        clickElement(registrationLink);
+        return new RegistrationPage(driver);
+    }
+
+    public static Auth init(WebDriver driver) throws IOException {
         return new Auth(driver);
-     }
+    }
 
 
-
-     public <T extends Page> T logInAs(Role role, Class<T> type){
+    public <T extends Page> T logInAs(Role role, Class<T> type) {
         fillMail(users.get(role.getRoleName()).getMail())
                 .fillPass(users.get(role.getRoleName()).getPass())
                 .clickLogInButton();
-         return type.cast(defaultPages.get(role.getRoleName()));
-     }
+        return type.cast(defaultPages.get(role.getRoleName()));
+    }
 
-    private void initDefaultPages(){
+    private void initDefaultPages() {
         defaultPages.put(Role.ADMIN.getRoleName(), new StudentsPage(driver));
         defaultPages.put(Role.MENTOR.getRoleName(), new LessonsPage(driver));
     }
 
-    public boolean isAt(){
+    public boolean isAt() {
         return driver.getCurrentUrl().equals(Endpoints.AUTH);
     }
 
-    public void clickLogInButton(){
+    public void clickLogInButton() {
         clickElement(signInButton);
     }
 }

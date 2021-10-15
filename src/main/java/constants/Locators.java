@@ -9,6 +9,8 @@ public class Locators {
         String EMAIL_INPUT_FIELD_NAME = "email";
         String PASSWORD_INPUT_FIELD_NAME = "password";
         String SIGN_IN_BUTTON_XPATH = "//button[@type='submit']";
+        String REGISTRATION_LINK_XPATH="//a[text()='Registration']";
+
     }
 
     public interface CommonElements {
@@ -204,6 +206,13 @@ public class Locators {
         String DISABLE_BUTTON_XPATH = "//button[text()='Disable']";
         String CLEAR_BUTTON_XPATH = "//button[text()='Clear']";
         String SAVE_BUTTON_XPATH = "//button[text()='Save']";
+        String ERROR_MASSAGE_XPATH = "//div[@class='edit-mentor__error___20Eyn']";
+        String TITLE_XPATH = "//h3[text()='Mentor Editing']";
+        String FIRST_NAME_ERROR = "//input[@id='firstName']/parent::div/div";
+        String LAST_NAME_ERROR = "//input[@id='lastName']/parent::div/div";
+        String EMAIL_ERROR = "//input[@id='email']/parent::div/div";
+
+
     }
 
     public interface StudentsPage {

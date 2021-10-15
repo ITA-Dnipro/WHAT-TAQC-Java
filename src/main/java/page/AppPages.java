@@ -2,7 +2,7 @@ package page;
 
 import org.openqa.selenium.WebDriver;
 import static org.testng.Assert.*;
-import page.base.Auth;
+import unauthorizedPages.Auth;
 import page.lessons.AddLessonPage;
 import page.lessons.EditLessonPage;
 import page.lessons.LessonDetailsPage;
