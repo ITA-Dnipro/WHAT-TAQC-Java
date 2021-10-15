@@ -1,4 +1,4 @@
-package page;
+package page.students;
 
 import constants.Endpoints;
 import org.openqa.selenium.WebDriver;

@@ -1,7 +1,7 @@
 package constants;
 
 import org.openqa.selenium.WebDriver;
-import page.StudentsPage;
+import page.students.StudentsPage;
 import page.base.Page;
 import page.lessons.AddLessonPage;
 import page.lessons.EditLessonPage;

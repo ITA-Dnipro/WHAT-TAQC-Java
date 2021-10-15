@@ -4,8 +4,8 @@ import base.BaseTest;
 import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import page.StudentsPage;
-import unauthorizedPages.Auth;
+import page.students.StudentsPage;
+import page.unauthorizedUserPages.AuthPage;
 import page.lessons.LessonsPage;
 import util.Role;
 
@@ -18,7 +18,7 @@ public class LessonDetailsTest extends BaseTest {
     @BeforeClass
     public void preconditions() throws IOException {
 
-        lessonsPage = Auth.init(driver)
+        lessonsPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.LESSONS, LessonsPage.class)

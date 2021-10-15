@@ -8,8 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import page.StudentsPage;
-import unauthorizedPages.Auth;
+import page.students.StudentsPage;
+import page.unauthorizedUserPages.AuthPage;
 import page.lessons.AddLessonPage;
 import util.Role;
 
@@ -27,7 +27,7 @@ public class AddLessonPage_VerifyErrorMessages extends BaseTest {
     @BeforeClass
     public void preconditions() throws IOException {
         addLessonPage =
-                Auth.init(driver).logInAs(Role.ADMIN, StudentsPage.class)
+                AuthPage.init(driver).logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.ADD_LESSON, AddLessonPage.class)
                 .isAtPage(waitTime);

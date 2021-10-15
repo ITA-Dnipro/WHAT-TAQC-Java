@@ -1,4 +1,4 @@
-package unauthorizedPages;
+package page.unauthorizedUserPages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,7 +35,7 @@ public class RegistrationPage extends BasePage {
         super(driver);
     }
 
-    public Auth registerUser(UnassignedUser user) throws IOException {
+    public AuthPage registerUser(UnassignedUser user) throws IOException {
 
         fillInputFirstName(user.getFirstName())
                 .fillInputLastName(user.getLastName())
@@ -44,7 +44,7 @@ public class RegistrationPage extends BasePage {
                 .fillInputConfirmPassword(user.getPassword())
                 .clickSingUpButton()
                 .clickModalWindowBackButton();
-        return new Auth(driver);
+        return new AuthPage(driver);
     }
 
     public RegistrationPage fillInputFirstName(String firstName) {
@@ -77,14 +77,14 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
-    public Auth clickModalWindowBackButton() throws IOException {
+    public AuthPage clickModalWindowBackButton() throws IOException {
         clickElement(modalWindowBackButton);
-        return new Auth(driver);
+        return new AuthPage(driver);
     }
 
-    public Auth returnToLogInPage() throws IOException {
+    public AuthPage returnToLogInPage() throws IOException {
         clickElement(logInLinkedText);
-        return new Auth(driver);
+        return new AuthPage(driver);
     }
 
 }
