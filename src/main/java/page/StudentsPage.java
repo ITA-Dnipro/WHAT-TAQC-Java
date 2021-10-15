@@ -3,7 +3,7 @@ package page;
 import org.openqa.selenium.WebDriver;
 import page.base.Page;
 
-public class StudentsPage extends Page {
+public class StudentsPage extends Page<StudentsPage> {
 
 
     public StudentsPage(WebDriver driver) {
