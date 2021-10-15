@@ -9,7 +9,6 @@ import page.StudentsPage;
 import page.lessons.LessonsPage;
 import util.Role;
 import util.User;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,11 +32,8 @@ public class Auth extends BasePage{
     public Auth(WebDriver driver) throws IOException {
         super(driver);
         users = User.get(PathsToFiles.CREDENTIALS);
-        System.out.println(users);
         defaultPages = new HashMap<>();
-        defaultPages.put("admin", new StudentsPage(driver));
-        defaultPages.put("mentor", new LessonsPage(driver));
-
+        initDefaultPages();
     }
 
     public Auth fillMail(String mail){
@@ -62,6 +58,11 @@ public class Auth extends BasePage{
          return type.cast(defaultPages.get(role.getRoleName()));
 
      }
+
+    private void initDefaultPages(){
+        defaultPages.put(Role.ADMIN.getRoleName(), new StudentsPage(driver));
+        defaultPages.put(Role.MENTOR.getRoleName(), new LessonsPage(driver));
+    }
 
     public boolean isAt(){
         return driver.getCurrentUrl().equals(Endpoints.AUTH);
