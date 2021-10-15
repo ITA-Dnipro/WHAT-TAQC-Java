@@ -3,7 +3,7 @@ package lessons;
 import constants.Endpoints;
 import lessons.data.AddLessonData;
 import org.testng.annotations.BeforeClass;
-import page.base.Auth;
+import unauthorizedPages.Auth;
 import page.lessons.LessonsPage;
 import util.Role;
 import java.io.IOException;

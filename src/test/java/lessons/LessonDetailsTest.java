@@ -5,7 +5,7 @@ import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.StudentsPage;
-import page.base.Auth;
+import unauthorizedPages.Auth;
 import page.lessons.LessonsPage;
 import util.Role;
 

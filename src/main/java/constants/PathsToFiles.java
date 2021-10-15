@@ -12,4 +12,7 @@ public class PathsToFiles {
         String ADD_LESSON_ERRORS = BASE_PATH + "lessons/AddLessonErrors.json";
         String EDIT_LESSON_ERRORS = BASE_PATH + "lessons/EditLessonErrors.json";
     }
+    public interface Mentors{
+        String EDIT_MENTOR_ERRORS=BASE_PATH + "mentors/InvalidData.json";
+    }
 }
