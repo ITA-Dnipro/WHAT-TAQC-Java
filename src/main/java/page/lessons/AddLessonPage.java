@@ -2,7 +2,6 @@ package page.lessons;
 
 import constants.Endpoints;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -50,7 +49,6 @@ public class AddLessonPage extends Page<AddLessonPage> {
     WebElement mailError;
 
     ClassBookFeature classBook;
-    SoftAssert softAssert;
 
     private static final Logger logger = Logger.getLogger(AddLessonPage.class.getName());
 
@@ -102,7 +100,6 @@ public class AddLessonPage extends Page<AddLessonPage> {
     public static AddLessonPage init(WebDriver driver){
         return new AddLessonPage(driver);
     }
-
 
     public String getThemeError() {
         return themeError.getText();
