@@ -1,5 +1,6 @@
 package page;
 
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import page.base.Page;
 
@@ -12,7 +13,7 @@ public class StudentsPage extends Page<StudentsPage> {
 
     @Override
     public boolean isAt() {
-        return false;
+        return driver.getCurrentUrl().equals(Endpoints.STUDENTS);
     }
 
     public StudentsPage getStudent(){

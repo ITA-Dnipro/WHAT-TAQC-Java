@@ -1,5 +1,13 @@
 package constants;
 
+import org.openqa.selenium.WebDriver;
+import page.StudentsPage;
+import page.base.Page;
+import page.lessons.LessonsPage;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Endpoints {
 
     private Endpoints() {}
@@ -12,4 +20,11 @@ public class Endpoints {
     public static final String REGISTRATION = BASE_URL + "/registration";
     public static final String UNASSIGNED_USERS = BASE_URL + "/unassigned";
     public static final String STUDENTS = BASE_URL + "/students";
+
+    public static Map<String, Page> getPages(WebDriver driver){
+        Map<String, Page> pages = new HashMap<>();
+        pages.put(Endpoints.STUDENTS, new StudentsPage(driver));
+        pages.put(Endpoints.LESSONS, new LessonsPage(driver));
+        return pages;
+    }
 }

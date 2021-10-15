@@ -11,7 +11,7 @@ import page.base.Page;
 import java.util.List;
 import static constants.Locators.AddLesson.*;
 
-public class AddLessonPage extends Page {
+public class AddLessonPage extends Page<AddLessonPage> {
 
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement pageTitle;
@@ -64,12 +64,12 @@ public class AddLessonPage extends Page {
         return driver.getCurrentUrl().equals(Endpoints.ADD_LESSON);
     }
 
-    public AddLessonPage fillLessonTheme(String theme, String errorMessage){
+    public AddLessonPage fillLessonTheme(String theme){
         fillField(lessonThemeInput, theme);
         return this;
     }
 
-    public AddLessonPage fillGroupName(String group, String errorMessage){
+    public AddLessonPage fillGroupName(String group){
         fillField(groupNameInput, group);
         return this;
     }
@@ -79,7 +79,7 @@ public class AddLessonPage extends Page {
         return this;
     }
 
-    public AddLessonPage fillEmailInput(String email, String errorMessage){
+    public AddLessonPage fillEmailInput(String email){
         fillField(emailInput, email);
         return this;
     }

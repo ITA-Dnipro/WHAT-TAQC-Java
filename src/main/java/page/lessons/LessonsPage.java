@@ -9,7 +9,7 @@ import java.util.List;
 
 import static constants.Locators.Lessons.*;
 
-public class LessonsPage extends Page {
+public class LessonsPage extends Page<LessonsPage> {
 
     @FindBy(xpath = ADD_LESSON_BUTTON_XPATH)
     WebElement addLessonButton;

@@ -29,6 +29,7 @@ public class Auth extends BasePage{
     Map <String, Page> defaultPages;
     Map<String, User> users;
 
+
     public Auth(WebDriver driver) throws IOException {
         super(driver);
         users = User.get(PathsToFiles.CREDENTIALS);
@@ -51,12 +52,12 @@ public class Auth extends BasePage{
      }
 
 
+
      public <T extends Page> T logInAs(Role role, Class<T> type){
         fillMail(users.get(role.getRoleName()).getMail())
                 .fillPass(users.get(role.getRoleName()).getPass())
                 .clickLogInButton();
          return type.cast(defaultPages.get(role.getRoleName()));
-
      }
 
     private void initDefaultPages(){

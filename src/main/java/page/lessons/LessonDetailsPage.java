@@ -7,7 +7,7 @@ import page.base.Page;
 import java.util.List;
 import static constants.Locators.LessonDetails.*;
 
-public class LessonDetailsPage extends Page {
+public class LessonDetailsPage extends Page<LessonDetailsPage> {
 
     @FindBy(xpath = MENTOR_NAME_LINK_XPATH)
     WebElement mentorName;
