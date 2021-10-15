@@ -3,6 +3,7 @@ package constants;
 import org.openqa.selenium.WebDriver;
 import page.StudentsPage;
 import page.base.Page;
+import page.lessons.AddLessonPage;
 import page.lessons.EditLessonPage;
 import page.lessons.LessonsPage;
 
@@ -27,6 +28,7 @@ public class Endpoints {
         pages.put(STUDENTS, new StudentsPage(driver));
         pages.put(LESSONS, new LessonsPage(driver));
         pages.put(EDIT_LESSON, new EditLessonPage(driver));
+        pages.put(ADD_LESSON, new AddLessonPage(driver));
         return pages;
     }
 }

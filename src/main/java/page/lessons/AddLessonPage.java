@@ -103,31 +103,22 @@ public class AddLessonPage extends Page<AddLessonPage> {
         return new AddLessonPage(driver);
     }
 
-    public WebElement getLessonThemeInput() {
-        return lessonThemeInput;
+
+    public String getThemeError() {
+        return themeError.getText();
     }
 
-    public WebElement getThemeError() {
-        return themeError;
+    public String getGroupError() {
+        return groupError.getText();
     }
 
-    public WebElement getGroupError() {
-        return groupError;
+    public String getMailError() {
+        return mailError.getText();
     }
 
-    public WebElement getMailError() {
-        return mailError;
-    }
-
-    public SoftAssert getSoftAssert() {
-        return softAssert;
-    }
-
-    private void loseFocus(){
+    public AddLessonPage loseFocus(){
         pageTitle.click();
+        return this;
     }
 
-    public void setSoftAssert(SoftAssert softAssert) {
-        this.softAssert = softAssert;
-    }
 }
