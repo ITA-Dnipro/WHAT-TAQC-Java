@@ -3,7 +3,7 @@ package page.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import unauthorizedPages.Auth;
+import page.unauthorizedUserPages.AuthPage;
 
 import java.io.IOException;
 
@@ -29,9 +29,9 @@ public class Header extends BasePage {
         super(driver);
     }
 
-    public Auth logOut() throws IOException {
+    public AuthPage logOut() throws IOException {
         clickElement(triangleIcon);
         clickElement(dropDownMenuLogOut);
-        return new Auth(driver);
+        return new AuthPage(driver);
     }
 }

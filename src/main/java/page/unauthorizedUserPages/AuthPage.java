@@ -1,11 +1,11 @@
-package unauthorizedPages;
+package page.unauthorizedUserPages;
 
 import constants.Endpoints;
 import constants.PathsToFiles;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import page.StudentsPage;
+import page.students.StudentsPage;
 import page.base.BasePage;
 import page.base.Page;
 import page.lessons.LessonsPage;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 import static constants.Locators.Auth.*;
 
-public class Auth extends BasePage {
+public class AuthPage extends BasePage {
 
     @FindBy(name = EMAIL_INPUT_FIELD_NAME)
     WebElement mailInput;
@@ -35,19 +35,19 @@ public class Auth extends BasePage {
     Map<String, User> users;
 
 
-    public Auth(WebDriver driver) throws IOException {
+    public AuthPage(WebDriver driver) throws IOException {
         super(driver);
         users = User.get(PathsToFiles.CREDENTIALS);
         defaultPages = new HashMap<>();
         initDefaultPages();
     }
 
-    public Auth fillMail(String mail) {
+    public AuthPage fillMail(String mail) {
         fillField(mailInput, mail);
         return this;
     }
 
-    public Auth fillPass(String pass) {
+    public AuthPage fillPass(String pass) {
         fillField(passInput, pass);
         return this;
     }
@@ -57,8 +57,8 @@ public class Auth extends BasePage {
         return new RegistrationPage(driver);
     }
 
-    public static Auth init(WebDriver driver) throws IOException {
-        return new Auth(driver);
+    public static AuthPage init(WebDriver driver) throws IOException {
+        return new AuthPage(driver);
     }
 
 

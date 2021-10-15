@@ -8,12 +8,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import page.StudentsPage;
+import page.students.StudentsPage;
 import page.mentors.EditMentorsDetailsPage;
 import page.mentors.MentorsTablePage;
 import page.unassigned.UnassignedRole;
 import page.unassigned.UnassignedUsersPage;
-import unauthorizedPages.Auth;
+import page.unauthorizedUserPages.AuthPage;
 import util.RandomStringsGenerator;
 import util.Role;
 import util.UnassignedUser;
@@ -41,7 +41,7 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
     @BeforeClass
     public void precondition() throws IOException, InterruptedException {
 
-        editMentorsPage = Auth.init(driver)
+        editMentorsPage = AuthPage.init(driver)
                 .clickRegistrationLink()
                 .registerUser(mentor)
                 .logInAs(Role.ADMIN, StudentsPage.class)

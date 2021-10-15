@@ -28,8 +28,7 @@ public class User {
     }
 
     public static Map<String, User> get(String filename) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(filename),
+        return new ObjectMapper().readValue(new File(filename),
                 new TypeReference<Map<String, User>>() {});
     }
 

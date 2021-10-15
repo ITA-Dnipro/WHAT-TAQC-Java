@@ -8,8 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import page.StudentsPage;
-import unauthorizedPages.Auth;
+import page.students.StudentsPage;
+import page.unauthorizedUserPages.AuthPage;
 import page.lessons.LessonsPage;
 import util.Role;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
     @BeforeClass
     public void precondition() throws IOException {
 
-        lessonsPage = Auth.init(driver)
+        lessonsPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.LESSONS, LessonsPage.class)

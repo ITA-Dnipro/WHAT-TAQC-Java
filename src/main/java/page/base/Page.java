@@ -3,7 +3,7 @@ package page.base;
 import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import unauthorizedPages.Auth;
+import page.unauthorizedUserPages.AuthPage;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -56,7 +56,7 @@ public abstract class Page<I extends Page<I>> extends BasePage {
         }
     }
 
-    public Auth logOut() throws IOException {
+    public AuthPage logOut() throws IOException {
         return header.logOut();
     }
 }
