@@ -229,12 +229,14 @@ public class Locators {
     }
 
     public interface StudentsEditDetailsPage {
+        String PAGE_TITLE_TAG_NAME = "h3";
         String ARROW_BUTTON_XPATH = "//*[@class='nav nav-tabs']//*[@href='/students']";
         String STUDENT_DETAILS_TAB_XPATH = "//*[text()='Student details']";
         String STUDENT_EDIT_TAB_XPATH = "//*[text()='Edit student details']";
     }
 
     public interface StudentDetailsTab {
+        String PAGE_TITLE_TAG_NAME = "h3";
         String FIRST_NAME_XPATH = "//*[text()='First name: ']//following::span[1]";
         String LAST_NAME_XPATH = "//*[text()='Last name: ']//following::span[1]";
         String EMAIL_XPATH = "//*[text()='Email: ']//following::span[1]";
@@ -242,6 +244,7 @@ public class Locators {
     }
 
     public interface StudentEditDetailsTab {
+        String PAGE_TITLE_TAG_NAME = "h3";
         String FIRST_NAME_INPUT_FIELD_XPATH = "//input[@name='firstName']";
         String LAST_NAME_INPUT_FIELD_XPATH = "//input[@name='lastName']";
         String EMAIL_INPUT_FIELD_XPATH = "//input[@name='email']";
