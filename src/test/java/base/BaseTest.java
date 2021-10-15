@@ -14,6 +14,7 @@ public class BaseTest {
 
     protected WebDriver driver;
     protected TestHelper helper;
+    protected long waitTime;
 
     @BeforeSuite
     protected static void setup() {
@@ -25,6 +26,7 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         helper = new TestHelper(driver);
+        waitTime = 5;
     }
 
     @AfterClass

@@ -3,6 +3,7 @@ package constants;
 import org.openqa.selenium.WebDriver;
 import page.StudentsPage;
 import page.base.Page;
+import page.lessons.EditLessonPage;
 import page.lessons.LessonsPage;
 
 import java.util.HashMap;
@@ -23,8 +24,9 @@ public class Endpoints {
 
     public static Map<String, Page> getPages(WebDriver driver){
         Map<String, Page> pages = new HashMap<>();
-        pages.put(Endpoints.STUDENTS, new StudentsPage(driver));
-        pages.put(Endpoints.LESSONS, new LessonsPage(driver));
+        pages.put(STUDENTS, new StudentsPage(driver));
+        pages.put(LESSONS, new LessonsPage(driver));
+        pages.put(EDIT_LESSON, new EditLessonPage(driver));
         return pages;
     }
 }

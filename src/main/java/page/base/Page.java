@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import page.StudentsPage;
 import page.lessons.LessonsPage;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,14 +48,18 @@ public abstract class Page<I extends Page<I>> extends BasePage {
 
     public abstract boolean isAt();
 
-    public I isAt(long timeout, TimeUnit timeunit){
+    public I isAt(long timeout){
         try{
-            await().atMost(timeout, timeunit)
+            await().atMost(timeout, TimeUnit.SECONDS)
                     .ignoreExceptions()
                     .until(() -> isAt());
             return (I) this;
         }catch(Exception e){
             return  null;
         }
+    }
+
+    public Auth logOut() throws IOException {
+        return header.logOut();
     }
 }
