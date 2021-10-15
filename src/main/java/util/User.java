@@ -1,13 +1,16 @@
 package util;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import page.base.Page;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import constants.PathsToFiles;
 
+
+
+import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
-public abstract class User {
+public class User {
 
     protected String mail;
     protected String pass;
@@ -28,5 +31,10 @@ public abstract class User {
         this.pass = pass;
     }
 
-    public abstract Object basePage(WebDriver driver);
+    public static Map<String, User> get(String filename) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(new File(filename),
+                new TypeReference<Map<String, User>>() {});
+    }
+
 }

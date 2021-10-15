@@ -1,12 +1,13 @@
 package base;
 
 
+import constants.Endpoints;
 import page.StudentsPage;
-import page.base.LogIn;
-import util.Admin;
+import page.base.Auth;
 import util.Role;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class Test extends BaseTest{
 
@@ -14,8 +15,10 @@ public class Test extends BaseTest{
     }
 
     @org.testng.annotations.Test
-    public void test() {
-        LogIn logIn = new LogIn(driver);
-        logIn.logInAs(Role.ADMIN, StudentsPage.class);
+    public void test() throws IOException {
+        driver.get(Endpoints.BASE_URL);
+        Auth auth = new Auth(driver);
+        auth.logInAs(Role.ADMIN, StudentsPage.class).isAt(10, TimeUnit.SECONDS);
+
     }
 }

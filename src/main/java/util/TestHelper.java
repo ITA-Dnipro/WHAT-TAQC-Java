@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page.base.LogIn;
+import page.base.Auth;
 import page.base.Page;
 import page.lessons.LessonsPage;
 
@@ -41,8 +41,8 @@ public class TestHelper {
         }
     }
 
-    public < T extends Page> T logInAs(Role user){
-        LogIn logIn = new LogIn(driver);
+    public < T extends Page> T logInAs(Role user) throws IOException {
+        Auth logIn = new Auth(driver);
         logIn.fillMail(users.get(user.getRoleName()).getMail())
                 .fillPass(users.get(user.getRoleName()).getPass())
                 .clickLogInButton();

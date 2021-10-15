@@ -9,10 +9,6 @@ public class Admin extends User{
         return new StudentsPage(driver);
     }
 
-    @Override
-    public StudentsPage basePage(WebDriver driver) {
-        return new StudentsPage(driver);
-    }
 }
 
 

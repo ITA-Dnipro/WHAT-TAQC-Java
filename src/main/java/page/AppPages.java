@@ -2,24 +2,25 @@ package page;
 
 import org.openqa.selenium.WebDriver;
 import static org.testng.Assert.*;
-import page.base.LogIn;
+import page.base.Auth;
 import page.lessons.AddLessonPage;
 import page.lessons.EditLessonPage;
 import page.lessons.LessonDetailsPage;
 import page.lessons.LessonsPage;
 import util.User;
 
+import java.io.IOException;
 import java.util.function.UnaryOperator;
 
 public class AppPages {
-    LogIn auth;
+    Auth auth;
     LessonsPage lessons;
     AddLessonPage addLessonPage;
     EditLessonPage editLessonPage;
     LessonDetailsPage lessonDetailsPage;
 
-    public AppPages(WebDriver driver) {
-        auth = new LogIn(driver);
+    public AppPages(WebDriver driver) throws IOException {
+        auth = new Auth(driver);
         lessons = new LessonsPage(driver);
         addLessonPage = new AddLessonPage(driver);
         editLessonPage = new EditLessonPage(driver);
