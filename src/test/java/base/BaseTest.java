@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
-import util.TestHelper;
 
 import java.time.Duration;
 
