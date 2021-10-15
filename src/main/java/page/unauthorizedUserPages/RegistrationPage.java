@@ -200,4 +200,7 @@ public class RegistrationPage extends BasePage {
         return this;
     }
 
+    public SoftAssert getSoftAssert() {
+        return softAssert;
+    }
 }
