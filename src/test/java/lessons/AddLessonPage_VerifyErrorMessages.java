@@ -1,8 +1,9 @@
-package base;
+package lessons;
 
+import base.BaseTest;
 import constants.Endpoints;
 import constants.PathsToFiles;
-import data.AddLessonErrors;
+import lessons.data.AddLessonErrors;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -14,7 +15,7 @@ import util.Role;
 
 import java.io.IOException;
 
-public class AddLessonPage_VerifyErrorMessages extends BaseTest{
+public class AddLessonPage_VerifyErrorMessages extends BaseTest {
 
     AddLessonErrors[] errors;
     AddLessonPage addLessonPage;

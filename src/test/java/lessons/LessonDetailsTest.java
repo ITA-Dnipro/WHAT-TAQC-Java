@@ -1,5 +1,6 @@
-package base;
+package lessons;
 
+import base.BaseTest;
 import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -10,7 +11,7 @@ import util.Role;
 
 import java.io.IOException;
 
-public class LessonDetailsTest extends BaseTest{
+public class LessonDetailsTest extends BaseTest {
 
     LessonsPage lessonsPage;
 

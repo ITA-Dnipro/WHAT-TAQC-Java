@@ -1,7 +1,7 @@
-package base;
+package lessons;
 
 import constants.Endpoints;
-import data.AddLessonData;
+import lessons.data.AddLessonData;
 import org.testng.annotations.BeforeClass;
 import page.base.Auth;
 import page.lessons.LessonsPage;

@@ -1,4 +1,4 @@
-package data;
+package lessons.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

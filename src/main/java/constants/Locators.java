@@ -55,7 +55,7 @@ public class Locators {
 
     public interface AddLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Add a Lesson']";
-        String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+        String CANCEL_BUTTON_XPATH = "//button[@lessons.data-testid='cancelBtn']";
         String CLASS_REGISTER_BUTTON_ID = "class-register-btn";
         String LESSON_THEME_INPUT_FIELD_ID = "inputLessonTheme";
         String GROUP_NAME_INPUT_FIELD_ID = "inputGroupName";
@@ -70,7 +70,7 @@ public class Locators {
 
     public interface EditLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Edit a Lesson']";
-        String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+        String CANCEL_BUTTON_XPATH = "//button[@lessons.data-testid='cancelBtn']";
         String LESSON_THEME_INPUT_FIELD_ID = "inputLessonTheme";
         String LESSON_TIME_INPUT_FIELD_ID = "choose-date/time";
         String EDIT_LESSON_THEME_ERROR_CLASS = "edit-lesson__error___3MZKw";
@@ -120,7 +120,7 @@ public class Locators {
         String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']";
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
-        String SORT_TITLE_BUTTON_XPATH = "//span[@data-sorting-param='name']";
+        String SORT_TITLE_BUTTON_XPATH = "//span[@lessons.data-sorting-param='name']";
         String COURSES_TABLE_LIST_ADMIN_SECRETARY_XPATH = "//td[not(contains(@class,'text-center'))]";
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
@@ -142,7 +142,7 @@ public class Locators {
 
     public interface AddCoursePage {
         String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
-        String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@data-testid='cancelBtn']";
+        String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@lessons.data-testid='cancelBtn']";
         String SAVE_BUTTON_XPATH = "//button[@id='addCourseSubmit']";
     }
 
@@ -212,9 +212,9 @@ public class Locators {
         String SHOW_DISABLED_SWITCHER_ID = "show-disabled-check";
         String ADD_STUDENT_BUTTON_XPATH = "//*[contains(text(), 'Add a student')]";
         String TABLE_STUDENTS_XPATH = "//tbody";
-        String TABLE_HEAD_FIRST_NAME_XPATH = "//span[@data-sorting-param='firstName']";
-        String TABLE_HEAD_LAST_NAME_XPATH = "//span[@data-sorting-param='lastName']";
-        String TABLE_HEAD_EMAIL_XPATH = "//span[@data-sorting-param='email']";
+        String TABLE_HEAD_FIRST_NAME_XPATH = "//span[@lessons.data-sorting-param='firstName']";
+        String TABLE_HEAD_LAST_NAME_XPATH = "//span[@lessons.data-sorting-param='lastName']";
+        String TABLE_HEAD_EMAIL_XPATH = "//span[@lessons.data-sorting-param='email']";
         String TABLE_ROW_TAG_NAME = "tr";
         String TABLE_CELL_TAG_NAME = "td";
     }

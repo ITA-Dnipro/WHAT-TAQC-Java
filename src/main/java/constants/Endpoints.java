@@ -6,7 +6,6 @@ import page.base.Page;
 import page.lessons.AddLessonPage;
 import page.lessons.EditLessonPage;
 import page.lessons.LessonsPage;
-
 import java.util.HashMap;
 import java.util.Map;
 

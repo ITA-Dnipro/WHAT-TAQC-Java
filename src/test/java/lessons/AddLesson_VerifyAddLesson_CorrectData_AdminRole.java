@@ -1,8 +1,9 @@
-package base;
+package lessons;
 
+import base.BaseTest;
 import constants.Endpoints;
 import constants.PathsToFiles;
-import data.AddLessonData;
+import lessons.data.AddLessonData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -13,7 +14,7 @@ import page.lessons.LessonsPage;
 import util.Role;
 import java.io.IOException;
 
-public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest{
+public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
 
      protected LessonsPage lessonsPage;
      protected AddLessonData data;
