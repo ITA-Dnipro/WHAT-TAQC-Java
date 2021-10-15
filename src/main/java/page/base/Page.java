@@ -48,7 +48,7 @@ public abstract class Page<I extends Page<I>> extends BasePage {
 
     public abstract boolean isAt();
 
-    public I isAt(long timeout){
+    public I isAtPage(long timeout){
         try{
             await().atMost(timeout, TimeUnit.SECONDS)
                     .ignoreExceptions()

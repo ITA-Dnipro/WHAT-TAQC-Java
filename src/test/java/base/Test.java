@@ -2,7 +2,9 @@ package base;
 
 
 import constants.Endpoints;
-import org.testng.annotations.AfterMethod;
+import constants.PathsToFiles;
+import data.AddLessonData;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import page.StudentsPage;
@@ -14,26 +16,43 @@ import java.io.IOException;
 public class Test extends BaseTest{
 
      protected LessonsPage lessonsPage;
+     protected AddLessonData data;
+
+    public Test() throws IOException {
+        data = AddLessonData.getData(PathsToFiles.Lessons.ADD_LESSON_CORRECT_DATA);
+    }
 
     @BeforeClass
     public void precondition() throws IOException {
-        driver.get(Endpoints.BASE_URL);
+
         lessonsPage = Auth.init(driver)
-                .logInAs(Role.ADMIN, StudentsPage.class).isAt(waitTime)
-                .redirectTo(Endpoints.LESSONS, LessonsPage.class).isAt(waitTime);
+                .logInAs(Role.ADMIN, StudentsPage.class)
+                .isAtPage(waitTime)
+                .redirectTo(Endpoints.LESSONS, LessonsPage.class)
+                .isAtPage(waitTime);
     }
 
     @DataProvider(name = "addLesson")
     public Object[][] getData(){
-        return new Object[][]{};
+        return new Object[][]{{data}};
     }
 
     @org.testng.annotations.Test(dataProvider = "addLesson")
-    public void test() throws IOException {
-        lessonsPage
-                .clickAddLessonButton().isAt(waitTime)
-                .clickCancelButton().isAt(waitTime)
-                .clickAddLessonButton().isAt(waitTime)
-                .logOut();
+    public void test(AddLessonData data) throws IOException {
+
+        String expectedResult = "×\nClose alert\nThe lesson has been added successfully!";
+
+        String actualResult = lessonsPage
+                .clickAddLessonButton().isAtPage(waitTime)
+                .fillLessonTheme(data.getTheme())
+                .fillGroupName(data.getG_name())
+                .fillDateInput(data.getDate())
+                .fillEmailInput(data.getEmail())
+                .clickClassRegisterButton()
+                .clickSaveButton()
+                .isAtPage(waitTime)
+                .getAlertText();
+
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }

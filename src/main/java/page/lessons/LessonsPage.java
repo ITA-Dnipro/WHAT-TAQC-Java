@@ -49,6 +49,11 @@ public class LessonsPage extends Page<LessonsPage> {
         return alert.getText();
     }
 
+    public LessonDetailsPage clickTableItem(int id){
+        rows.get(id).click();
+        return new LessonDetailsPage(driver);
+    }
+
     public EditLessonPage clickEditIcon(int id){
         edit.get(id).click();
         return new EditLessonPage(driver);
@@ -61,4 +66,6 @@ public class LessonsPage extends Page<LessonsPage> {
     public WebElement getAlert() {
         return alert;
     }
+
+
 }
