@@ -1,5 +1,6 @@
 package page.base;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,7 @@ import java.util.List;
 public abstract class BasePage {
 
     protected WebDriver driver;
+    protected final Logger log = Logger.getLogger(getClass());
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

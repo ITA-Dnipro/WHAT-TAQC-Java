@@ -18,6 +18,7 @@ public class AddLesson_VerifyAddLesson_CorrectData_MentorRole extends AddLesson_
         lessonsPage = AuthPage.init(driver).isAt()
                 .logInAs(Role.MENTOR, LessonsPage.class)
                 .isAtPage(waitTime);
+        log.info("Logged in as Mentor");
     }
 
     @Test(description = "DP213-62")
