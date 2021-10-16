@@ -53,7 +53,7 @@ public class AddLessonData {
         this.email = email;
     }
 
-    public static AddLessonData getData(String filename) throws IOException {
-        return new ObjectMapper().readValue(new File(filename), AddLessonData.class);
+    public static AddLessonData[] getData(String filename) throws IOException {
+        return new ObjectMapper().readValue(new File(filename), AddLessonData[].class);
     }
 }

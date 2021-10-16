@@ -22,7 +22,7 @@ public class AddLesson_VerifyAddLesson_CorrectData_MentorRole extends AddLesson_
 
     @Test(description = "DP213-62")
     @Override
-    public void test() throws IOException {
-        super.test();
+    public void verifyAddLesson() throws IOException {
+        super.verifyAddLesson();
     }
 }

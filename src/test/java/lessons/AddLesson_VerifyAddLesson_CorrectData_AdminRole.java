@@ -28,7 +28,7 @@ public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
     }
 
     @Test(description = "DP213-62")
-    public void test() throws IOException {
+    public void verifyAddLesson() throws IOException {
 
         String expectedResult = "×\nClose alert\nThe lesson has been added successfully!";
 

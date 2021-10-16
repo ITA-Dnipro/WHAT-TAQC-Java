@@ -1,0 +1,62 @@
+package lessons;
+
+import base.BaseTest;
+import constants.Endpoints;
+import constants.PathsToFiles;
+import lessons.data.AddLessonData;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import page.lessons.AddLessonPage;
+import page.lessons.LessonsPage;
+import page.students.StudentsPage;
+import page.unauthorizedUserPages.AuthPage;
+import util.Role;
+
+import java.io.IOException;
+
+
+public class AddLesson_VerifyAddLesson_IncorrectData_AdminRole extends BaseTest{
+
+    AddLessonData[] data;
+    AddLessonPage addLessonPage;
+
+    public AddLesson_VerifyAddLesson_IncorrectData_AdminRole() throws IOException {
+        data = AddLessonData.getData(PathsToFiles.Lessons.ADD_LESSON_CORRECT_DATA);
+    }
+
+    @BeforeClass
+    public void precondition() throws IOException {
+        addLessonPage = AuthPage.init(driver)
+                .logInAs(Role.ADMIN, StudentsPage.class)
+                .isAtPage(waitTime)
+                .redirectTo(Endpoints.LESSONS, LessonsPage.class)
+                .isAtPage(waitTime)
+                .clickAddLessonButton()
+                .isAtPage(this.waitTime)
+                .selectExistedGroup()
+                .clickClassRegisterButton()
+                .isAtPage(waitTime);
+    }
+
+    @DataProvider(name = "errors")
+    public Object[][] provideErrors(){
+        Object[][] list = new Object[data.length][1];
+        for (int i = 0; i < data.length; i++){
+            list[i][0] = data[i];
+        }
+        return list;
+    }
+
+    @Test(dataProvider = "errors")
+    public void verifyAddLessonIncorrectData(AddLessonData addLessonData){
+
+        addLessonPage
+                .fillLessonTheme(addLessonData.getTheme())
+                .fillGroupName(addLessonData.getG_name())
+                .fillDateInput(addLessonData.getDate())
+                .fillEmailInput(addLessonData.getEmail())
+                .clickSaveButton()
+                .isAtPage(waitTime);
+    }
+}
