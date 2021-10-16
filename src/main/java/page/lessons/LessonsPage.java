@@ -59,6 +59,10 @@ public class LessonsPage extends Page<LessonsPage> {
         return new EditLessonPage(driver);
     }
 
+    public boolean isLessons(){
+        return rows.size() != 0;
+    }
+
     public List<WebElement> getEdit() {
         return edit;
     }

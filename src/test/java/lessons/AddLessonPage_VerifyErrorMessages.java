@@ -12,7 +12,6 @@ import page.students.StudentsPage;
 import page.unauthorizedUserPages.AuthPage;
 import page.lessons.AddLessonPage;
 import util.Role;
-
 import java.io.IOException;
 
 public class AddLessonPage_VerifyErrorMessages extends BaseTest {

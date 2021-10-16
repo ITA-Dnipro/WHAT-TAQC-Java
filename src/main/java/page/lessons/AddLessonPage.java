@@ -97,6 +97,20 @@ public class AddLessonPage extends Page<AddLessonPage> {
         return new LessonsPage(driver);
     }
 
+    public AddLessonPage selectExistedGroup(){
+        if(listOfGroups.size() != 0){
+            fillGroupName(listOfGroups.get(0).getAttribute("value"));
+        }
+        return this;
+    }
+
+    public AddLessonPage selectExistedMentor(){
+        if(listOfMentors.size() != 0){
+            fillEmailInput(listOfMentors.get(0).getAttribute("value"));
+        }
+        return this;
+    }
+
     public static AddLessonPage init(WebDriver driver){
         return new AddLessonPage(driver);
     }

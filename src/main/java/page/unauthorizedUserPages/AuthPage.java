@@ -15,8 +15,10 @@ import util.User;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static constants.Locators.Auth.*;
+import static org.awaitility.Awaitility.await;
 
 public class AuthPage extends BasePage {
 
@@ -74,8 +76,13 @@ public class AuthPage extends BasePage {
         defaultPages.put(Role.MENTOR.getRoleName(), new LessonsPage(driver));
     }
 
-    public boolean isAt() {
-        return driver.getCurrentUrl().equals(Endpoints.AUTH);
+    public AuthPage isAt() {
+        try{
+            await().until(() -> driver.getCurrentUrl().equals(Endpoints.AUTH));
+            return new AuthPage(driver);
+        }catch(Exception e){
+            return  null;
+        }
     }
 
     public void clickLogInButton() {

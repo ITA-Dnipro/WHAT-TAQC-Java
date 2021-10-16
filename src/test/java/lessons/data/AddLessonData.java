@@ -11,6 +11,16 @@ public class AddLessonData {
     protected String date;
     protected String email;
 
+    public AddLessonData() {
+    }
+
+    public AddLessonData(String theme, String g_name, String date, String email) {
+        this.theme = theme;
+        this.g_name = g_name;
+        this.date = date;
+        this.email = email;
+    }
+
     public String getTheme() {
         return theme;
     }
