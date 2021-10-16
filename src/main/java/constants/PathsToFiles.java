@@ -11,8 +11,7 @@ public class PathsToFiles {
         String ADD_LESSON_CORRECT_DATA = BASE_PATH + "lessons/AddLessonCorrectData.json";
         String ADD_LESSON_ERRORS = BASE_PATH + "lessons/AddLessonErrors.json";
         String EDIT_LESSON_ERRORS = BASE_PATH + "lessons/EditLessonErrors.json";
-        String ADD_LESSON_CORRECT_DATA = BASE_PATH + "/lessons/AddLessonCorrectData.json";
-        String ADD_LESSON_ERRORS = BASE_PATH + "/lessons/AddLessonErrors.json";
+
     }
 
     public interface ChangePassword {

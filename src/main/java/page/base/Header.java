@@ -3,7 +3,7 @@ package page.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import page.ChangePassword.ChangePasswordPage;
+import page.changePassword.ChangePasswordPage;
 import page.myProfile.MyProfilePage;
 
 import static constants.Locators.Header.*;

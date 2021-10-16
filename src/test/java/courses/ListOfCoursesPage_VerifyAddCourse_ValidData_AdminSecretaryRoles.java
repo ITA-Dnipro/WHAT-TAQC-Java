@@ -1,14 +1,14 @@
-package Courses;
+package courses;
 
-import Courses.coursesData.AddCoursesData;
+import courses.coursesData.AddCoursesData;
 import base.BaseTest;
 import base.Role;
 import constants.Endpoints;
 import constants.PathsToFiles;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import page.courses.CoursesPage;
 
 import java.io.File;
@@ -32,11 +32,10 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
     }
 
     @Test(dataProvider = "changeName")
-    public void addCourse(Role role, AddCoursesData data) {
+    public void addCourse(Role role, AddCoursesData data) throws InterruptedException {
 
         String expectedResult = "×\nClose alert\nThe course has been successfully added";
         coursesPage = new CoursesPage(driver);
-        SoftAssert softAssert = new SoftAssert();
 
         helper.logInAs(role);
 
@@ -46,13 +45,14 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
         this.coursesPage
                 .addCoursePage()
                 .inputAddCourseName(data.getСourseName())
-                .saveNewCourse();
-        helper.waitForVisibilityOfElement(coursesPage.alertAddCourse());
-        softAssert.assertEquals(coursesPage.alertAddCourse(), expectedResult);
-        softAssert.assertAll();
+                .saveNewCourse()
+                .fillCourseSearchField(" ")
+                .fillCourseSearchField(data.getСourseName())
+                .loseFocus();
+        Assert.assertEquals(coursesPage.getCoursesRowsList().get(0).getText(), data.getСourseName());
+        Assert.assertEquals(coursesPage.getAlertAddCourse().getText(), expectedResult);
 
         coursesPage.getHeader().logOut();
+        helper.waitDownloadPage(Endpoints.AUTH);
     }
 }
-
-

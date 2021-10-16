@@ -1,10 +1,12 @@
 package page.courses;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 
+import java.security.Key;
 import java.util.List;
 
 import static constants.Locators.Courses.*;
@@ -100,7 +102,7 @@ public class CoursesPage extends Page {
         loseFocus.click();
     }
 
-    public WebElement alertAddCourse() {
+    public WebElement getAlertAddCourse() {
         return alertAddCourse;
     }
 }

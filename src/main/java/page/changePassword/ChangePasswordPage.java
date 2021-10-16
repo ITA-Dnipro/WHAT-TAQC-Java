@@ -1,9 +1,12 @@
 package page.changePassword;
 
+import constants.PathsToFiles;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import page.base.Page;
 import page.myProfile.MyProfilePage;
@@ -59,25 +62,26 @@ public class ChangePasswordPage extends Page {
     }
 
     public ChangePasswordPage checkEmailField() {
+        if(emailInput.isDisplayed() && !emailInput.isEnabled())
         clickElement(emailInput);
         return this;
     }
 
-    public ChangePasswordPage fillCurrentPasswordField(String currentPassword, String errorMessage) {
+    public ChangePasswordPage fillCurrentPasswordField(String currentPassword) {
         fillField(currentPasswordField, currentPassword);
-//        verifyErrors(errorMessage, errMessageCurrPassword);
+        loseFocus();
         return this;
     }
 
-    public ChangePasswordPage fillNewPasswordField(String newPassword, String errorMessage) {
+    public ChangePasswordPage fillNewPasswordField(String newPassword) {
         fillField(newPasswordField, newPassword);
-//        verifyErrors(errorMessage, errMessageNewPassword);
+        loseFocus();
         return this;
     }
 
-    public ChangePasswordPage fillConfirmPasswordField(String confirmPassword, String errorMessage) {
+    public ChangePasswordPage fillConfirmPasswordField(String confirmPassword) {
         fillField(confirmPasswordField, confirmPassword);
-//        verifyErrors(errorMessage, errMessageConfirmPassword);
+        loseFocus();
         return this;
     }
 
@@ -108,10 +112,21 @@ public class ChangePasswordPage extends Page {
     }
 
     public String getCurrentPasswordError() {
+        try {
+            errMessageCurrPassword.getText();
+        } catch (NotFoundException e) {
+            return null;
+        }
+
         return errMessageCurrPassword.getText();
     }
 
     public String getNewPasswordError() {
+        try {
+            errMessageNewPassword.getText();
+        } catch (NotFoundException e) {
+            return null;
+        }
         return errMessageNewPassword.getText();
     }
 
@@ -119,14 +134,19 @@ public class ChangePasswordPage extends Page {
         return errMessageConfirmPassword.getText();
     }
 
-    private void verifyErrors( String errorMessage, WebElement error) {
-        loseFocus();
-        try {
-            softAssert.assertEquals(error.getText(), errorMessage);
-        }
-        catch (NotFoundException e){
-            //TODO Logger!
-        }
+    public ChangePasswordPage verifyCurrentPasswordError(String expectedErrorMessage, String currentPasswordError) {
+            softAssert.assertEquals(currentPasswordError, expectedErrorMessage);
+        return this;
+    }
+
+    public ChangePasswordPage verifyNewPasswordError(String expectedErrorMessage, String newPasswordError) {
+        softAssert.assertEquals(newPasswordError, expectedErrorMessage);
+        return this;
+    }
+
+    public ChangePasswordPage verifyConfirmPassword(String expectedErrorMessage, String confirmPasswordError) {
+        softAssert.assertEquals(confirmPasswordError, expectedErrorMessage);
+        return this;
     }
 
     public void loseFocus() {

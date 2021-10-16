@@ -1,12 +1,16 @@
-package changePassword.dataPasswords.data;
+package changePassword;
 
 import base.BaseTest;
 import base.Role;
 import base.TestHelper;
+import base.User;
+import changePassword.dataPasswords.data.ChangePasswordValidData;
 import constants.Endpoints;
 import constants.PathsToFiles;
-import lessons.data.User;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import page.auth.AuthPage;
 import page.courses.CoursesPage;
@@ -19,8 +23,8 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser222 extend
     private ChangePasswordValidData[] passwordsList;
     private TestHelper testHelper;
     private CoursesPage coursesPage;
-    Object[][] list;
-    User mentor;
+    private Object[][] list;
+    private User mentor;
     private String currentPassword;
     private String basePassword;
 
@@ -37,7 +41,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser222 extend
     }
 
     @DataProvider(name = "log_in")
-    public Object[][] provideCredentials() {
+    public Object[][] providePasswords() {
 
         for (int i = 0; i < passwordsList.length; i++) {
             list[i][0] = passwordsList[i];
@@ -58,9 +62,9 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser222 extend
         coursesPage
                 .getHeader()
                 .changePassword()
-                .fillCurrentPasswordField(currentPassword, null)
-                .fillNewPasswordField(newPassword.getNewPassword(), null)
-                .fillConfirmPasswordField(newPassword.getNewPassword(), null)
+                .fillCurrentPasswordField(currentPassword)
+                .fillNewPasswordField(newPassword.getNewPassword())
+                .fillConfirmPasswordField(newPassword.getNewPassword())
                 .saveChangePassword()
                 .confirmChangedPassword();
         currentPassword = newPassword.getNewPassword();
@@ -74,8 +78,8 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser222 extend
                 .clickSignIn();
         helper.waitForRedirectFrom(Endpoints.AUTH);
         softAssert.assertAll();
-
     }
+
     @AfterClass
     protected void restorePassword() {
         driver.get(Endpoints.COURSES);
@@ -83,9 +87,9 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser222 extend
         coursesPage
                 .getHeader()
                 .changePassword()
-                .fillCurrentPasswordField(currentPassword, null)
-                .fillNewPasswordField(basePassword, null)
-                .fillConfirmPasswordField(basePassword, null)
+                .fillCurrentPasswordField(currentPassword)
+                .fillNewPasswordField(basePassword)
+                .fillConfirmPasswordField(basePassword)
                 .saveChangePassword()
                 .confirmChangedPassword();
         helper.waitDownloadPage(Endpoints.COURSES);

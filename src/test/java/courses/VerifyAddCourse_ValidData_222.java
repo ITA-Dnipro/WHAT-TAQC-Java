@@ -1,9 +1,9 @@
-package Courses.coursesData;
+package courses;
 
+import courses.coursesData.AddCoursesData;
 import base.BaseTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
-import lessons.data.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -16,7 +16,6 @@ public class VerifyAddCourse_ValidData_222 extends BaseTest {
 
     private ObjectMapper mapper = new ObjectMapper();
     private AddCoursesData[] courseNameList;
-    private User user;
     private CoursesPage coursesPage = new CoursesPage(driver);
 
     @BeforeClass
@@ -38,8 +37,8 @@ public class VerifyAddCourse_ValidData_222 extends BaseTest {
                 .inputAddCourseName("Course 22")
                 .saveNewCourse().fillCourseSearchField("Course 22");
 
-            Assert.assertEquals(coursesPage.getCoursesRowsList().get(0), "Course 22");
-        }
+        Assert.assertEquals(coursesPage.getCoursesRowsList().get(0), "Course 22");
     }
+}
 
 

@@ -35,15 +35,15 @@ public class ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUser extends
     }
 
     @DataProvider(name = "change-password")
-    public Object[][] providerCredentials() {
+    public Object[][] providePasswords() {
         for (int i = 0; i < list.length; i++) {
             list[i][0] = passwordsList[i];
         }
         return list;
     }
 
-    @Test(dataProvider = "change-password")
-    public void changePassword_InvalidData_Test(ChangePasswordInvalidData password) {
+    @Test(description = "DP213-29", dataProvider = "change-password")
+    public void changePassword_InvalidData_Test(ChangePasswordInvalidData password) throws InterruptedException {
         SoftAssert softAssert = new SoftAssert();
         coursesPage = new CoursesPage(driver);
         changePasswordPage = new ChangePasswordPage(driver);
@@ -53,9 +53,13 @@ public class ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUser extends
         coursesPage
                 .getHeader()
                 .changePassword()
-                .fillCurrentPasswordField(password.getCurrantPassword(), password.getCurrantPasswordResult())
-                .fillNewPasswordField(password.getNewPassword(), password.getNewPasswordResult())
-                .fillConfirmPasswordField(password.getConfirmPassword(), password.getConfirmPasswordResult())
+                .checkEmailField()
+                .fillCurrentPasswordField(password.getCurrantPassword())
+                .verifyCurrentPasswordError(password.getCurrantPasswordResult(), changePasswordPage.getCurrentPasswordError())
+                .fillNewPasswordField(password.getNewPassword())
+                .verifyNewPasswordError(password.getNewPasswordResult(), changePasswordPage.getNewPasswordError())
+                .fillConfirmPasswordField(password.getConfirmPassword())
+                .verifyConfirmPassword(password.getConfirmPasswordResult(), changePasswordPage.getConfirmPasswordError())
                 .cancelChangePassword();
         softAssert.assertAll();
     }
