@@ -21,18 +21,26 @@ public class RegistrationPage_VerifyRegistrationUser_ValidParameters extends Bas
     }
 
     @Test
-    public void verifyRegistrationUserValidParameters(){
-        softAsserts = registrationPage.verifyFillingFirstNameInputField("")
+    public void verifyInputFieldsAreEmpty(){
+        softAsserts =
+                registrationPage.verifyFillingFirstNameInputField("")
         .verifyFillingLastNameInputField("")
         .verifyFillingEmailInputField("")
-        .verifyPasswordErrorMessage("")
-        .verifyConfirmPasswordErrorMessage("")
-        .verifyFirstNameErrorIsDisplayed(false)
-        .verifyLastNameErrorIsDisplayed(false)
-        .verifyEmailErrorIsDisplayed(false)
-        .verifyPasswordErrorIsDisplayed(false)
-        .verifyConfirmPasswordErrorIsDisplayed(false)
+        .verifyFillingPasswordInputField("")
+        .verifyFillingConfirmPasswordInputField("")
         .getSoftAssert();
+        softAsserts.assertAll();
+    }
+    @Test
+    public void verifyErrorMessagesAreNotDisplayed(){
+        softAsserts =
+                registrationPage.verifyFirstNameErrorIsDisplayed(false)
+                .verifyLastNameErrorIsDisplayed(false)
+                .verifyEmailErrorIsDisplayed(false)
+                .verifyPasswordErrorIsDisplayed(false)
+                .verifyConfirmPasswordErrorIsDisplayed(false)
+                .getSoftAssert();
+        softAsserts.assertAll();
     }
 
 
