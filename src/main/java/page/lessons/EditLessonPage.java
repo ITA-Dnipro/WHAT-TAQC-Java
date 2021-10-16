@@ -34,14 +34,15 @@ public class EditLessonPage extends Page<EditLessonPage> {
 
     @Override
     public boolean isAt() {
-        return title.getText().equals("Edit lesson");
+        return title.getText().equals("Edit a Lesson");
     }
 
     public static EditLessonPage init(WebDriver driver){
         return new EditLessonPage(driver);
     }
 
-    public EditLessonPage fillLessonThemeInput(String data, String errorMessage){
+    public EditLessonPage fillLessonThemeInput(String data){
+        System.out.println(lessonThemeInput.getText());
         fillField(lessonThemeInput, data);
         return this;
     }

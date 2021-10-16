@@ -2,11 +2,16 @@ package page.lessons;
 
 import constants.Endpoints;
 import org.apache.log4j.Logger;
+import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
 import page.base.Page;
+import util.RandomStringsGenerator;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import static constants.Locators.AddLesson.*;
 
@@ -109,6 +114,17 @@ public class AddLessonPage extends Page<AddLessonPage> {
             fillEmailInput(listOfMentors.get(0).getAttribute("value"));
         }
         return this;
+    }
+
+    public LessonsPage addLessonForTest(){
+        fillLessonTheme(RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5))
+                .selectExistedGroup()
+                .fillDateInput(LocalDateTime.now().minusDays(1)
+                        .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm")))
+                .selectExistedMentor()
+                .clickClassRegisterButton()
+                .clickSaveButton();
+        return new LessonsPage(driver);
     }
 
     public static AddLessonPage init(WebDriver driver){

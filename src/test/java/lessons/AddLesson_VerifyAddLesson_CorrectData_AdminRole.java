@@ -14,15 +14,12 @@ import page.unauthorizedUserPages.AuthPage;
 import util.RandomStringsGenerator;
 import util.Role;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
 
      protected LessonsPage lessonsPage;
-     protected AddLessonData data;
-
-    public AddLesson_VerifyAddLesson_CorrectData_AdminRole() throws IOException {
-        data = AddLessonData.getData(PathsToFiles.Lessons.ADD_LESSON_CORRECT_DATA);
-    }
 
     @BeforeClass
     public void precondition() throws IOException {
@@ -33,13 +30,8 @@ public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
                 .isAtPage(waitTime);
     }
 
-    @DataProvider(name = "addLesson")
-    public Object[][] getData(){
-        return new Object[][]{{data}};
-    }
-
-    @Test(description = "DP213-62", dataProvider = "addLesson", priority = 1)
-    public void test(AddLessonData data) throws IOException {
+    @Test(description = "DP213-62")
+    public void test() throws IOException {
 
         String expectedResult = "×\nClose alert\nThe lesson has been added successfully!";
 
@@ -47,7 +39,8 @@ public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
                 .clickAddLessonButton().isAtPage(this.waitTime)
                 .fillLessonTheme(RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5))
                 .selectExistedGroup()
-                .fillDateInput("0303202000:00")
+                .fillDateInput(LocalDateTime.now().minusDays(1)
+                        .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm")))
                 .selectExistedMentor()
                 .clickClassRegisterButton()
                 .clickSaveButton()

@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class AddLesson_VerifyAddLesson_CorrectData_MentorRole extends AddLesson_VerifyAddLesson_CorrectData_AdminRole {
 
-    public AddLesson_VerifyAddLesson_CorrectData_MentorRole() throws IOException {
+    public AddLesson_VerifyAddLesson_CorrectData_MentorRole(){
     }
 
     @BeforeClass
@@ -20,10 +20,9 @@ public class AddLesson_VerifyAddLesson_CorrectData_MentorRole extends AddLesson_
                 .isAtPage(waitTime);
     }
 
-    @org.testng.annotations.Test(description = "DP213-62", dataProvider = "addLesson", priority = 1,
-            dataProviderClass = AddLesson_VerifyAddLesson_CorrectData_AdminRole.class)
+    @org.testng.annotations.Test(description = "DP213-62")
     @Override
-    public void test(AddLessonData data) throws IOException {
-        super.test(data);
+    public void test() throws IOException {
+        super.test();
     }
 }
