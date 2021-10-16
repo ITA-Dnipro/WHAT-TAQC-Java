@@ -2,11 +2,8 @@ package lessons;
 
 import base.BaseTest;
 import constants.Endpoints;
-import constants.PathsToFiles;
-import lessons.data.AddLessonData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.lessons.LessonsPage;
 import page.students.StudentsPage;

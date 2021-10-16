@@ -9,7 +9,6 @@ import page.lessons.LessonsPage;
 import page.mentors.EditMentorsDetailsPage;
 import page.mentors.MentorsTablePage;
 import page.unassigned.UnassignedUsersPage;
-
 import java.util.HashMap;
 import java.util.Map;
 

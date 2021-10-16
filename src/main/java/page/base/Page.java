@@ -2,11 +2,8 @@ package page.base;
 
 import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import page.unauthorizedUserPages.AuthPage;
-
 import java.io.IOException;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static org.awaitility.Awaitility.await;
