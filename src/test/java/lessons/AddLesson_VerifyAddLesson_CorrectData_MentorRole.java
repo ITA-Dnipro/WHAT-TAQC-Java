@@ -1,6 +1,5 @@
 package lessons;
 
-import lessons.data.AddLessonData;
 import org.testng.annotations.BeforeClass;
 import page.unauthorizedUserPages.AuthPage;
 import page.lessons.LessonsPage;

@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 
 public class EditLesson_VerifyEditLesson_CorrectData_AdminRole extends BaseTest {
 
-    LessonsPage lessonsPage;
+    protected LessonsPage lessonsPage;
 
     @BeforeClass
     public void precondition() throws IOException {
