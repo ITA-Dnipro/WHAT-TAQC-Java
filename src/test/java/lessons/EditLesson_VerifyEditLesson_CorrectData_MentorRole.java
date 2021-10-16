@@ -1,6 +1,7 @@
 package lessons;
 
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import page.lessons.LessonsPage;
 import page.unauthorizedUserPages.AuthPage;
 import util.Role;
@@ -22,5 +23,11 @@ public class EditLesson_VerifyEditLesson_CorrectData_MentorRole extends EditLess
                     .isAtPage(waitTime)
                     .addLessonForTest();
         }
+    }
+
+    @Test(description = "DP213-44")
+    @Override
+    public void editLessonTest() {
+        super.editLessonTest();
     }
 }

@@ -1,6 +1,7 @@
 package lessons;
 
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import page.unauthorizedUserPages.AuthPage;
 import page.lessons.LessonsPage;
 import util.Role;
@@ -19,7 +20,7 @@ public class AddLesson_VerifyAddLesson_CorrectData_MentorRole extends AddLesson_
                 .isAtPage(waitTime);
     }
 
-    @org.testng.annotations.Test(description = "DP213-62")
+    @Test(description = "DP213-62")
     @Override
     public void test() throws IOException {
         super.test();

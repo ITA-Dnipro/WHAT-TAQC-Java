@@ -35,7 +35,7 @@ public class EditLesson_VerifyEditLesson_CorrectData_AdminRole extends BaseTest 
         }
     }
 
-    @Test()
+    @Test(description = "DP213-44")
     public void editLessonTest(){
 
         String expectedResult = "×\nClose alert\nThe lesson has been edited successfully";

@@ -22,10 +22,10 @@ public class EditLessonPage extends Page<EditLessonPage> {
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement title;
 
+
     private static final Logger logger = Logger.getLogger(EditLessonPage.class.getName());
 
     ClassBookFeature classBook;
-    SoftAssert softAssert;
 
     public EditLessonPage(WebDriver driver) {
         super(driver);
@@ -52,17 +52,16 @@ public class EditLessonPage extends Page<EditLessonPage> {
         return this;
     }
 
-    public SoftAssert getSoftAssert() {
-        return softAssert;
+    public EditLessonPage loseFocus(){
+        title.click();
+        return this;
     }
 
-    public void setSoftAssert(SoftAssert softAssert) {
-        this.softAssert = softAssert;
+    public String getThemeInputError(){
+        return error.getText();
     }
 
-    public WebElement getLessonThemeInput() {
-        return lessonThemeInput;
-    }
+
 
     public LessonsPage clickSaveButton(){
         classBook.clickSaveButton();
