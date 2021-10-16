@@ -5,17 +5,17 @@ import constants.PathsToFiles;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import page.mentors.MentorsTablePage;
 import page.students.StudentsPage;
 import page.base.BasePage;
 import page.base.Page;
 import page.lessons.LessonsPage;
 import util.Role;
 import util.User;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
 
 import static constants.Locators.Auth.*;
 import static org.awaitility.Awaitility.await;
@@ -63,7 +63,6 @@ public class AuthPage extends BasePage {
         return new AuthPage(driver);
     }
 
-
     public <T extends Page> T logInAs(Role role, Class<T> type) {
         fillMail(users.get(role.getRoleName()).getMail())
                 .fillPass(users.get(role.getRoleName()).getPass())
@@ -74,6 +73,7 @@ public class AuthPage extends BasePage {
     private void initDefaultPages() {
         defaultPages.put(Role.ADMIN.getRoleName(), new StudentsPage(driver));
         defaultPages.put(Role.MENTOR.getRoleName(), new LessonsPage(driver));
+        defaultPages.put(Role.SECRETARY.getRoleName(), new MentorsTablePage(driver));
     }
 
     public AuthPage isAt() {
