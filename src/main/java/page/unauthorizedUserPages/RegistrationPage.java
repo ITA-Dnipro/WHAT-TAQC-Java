@@ -126,12 +126,13 @@ public class RegistrationPage extends BasePage {
     }
 
     public RegistrationPage verifyFirstNameErrorIsDisplayed(boolean condition) {
-        softAssert.assertEquals(lastNameError.isDisplayed(), condition);
+        boolean result = !firstNameError.getText().equals("");
+        softAssert.assertEquals(result, condition);
         return this;
     }
 
     public RegistrationPage verifyFirstNameErrorMessage(String expectedErrorMessage) {
-        if (lastNameError.isDisplayed()) {
+        if (!firstNameError.getText().equals("")) {
             softAssert.assertEquals(firstNameError.getText(), expectedErrorMessage);
             return this;
         } else {
@@ -141,12 +142,13 @@ public class RegistrationPage extends BasePage {
     }
 
     public RegistrationPage verifyLastNameErrorIsDisplayed(boolean condition) {
-        softAssert.assertEquals(lastNameError.isDisplayed(), condition);
+        boolean result = !lastNameError.getText().equals("");
+        softAssert.assertEquals(result, condition);
         return this;
     }
 
     public RegistrationPage verifyLastNameErrorMessage(String expectedErrorMessage) {
-        if (lastNameError.isDisplayed()) {
+        if (!lastNameError.getText().equals("")) {
             softAssert.assertEquals(lastNameError.getText(), expectedErrorMessage);
             return this;
         } else {
@@ -156,12 +158,13 @@ public class RegistrationPage extends BasePage {
     }
 
     public RegistrationPage verifyEmailErrorIsDisplayed(boolean condition) {
-        softAssert.assertEquals(emailError.isDisplayed(), condition);
+        boolean result = !emailError.getText().equals("");
+        softAssert.assertEquals(result, condition);
         return this;
     }
 
     public RegistrationPage verifyEmailErrorMessage(String expectedErrorMessage) {
-        if (emailError.isDisplayed()) {
+        if (!emailError.getText().equals("")) {
             softAssert.assertEquals(emailError.getText(), expectedErrorMessage);
             return this;
         } else {
@@ -169,12 +172,13 @@ public class RegistrationPage extends BasePage {
         }
     }
     public RegistrationPage verifyPasswordErrorIsDisplayed(boolean condition) {
-        softAssert.assertEquals(passwordError.isDisplayed(), condition);
+        boolean result = !passwordError.getText().equals("");
+        softAssert.assertEquals(result, condition);
         return this;
     }
 
     public RegistrationPage verifyPasswordErrorMessage(String expectedErrorMessage) {
-        if (passwordError.isDisplayed()) {
+        if (!passwordError.getText().equals("")) {
             softAssert.assertEquals(passwordError.getText(), expectedErrorMessage);
             return this;
         } else {
@@ -182,12 +186,13 @@ public class RegistrationPage extends BasePage {
         }
     }
     public RegistrationPage verifyConfirmPasswordErrorIsDisplayed(boolean condition) {
-        softAssert.assertEquals(confirmPasswordError.isDisplayed(), condition);
+        boolean result = !confirmPasswordError.getText().equals("");
+        softAssert.assertEquals(result, condition);
         return this;
     }
 
     public RegistrationPage verifyConfirmPasswordErrorMessage(String expectedErrorMessage) {
-        if (confirmPasswordError.isDisplayed()) {
+        if (!confirmPasswordError.getText().equals("")) {
             softAssert.assertEquals(confirmPasswordError.getText(), expectedErrorMessage);
             return this;
         } else {

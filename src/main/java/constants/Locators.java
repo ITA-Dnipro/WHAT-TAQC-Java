@@ -266,6 +266,11 @@ public class Locators {
         String EMAIL_INPUT_FIELD_XPATH = "//input[@name='email']";
         String PASSWORD_INPUT_FIELD_XPATH = "//input[@name='password']";
         String CONFIRM_PASSWORD_INPUT_FIELD_XPATH = "//input[@name='confirmPassword']";
+        String FIRST_NAME_ERROR_XPATH = "//input[@name='firstName']//following-sibling::p";
+        String LAST_NAME_ERROR_XPATH = "//input[@name='lastName']//following-sibling::p";
+        String EMAIL_ERROR_XPATH = "//input[@name='email']//following-sibling::p";
+        String PASSWORD_ERROR_XPATH = "//input[@name='password']//following-sibling::p";
+        String CONFIRM_PASSWORD_ERROR_XPATH = "//input[@name='confirmPassword']//following-sibling::p";
         String SIGN_UP_BUTTON_XPATH = "//button[text()= 'Sign up']";
         String LOG_IN_XPATH = "//a[@href='/auth']";
         String MODAL_WINDOW = "//*[contains(@class,'modal-content')]";
