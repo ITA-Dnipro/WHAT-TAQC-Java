@@ -48,7 +48,7 @@ public class AddLesson_VerifyAddLesson_IncorrectData_AdminRole extends BaseTest{
         return list;
     }
 
-    @Test(dataProvider = "errors")
+    @Test(description = "DP213-186", dataProvider = "errors")
     public void verifyAddLessonIncorrectData(AddLessonData addLessonData){
 
         addLessonPage
