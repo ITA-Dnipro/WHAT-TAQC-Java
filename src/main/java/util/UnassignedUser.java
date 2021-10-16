@@ -31,4 +31,11 @@ public class UnassignedUser {
     public static UnassignedUser getUnassignedUser(String firstName, String lastName, String email, String password){
         return new UnassignedUser(firstName, lastName, email, password);
     }
+    public static UnassignedUser getUnassignedUser(){
+        String firstName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
+        String lastName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
+        String password = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
+        String email = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
+        return new UnassignedUser(firstName, lastName, email, password);
+    }
 }
