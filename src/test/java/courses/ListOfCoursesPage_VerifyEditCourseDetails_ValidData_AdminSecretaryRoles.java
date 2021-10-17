@@ -55,6 +55,7 @@ public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryR
                 .isAtPage(waitTime)
                 .fillCourseSearchField(editData.getNewCourseName())
                 .isAtPage(waitTime);
+        coursesPage.getSoftAssert().assertAll();
 
         Assert.assertEquals(coursesPage.getCoursesRowsList().get(0).getText(), editData.getNewCourseName());
         Assert.assertEquals(coursesPage.getAlertAddCourse().getText(), expectedResult);

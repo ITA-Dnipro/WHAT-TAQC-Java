@@ -24,3 +24,4 @@ AuthPage.java
 /src/main/resources/credentials/
 /src/main/resources/log4j.properties
 /allure-results/
+src/main/resources/changePassword/ChangePasswordWithPasswords.json

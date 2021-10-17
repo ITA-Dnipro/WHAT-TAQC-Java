@@ -46,10 +46,10 @@ public class CoursesPage extends Page<CoursesPage> {
     private List<WebElement> rowsList;
 
     @FindBy(xpath = COURSE_TITLE_XPATH)
-    WebElement loseFocus;
+    private WebElement loseFocus;
 
     @FindBy (xpath = ALERT_ADD_COURSE_XPATH)
-    WebElement alertAddCourse;
+    private WebElement alertAddCourse;
 
     public CoursesPage(WebDriver driver) {
         super(driver);
@@ -75,7 +75,7 @@ public class CoursesPage extends Page<CoursesPage> {
         return new AddCoursePage(driver);
     }
 
-    public CoursesPage fillCourseSearchField(String courseName) throws InterruptedException {
+    public CoursesPage fillCourseSearchField(String courseName) {
         fillField(searchField, courseName);
         return this;
     }
@@ -114,7 +114,7 @@ public class CoursesPage extends Page<CoursesPage> {
     }
 
     public CoursesPage verifyOldCourseNameExist(String oldName) {
-        Assert.assertTrue(getCoursesRowsList().get(0).isDisplayed(), oldName);
+        softAssert.assertTrue(getCoursesRowsList().get(0).isDisplayed(), oldName);
         return this;
     }
 }

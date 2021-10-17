@@ -2,6 +2,7 @@ package page.base;
 
 import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
+import org.testng.asserts.SoftAssert;
 import page.myProfile.MyProfilePage;
 import page.unauthorizedUserPages.AuthPage;
 import java.io.IOException;
@@ -18,11 +19,13 @@ public abstract class Page<I extends Page<I>> extends BasePage {
 
     protected Header header;
     protected SideBar sideBar;
+    protected SoftAssert softAssert;
 
     public Page(WebDriver driver) {
         super(driver);
         sideBar = new SideBar(driver);
         header = new Header(driver);
+        softAssert = new SoftAssert();
     }
 
     public <T> T redirectTo(String url, Class<T> type){
@@ -36,7 +39,6 @@ public abstract class Page<I extends Page<I>> extends BasePage {
     }
 
     public MyProfilePage clickUserIcon() throws InterruptedException {
-        Thread.sleep(1000);
         return header.clickUserIcon();
     }
 
@@ -60,5 +62,9 @@ public abstract class Page<I extends Page<I>> extends BasePage {
 
     public AuthPage logOut() throws IOException {
         return header.logOut();
+    }
+
+    public SoftAssert getSoftAssert() {
+        return softAssert;
     }
 }

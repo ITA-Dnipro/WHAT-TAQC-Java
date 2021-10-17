@@ -1,7 +1,5 @@
 package page.myProfile;
 
-import constants.Endpoints;
-import constants.Locators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +13,7 @@ public class MyProfilePage extends Page<MyProfilePage> {
         super(driver);
     }
 
-    @FindBy (xpath = CHANGE_PASSWORD_BUTTON)
+    @FindBy(xpath = CHANGE_PASSWORD_BUTTON)
     private WebElement changePasswordButton;
 
     @Override
@@ -23,26 +21,8 @@ public class MyProfilePage extends Page<MyProfilePage> {
         return changePasswordButton.isEnabled();
     }
 
-    public interface UpdateCurrentPassword {
-        String change(String currentPassword, String newPassword);
-    }
-
-    public MyProfilePage updateCurrentPassword(String newPassword) {
-        UpdateCurrentPassword change = (currentPassword, newPasswords) -> currentPassword = newPassword;
-        return this;
-    }
-
     public ChangePasswordPage clickChangePasswordButton() {
-        log.info(changePasswordButton.getText());
         clickElement(changePasswordButton);
         return new ChangePasswordPage(driver);
-    }
-
-    @FindBy (xpath = "//h3[@class='pt-3']")
-    WebElement loseFocus;
-
-    public MyProfilePage loseFocus () {
-        clickElement(loseFocus);
-        return this;
     }
 }

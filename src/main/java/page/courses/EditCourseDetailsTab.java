@@ -1,6 +1,5 @@
 package page.courses;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,8 +14,6 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
     public EditCourseDetailsTab(WebDriver driver) {
         super(driver);
     }
-
-
 
     @FindBy(xpath = ARROW_BUTTON_XPATH)
     private WebElement arrowButton;
@@ -48,12 +45,13 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
     @FindBy(xpath = COURSE_NAME_ERROR_MESSAGE_XPATH)
     private WebElement errorMessage;
 
+    @FindBy(xpath = EDIT_COURSE_DETAILS_TAB_TITLE_XPATH)
+    private WebElement title;
+
     @Override
     public boolean isAt() {
         String courseDetailsTabTitle = "Course Editing";
-        return driver.findElement(By.xpath(
-                EDIT_COURSE_DETAILS_TAB_TITLE_XPATH)).getText()
-                .contains(courseDetailsTabTitle);
+        return title.getText().contains(courseDetailsTabTitle);
     }
 
     public CoursesPage outFromEditCourseDetails() {

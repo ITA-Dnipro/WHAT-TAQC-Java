@@ -71,8 +71,7 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return this;
     }
 
-    public ChangePasswordPage fillCurrentPasswordField(String currentPassword) throws InterruptedException {
-        Thread.sleep(2000);
+    public ChangePasswordPage fillCurrentPasswordField(String currentPassword) {
         fillField(currentPasswordField, currentPassword);
         return this;
     }
@@ -84,7 +83,6 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
     public ChangePasswordPage fillConfirmPasswordField(String confirmPassword) {
         fillField(confirmPasswordField, confirmPassword);
-        softAssert.assertEquals(confirmPasswordField.getText(), confirmPassword);
         return this;
     }
 
