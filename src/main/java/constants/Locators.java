@@ -17,6 +17,11 @@ public class Locators {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
 
+    public interface HomePageUrl {
+        String ADMIN_HOME_PAGE = "http://localhost:8080/students";
+
+    }
+
     public interface Header {
         String LOGO_XPATH = "//*[contains(@class,'logo')]";
         String ICON_XPATH = "//*[contains(@class,'icon')]";
@@ -25,6 +30,14 @@ public class Locators {
         String DROP_DOWN_MENU_CHANGE_PASSWORD_XPATH = "//li[a[contains(., 'Change password')]]";
         String DROP_DOWN_MENU_LOG_OUT_XPATH = "//li[a[contains(., 'Log Out')]]";
         String TRIANGLE_ICON_XPATH = "//*[contains(@class,'toggler')]";
+    }
+
+    public interface AuthMax {
+        String EMAIL_INPUT_FIELD_ID = "email";
+        String PASSWORD_INPUT_FIELD_ID = "password";
+        String SIGN_IN_BUTTON_XPATH = "//button[@type='submit']";
+        String FORGOT_PASSWORD_LINK_XPATH = "//a[text()='Fogot Password?']";
+        String REGISTRATION_LINK_XPATH = "//a[text()='Registration']";
     }
 
     public interface Lessons {
@@ -119,6 +132,7 @@ public class Locators {
     }
 
     public interface Courses {
+        String COURSE_TITLE_XPATH = "//h2[.='Courses']";
         String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']";
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
@@ -127,6 +141,9 @@ public class Locators {
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
         String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
+        String LIST_OF_VISIBLE_ROWS_NUMBERS_XPATH = "//*[@id='change-visible-people']/option";
+        String TABLE_ROWS_LIST_XPATH = "//tbody//tr";
+        String ALERT_ADD_COURSE_XPATH = "//div[@role='alert']";
     }
 
     public interface CourseDetailsPage {
@@ -140,6 +157,8 @@ public class Locators {
         String CANCEL_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='button'and contains(text(),'Cancel')]";
         String DELETE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='submit'and contains(text(),'Delete')]";
         String CLOSE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@class='close']";
+        String COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[.='Course Details']";
+        String EDIT_COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[.='Course Editing']";
     }
 
     public interface AddCoursePage {
@@ -149,6 +168,7 @@ public class Locators {
     }
 
     public interface ChangePasswordPage {
+        String PAGE_TITLE_XPATH = "//h3[.='Change Password']";
         String EMAIL_INPUT_FIELD_ID = "email";
         String CURRENT_PASSWORD_INPUT_FIELD_XPATH = "//*[@id='currentPassword']";
         String NEW_PASSWORD_INPUT_FIELD_ID = "newPassword";
@@ -162,7 +182,7 @@ public class Locators {
 
     public interface MentorsTablePage {
         String ADD_MENTOR_BUTTON_XPATH = "//span[text()='Add a mentor']";
-        String DISABLE_MENTORS_SWITCH_XPATH = "//label[text()='Disabled Mentors']";
+        String DISABLE_MENTORS_SWITCH_XPATH = "//input[@id='disabledMentors']";
         String SEARCH_INPUT_FIELD_XPATH = "//input[@class='search__searchInput___34nMl']";
         String SORT_NAME_ARROW_XPATH = "//span[text()='Name']";
         String SORT_SURNAME_ARROW_XPATH = "//span[text()='Surname']";
@@ -204,7 +224,7 @@ public class Locators {
         String DELETE_COURSE_BUTTON_XPATH = "//button[contains(@class,'delCourse')]";
         String ADD_COURSE_BUTTON_XPATH = "//button[@id='addCourse']";
         String DISABLE_BUTTON_XPATH = "//button[text()='Disable']";
-        String CLEAR_BUTTON_XPATH = "//button[text()='Reset']";
+        String CLEAR_BUTTON_XPATH = "//button[text()='Clear']";
         String SAVE_BUTTON_XPATH = "//button[text()='Save']";
         String ERROR_MASSAGE_XPATH = "//div[@class='edit-mentor__error___20Eyn']";
         String TITLE_XPATH = "//h3[text()='Mentor Editing']";
