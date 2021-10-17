@@ -1,8 +1,7 @@
 package lessons;
 
-import constants.Endpoints;
-import lessons.data.AddLessonData;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import page.unauthorizedUserPages.AuthPage;
 import page.lessons.LessonsPage;
 import util.Role;
@@ -10,23 +9,21 @@ import java.io.IOException;
 
 public class AddLesson_VerifyAddLesson_CorrectData_MentorRole extends AddLesson_VerifyAddLesson_CorrectData_AdminRole {
 
-    public AddLesson_VerifyAddLesson_CorrectData_MentorRole() throws IOException {
+    public AddLesson_VerifyAddLesson_CorrectData_MentorRole(){
     }
 
     @BeforeClass
     @Override
     public void precondition() throws IOException {
-        driver.get(Endpoints.BASE_URL);
-        lessonsPage = AuthPage.init(driver)
+        lessonsPage = AuthPage.init(driver).isAt()
                 .logInAs(Role.MENTOR, LessonsPage.class)
                 .isAtPage(waitTime);
+        log.info("Logged in as Mentor");
     }
 
-    @org.testng.annotations.Test(description = "DP213-62",
-            dataProvider = "addLesson",
-            dataProviderClass = AddLesson_VerifyAddLesson_CorrectData_AdminRole.class)
+    @Test(description = "DP213-62")
     @Override
-    public void test(AddLessonData data) throws IOException {
-        super.test(data);
+    public void verifyAddLesson() throws IOException {
+        super.verifyAddLesson();
     }
 }

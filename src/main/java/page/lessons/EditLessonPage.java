@@ -1,11 +1,9 @@
 package page.lessons;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
 import page.base.Page;
 import static constants.Locators.EditLesson.*;
 
@@ -23,10 +21,7 @@ public class EditLessonPage extends Page<EditLessonPage> {
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement title;
 
-    private static final Logger logger = Logger.getLogger(EditLessonPage.class.getName());
-
     ClassBookFeature classBook;
-    SoftAssert softAssert;
 
     public EditLessonPage(WebDriver driver) {
         super(driver);
@@ -35,14 +30,15 @@ public class EditLessonPage extends Page<EditLessonPage> {
 
     @Override
     public boolean isAt() {
-        return title.getText().equals("Edit lesson");
+        return title.getText().equals("Edit a Lesson");
     }
 
     public static EditLessonPage init(WebDriver driver){
         return new EditLessonPage(driver);
     }
 
-    public EditLessonPage fillLessonThemeInput(String data, String errorMessage){
+    public EditLessonPage fillLessonThemeInput(String data){
+        System.out.println(lessonThemeInput.getText());
         fillField(lessonThemeInput, data);
         return this;
     }
@@ -52,17 +48,16 @@ public class EditLessonPage extends Page<EditLessonPage> {
         return this;
     }
 
-    public SoftAssert getSoftAssert() {
-        return softAssert;
+    public EditLessonPage loseFocus(){
+        title.click();
+        return this;
     }
 
-    public void setSoftAssert(SoftAssert softAssert) {
-        this.softAssert = softAssert;
+    public String getThemeInputError(){
+        return error.getText();
     }
 
-    public WebElement getLessonThemeInput() {
-        return lessonThemeInput;
-    }
+
 
     public LessonsPage clickSaveButton(){
         classBook.clickSaveButton();

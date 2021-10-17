@@ -12,6 +12,19 @@ public class AddLessonErrors extends AddLessonData{
     String date_result;
     String email_result;
 
+    public AddLessonErrors() {
+    }
+
+    public AddLessonErrors(String theme, String g_name, String date, String email,
+                           String theme_result, String g_name_result,
+                           String date_result, String email_result) {
+        super(theme, g_name, date, email);
+        this.theme_result = theme_result;
+        this.g_name_result = g_name_result;
+        this.date_result = date_result;
+        this.email_result = email_result;
+    }
+
     public String getTheme_result() {
         return theme_result;
     }
