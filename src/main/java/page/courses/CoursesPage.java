@@ -1,5 +1,6 @@
 package page.courses;
 
+import constants.Endpoints;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +12,7 @@ import java.util.List;
 
 import static constants.Locators.Courses.*;
 
-public class CoursesPage extends Page {
+public class CoursesPage extends Page<CoursesPage> {
 
     @FindBy(xpath = EDIT_BUTTON_ADMIN_SECRETARY_XPATH)
     private List<WebElement> editButton;
@@ -53,7 +54,12 @@ public class CoursesPage extends Page {
         super(driver);
     }
 
-    public EditCourseDetailsTab editCourseDetailsTab(int numberRow) {
+    @Override
+    public boolean isAt() {
+        return driver.getCurrentUrl().equals(Endpoints.COURSES);
+    }
+
+    public EditCourseDetailsTab clickEditCourseDetailsTab(int numberRow) {
         clickElement(editButton.get(numberRow));
         return new EditCourseDetailsTab(driver);
     }
@@ -68,7 +74,7 @@ public class CoursesPage extends Page {
         return new AddCoursePage(driver);
     }
 
-    public CoursesPage fillCourseSearchField(String courseName) {
+    public CoursesPage fillCourseSearchField(String courseName) throws InterruptedException {
         fillField(searchField, courseName);
         return this;
     }

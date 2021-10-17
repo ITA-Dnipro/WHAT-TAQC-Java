@@ -1,13 +1,13 @@
-package page.unassignedUsers;
+package page.unassigned;
 
-public enum Role {
+public enum UnassignedRole {
     STUDENT("student"),
     MENTOR("mentor"),
     SECRETARY("secretary");
 
     private final String option;
 
-    private Role(String option) {
+    private UnassignedRole(String option) {
         this.option = option;
     }
 

@@ -1,13 +1,12 @@
-package page.registrationPage;
+package util;
 
-public class User {
-
+public class UnassignedUser {
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
-    public User(String firstName, String lastName, String email, String password) {
+    public UnassignedUser(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -28,5 +27,8 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+    public static UnassignedUser getUnassignedUser(String firstName, String lastName, String email, String password){
+        return new UnassignedUser(firstName, lastName, email, password);
     }
 }

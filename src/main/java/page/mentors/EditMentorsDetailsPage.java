@@ -3,14 +3,17 @@ package page.mentors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
 import page.base.Page;
 
 import static constants.Locators.EditMentorsDetailsPage.*;
 
-public class EditMentorsDetailsPage extends Page {
+public class EditMentorsDetailsPage extends Page<EditMentorsDetailsPage> {
     public EditMentorsDetailsPage(WebDriver driver) {
         super(driver);
     }
+
+
 
     @FindBy(xpath = MENTORS_DETAILS_TAB_XPATH)
     protected WebElement mentorsDetailsTab;
@@ -42,6 +45,15 @@ public class EditMentorsDetailsPage extends Page {
     protected WebElement clearButton;
     @FindBy(xpath = SAVE_BUTTON_XPATH)
     protected WebElement saveButton;
+    @FindBy(xpath = TITLE_XPATH)
+    protected WebElement tittleEditMentors;
+    @FindBy(xpath = FIRST_NAME_ERROR)
+    protected WebElement firstNameError;
+    @FindBy(xpath = LAST_NAME_ERROR)
+    protected WebElement lastNameError;
+    @FindBy(xpath = EMAIL_ERROR)
+    protected WebElement emailError;
+
 
     public MentorsTablePage backToMentorsTable() {
         clickElement(arrowButton);
@@ -116,5 +128,27 @@ public class EditMentorsDetailsPage extends Page {
     public MentorsTablePage saveMentor() {
         clickElement(saveButton);
         return new MentorsTablePage(driver);
+    }
+
+    SoftAssert softAssert;
+    public void setSoftAssert(SoftAssert softAssert) {
+        this.softAssert = softAssert;
+    }
+    public String getFirstNameError(){
+        return firstNameError.getText();
+    }
+    public String getLastNameError(){
+        return lastNameError.getText();
+    }
+    public String getEmailError(){
+        return emailError.getText();
+    }
+    public EditMentorsDetailsPage loseFocus(){
+        clickElement(tittleEditMentors);
+        return this;
+    }
+    @Override
+    public boolean isAt() {
+        return tittleEditMentors.getText().equals("Mentor Editing");
     }
 }

@@ -4,11 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
-import page.mentors.MentorsDetailsPage;
 import java.util.List;
 import static constants.Locators.LessonDetails.*;
 
-public class LessonDetailsPage extends Page {
+public class LessonDetailsPage extends Page<LessonDetailsPage> {
 
     @FindBy(xpath = MENTOR_NAME_LINK_XPATH)
     WebElement mentorName;
@@ -19,13 +18,20 @@ public class LessonDetailsPage extends Page {
     @FindBy(className = LIST_OF_STUDENTS_CLASS)
     List<WebElement> students;
 
+    @FindBy(xpath = TITLE_XPATH)
+    WebElement title;
+
     public LessonDetailsPage(WebDriver driver) {
         super(driver);
     }
 
-    public MentorsDetailsPage clickMentorNameLink(){
-        clickElement(mentorName);
-        return new MentorsDetailsPage(driver);
+    @Override
+    public boolean isAt() {
+        return title.getText().equals("Lesson details");
+    }
+
+    public static LessonDetailsPage init(WebDriver driver){
+        return new LessonDetailsPage(driver);
     }
 
     //Wait for Group

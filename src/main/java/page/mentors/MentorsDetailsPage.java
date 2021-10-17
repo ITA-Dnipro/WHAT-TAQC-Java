@@ -1,6 +1,5 @@
 package page.mentors;
 
-import constants.Locators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,10 +7,16 @@ import page.base.Page;
 
 import static constants.Locators.MentorsDetailsPage.*;
 
-public class MentorsDetailsPage extends Page  {
+public class MentorsDetailsPage extends Page<MentorsDetailsPage> {
     public MentorsDetailsPage(WebDriver driver) {
         super(driver);
     }
+
+    @Override
+    public boolean isAt() {
+        return false;
+    }
+
     @FindBy(xpath = MENTORS_DETAILS_TAB_XPATH)
     protected WebElement mentorsDetailsTab;
     @FindBy (xpath =EDIT_MENTOR_TAB_XPATH)

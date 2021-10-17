@@ -1,5 +1,10 @@
 package changePassword.dataPasswords.data;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+
 public class ChangePasswordInvalidData {
 
     private String currantPassword;
@@ -31,5 +36,9 @@ public class ChangePasswordInvalidData {
 
     public String getConfirmPasswordResult() {
         return confirmPasswordResult;
+    }
+
+    public static ChangePasswordInvalidData[] getPasswordsList(String filename) throws IOException {
+        return new ObjectMapper().readValue(new File(filename), ChangePasswordInvalidData[].class);
     }
 }

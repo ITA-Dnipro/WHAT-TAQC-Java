@@ -9,7 +9,7 @@ import org.testng.asserts.SoftAssert;
 import page.base.Page;
 import static constants.Locators.EditLesson.*;
 
-public class EditLessonPage extends Page {
+public class EditLessonPage extends Page<EditLessonPage> {
 
     @FindBy(id = LESSON_THEME_INPUT_FIELD_ID)
     WebElement lessonThemeInput;
@@ -19,6 +19,9 @@ public class EditLessonPage extends Page {
 
     @FindBy(className = EDIT_LESSON_THEME_ERROR_CLASS)
     WebElement error;
+
+    @FindBy(xpath = PAGE_TITLE_XPATH)
+    WebElement title;
 
     private static final Logger logger = Logger.getLogger(EditLessonPage.class.getName());
 
@@ -30,9 +33,17 @@ public class EditLessonPage extends Page {
         classBook = new ClassBookFeature(driver);
     }
 
+    @Override
+    public boolean isAt() {
+        return title.getText().equals("Edit lesson");
+    }
+
+    public static EditLessonPage init(WebDriver driver){
+        return new EditLessonPage(driver);
+    }
+
     public EditLessonPage fillLessonThemeInput(String data, String errorMessage){
         fillField(lessonThemeInput, data);
-        verifyError(errorMessage, error);
         return this;
     }
 
@@ -47,18 +58,6 @@ public class EditLessonPage extends Page {
 
     public void setSoftAssert(SoftAssert softAssert) {
         this.softAssert = softAssert;
-    }
-
-    private void verifyError(String errorMessage, WebElement error){
-        try {
-            softAssert.assertEquals(error.getText(), errorMessage);
-            logger.info(error.getText());
-        }
-        catch (NotFoundException e){
-            softAssert.assertTrue(false);
-            logger.info("No ERROR! But should be: " + errorMessage);
-        }
-
     }
 
     public WebElement getLessonThemeInput() {

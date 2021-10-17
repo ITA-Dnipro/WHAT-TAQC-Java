@@ -1,7 +1,7 @@
 package page.lessons;
 
+import constants.Endpoints;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +10,7 @@ import page.base.Page;
 import java.util.List;
 import static constants.Locators.AddLesson.*;
 
-public class AddLessonPage extends Page {
+public class AddLessonPage extends Page<AddLessonPage> {
 
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement pageTitle;
@@ -49,7 +49,6 @@ public class AddLessonPage extends Page {
     WebElement mailError;
 
     ClassBookFeature classBook;
-    SoftAssert softAssert;
 
     private static final Logger logger = Logger.getLogger(AddLessonPage.class.getName());
 
@@ -58,17 +57,18 @@ public class AddLessonPage extends Page {
         classBook = new ClassBookFeature(driver);
     }
 
-    public AddLessonPage fillLessonTheme(String theme, String errorMessage){
+    @Override
+    public boolean isAt() {
+        return driver.getCurrentUrl().equals(Endpoints.ADD_LESSON);
+    }
+
+    public AddLessonPage fillLessonTheme(String theme){
         fillField(lessonThemeInput, theme);
-        logger.info(lessonThemeInput.getText());
-        verifyError(errorMessage, themeError);
         return this;
     }
 
-    public AddLessonPage fillGroupName(String group, String errorMessage){
+    public AddLessonPage fillGroupName(String group){
         fillField(groupNameInput, group);
-        logger.info(groupNameInput.getText());
-        verifyError(errorMessage, groupError);
         return this;
     }
 
@@ -77,10 +77,8 @@ public class AddLessonPage extends Page {
         return this;
     }
 
-    public AddLessonPage fillEmailInput(String email, String errorMessage){
+    public AddLessonPage fillEmailInput(String email){
         fillField(emailInput, email);
-        logger.info(emailInput.getText());
-        verifyError(errorMessage, mailError);
         return this;
     }
 
@@ -99,42 +97,25 @@ public class AddLessonPage extends Page {
         return new LessonsPage(driver);
     }
 
-    private void verifyError(String errorMessage, WebElement error){
-        loseFocus();
-        try {
-            logger.info(error.getText());
-            softAssert.assertEquals(error.getText(), errorMessage);
-        }
-        catch (NotFoundException e){
-            logger.info("NO ERROR!");
-        }
+    public static AddLessonPage init(WebDriver driver){
+        return new AddLessonPage(driver);
     }
 
-    public WebElement getLessonThemeInput() {
-        return lessonThemeInput;
+    public String getThemeError() {
+        return themeError.getText();
     }
 
-    public WebElement getThemeError() {
-        return themeError;
+    public String getGroupError() {
+        return groupError.getText();
     }
 
-    public WebElement getGroupError() {
-        return groupError;
+    public String getMailError() {
+        return mailError.getText();
     }
 
-    public WebElement getMailError() {
-        return mailError;
-    }
-
-    public SoftAssert getSoftAssert() {
-        return softAssert;
-    }
-
-    private void loseFocus(){
+    public AddLessonPage loseFocus(){
         pageTitle.click();
+        return this;
     }
 
-    public void setSoftAssert(SoftAssert softAssert) {
-        this.softAssert = softAssert;
-    }
 }

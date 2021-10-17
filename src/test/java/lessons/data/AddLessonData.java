@@ -1,11 +1,15 @@
 package lessons.data;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+
 public class AddLessonData {
 
-    private String theme;
-    private String g_name;
-    private String date;
-    private String email;
+    protected String theme;
+    protected String g_name;
+    protected String date;
+    protected String email;
 
     public String getTheme() {
         return theme;
@@ -37,5 +41,9 @@ public class AddLessonData {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public static AddLessonData getData(String filename) throws IOException {
+        return new ObjectMapper().readValue(new File(filename), AddLessonData.class);
     }
 }

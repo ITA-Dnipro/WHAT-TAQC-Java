@@ -1,11 +1,10 @@
 package base;
 
+import constants.Endpoints;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
@@ -14,7 +13,7 @@ import java.time.Duration;
 public class BaseTest {
 
     protected WebDriver driver;
-    protected TestHelper helper;
+    protected long waitTime;
 
     @BeforeSuite
     protected static void setup() {
@@ -25,8 +24,9 @@ public class BaseTest {
     protected void setupTest() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-        helper = new TestHelper(driver);
         driver.manage().window().maximize();
+        waitTime = 2;
+        driver.get(Endpoints.AUTH);
     }
 
     @AfterClass

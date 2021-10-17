@@ -1,17 +1,19 @@
-package page.unassignedUsers;
+package page.unassigned;
 
+import constants.Endpoints;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.BasePage;
+import page.base.Page;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static constants.Locators.UnassignedUsers.*;
 
-public class UnassignedUsersPage extends BasePage {
+public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
     @FindBy(xpath = SEARCH_INPUT_FIELD_XPATH)
     protected WebElement searchInputField;
     @FindBy(xpath = TABLE_HEAD_NAME_XPATH)
@@ -29,7 +31,12 @@ public class UnassignedUsersPage extends BasePage {
         super(driver);
     }
 
-    public UnassignedUsersPage addRole(String email, Role role) {
+    @Override
+    public boolean isAt() {
+        return driver.getCurrentUrl().equals(Endpoints.UNASSIGNED_USERS);
+    }
+
+    public UnassignedUsersPage addRole(String email, UnassignedRole role) {
         WebElement row = findUserRowByEmail(email);
         clickElement(row
                 .findElement(By.tagName(TABLE_ROLES_DROPDOWN_MENU_TAG_NAME)));

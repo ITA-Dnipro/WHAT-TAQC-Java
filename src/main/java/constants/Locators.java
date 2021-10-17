@@ -9,6 +9,8 @@ public class Locators {
         String EMAIL_INPUT_FIELD_NAME = "email";
         String PASSWORD_INPUT_FIELD_NAME = "password";
         String SIGN_IN_BUTTON_XPATH = "//button[@type='submit']";
+        String REGISTRATION_LINK_XPATH="//a[text()='Registration']";
+
     }
 
     public interface CommonElements {
@@ -68,7 +70,7 @@ public class Locators {
 
     public interface AddLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Add a Lesson']";
-        String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+        String CANCEL_BUTTON_XPATH = "//button[@lessons.data-testid='cancelBtn']";
         String CLASS_REGISTER_BUTTON_ID = "class-register-btn";
         String LESSON_THEME_INPUT_FIELD_ID = "inputLessonTheme";
         String GROUP_NAME_INPUT_FIELD_ID = "inputGroupName";
@@ -83,7 +85,7 @@ public class Locators {
 
     public interface EditLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Edit a Lesson']";
-        String CANCEL_BUTTON_XPATH = "//button[@data-testid='cancelBtn']";
+        String CANCEL_BUTTON_XPATH = "//button[@lessons.data-testid='cancelBtn']";
         String LESSON_THEME_INPUT_FIELD_ID = "inputLessonTheme";
         String LESSON_TIME_INPUT_FIELD_ID = "choose-date/time";
         String EDIT_LESSON_THEME_ERROR_CLASS = "edit-lesson__error___3MZKw";
@@ -101,6 +103,7 @@ public class Locators {
         String MENTOR_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'mentors')]";
         String GROUP_NAME_LINK_XPATH = "//a[@class='text-decoration-none text-white' and contains(@href, 'groups')]";
         String LIST_OF_STUDENTS_CLASS = "lesson-details__link___1nOLw";
+        String TITLE_XPATH = "//h3[text()='Lesson details']";
     }
 
     public interface EditSecretary {
@@ -134,11 +137,10 @@ public class Locators {
         String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']";
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
         String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
-        String SORT_TITLE_BUTTON_XPATH = "//span[@data-sorting-param='name']";
+        String SORT_TITLE_BUTTON_XPATH = "//span[@lessons.data-sorting-param='name']";
         String COURSES_TABLE_LIST_ADMIN_SECRETARY_XPATH = "//td[not(contains(@class,'text-center'))]";
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
         String COURSES_PAGINATION_XPATH = "//li[@class='page-item']";
-//        String COURSES_PAGINATION_XPATH = "//div[contains(@class,'col-4')]//button[text()='<']";
         String CHANGE_ROWS_NUMBER_BUTTON_ID = "change-visible-people";
         String LIST_OF_VISIBLE_ROWS_NUMBERS_XPATH = "//*[@id='change-visible-people']/option";
         String TABLE_ROWS_LIST_XPATH = "//tbody//tr";
@@ -147,20 +149,22 @@ public class Locators {
 
     public interface CourseDetailsPage {
         String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
-        String COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Course details')]";
-        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Edit course details')]";
+        String COURSE_DETAILS_TAB_XPATH = "//a[contains(.,'Course details')]";
+        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(.,'Edit')]";
         String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String DELETE_BUTTON_XPATH = "//button[contains(text(),'Delete')]";
         String CLEAR_BUTTON_XPATH = "//button[@type='reset']";
         String SAVE_BUTTON_XPATH = "//button[@type='submit']";
-        String CANCEL_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='button'and contains(text(),'Cancel')]";
-        String DELETE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='submit'and contains(text(),'Delete')]";
+        String CANCEL_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='button'and contains(.,'Cancel')]";
+        String DELETE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='submit'and contains(.,'Delete')]";
         String CLOSE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@class='close']";
+        String COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[.='Course Details']";
+        String EDIT_COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[.='Course Editing']";
     }
 
     public interface AddCoursePage {
         String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
-        String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@data-testid='cancelBtn']";
+        String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@lessons.data-testid='cancelBtn']";
         String SAVE_BUTTON_XPATH = "//button[@id='addCourseSubmit']";
     }
 
@@ -223,6 +227,13 @@ public class Locators {
         String DISABLE_BUTTON_XPATH = "//button[text()='Disable']";
         String CLEAR_BUTTON_XPATH = "//button[text()='Clear']";
         String SAVE_BUTTON_XPATH = "//button[text()='Save']";
+        String ERROR_MASSAGE_XPATH = "//div[@class='edit-mentor__error___20Eyn']";
+        String TITLE_XPATH = "//h3[text()='Mentor Editing']";
+        String FIRST_NAME_ERROR = "//input[@id='firstName']/parent::div/div";
+        String LAST_NAME_ERROR = "//input[@id='lastName']/parent::div/div";
+        String EMAIL_ERROR = "//input[@id='email']/parent::div/div";
+
+
     }
 
     public interface StudentsPage {
@@ -231,9 +242,9 @@ public class Locators {
         String SHOW_DISABLED_SWITCHER_ID = "show-disabled-check";
         String ADD_STUDENT_BUTTON_XPATH = "//*[contains(text(), 'Add a student')]";
         String TABLE_STUDENTS_XPATH = "//tbody";
-        String TABLE_HEAD_FIRST_NAME_XPATH = "//span[@data-sorting-param='firstName']";
-        String TABLE_HEAD_LAST_NAME_XPATH = "//span[@data-sorting-param='lastName']";
-        String TABLE_HEAD_EMAIL_XPATH = "//span[@data-sorting-param='email']";
+        String TABLE_HEAD_FIRST_NAME_XPATH = "//span[@lessons.data-sorting-param='firstName']";
+        String TABLE_HEAD_LAST_NAME_XPATH = "//span[@lessons.data-sorting-param='lastName']";
+        String TABLE_HEAD_EMAIL_XPATH = "//span[@lessons.data-sorting-param='email']";
         String TABLE_ROW_TAG_NAME = "tr";
         String TABLE_CELL_TAG_NAME = "td";
     }

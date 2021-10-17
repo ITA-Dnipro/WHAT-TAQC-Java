@@ -1,15 +1,15 @@
 package page.lessons;
 
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
-
 import java.util.List;
 
 import static constants.Locators.Lessons.*;
 
-public class LessonsPage extends Page {
+public class LessonsPage extends Page<LessonsPage> {
 
     @FindBy(xpath = ADD_LESSON_BUTTON_XPATH)
     WebElement addLessonButton;
@@ -27,6 +27,15 @@ public class LessonsPage extends Page {
         super(driver);
     }
 
+    @Override
+    public boolean isAt() {
+        return driver.getCurrentUrl().equals(Endpoints.LESSONS);
+    }
+
+    public static LessonsPage init(WebDriver driver){
+        return new LessonsPage(driver);
+    }
+
     public AddLessonPage clickAddLessonButton(){
         clickElement(addLessonButton);
         return new AddLessonPage(driver);
@@ -38,6 +47,11 @@ public class LessonsPage extends Page {
 
     public String getAlertText(){
         return alert.getText();
+    }
+
+    public LessonDetailsPage clickTableItem(int id){
+        rows.get(id).click();
+        return new LessonDetailsPage(driver);
     }
 
     public EditLessonPage clickEditIcon(int id){
@@ -52,4 +66,6 @@ public class LessonsPage extends Page {
     public WebElement getAlert() {
         return alert;
     }
+
+
 }

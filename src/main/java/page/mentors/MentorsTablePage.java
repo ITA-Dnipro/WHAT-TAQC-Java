@@ -1,17 +1,25 @@
 package page.mentors;
 
-import constants.Locators;
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+
+import java.util.ArrayList;
 import java.util.List;
+
 import static constants.Locators.MentorsTablePage.*;
 
-public class MentorsTablePage extends Page  {
+public class MentorsTablePage extends Page<MentorsTablePage> {
 
     public MentorsTablePage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public boolean isAt() {
+        return driver.getCurrentUrl().equals(Endpoints.MENTORS);
     }
 
     @FindBy(xpath = ADD_MENTOR_BUTTON_XPATH)
@@ -48,7 +56,7 @@ public class MentorsTablePage extends Page  {
     }
 
     public MentorsTablePage sortByName() {
-        clickElement(sortNameArrow);
+       clickElement(sortNameArrow);
         return this;
     }
 
@@ -67,9 +75,42 @@ public class MentorsTablePage extends Page  {
         return new MentorsDetailsPage(driver);
     }
 
-    public EditMentorsDetailsPage editMentors(int index) {
+    public EditMentorsDetailsPage editMentors(Integer index) {
         clickElement(editButtonXpath.get(index));
         return new EditMentorsDetailsPage(driver);
+    }
+    public Integer getMentorsIdByName(String name){
+        for (int i = 0; i < mentorsRow.size(); i++){
+            if (mentorsRow.get(i).getText().equals(name)){
+                return i;
+            }
+        }
+        return null;
+    }
+    public EditMentorsDetailsPage editMentorsByName(String name){
+        clickElement(editButtonXpath.get(getMentorsIdByName(name)));
+        return new EditMentorsDetailsPage(driver);
+    }
+    public List<String> getMentorsName(){
+        List<String> mentorsNames = new ArrayList<String>();
+        for(int i=0;i<mentorsRow.size();i=i+3 ){
+            mentorsNames.add(mentorsRow.get(i).getText());
+        }
+        return mentorsNames;
+    }
+    public List<String> getMentorsSurname(){
+        List<String> mentorsSurname = new ArrayList<String>();
+        for(int i=1;i<mentorsRow.size();i=i+3 ){
+            mentorsSurname.add(mentorsRow.get(i).getText());
+        }
+        return mentorsSurname;
+    }
+    public List<String> getMentorsEmail(){
+        List<String> mentorsEmail = new ArrayList<String>();
+        for(int i=2;i<mentorsRow.size();i=i+3 ){
+            mentorsEmail.add(mentorsRow.get(i).getText());
+        }
+        return mentorsEmail;
     }
 
 }

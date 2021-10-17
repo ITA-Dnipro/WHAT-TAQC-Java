@@ -1,58 +1,62 @@
 package courses;
 
-import courses.coursesData.AddCoursesData;
 import base.BaseTest;
-import base.Role;
 import constants.Endpoints;
 import constants.PathsToFiles;
+import courses.coursesData.AddCoursesData;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import page.courses.AddCoursePage;
 import page.courses.CoursesPage;
+import page.students.StudentsPage;
+import page.unauthorizedUserPages.AuthPage;
+import util.Role;
 
-import java.io.File;
 import java.io.IOException;
 
 public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles extends BaseTest {
 
     private AddCoursesData[] courseNameList;
+    private AddCoursePage addCoursesPage;
     private CoursesPage coursesPage;
 
-    @BeforeClass
+    public ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles() throws IOException {
+        courseNameList = AddCoursesData.getCoursesName(PathsToFiles.Сourses.ADD_COURSES_VALID_DATA);
+    }
+
+    @BeforeMethod
     public void preconditions() throws IOException {
-        driver.get(Endpoints.BASE_URL);
-        courseNameList = helper.getMapper().readValue(
-                new File(PathsToFiles.Сourses.ADD_COURSES_VALID_DATA), AddCoursesData[].class);
+        coursesPage = new CoursesPage(driver);
+        addCoursesPage = AuthPage
+                .init(driver)
+                .logInAs(Role.ADMIN, StudentsPage.class)
+                .isAtPage(waitTime)
+                .redirectTo(Endpoints.ADD_COURSE, AddCoursePage.class);
     }
 
     @DataProvider(name = "changeName")
     public Object[][] provideCredentials() {
-        return new Object[][]{{Role.ADMIN, courseNameList[0]}, {Role.ADMIN, courseNameList[1]}};
+        return new Object[][]{{courseNameList[0]}, {courseNameList[1]}};
     }
 
     @Test(dataProvider = "changeName")
-    public void addCourse(Role role, AddCoursesData data) throws InterruptedException {
+    public void addCourse(AddCoursesData data) throws IOException, InterruptedException {
 
         String expectedResult = "×\nClose alert\nThe course has been successfully added";
-        coursesPage = new CoursesPage(driver);
 
-        helper.logInAs(role);
-
-        helper.waitForRedirectFrom(Endpoints.AUTH);
-        driver.get(Endpoints.COURSES);
-
-        this.coursesPage
-                .addCoursePage()
-                .inputAddCourseName(data.getСourseName())
+        addCoursesPage
+                .fillInputAddCourseName(data.getСourseName())
                 .saveNewCourse()
                 .fillCourseSearchField(" ")
-                .fillCourseSearchField(data.getСourseName())
-                .loseFocus();
+                .isAtPage(waitTime)
+                .fillCourseSearchField(data.getСourseName());
+
         Assert.assertEquals(coursesPage.getCoursesRowsList().get(0).getText(), data.getСourseName());
         Assert.assertEquals(coursesPage.getAlertAddCourse().getText(), expectedResult);
 
-        coursesPage.getHeader().logOut();
-        helper.waitDownloadPage(Endpoints.AUTH);
+        addCoursesPage.logOut();
+        addCoursesPage.redirectTo(Endpoints.AUTH, AuthPage.class);
     }
 }

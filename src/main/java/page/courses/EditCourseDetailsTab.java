@@ -1,16 +1,27 @@
 package page.courses;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import page.base.Page;
 
+import static constants.ErrorMessages.GetEditCourseErrorMessage.COURSE_NAME_ERROR_MESSAGE_XPATH;
 import static constants.Locators.CourseDetailsPage.*;
 
-public class EditCourseDetailsTab extends Page {
+public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
 
     public EditCourseDetailsTab(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public boolean isAt() {
+        String courseDetailsTabTitle = "Course Editing";
+        return driver.findElement(By.xpath(
+                EDIT_COURSE_DETAILS_TAB_TITLE_XPATH)).getText()
+                .contains(courseDetailsTabTitle);
     }
 
     @FindBy(xpath = ARROW_BUTTON_XPATH)
@@ -39,6 +50,9 @@ public class EditCourseDetailsTab extends Page {
 
     @FindBy(xpath = SAVE_BUTTON_XPATH)
     private WebElement saveButton;
+
+    @FindBy(xpath = COURSE_NAME_ERROR_MESSAGE_XPATH)
+    private WebElement errorMessage;
 
     public CoursesPage outFromEditCourseDetails() {
         clickElement(arrowButton);
@@ -87,5 +101,10 @@ public class EditCourseDetailsTab extends Page {
     public CoursesPage saveChangeCurseName() {
         clickElement(saveButton);
         return new CoursesPage(driver);
+    }
+
+    public EditCourseDetailsTab verifyEditCourseError(String expectedError) {
+        Assert.assertEquals(errorMessage.getText(), expectedError);
+        return this;
     }
 }

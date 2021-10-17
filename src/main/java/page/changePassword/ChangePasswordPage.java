@@ -1,12 +1,9 @@
 package page.changePassword;
 
-import constants.PathsToFiles;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.NotFoundException;
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import page.base.Page;
 import page.myProfile.MyProfilePage;
@@ -14,7 +11,7 @@ import page.myProfile.MyProfilePage;
 import static constants.ErrorMessages.GetChangePasswordErrorMessage.*;
 import static constants.Locators.ChangePasswordPage.*;
 
-public class ChangePasswordPage extends Page {
+public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
     @FindBy(id = EMAIL_INPUT_FIELD_ID)
     private WebElement emailInput;
@@ -61,27 +58,29 @@ public class ChangePasswordPage extends Page {
         super(driver);
     }
 
+    @Override
+    public boolean isAt() {
+        return driver.getCurrentUrl().equals(Endpoints.CHANGE_PASSWORD);
+    }
+
     public ChangePasswordPage checkEmailField() {
-        if(emailInput.isDisplayed() && !emailInput.isEnabled())
-        clickElement(emailInput);
+        if (emailInput.isDisplayed() && !emailInput.isEnabled())
+            clickElement(emailInput);
         return this;
     }
 
     public ChangePasswordPage fillCurrentPasswordField(String currentPassword) {
         fillField(currentPasswordField, currentPassword);
-        loseFocus();
         return this;
     }
 
     public ChangePasswordPage fillNewPasswordField(String newPassword) {
         fillField(newPasswordField, newPassword);
-        loseFocus();
         return this;
     }
 
     public ChangePasswordPage fillConfirmPasswordField(String confirmPassword) {
         fillField(confirmPasswordField, confirmPassword);
-        loseFocus();
         return this;
     }
 
@@ -112,21 +111,10 @@ public class ChangePasswordPage extends Page {
     }
 
     public String getCurrentPasswordError() {
-        try {
-            errMessageCurrPassword.getText();
-        } catch (NotFoundException e) {
-            return null;
-        }
-
         return errMessageCurrPassword.getText();
     }
 
     public String getNewPasswordError() {
-        try {
-            errMessageNewPassword.getText();
-        } catch (NotFoundException e) {
-            return null;
-        }
         return errMessageNewPassword.getText();
     }
 
@@ -135,7 +123,7 @@ public class ChangePasswordPage extends Page {
     }
 
     public ChangePasswordPage verifyCurrentPasswordError(String expectedErrorMessage, String currentPasswordError) {
-            softAssert.assertEquals(currentPasswordError, expectedErrorMessage);
+        softAssert.assertEquals(currentPasswordError, expectedErrorMessage);
         return this;
     }
 
@@ -149,7 +137,8 @@ public class ChangePasswordPage extends Page {
         return this;
     }
 
-    public void loseFocus() {
+    public ChangePasswordPage loseFocus() {
         loseFocus.click();
+        return this;
     }
 }

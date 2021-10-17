@@ -1,5 +1,6 @@
 package page.courses;
 
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,10 +8,15 @@ import page.base.Page;
 
 import static constants.Locators.AddCoursePage.*;
 
-public class AddCoursePage extends Page {
+public class AddCoursePage extends Page<AddCoursePage> {
 
     public AddCoursePage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public boolean isAt() {
+        return driver.getCurrentUrl().equals(Endpoints.ADD_COURSE);
     }
 
     @FindBy(xpath = COURSE_NAME_INPUT_FIELD_XPATH)
@@ -22,7 +28,7 @@ public class AddCoursePage extends Page {
     @FindBy(xpath = CANCEL_BUTTON_ADD_COURSE_XPATH)
     WebElement cancelFromAddCoursePage;
 
-    public AddCoursePage inputAddCourseName(String courseName) {
+    public AddCoursePage fillInputAddCourseName(String courseName) {
         fillField(courseNameInput, courseName);
         return this;
     }

@@ -1,7 +1,6 @@
 package changePassword;
 
 import base.BaseTest;
-import base.Role;
 import changePassword.dataPasswords.data.ChangePasswordInvalidData;
 import constants.Endpoints;
 import constants.PathsToFiles;
@@ -11,33 +10,39 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import page.changePassword.ChangePasswordPage;
 import page.courses.CoursesPage;
+import page.lessons.LessonsPage;
+import page.unauthorizedUserPages.AuthPage;
+import util.Role;
 
-import java.io.File;
 import java.io.IOException;
 
 public class ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUser extends BaseTest {
 
-    private ChangePasswordInvalidData[] passwordsList;
+    private ChangePasswordInvalidData[] passwordsData;
     private CoursesPage coursesPage;
-    ChangePasswordPage changePasswordPage;
-    Object[][] list;
+    private ChangePasswordPage changePasswordPage;
+    private Object[][] list;
 
+    public ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUser() throws IOException {
+        passwordsData = ChangePasswordInvalidData.getPasswordsList(
+                PathsToFiles.ChangePassword.CHANGE_PASSWORD_INVALID_DATA);
+    }
 
     @BeforeClass
     public void preconditions() throws IOException {
-        driver.get(Endpoints.BASE_URL);
-        passwordsList = helper.getMapper().readValue(
-                new File(PathsToFiles.ChangePassword.CHANGE_PASSWORD_INVALID_DATA),
-                ChangePasswordInvalidData[].class);
-        list = new Object[passwordsList.length][1];
-        helper.logInAs(Role.MENTOR);
-        helper.waitForRedirectFrom(Endpoints.AUTH);
+
+        changePasswordPage =
+                AuthPage.init(driver).logInAs(Role.MENTOR, LessonsPage.class)
+                        .isAtPage(waitTime)
+                        .redirectTo(Endpoints.CHANGE_PASSWORD, ChangePasswordPage.class)
+                        .isAtPage(waitTime);
     }
 
     @DataProvider(name = "change-password")
     public Object[][] providePasswords() {
-        for (int i = 0; i < list.length; i++) {
-            list[i][0] = passwordsList[i];
+        list = new Object[passwordsData.length][1];
+        for (int i = 0; i < passwordsData.length; i++) {
+            list[i][0] = passwordsData[i];
         }
         return list;
     }
@@ -48,19 +53,18 @@ public class ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUser extends
         coursesPage = new CoursesPage(driver);
         changePasswordPage = new ChangePasswordPage(driver);
 
-        driver.get(Endpoints.COURSES);
-
-        coursesPage
-                .getHeader()
-                .changePassword()
-                .checkEmailField()
+        changePasswordPage
                 .fillCurrentPasswordField(password.getCurrantPassword())
+                .isAtPage(waitTime)
                 .verifyCurrentPasswordError(password.getCurrantPasswordResult(), changePasswordPage.getCurrentPasswordError())
                 .fillNewPasswordField(password.getNewPassword())
+                .isAtPage(waitTime)
                 .verifyNewPasswordError(password.getNewPasswordResult(), changePasswordPage.getNewPasswordError())
                 .fillConfirmPasswordField(password.getConfirmPassword())
+                .isAtPage(waitTime)
                 .verifyConfirmPassword(password.getConfirmPasswordResult(), changePasswordPage.getConfirmPasswordError())
-                .cancelChangePassword();
+                .cancelChangePassword()
+                .isAtPage(waitTime);
         softAssert.assertAll();
-    }
+}
 }
