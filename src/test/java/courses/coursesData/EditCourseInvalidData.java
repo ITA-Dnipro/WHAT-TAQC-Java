@@ -1,12 +1,11 @@
 package courses.coursesData;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 
-public class EditCourseData {
+public class EditCourseInvalidData {
     String courseName;
     String newCourseName;
     String message;
@@ -34,11 +33,8 @@ public class EditCourseData {
     public void setMessage(String message) {
         this.message = message;
     }
-//    private static final ObjectMapper objectMapper =
-//            new ObjectMapper()
-//                    .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-    public static EditCourseData[] getEditCoursesData(String filename) throws IOException {
-        return new ObjectMapper().readValue(new File(filename), EditCourseData[].class);
+    public static EditCourseInvalidData[] getEditCoursesInvalidData(String filename) throws IOException {
+        return new ObjectMapper().readValue(new File(filename), EditCourseInvalidData[].class);
     }
 }

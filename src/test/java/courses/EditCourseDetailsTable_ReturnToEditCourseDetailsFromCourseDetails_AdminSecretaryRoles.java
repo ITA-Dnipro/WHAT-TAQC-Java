@@ -2,8 +2,6 @@ package courses;
 
 import base.BaseTest;
 import constants.Endpoints;
-import constants.PathsToFiles;
-import courses.coursesData.EditCourseData;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -44,7 +42,7 @@ public class EditCourseDetailsTable_ReturnToEditCourseDetailsFromCourseDetails_A
         return new Object[][] {{Role.ADMIN}};
     }
 
-    @Test(description = "Dp-213 TAQC", dataProvider = "redirectToEditCourseTab")
+    @Test(description = "DP213-141", dataProvider = "redirectToEditCourseTab")
     public void verifyEditCourse_InvalidData(Role role) throws IOException, InterruptedException {
 
         String courseDetailsTabTitle = "Course Editing";

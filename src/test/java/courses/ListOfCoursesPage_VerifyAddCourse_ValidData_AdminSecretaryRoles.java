@@ -41,7 +41,7 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
         return new Object[][]{{courseNameList[0]}, {courseNameList[1]}};
     }
 
-    @Test(dataProvider = "changeName")
+    @Test(description = "DP213-42", dataProvider = "changeName")
     public void addCourse(AddCoursesData data) throws IOException, InterruptedException {
 
         String expectedResult = "×\nClose alert\nThe course has been successfully added";

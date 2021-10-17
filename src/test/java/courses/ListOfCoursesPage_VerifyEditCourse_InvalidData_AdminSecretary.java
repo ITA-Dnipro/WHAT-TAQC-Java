@@ -1,12 +1,9 @@
 package courses;
 
 import base.BaseTest;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
 import constants.PathsToFiles;
-import courses.coursesData.EditCourseData;
+import courses.coursesData.EditCourseInvalidData;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,14 +17,14 @@ import java.io.IOException;
 public class ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary extends BaseTest {
 
     CoursesPage coursesPage;
-    EditCourseData[] data;
+    EditCourseInvalidData[] data;
 
     public ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary() throws IOException {
-        data = EditCourseData.getEditCoursesData(PathsToFiles.Сourses.EDIT_COURSES_INVALID_DATA);
+        data = EditCourseInvalidData.getEditCoursesInvalidData(PathsToFiles.Сourses.EDIT_COURSES_INVALID_DATA);
     }
 
-    @DataProvider(name = "editCourseData")
-    public Object[][] getData() {
+    @DataProvider(name = "editCourseInvalidData")
+    public Object[][] getInvalidData() {
         Object[][] list = new Object[data.length][1];
         for (int i = 0; i < data.length; i++) {
             list[i][0] = data[i];
@@ -35,8 +32,8 @@ public class ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary exten
         return list;
     }
 
-    @Test(description = "Dp-213 TAQC", dataProvider = "editCourseData")
-    public void verifyEditCourse_InvalidData(EditCourseData editData) throws IOException, InterruptedException {
+    @Test(description = "DP213-45", dataProvider = "editCourseInvalidData")
+    public void verifyEditCourse_InvalidData(EditCourseInvalidData editData) throws IOException, InterruptedException {
         coursesPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)

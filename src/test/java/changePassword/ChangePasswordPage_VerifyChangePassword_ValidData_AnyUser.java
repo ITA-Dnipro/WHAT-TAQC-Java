@@ -53,7 +53,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
         return list;
     }
 
-    @Test(dataProvider = "log_in")
+    @Test(description = "DP213-27", dataProvider = "log_in")
     public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException {
         currentPassword = user.getPass();
 

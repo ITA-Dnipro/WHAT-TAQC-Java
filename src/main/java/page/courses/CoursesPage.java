@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import page.base.Page;
 
 import java.security.Key;
@@ -110,5 +111,10 @@ public class CoursesPage extends Page<CoursesPage> {
 
     public WebElement getAlertAddCourse() {
         return alertAddCourse;
+    }
+
+    public CoursesPage verifyOldCourseNameExist(String oldName) {
+        Assert.assertTrue(getCoursesRowsList().get(0).isDisplayed(), oldName);
+        return this;
     }
 }
