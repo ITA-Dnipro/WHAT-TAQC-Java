@@ -162,7 +162,7 @@ public class Locators {
 
     public interface MentorsTablePage {
         String ADD_MENTOR_BUTTON_XPATH = "//span[text()='Add a mentor']";
-        String DISABLE_MENTORS_SWITCH_XPATH = "//input[@id='disabledMentors']";
+        String DISABLE_MENTORS_SWITCH_XPATH = "//label[text()='Disabled Mentors']";
         String SEARCH_INPUT_FIELD_XPATH = "//input[@class='search__searchInput___34nMl']";
         String SORT_NAME_ARROW_XPATH = "//span[text()='Name']";
         String SORT_SURNAME_ARROW_XPATH = "//span[text()='Surname']";
@@ -204,15 +204,14 @@ public class Locators {
         String DELETE_COURSE_BUTTON_XPATH = "//button[contains(@class,'delCourse')]";
         String ADD_COURSE_BUTTON_XPATH = "//button[@id='addCourse']";
         String DISABLE_BUTTON_XPATH = "//button[text()='Disable']";
-        String CLEAR_BUTTON_XPATH = "//button[text()='Clear']";
+        String CLEAR_BUTTON_XPATH = "//button[text()='Reset']";
         String SAVE_BUTTON_XPATH = "//button[text()='Save']";
         String ERROR_MASSAGE_XPATH = "//div[@class='edit-mentor__error___20Eyn']";
         String TITLE_XPATH = "//h3[text()='Mentor Editing']";
         String FIRST_NAME_ERROR = "//input[@id='firstName']/parent::div/div";
         String LAST_NAME_ERROR = "//input[@id='lastName']/parent::div/div";
         String EMAIL_ERROR = "//input[@id='email']/parent::div/div";
-
-
+        String REMOVE_MENTOR_BUTTON="//button[text()='Delete']";
     }
 
     public interface StudentsPage {
