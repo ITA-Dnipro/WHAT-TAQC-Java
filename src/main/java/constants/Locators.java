@@ -276,4 +276,50 @@ public class Locators {
         String MODAL_WINDOW = "//*[contains(@class,'modal-content')]";
         String MODAL_WINDOW_BUTTON = "//button[.='Back']";
     }
+
+    public interface Groups {
+        String SEARCH_BY_NAME_FIELD_XPATH = "//input[@type='text']";
+        String SEARCH_BY_DATE_FIELD_XPATH = "//input[@type='date']";
+        String ADD_GROUP_BUTTON_XPATH = "//span[.='Add a group']";
+        String UPLOAD_GROUPS_BUTTON_XPATH = "//button[contains(@class, 'list-of-groups__left-add-btn___37jzI')]";
+        String FILTER_BUTTON_XPATH = "//button[@type='submit' and contains(text(),'filter']";
+        String SORT_NAME_BUTTON_XPATH = "//span[@data-sorting-param='name']";
+        String SORT_QUANTITY_BUTTON_XPATH = "//span[@data-sorting-param='quantity']";
+        String SORT_START_DATE_BUTTON_XPATH = "//span[@data-sorting-param='startDate']";
+        String SORT_FINISH_DATE_BUTTON_XPATH = "//span[@data-sorting-param='finishDate']";
+        String TABLE_ROWS_XPATH = "//tbody//tr";
+        String EDIT_LESSON_PENCIL_ICON_XPATH = "//td[@class = 'text-center']";
+        String ALERT_XPATH = "//div[@role = 'alert']";
+    }
+
+    public interface GroupDetailsPage {
+        String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
+        String GROUP_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Group details')]";
+        String EDIT_GROUP_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Edit group')]";
+        String GROUP_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
+        String COURSE_INPUT_FIELD_XPATH = "//select[@name='courseId']";
+        String START_DATE_INPUT_FIELD_XPATH = "//input[@name='startDate']";
+        String FINISH_DATE_INPUT_FIELD_XPATH = "//input[@name='finishDate']";
+        String MENTOR_INPUT_FIELD_XPATH = "//input[@name='mentor']";
+        String STUDENT_INPUT_FIELD_XPATH = "//input[@name='student']";
+        String ADD_MENTOR_BUTTON_XPATH = "//button[@id='add-mentor-btn']";
+        String ADD_STUDENT_BUTTON_XPATH = "//button[@id='add-student-btn']";
+        String CONFIRM_BUTTON_XPATH = "//button[@type='submit']";
+        String CLEAR_BUTTON_XPATH = "//button[@type='reset']";
+    }
+
+    public interface AddGroupPage {
+        String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
+        String GROUP_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
+        String COURSE_INPUT_FIELD_XPATH = "//select[@name='courseId']";
+        String LIST_OF_COURSES_XPATH = "//datalist[@id='course']/option";
+        String START_DATE_INPUT_FIELD_XPATH = "//input[@name='startDate']";
+        String FINISH_DATE_INPUT_FIELD_XPATH = "//input[@name='finishDate']";
+        String MENTOR_INPUT_FIELD_XPATH = "//input[@name='mentor']";
+        String STUDENT_INPUT_FIELD_XPATH = "//input[@name='student']";
+        String ADD_MENTOR_BUTTON_XPATH = "//button[@id='add-mentor-btn']";
+        String ADD_STUDENT_BUTTON_XPATH = "//button[@id='add-student-btn']";
+        String CONFIRM_BUTTON_XPATH = "//button[@type='submit']";
+        String CLEAR_BUTTON_XPATH = "//button[@type='reset']";
+    }
 }
