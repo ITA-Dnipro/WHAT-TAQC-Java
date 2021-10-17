@@ -39,4 +39,9 @@ public class CourseDetailsTab extends Page<CourseDetailsTab> {
         clickElement(editCourseTab);
         return new EditCourseDetailsTab(driver);
     }
+
+    public EditCourseDetailsTab refreshPage() {
+        driver.navigate().refresh();
+        return new EditCourseDetailsTab(driver);
+    }
 }

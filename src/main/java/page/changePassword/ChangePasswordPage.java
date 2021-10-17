@@ -1,6 +1,7 @@
 package page.changePassword;
 
 import constants.Endpoints;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -111,8 +112,13 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
     }
 
     public String getCurrentPasswordError() {
+        try {
+         errMessageCurrPassword.getText();
+    } catch (NotFoundException e) {
+            return "";
+        }
         return errMessageCurrPassword.getText();
-    }
+        }
 
     public String getNewPasswordError() {
         return errMessageNewPassword.getText();
