@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
-import page.unauthorizedUserPages.RegistrationPage;
 
 import java.util.List;
 
@@ -62,10 +61,12 @@ public class StudentEditDetailsTab extends StudentsEditDetailsPage<StudentEditDe
         clickElement(saveButton);
         return new StudentsPage(driver);
     }
+
     public StudentEditDetailsTab clickClearButton() {
         clickElement(clearButton);
         return this;
     }
+
     public StudentsPage clickExcludeButton() {
         clickElement(excludeButton);
         return new StudentsPage(driver);
@@ -90,16 +91,16 @@ public class StudentEditDetailsTab extends StudentsEditDetailsPage<StudentEditDe
         softAssert.assertEquals(clearButton.isEnabled(), condition);
         return this;
     }
+
     public StudentEditDetailsTab verifyExcludeButtonIsEnabled(boolean condition) {
         softAssert.assertEquals(excludeButton.isEnabled(), condition);
         return this;
     }
+
     public StudentEditDetailsTab verifySaveButtonIsEnabled(boolean condition) {
         softAssert.assertEquals(saveButton.isEnabled(), condition);
         return this;
     }
-
-
 
 
     public SoftAssert getSoftAssert() {
