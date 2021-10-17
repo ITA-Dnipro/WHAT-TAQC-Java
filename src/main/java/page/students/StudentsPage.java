@@ -53,7 +53,7 @@ public class StudentsPage extends Page<StudentsPage> {
         clickElement(tableHeadFirstName);
     }
 
-    private List<WebElement> getSuitableRows(String value) {
+    private List<WebElement> findRows(String value) {
         List<WebElement> suitableList = tableStudentsRows.stream()
                 .filter(row -> {
                     List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME))
@@ -65,5 +65,12 @@ public class StudentsPage extends Page<StudentsPage> {
                 })
                 .collect(Collectors.toList());
         return suitableList;
+    }
+
+    public WebElement findStudentRowInTableByEmail(String email){
+        return findRows(email)
+                .stream()
+                .findFirst()
+                .orElse(null);
     }
 }

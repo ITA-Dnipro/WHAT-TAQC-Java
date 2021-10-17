@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
 import page.base.BasePage;
 import page.base.Page;
 
@@ -27,8 +28,11 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
     @FindBy(tagName = TABLE_ROW_TAG_NAME)
     protected List<WebElement> tableRows;
 
+    private SoftAssert softAssert;
+
     public UnassignedUsersPage(WebDriver driver) {
         super(driver);
+        softAssert = new SoftAssert();
     }
 
     @Override
@@ -49,6 +53,18 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
         }
         clickElement(row.findElement(By.tagName(TABLE_ADD_ROLE_BUTTON_TAG_NAME)));
         return this;
+    }
+
+    public UnassignedUsersPage verifyUserPresented(String email){
+        findUserRowByEmail(email);
+        softAssert.assertNotNull(findUserRowByEmail(email));
+        return this;
+    }
+    public boolean isUserPresented(String email){
+        if (findUserRowByEmail(email)==null) {
+            return false;
+        }
+        return true;
     }
 
     public WebElement findUserRowByEmail(String email) {
