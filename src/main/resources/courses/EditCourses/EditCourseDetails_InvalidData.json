@@ -1,0 +1,32 @@
+[
+  {
+    "CourseName": "Course1",
+    "NewCourseName": "DP 213 TAQC DP 213 TAQC DP 213 TAQC DP 213 TAQC DP2",
+    "Message": "Too long"
+  },
+  {
+    "courseName" : "Course1",
+    "newCourseName" : "D",
+    "message" : "Too short"
+  },
+  {
+    "courseName" : "Course1",
+    "newCourseName" : " ",
+    "message" : "Too short"
+  },
+  {
+    "courseName" : "Course2",
+    "newCourseName" : "1",
+    "message" : "Too short"
+  },
+  {
+    "courseName" : "Course2",
+    "newCourseName" : "Maximize Long1234567891234  DP 213 TAQC DP 214 TAQC",
+    "message" : "Too long"
+  },
+  {
+    "courseName" : "Course2",
+    "newCourseName" : "",
+    "message" : "This field is required"
+  }
+]
