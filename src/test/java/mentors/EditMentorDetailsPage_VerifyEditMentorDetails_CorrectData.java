@@ -2,47 +2,46 @@ package mentors;
 
 import base.BaseTest;
 import constants.Endpoints;
-import constants.PathsToFiles;
-import mentors.data.InvalidData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import page.students.StudentsPage;
+import org.testng.asserts.SoftAssert;
 import page.mentors.EditMentorsDetailsPage;
 import page.mentors.MentorsTablePage;
+import page.students.StudentsPage;
 import page.unassigned.UnassignedRole;
 import page.unassigned.UnassignedUsersPage;
 import page.unauthorizedUserPages.AuthPage;
 import util.RandomStringsGenerator;
 import util.Role;
 import util.UnassignedUser;
-
 import java.io.IOException;
 
-public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends BaseTest {
-    InvalidData[] data;
+public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData extends BaseTest {
     String nameMentors ;
     String surNameMentors ;
     String passwordMentors ;
     String emailMentors ;
+    String newNameOfMentors;
+    String newSurNameOfMentors;
+    String newEmailOfMentors;
     UnassignedUser mentor;
-   EditMentorsDetailsPage editMentorsPage;
+    EditMentorsDetailsPage editMentor;
+    String editMentorURL;
 
-    public EditMentorsDetailsPage_VerifyEditMentors_IncorrectData() throws IOException {
+    public EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData() {
         nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
         emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
+        newNameOfMentors=nameMentors+"new";
+        newSurNameOfMentors=surNameMentors+"new";
+        newEmailOfMentors=emailMentors+"new";
         mentor= UnassignedUser.getUnassignedUser(nameMentors,surNameMentors,emailMentors,passwordMentors);
-        data=InvalidData.getData(PathsToFiles.Mentors.EDIT_MENTOR_ERRORS);
     }
-
     @BeforeClass
     public void precondition() throws IOException {
-
-        editMentorsPage = AuthPage.init(driver)
+        editMentor= AuthPage.init(driver)
                 .clickRegistrationLink()
                 .registerUser(mentor)
                 .logInAs(Role.ADMIN, StudentsPage.class)
@@ -55,43 +54,38 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
                 .inputSearchMentor("a")
                 .inputSearchMentor(mentor.getFirstName()+" "+mentor.getLastName())
                 .editMentors(0).isAtPage(waitTime);
-    }
+        editMentorURL=driver.getCurrentUrl();
 
-    @DataProvider(name = "errors")
-    public Object[][] provide() {
-        Object[][] list = new Object[data.length][1];
-        for (int i = 0; i < data.length; i++) {
-            list[i][0] = data[i];
-        }
-        return list;
     }
-
-    @Test(dataProvider = "errors")
-    public void checkFirstNameErrors(InvalidData firstName) {
-        String expectedResult= firstName.getErrorName();
-        String actualResult= editMentorsPage
-                .clearFields()
-                .editName(firstName.getName())
-                .loseFocus().getFirstNameError();
-        Assert.assertEquals(actualResult,expectedResult);
+    @Test
+    public void verifyInputFields(){
+        SoftAssert softAssert = new SoftAssert();
+        editMentor.editName(newNameOfMentors)
+                .editSurname(newSurNameOfMentors)
+                .editEmail(newEmailOfMentors)
+                .saveMentor();
+        softAssert.assertAll();
     }
-    @Test(dataProvider = "errors")
-    public void chekLastNameErrors(InvalidData lastName){
-        String expectedResult=lastName.getErrorSurname();
-        String actualResult= editMentorsPage
-                .clearFields()
-                .editSurname(lastName.getLast_name())
-                .loseFocus()
-                .getLastNameError();
-        Assert.assertEquals(actualResult,expectedResult);
+    @Test
+    public void verifyNewFirstName(){
+        driver.get(editMentorURL);
+        String actualResult=editMentor.getFirstName();
+        String expectResult=newNameOfMentors;
+        Assert.assertEquals(actualResult,expectResult);
     }
-    @Test(dataProvider = "errors")
-    public void checkEmailErrors(InvalidData email){
-        String expectedResult=email.getErrorEmail();
-        String actualResult=editMentorsPage
-                .clearFields()
-                .editEmail(email.getEmail())
-                .loseFocus()
-                .getEmailError();
+    @Test
+    public void verifyNewLastName(){
+        driver.get(editMentorURL);
+        String actualResult=editMentor.getLastName();
+        String expectResult=newSurNameOfMentors;
+        Assert.assertEquals(actualResult,expectResult);
+    }
+    @Test
+    public void verifyNewEmail(){
+        driver.get(editMentorURL);
+        String actualResult=editMentor.getEmail();
+        String expectResult=newEmailOfMentors;
+        Assert.assertEquals(actualResult,expectResult);
     }
 }
+

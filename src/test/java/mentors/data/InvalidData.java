@@ -1,4 +1,4 @@
-package mentors;
+package mentors.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

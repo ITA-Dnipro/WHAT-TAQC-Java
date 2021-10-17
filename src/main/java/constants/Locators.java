@@ -116,9 +116,8 @@ public class Locators {
         String SECRETARIES_LAY_OFF_BUTTON_XPATH = "//button[contains(text (), 'Lay off')]";
         String SECRETARIES_CLEAR_BUTTON_XPATH = "//button[contains(text (), 'Clear')]";
         String SECRETARIES_SAVE_BUTTON_XPATH = "//button[contains(text (), 'Save')]";
-
-
     }
+
     public interface UnassignedUsers {
         String SEARCH_INPUT_FIELD_XPATH = "//input";
         String TABLE_HEAD_NAME_XPATH = "//span[contains(text(),'Name')]";
@@ -149,8 +148,8 @@ public class Locators {
 
     public interface CourseDetailsPage {
         String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
-        String COURSE_DETAILS_TAB_XPATH = "//a[contains(text(),'Course details')]";
-        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(text(),'Edit')]";
+        String COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Course details')]";
+        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Edit course details')]";
         String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String DELETE_BUTTON_XPATH = "//button[contains(text(),'Delete')]";
         String CLEAR_BUTTON_XPATH = "//button[@type='reset']";
@@ -237,6 +236,7 @@ public class Locators {
         String FIRST_NAME_ERROR = "//input[@id='firstName']/parent::div/div";
         String LAST_NAME_ERROR = "//input[@id='lastName']/parent::div/div";
         String EMAIL_ERROR = "//input[@id='email']/parent::div/div";
+        String REMOVE_MENTOR_BUTTON="//button[text()='Delete']";
     }
 
     public interface StudentsPage {
@@ -281,7 +281,7 @@ public class Locators {
     }
 
     public interface MyProfile {
-        String CHANGE_PASSWORD_BUTTON = "//button[@type='button']";
+        String CHANGE_PASSWORD_BUTTON = "//button";
     }
 
     public interface RegistrationPage {

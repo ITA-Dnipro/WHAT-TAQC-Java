@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+import page.unassigned.UnassignedUsersPage;
+import util.UnassignedUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +47,8 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         clickElement(disableMentorsSwitch);
         return this;
     }
-    public MentorsTablePage showMentorsCard(int index){
+
+    public MentorsTablePage showMentorsCard(int index) {
         clickElement(switchViewButton.get(index));
         return this;
     }
@@ -56,7 +59,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
     }
 
     public MentorsTablePage sortByName() {
-       clickElement(sortNameArrow);
+        clickElement(sortNameArrow);
         return this;
     }
 
@@ -75,42 +78,63 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         return new MentorsDetailsPage(driver);
     }
 
+    public UnassignedUsersPage addMentor() {
+        clickElement(addMentorButton);
+        return new UnassignedUsersPage(driver);
+    }
+
     public EditMentorsDetailsPage editMentors(Integer index) {
         clickElement(editButtonXpath.get(index));
         return new EditMentorsDetailsPage(driver);
     }
-    public Integer getMentorsIdByName(String name){
-        for (int i = 0; i < mentorsRow.size(); i++){
-            if (mentorsRow.get(i).getText().equals(name)){
+
+    public Integer getMentorsIdByName(String name) {
+        for (int i = 0; i < mentorsRow.size(); i++) {
+            if (mentorsRow.get(i).getText().equals(name)) {
                 return i;
             }
         }
         return null;
     }
-    public EditMentorsDetailsPage editMentorsByName(String name){
+
+    public EditMentorsDetailsPage editMentorsByName(String name) {
         clickElement(editButtonXpath.get(getMentorsIdByName(name)));
         return new EditMentorsDetailsPage(driver);
     }
-    public List<String> getMentorsName(){
+
+    public List<String> getMentorsName() {
         List<String> mentorsNames = new ArrayList<String>();
-        for(int i=0;i<mentorsRow.size();i=i+3 ){
+        for (int i = 0; i < mentorsRow.size(); i = i + 3) {
             mentorsNames.add(mentorsRow.get(i).getText());
         }
         return mentorsNames;
     }
-    public List<String> getMentorsSurname(){
+
+    public List<String> getMentorsSurname() {
         List<String> mentorsSurname = new ArrayList<String>();
-        for(int i=1;i<mentorsRow.size();i=i+3 ){
+        for (int i = 1; i < mentorsRow.size(); i = i + 3) {
             mentorsSurname.add(mentorsRow.get(i).getText());
         }
         return mentorsSurname;
     }
-    public List<String> getMentorsEmail(){
+
+    public List<String> getMentorsEmail() {
         List<String> mentorsEmail = new ArrayList<String>();
-        for(int i=2;i<mentorsRow.size();i=i+3 ){
+        for (int i = 2; i < mentorsRow.size(); i = i + 3) {
             mentorsEmail.add(mentorsRow.get(i).getText());
         }
         return mentorsEmail;
     }
 
+    public List<String> getMentorsData() {
+        List<String> mentorsData = new ArrayList<>();
+
+        for (int i = 0; i < mentorsRow.size(); i++) {
+            mentorsData.add(mentorsRow.get(i).getText());
+        }
+        return mentorsData;
+    }
+    public String getDataById(int index){
+        return mentorsRow.get(index).getText();
+    }
 }
