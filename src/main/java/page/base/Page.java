@@ -2,11 +2,8 @@ package page.base;
 
 import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import page.unauthorizedUserPages.AuthPage;
-
 import java.io.IOException;
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static org.awaitility.Awaitility.await;
@@ -20,19 +17,17 @@ public abstract class Page<I extends Page<I>> extends BasePage {
 
     protected Header header;
     protected SideBar sideBar;
-    protected WebDriverWait wait;
 
     public Page(WebDriver driver) {
         super(driver);
         sideBar = new SideBar(driver);
         header = new Header(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public <T> T redirectTo(String url, Class<T> type){
         driver.get(url);
-        wait.until(r -> driver.getCurrentUrl().equals(url));
-        return (T) type.cast(Endpoints.getPages(driver).get(url));
+        await().until(() -> driver.getCurrentUrl().equals(url));
+        return type.cast(Endpoints.getPages(driver).get(url));
     }
 
     public Header getHeader() {

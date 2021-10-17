@@ -11,6 +11,16 @@ public class AddLessonData {
     protected String date;
     protected String email;
 
+    public AddLessonData() {
+    }
+
+    public AddLessonData(String theme, String g_name, String date, String email) {
+        this.theme = theme;
+        this.g_name = g_name;
+        this.date = date;
+        this.email = email;
+    }
+
     public String getTheme() {
         return theme;
     }
@@ -43,7 +53,7 @@ public class AddLessonData {
         this.email = email;
     }
 
-    public static AddLessonData getData(String filename) throws IOException {
-        return new ObjectMapper().readValue(new File(filename), AddLessonData.class);
+    public static AddLessonData[] getData(String filename) throws IOException {
+        return new ObjectMapper().readValue(new File(filename), AddLessonData[].class);
     }
 }
