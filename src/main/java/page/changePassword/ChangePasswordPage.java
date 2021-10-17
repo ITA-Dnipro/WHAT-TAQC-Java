@@ -1,5 +1,6 @@
 package page.changePassword;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.Endpoints;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,11 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
 import page.base.Page;
 import page.myProfile.MyProfilePage;
+import util.User;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 import static constants.ErrorMessages.GetChangePasswordErrorMessage.*;
 import static constants.Locators.ChangePasswordPage.*;
@@ -53,6 +59,9 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement loseFocus;
 
+    private Map<String, User> users;
+    private User user;
+
     SoftAssert softAssert = new SoftAssert();
 
     public ChangePasswordPage(WebDriver driver) {
@@ -70,7 +79,8 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return this;
     }
 
-    public ChangePasswordPage fillCurrentPasswordField(String currentPassword) {
+    public ChangePasswordPage fillCurrentPasswordField(String currentPassword) throws InterruptedException {
+        Thread.sleep(2000);
         fillField(currentPasswordField, currentPassword);
         return this;
     }
@@ -102,8 +112,7 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
     public MyProfilePage confirmChangedPassword() {
         clickElement(confirmButton);
-        return new MyProfilePage(driver) {
-        };
+        return new MyProfilePage(driver);
     }
 
     public ChangePasswordPage closeConfirmAction() {
@@ -113,12 +122,12 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
     public String getCurrentPasswordError() {
         try {
-         errMessageCurrPassword.getText();
-    } catch (NotFoundException e) {
+            errMessageCurrPassword.getText();
+        } catch (NotFoundException e) {
             return "";
         }
         return errMessageCurrPassword.getText();
-        }
+    }
 
     public String getNewPasswordError() {
         return errMessageNewPassword.getText();
@@ -146,5 +155,11 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
     public ChangePasswordPage loseFocus() {
         loseFocus.click();
         return this;
+    }
+
+    public ChangePasswordPage rewriteCredentialsFile(String pathToFile, Map<String, User> users, String newPassword) throws IOException {
+        user.setPass(newPassword);
+        new ObjectMapper().writeValue(new File(pathToFile), users);
+        return new ChangePasswordPage(driver);
     }
 }

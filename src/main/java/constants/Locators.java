@@ -232,8 +232,6 @@ public class Locators {
         String FIRST_NAME_ERROR = "//input[@id='firstName']/parent::div/div";
         String LAST_NAME_ERROR = "//input[@id='lastName']/parent::div/div";
         String EMAIL_ERROR = "//input[@id='email']/parent::div/div";
-
-
     }
 
     public interface StudentsPage {
@@ -278,7 +276,7 @@ public class Locators {
     }
 
     public interface MyProfile {
-        String CHANGE_PASSWORD_BUTTON = "//button";
+        String CHANGE_PASSWORD_BUTTON = "//button[@type='button']";
     }
 
     public interface RegistrationPage {

@@ -2,6 +2,7 @@ package page.base;
 
 import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
+import page.myProfile.MyProfilePage;
 import page.unauthorizedUserPages.AuthPage;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -33,6 +34,12 @@ public abstract class Page<I extends Page<I>> extends BasePage {
     public Header getHeader() {
         return header;
     }
+
+    public MyProfilePage clickUserIcon() throws InterruptedException {
+        Thread.sleep(1000);
+        return header.clickUserIcon();
+    }
+
 
     public SideBar getSideBar() {
         return sideBar;

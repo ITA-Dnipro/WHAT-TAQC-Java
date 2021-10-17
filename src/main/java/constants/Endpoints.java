@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import page.changePassword.ChangePasswordPage;
 import page.courses.AddCoursePage;
 import page.courses.CoursesPage;
+import page.myProfile.MyProfilePage;
 import page.students.StudentsPage;
 import page.base.Page;
 import page.lessons.AddLessonPage;
@@ -47,6 +48,7 @@ public class Endpoints {
         pages.put(CHANGE_PASSWORD, new ChangePasswordPage(driver));
         pages.put(COURSES, new CoursesPage(driver));
         pages.put(ADD_COURSE, new AddCoursePage(driver));
+        pages.put(MY_PROFILE, new MyProfilePage(driver));
         return pages;
     }
 }

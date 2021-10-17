@@ -45,7 +45,7 @@ public class ChangePasswordPage_VerifyChangePassword_InvalidData_Assert extends 
     }
 
     @Test(description = "DP213-29", dataProvider = "change-password")
-    public void changePassword_CurrentPasswordInputField(ChangePasswordInvalidData password) {
+    public void changePassword_CurrentPasswordInputField(ChangePasswordInvalidData password) throws InterruptedException {
         String expectedResult = password.getCurrantPasswordResult();
 
         String actualResult = changePasswordPage
