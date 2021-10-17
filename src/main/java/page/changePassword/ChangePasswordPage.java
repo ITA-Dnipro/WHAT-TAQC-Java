@@ -5,12 +5,10 @@ import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import page.base.Page;
 import page.myProfile.MyProfilePage;
 
-import static constants.ErrorMessages.GetChangePasswordErrorMessage.*;
 import static constants.Locators.ChangePasswordPage.*;
 
 public class ChangePasswordPage extends Page<ChangePasswordPage> {

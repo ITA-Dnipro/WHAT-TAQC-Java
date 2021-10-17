@@ -132,10 +132,10 @@ public class Locators {
     }
 
     public interface Courses {
-        String COURSE_TITLE_XPATH = "//h2[.='Courses']";
+        String COURSE_TITLE_XPATH = "//h2[text()='Courses']";
         String VIEW_TABLE_CARD_XPATH = "//button[@class='btn btn-secondary']";
         String SEARCH_FIELD_XPATH = "//input[@type='text']";
-        String ADD_COURSE_BUTTON_XPATH = "//span[.='Add a course']";
+        String ADD_COURSE_BUTTON_XPATH = "//span[text()='Add a course']";
         String SORT_TITLE_BUTTON_XPATH = "//span[@lessons.data-sorting-param='name']";
         String COURSES_TABLE_LIST_ADMIN_SECRETARY_XPATH = "//td[not(contains(@class,'text-center'))]";
         String EDIT_BUTTON_ADMIN_SECRETARY_XPATH = "//td[@class='text-center']";
@@ -157,8 +157,9 @@ public class Locators {
         String CANCEL_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='button'and contains(text(),'Cancel')]";
         String DELETE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='submit'and contains(text(),'Delete')]";
         String CLOSE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@class='close']";
-        String COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[.='Course Details']";
-        String EDIT_COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[.='Course Editing']";
+        String COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[text()='Course Details']";
+        String EDIT_COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[text()='Course Editing']";
+        String COURSE_NAME_ERROR_MESSAGE_XPATH = "//p[contains(text(),'Too long')]";
     }
 
     public interface AddCoursePage {
@@ -178,6 +179,10 @@ public class Locators {
         String CANCEL_BUTTON_CONFIRM_ACTION_XPATH = "//button[contains(@class,'bRf5m')and contains(text(),'Cancel')]";
         String CONFIRM_BUTTON_CONFIRM_ACTION_XPATH = "//button[@type='submit'and contains(text(),'Confirm')]";
         String CLOSE_CONFIRM_ACTION_XPATH = "//button[@class='close']";
+        String CURRENT_PASSWORD_ERROR_XPATH = "//input[@id='currentPassword']/following-sibling::div";
+        String NEW_PASSWORD_ERROR_PROVIDE_XPATH = "//input[@id='newPassword']/following-sibling::div";
+        String CONFIRM_PASSWORD_ERROR_XPATH = "//input[@id='confirmNewPassword']/following-sibling::div";
+        String ALERT_CHANGE_PASSWORD_XPATH = "//div[contains(@class,'alert-dismissible show')]";
     }
 
     public interface MentorsTablePage {
