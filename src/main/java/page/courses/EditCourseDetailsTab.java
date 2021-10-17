@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import page.base.Page;
 
-import static constants.ErrorMessages.GetEditCourseErrorMessage.COURSE_NAME_ERROR_MESSAGE_XPATH;
 import static constants.Locators.CourseDetailsPage.*;
 
 public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
