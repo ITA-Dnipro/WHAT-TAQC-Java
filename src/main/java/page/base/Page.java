@@ -27,7 +27,7 @@ public abstract class Page<I extends Page<I>> extends BasePage {
     public <T> T redirectTo(String url, Class<T> type){
         driver.get(url);
         await().until(() -> driver.getCurrentUrl().equals(url));
-        return (T) type.cast(Endpoints.getPages(driver).get(url));
+        return type.cast(Endpoints.getPages(driver).get(url));
     }
 
     public Header getHeader() {
