@@ -79,7 +79,7 @@ public class AuthPage extends BasePage {
     public AuthPage isAt() {
         try{
             await().until(() -> driver.getCurrentUrl().equals(Endpoints.AUTH));
-            return new AuthPage(driver);
+            return this;
         }catch(Exception e){
             return  null;
         }
