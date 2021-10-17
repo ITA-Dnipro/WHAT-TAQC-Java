@@ -16,7 +16,7 @@ public class StudentsEditDetailsTab extends BaseTest {
     private SoftAssert softAsserts;
     private UnassignedUser user;
 
-    @BeforeClass
+   /* @BeforeClass
     public void precondition() throws IOException {
         user = UnassignedUser.getUnassignedUser();
         studentsPage = AuthPage.init(driver)
