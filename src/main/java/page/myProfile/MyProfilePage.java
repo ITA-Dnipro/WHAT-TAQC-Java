@@ -35,7 +35,14 @@ public class MyProfilePage extends Page<MyProfilePage> {
     public ChangePasswordPage clickChangePasswordButton() {
         log.info(changePasswordButton.getText());
         clickElement(changePasswordButton);
-
         return new ChangePasswordPage(driver);
+    }
+
+    @FindBy (xpath = "//h3[@class='pt-3']")
+    WebElement loseFocus;
+
+    public MyProfilePage loseFocus () {
+        clickElement(loseFocus);
+        return this;
     }
 }
