@@ -70,6 +70,13 @@ public class AuthPage extends BasePage {
         return type.cast(defaultPages.get(role.getRoleName()));
     }
 
+    public <T extends Page> T logInAs(Role role, User user, Class<T> type){
+        fillMail(user.getMail())
+                .fillPass(user.getPass())
+                .clickLogInButton();
+        return type.cast(defaultPages.get(role.getRoleName()));
+    }
+
     private void initDefaultPages() {
         defaultPages.put(Role.ADMIN.getRoleName(), new StudentsPage(driver));
         defaultPages.put(Role.MENTOR.getRoleName(), new LessonsPage(driver));
