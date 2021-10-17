@@ -29,6 +29,5 @@ public class EditLesson_VerifyEditLesson_CorrectData_MentorRole extends EditLess
     @Override
     public void editLessonTest() {
         super.editLessonTest();
-        log.info("Fine");
     }
 }

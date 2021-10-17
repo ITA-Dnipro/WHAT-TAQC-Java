@@ -41,10 +41,6 @@ public class LessonsPage extends Page<LessonsPage> {
         return new AddLessonPage(driver);
     }
 
-    public Integer getRowsCount(){
-        return rows.size();
-    }
-
     public String getAlertText(){
         return alert.getText();
     }
@@ -66,10 +62,5 @@ public class LessonsPage extends Page<LessonsPage> {
     public List<WebElement> getEdit() {
         return edit;
     }
-
-    public WebElement getAlert() {
-        return alert;
-    }
-
 
 }

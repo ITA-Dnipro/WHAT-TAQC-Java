@@ -2,14 +2,11 @@ package page.lessons;
 
 import constants.Endpoints;
 import org.apache.log4j.Logger;
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
 import page.base.Page;
 import util.RandomStringsGenerator;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -55,7 +52,6 @@ public class AddLessonPage extends Page<AddLessonPage> {
 
     ClassBookFeature classBook;
 
-    private static final Logger logger = Logger.getLogger(AddLessonPage.class.getName());
 
     public AddLessonPage(WebDriver driver) {
         super(driver);

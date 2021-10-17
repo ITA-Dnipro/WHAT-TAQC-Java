@@ -21,9 +21,6 @@ public class EditLessonPage extends Page<EditLessonPage> {
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement title;
 
-
-    private static final Logger logger = Logger.getLogger(EditLessonPage.class.getName());
-
     ClassBookFeature classBook;
 
     public EditLessonPage(WebDriver driver) {
