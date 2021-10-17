@@ -16,13 +16,7 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         super(driver);
     }
 
-    @Override
-    public boolean isAt() {
-        String courseDetailsTabTitle = "Course Editing";
-        return driver.findElement(By.xpath(
-                EDIT_COURSE_DETAILS_TAB_TITLE_XPATH)).getText()
-                .contains(courseDetailsTabTitle);
-    }
+
 
     @FindBy(xpath = ARROW_BUTTON_XPATH)
     private WebElement arrowButton;
@@ -53,6 +47,14 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
 
     @FindBy(xpath = COURSE_NAME_ERROR_MESSAGE_XPATH)
     private WebElement errorMessage;
+
+    @Override
+    public boolean isAt() {
+        String courseDetailsTabTitle = "Course Editing";
+        return driver.findElement(By.xpath(
+                EDIT_COURSE_DETAILS_TAB_TITLE_XPATH)).getText()
+                .contains(courseDetailsTabTitle);
+    }
 
     public CoursesPage outFromEditCourseDetails() {
         clickElement(arrowButton);

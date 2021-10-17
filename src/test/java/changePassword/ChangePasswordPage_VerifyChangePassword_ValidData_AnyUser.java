@@ -17,17 +17,20 @@ import util.Role;
 import util.User;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends BaseTest {
 
     private ChangePasswordValidData[] passwordsData;
     private ChangePasswordPage changePasswordPage;
     private MyProfilePage myProfilePage;
-    private static String currentPassword;
+    private String currentPassword;
     private User user;
     private String basePassword;
+    private Map<String, User> users;
 
     public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser() throws IOException {
+        users = User.get(PathsToFiles.CREDENTIALS);
         passwordsData = ChangePasswordValidData.passwordsList(
                 PathsToFiles.ChangePassword.CHANGE_PASSWORD_VALID_DATA);
     }
@@ -40,8 +43,10 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.CHANGE_PASSWORD, ChangePasswordPage.class)
                 .isAtPage(waitTime);
-        user = new User();
-        basePassword = Role.MENTOR.getRoleName();
+
+
+        user = users.get(Role.MENTOR.getRoleName());
+        basePassword = user.getPass();
     }
 
     @DataProvider(name = "log_in")
@@ -67,9 +72,11 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
                 .logOut()
                 .fillMail(user.getMail())
                 .fillPass(currentPassword)
-                .clickLogInButton();
+                .clickSignIn()
+                .isAtPage(waitTime);
 
         Assert.assertEquals(driver.getCurrentUrl(), Endpoints.LESSONS);
+        users.put(Role.MENTOR.getRoleName(), user);
     }
 
     @AfterMethod

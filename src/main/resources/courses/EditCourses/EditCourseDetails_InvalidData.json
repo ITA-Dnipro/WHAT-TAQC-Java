@@ -1,8 +1,8 @@
 [
   {
-    "CourseName": "Course1",
-    "NewCourseName": "DP 213 TAQC DP 213 TAQC DP 213 TAQC DP 213 TAQC DP2",
-    "Message": "Too long"
+    "courseName": "Course1",
+    "newCourseName": "DP 213 TAQC DP 213 TAQC DP 213 TAQC DP 213 TAQC DP2",
+    "message": "Too long"
   },
   {
     "courseName" : "Course1",
