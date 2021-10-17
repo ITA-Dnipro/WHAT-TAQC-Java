@@ -1,6 +1,10 @@
 package constants;
 
 import org.openqa.selenium.WebDriver;
+import page.changePassword.ChangePasswordPage;
+import page.courses.AddCoursePage;
+import page.courses.CoursesPage;
+import page.myProfile.MyProfilePage;
 import page.students.StudentsPage;
 import page.base.Page;
 import page.lessons.AddLessonPage;
@@ -26,6 +30,11 @@ public class Endpoints {
     public static final String STUDENTS = BASE_URL + "/students";
     public static final String MENTORS=BASE_URL+"/mentors";
     public static final String EDIT_MENTORS=MENTORS+"/edit";
+    public static final String CHANGE_PASSWORD = BASE_URL + "/change-password";
+    public static final String COURSES = BASE_URL + "/courses";
+    public static final String ADD_COURSE = COURSES + "/add";
+    public static final String MY_PROFILE = BASE_URL + "/my-profile";
+
 
     public static Map<String, Page> getPages(WebDriver driver){
         Map<String, Page> pages = new HashMap<>();
@@ -36,6 +45,10 @@ public class Endpoints {
         pages.put(UNASSIGNED_USERS,new UnassignedUsersPage(driver));
         pages.put(MENTORS,new MentorsTablePage(driver));
         pages.put(EDIT_MENTORS,new EditMentorsDetailsPage(driver));
+        pages.put(CHANGE_PASSWORD, new ChangePasswordPage(driver));
+        pages.put(COURSES, new CoursesPage(driver));
+        pages.put(ADD_COURSE, new AddCoursePage(driver));
+        pages.put(MY_PROFILE, new MyProfilePage(driver));
         return pages;
     }
 }

@@ -3,6 +3,7 @@ package page.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import page.myProfile.MyProfilePage;
 import page.unauthorizedUserPages.AuthPage;
 
 import java.io.IOException;
@@ -33,5 +34,10 @@ public class Header extends BasePage {
         clickElement(triangleIcon);
         clickElement(dropDownMenuLogOut);
         return new AuthPage(driver);
+    }
+
+    public MyProfilePage clickUserIcon() {
+        clickElement(icon);
+        return new MyProfilePage(driver);
     }
 }
