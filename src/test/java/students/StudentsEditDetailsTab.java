@@ -12,7 +12,7 @@ import util.UnassignedUser;
 import java.io.IOException;
 
 public class StudentsEditDetailsTab extends BaseTest {
-    private StudentsPage studentsPage;
+   /* private StudentsPage studentsPage;
     private SoftAssert softAsserts;
     private UnassignedUser user;
 
@@ -22,5 +22,5 @@ public class StudentsEditDetailsTab extends BaseTest {
         studentsPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .
-    }
+    }*/
 }
