@@ -1,5 +1,6 @@
 package lessons.util;
 
+import constants.PathsToFiles;
 import util.User;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -7,7 +8,7 @@ import java.nio.file.Paths;
 public class ApiAddLessonStrategy implements AddLessonStrategy{
 
     final String endpoint = "https://charliebackendapi.azurewebsites.net/api/v1/lessons";
-    final String path = "./src/main/resources/lessons/lesson.json";
+    final String path = PathsToFiles.Lessons.ADD_NEW_LESSON;
 
     @Override
     public boolean addNewLesson(User user) throws Exception {

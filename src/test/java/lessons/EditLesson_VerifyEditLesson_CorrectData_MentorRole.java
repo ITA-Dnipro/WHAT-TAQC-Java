@@ -26,7 +26,7 @@ public class EditLesson_VerifyEditLesson_CorrectData_MentorRole extends EditLess
         }
 
         this.lessonsPage = AuthPage.init(driver).isAt()
-                .logInAs(Role.MENTOR, LessonsPage.class)
+                .logInAs(Role.MENTOR, user, LessonsPage.class)
                 .isAtPage(waitTime);
     }
 
