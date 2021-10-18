@@ -20,7 +20,7 @@ public class ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary exten
     EditCourseInvalidData[] data;
 
     public ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary() throws IOException {
-        data = EditCourseInvalidData.getEditCoursesInvalidData(PathsToFiles.Сourses.EDIT_COURSES_INVALID_DATA);
+        data = EditCourseInvalidData.getEditCoursesInvalidData(PathsToFiles.Courses.EDIT_COURSES_INVALID_DATA);
     }
 
     @DataProvider(name = "editCourseInvalidData")
@@ -33,7 +33,7 @@ public class ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary exten
     }
 
     @Test(description = "DP213-45", dataProvider = "editCourseInvalidData")
-    public void verifyEditCourse_InvalidData(EditCourseInvalidData editData) throws IOException, InterruptedException {
+    public void verifyEditCourse_InvalidData(EditCourseInvalidData editData) throws IOException {
         coursesPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)

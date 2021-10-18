@@ -23,7 +23,7 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
     private CoursesPage coursesPage;
 
     public ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles() throws IOException {
-        courseNameList = AddCoursesData.getCoursesName(PathsToFiles.Сourses.ADD_COURSES_VALID_DATA);
+        courseNameList = AddCoursesData.getCoursesName(PathsToFiles.Courses.ADD_COURSES_VALID_DATA);
     }
 
     @BeforeMethod
@@ -42,7 +42,7 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
     }
 
     @Test(description = "DP213-42", dataProvider = "changeName")
-    public void addCourse(AddCoursesData data) throws IOException, InterruptedException {
+    public void addCourse(AddCoursesData data) throws IOException {
 
         String expectedResult = "×\nClose alert\nThe course has been successfully added";
 

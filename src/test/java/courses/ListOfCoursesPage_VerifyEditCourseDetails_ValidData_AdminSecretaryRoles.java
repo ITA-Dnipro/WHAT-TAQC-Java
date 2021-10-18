@@ -22,7 +22,7 @@ public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryR
     String newName;
 
     public ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryRoles() throws IOException {
-        data = EditCourseValidData.getEditCoursesValidData(PathsToFiles.Сourses.EDIT_COURSES_VALID_DATA);
+        data = EditCourseValidData.getEditCoursesValidData(PathsToFiles.Courses.EDIT_COURSES_VALID_DATA);
     }
 
     @DataProvider(name = "editCourseValidData")
@@ -35,7 +35,7 @@ public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryR
     }
 
     @Test(description = "DP213-43", dataProvider = "editCourseValidData")
-    public void verifyEditCourse_ValidData(EditCourseValidData editData) throws IOException, InterruptedException {
+    public void verifyEditCourse_ValidData(EditCourseValidData editData) throws IOException{
 
         String expectedResult = "×\nClose alert\nThe course has been successfully edited";
 

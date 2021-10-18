@@ -20,7 +20,7 @@ public class ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRol
     CoursesPage coursesPage;
 
     public ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRole() throws IOException {
-        searchName = SearchFunctionTest.getCourseNameForSearch(PathsToFiles.Сourses.SEARCH_COURSES_NAME);
+        searchName = SearchFunctionTest.getCourseNameForSearch(PathsToFiles.Courses.SEARCH_COURSES_NAME);
     }
 
     @DataProvider(name = "course-namePositive")
@@ -29,7 +29,7 @@ public class ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRol
     }
 
     @Test(description = "DP213-79", dataProvider = "course-namePositive", priority = 1)
-    public void verifySearchFunctionPositiveData(SearchFunctionTest name) throws IOException, InterruptedException {
+    public void verifySearchFunctionPositiveData(SearchFunctionTest name) throws IOException {
         coursesPage = AuthPage.init(driver)
                 .logInAs(Role.MENTOR, LessonsPage.class)
                 .isAtPage(waitTime)
@@ -46,7 +46,7 @@ public class ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRol
     }
 
     @Test(description = "DP213-79", dataProvider = "course-nameNegative", priority = 2)
-    public void verifySearchFunctionNegativeData(SearchFunctionTest name) throws IOException, InterruptedException {
+    public void verifySearchFunctionNegativeData(SearchFunctionTest name) throws IOException{
         coursesPage = AuthPage.init(driver)
                 .logInAs(Role.MENTOR, LessonsPage.class)
                 .isAtPage(waitTime)
