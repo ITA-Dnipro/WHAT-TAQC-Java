@@ -23,6 +23,7 @@ public class PathsToFiles {
         String EDIT_COURSES_INVALID_DATA = BASE_PATH + "courses/EditCourses/EditCourseDetails_InvalidData.json";
         String EDIT_COURSES_VALID_DATA = BASE_PATH + "courses/EditCourses/EditCourseDetails_ValidData.json";
         String SEARCH_COURSES_NAME = BASE_PATH + "courses/EditCourses/SearchField_ValidData.json";
+        String EDIT_COURSES_MENTOR_STUDENT_ROLES = BASE_PATH + "courses/EditCourses/EditCourseDetails_ValidDataMentorStudent.json";
     }
 
     public interface Mentors{

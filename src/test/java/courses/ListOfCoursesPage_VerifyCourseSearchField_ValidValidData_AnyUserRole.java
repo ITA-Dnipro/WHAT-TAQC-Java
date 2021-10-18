@@ -16,8 +16,8 @@ import java.io.IOException;
 
 public class ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRole extends BaseTest {
 
-    SearchFunctionTest[] searchName;
-    CoursesPage coursesPage;
+    private SearchFunctionTest[] searchName;
+    private CoursesPage coursesPage;
 
     public ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRole() throws IOException {
         searchName = SearchFunctionTest.getCourseNameForSearch(PathsToFiles.Сourses.SEARCH_COURSES_NAME);
@@ -29,7 +29,9 @@ public class ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRol
     }
 
     @Test(description = "DP213-79", dataProvider = "course-namePositive", priority = 1)
-    public void verifySearchFunctionPositiveData(SearchFunctionTest name) throws IOException, InterruptedException {
+    public void verifySearchFunctionPositiveData(SearchFunctionTest name) throws IOException{
+       coursesPage = new CoursesPage(driver);
+
         coursesPage = AuthPage.init(driver)
                 .logInAs(Role.MENTOR, LessonsPage.class)
                 .isAtPage(waitTime)
@@ -38,6 +40,9 @@ public class ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRol
                 .fillCourseSearchField(name.getCourseName());
 
         Assert.assertEquals(coursesPage.getCoursesRowsList().get(0).getText(), name.getCourseName());
+
+       coursesPage.logOut()
+                .isAt();
     }
 
     @DataProvider(name = "course-nameNegative")
@@ -47,13 +52,18 @@ public class ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRol
 
     @Test(description = "DP213-79", dataProvider = "course-nameNegative", priority = 2)
     public void verifySearchFunctionNegativeData(SearchFunctionTest name) throws IOException, InterruptedException {
+        String expectedResult = "Course is not found";
+
         coursesPage = AuthPage.init(driver)
                 .logInAs(Role.MENTOR, LessonsPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.COURSES, CoursesPage.class)
                 .isAtPage(waitTime)
-                .fillCourseSearchField(name.getCourseName());
+                .fillCourseSearchField(name.getCourseName())
+                .isAtPage(waitTime);
+        Assert.assertEquals(coursesPage.getCoursesRowsList().get(0).getText(), expectedResult);
 
-        Assert.assertFalse(coursesPage.getCoursesRowsList().get(0).isDisplayed(), name.getCourseName());
+        coursesPage.logOut()
+                .isAt();
     }
 }

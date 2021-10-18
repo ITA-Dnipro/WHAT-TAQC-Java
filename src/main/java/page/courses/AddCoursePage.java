@@ -26,7 +26,7 @@ public class AddCoursePage extends Page<AddCoursePage> {
     private WebElement addCourseSaveButton;
 
     @FindBy(xpath = CANCEL_BUTTON_ADD_COURSE_XPATH)
-    WebElement cancelFromAddCoursePage;
+    private WebElement cancelFromAddCoursePage;
 
     public AddCoursePage fillInputAddCourseName(String courseName) {
         fillField(courseNameInput, courseName);

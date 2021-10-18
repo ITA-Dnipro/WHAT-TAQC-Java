@@ -49,7 +49,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
     public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException, InterruptedException {
         currentPassword = user.getPass();
 
-        authPage = AuthPage.init(driver)
+        AuthPage.init(driver)
                 .logInAs(Role.MENTOR, user, LessonsPage.class)
                 .isAtPage(waitTime)
                 .clickUserIcon()
@@ -57,8 +57,11 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
                 .redirectTo(Endpoints.CHANGE_PASSWORD, ChangePasswordPage.class)
                 .isAtPage(waitTime)
                 .fillCurrentPasswordField(currentPassword)
+                .verifyCurrentPasswordFieldFielded(currentPassword)
                 .fillNewPasswordField(newPassword.getNewPassword())
+                .verifyNewPasswordFieldFielded(newPassword.getNewPassword())
                 .fillConfirmPasswordField(newPassword.getNewPassword())
+                .verifyConfirmPasswordFieldFielded(newPassword.getNewPassword())
                 .saveChangePassword()
                 .isAtPage(waitTime)
                 .confirmChangedPassword()

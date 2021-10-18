@@ -53,6 +53,10 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         return title.getText().contains(courseDetailsTabTitle);
     }
 
+    public WebElement getEditTabTitle() {
+        return title;
+    }
+
     public CoursesPage outFromEditCourseDetails() {
         clickElement(arrowButton);
         return new CoursesPage(driver);
@@ -61,10 +65,6 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
     public CourseDetailsTab redirectToCourseDetailsTab() {
         clickElement(courseDetailsTab);
         return new CourseDetailsTab(driver);
-    }
-
-    public WebElement getCourseNameInput() {
-        return courseNameInput;
     }
 
     public EditCourseDetailsTab fillCourseName(String courseName) {

@@ -52,6 +52,7 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement loseFocus;
 
+    final String VALUE = "value";
     SoftAssert softAssert = new SoftAssert();
 
     public ChangePasswordPage(WebDriver driver) {
@@ -136,7 +137,7 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return this;
     }
 
-    public ChangePasswordPage verifyConfirmPassword(String expectedErrorMessage, String confirmPasswordError) {
+    public ChangePasswordPage verifyConfirmPasswordError(String expectedErrorMessage, String confirmPasswordError) {
         softAssert.assertEquals(confirmPasswordError, expectedErrorMessage);
         return this;
     }
@@ -145,4 +146,20 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         loseFocus.click();
         return this;
     }
+
+    public ChangePasswordPage verifyCurrentPasswordFieldFielded(String data) {
+        softAssert.assertEquals(currentPasswordField.getAttribute(VALUE), data);
+        return this;
+    }
+
+    public ChangePasswordPage verifyNewPasswordFieldFielded(String data) {
+        softAssert.assertEquals(newPasswordField.getAttribute(VALUE), data);
+        return this;
+    }
+
+    public ChangePasswordPage verifyConfirmPasswordFieldFielded(String data) {
+        softAssert.assertEquals(confirmPasswordField.getAttribute(VALUE), data);
+        return this;
+    }
+
 }

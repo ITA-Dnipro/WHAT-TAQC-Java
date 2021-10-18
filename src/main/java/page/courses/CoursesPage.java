@@ -1,14 +1,11 @@
 package page.courses;
 
 import constants.Endpoints;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import page.base.Page;
 
-import java.security.Key;
 import java.util.List;
 
 import static constants.Locators.Courses.*;
@@ -48,7 +45,7 @@ public class CoursesPage extends Page<CoursesPage> {
     @FindBy(xpath = COURSE_TITLE_XPATH)
     private WebElement loseFocus;
 
-    @FindBy (xpath = ALERT_ADD_COURSE_XPATH)
+    @FindBy(xpath = ALERT_ADD_COURSE_XPATH)
     private WebElement alertAddCourse;
 
     public CoursesPage(WebDriver driver) {
@@ -65,7 +62,7 @@ public class CoursesPage extends Page<CoursesPage> {
         return new EditCourseDetailsTab(driver);
     }
 
-    public CourseDetailsTab courseDetailsTab(int numberRow) {
+    public CourseDetailsTab clickCourseDetailsTab(int numberRow) {
         clickElement(courseRow.get(numberRow));
         return new CourseDetailsTab(driver);
     }
