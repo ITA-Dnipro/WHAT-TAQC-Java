@@ -18,7 +18,7 @@ public abstract class Page<I extends Page<I>> extends BaseElement {
 
     protected Header header;
     protected SideBar sideBar;
-    
+
     public Page(WebDriver driver) {
         super(driver);
         sideBar = new SideBar(driver);
@@ -59,9 +59,5 @@ public abstract class Page<I extends Page<I>> extends BaseElement {
 
     public AuthPage logOut() throws IOException {
         return header.logOut();
-    }
-
-    public void assertAll() {
-        softAssert.assertAll();
     }
 }
