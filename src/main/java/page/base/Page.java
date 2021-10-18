@@ -7,7 +7,6 @@ import page.myProfile.MyProfilePage;
 import page.unauthorizedUserPages.AuthPage;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import static org.awaitility.Awaitility.await;
 
 /**
@@ -38,7 +37,7 @@ public abstract class Page<I extends Page<I>> extends BaseElement {
         return header;
     }
 
-    public MyProfilePage clickUserIcon() throws InterruptedException {
+    public MyProfilePage clickUserIcon() {
         return header.clickUserIcon();
     }
 

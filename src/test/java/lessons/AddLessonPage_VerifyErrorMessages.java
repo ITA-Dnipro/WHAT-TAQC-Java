@@ -4,7 +4,6 @@ import base.BaseTest;
 import constants.Endpoints;
 import constants.PathsToFiles;
 import lessons.data.AddLessonErrors;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,7 +23,7 @@ public class AddLessonPage_VerifyErrorMessages extends BaseTest {
     }
 
     @BeforeClass
-    public void preconditions() throws IOException {
+    public void setUp() throws IOException {
         addLessonPage =
                 AuthPage.init(driver).logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
@@ -42,38 +41,27 @@ public class AddLessonPage_VerifyErrorMessages extends BaseTest {
     }
 
     @Test(description = "DP213-66", dataProvider = "errors")
-    public void checkThemeErrors(AddLessonErrors errors){
-        String expectedResult = errors.getTheme_result();
+    public void verifyErrors(AddLessonErrors errors){
 
-        String actualResult = addLessonPage
-                        .fillLessonTheme(errors.getTheme())
-                        .loseFocus()
-                        .getThemeError();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-    @Test(description = "DP213-66", dataProvider = "errors")
-    public void checkGroupErrors(AddLessonErrors errors){
-        String expectedResult = errors.getG_name_result();
-
-        String actualResult = addLessonPage
+        addLessonPage
+                .fillLessonTheme(errors.getTheme())
+                .verifyThemeNameInputFieldIsFilled(errors.getTheme())
+                .loseFocus()
+                .verifyThemeNameError(errors.getTheme_result())
                 .fillGroupName(errors.getG_name())
+                .verifyGroupNameInputFieldIsFilled(errors.getG_name())
                 .loseFocus()
-                .getGroupError();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-    @Test(description = "DP213-66", dataProvider = "errors")
-    public void checkMailErrors(AddLessonErrors errors){
-        String expectedResult = errors.getEmail_result();
-
-        String actualResult = addLessonPage
-                .fillEmailInput(errors.getEmail_result())
+                .verifyGroupNameError(errors.getG_name_result())
+                .fillDateInput(errors.getDate())
+                .verifyDateInputFieldIsFilled()
                 .loseFocus()
-                .getMailError();
-
-        Assert.assertEquals(actualResult, expectedResult);
+                .fillEmailInput(errors.getEmail())
+                .verifyMentorEmailInputFieldIsFilled(errors.getEmail())
+                .loseFocus()
+                .verifyMentorMailError(errors.getEmail_result())
+                .verifyAll()
+                .clickClassRegisterButton()
+                .clickSaveButton()
+                .isAtPage(waitTime);
     }
 }
