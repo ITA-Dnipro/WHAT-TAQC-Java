@@ -15,7 +15,7 @@ import static org.awaitility.Awaitility.await;
  *
  * @author fresh-ash
  */
-public abstract class Page<I extends Page<I>> extends BasePage {
+public abstract class Page<I extends Page<I>> extends BaseElement {
 
     protected Header header;
     protected SideBar sideBar;
@@ -64,7 +64,7 @@ public abstract class Page<I extends Page<I>> extends BasePage {
         return header.logOut();
     }
 
-    public SoftAssert getSoftAssert() {
-        return softAssert;
+    public void assertAll() {
+        softAssert.assertAll();
     }
 }

@@ -16,6 +16,7 @@ import static constants.Locators.AddLesson.*;
 
 public class AddLessonPage extends Page<AddLessonPage> {
 
+    //region WebElements
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement pageTitle;
 
@@ -51,9 +52,9 @@ public class AddLessonPage extends Page<AddLessonPage> {
 
     @FindBy(id = MENTOR_MAIL_ERROR_ID)
     WebElement mailError;
+    //endregion
 
     ClassBookFeature classBook;
-
 
     public AddLessonPage(WebDriver driver) {
         super(driver);
@@ -65,6 +66,7 @@ public class AddLessonPage extends Page<AddLessonPage> {
         return driver.getCurrentUrl().equals(Endpoints.ADD_LESSON);
     }
 
+    //region Actions
     public AddLessonPage fillLessonTheme(String theme){
         fillField(lessonThemeInput, theme);
         return this;
@@ -124,10 +126,29 @@ public class AddLessonPage extends Page<AddLessonPage> {
                 .clickSaveButton();
         return new LessonsPage(driver);
     }
+    //endregion
 
-    public static AddLessonPage init(WebDriver driver){
-        return new AddLessonPage(driver);
+    public AddLessonPage verifyThemeNameInputFieldIsFilled(String text){
+        softAssert.assertEquals(lessonThemeInput.getText(), text);
+        return this;
     }
+
+    public AddLessonPage verifyGroupNameInputFieldIsFilled(String text){
+        softAssert.assertEquals(groupNameInput.getText(), text);
+        return this;
+    }
+
+    public AddLessonPage verifyDateInputFieldIsFilled(String text){
+        softAssert.assertEquals(dateInput.getText(), text);
+        return this;
+    }
+
+    public AddLessonPage verifyMentorEmailInputFieldIsFilled(String text){
+        softAssert.assertEquals(emailInput.getText(), text);
+        return this;
+    }
+
+
 
     public String getThemeError() {
         return themeError.getText();

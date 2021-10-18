@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import static constants.Locators.Header.*;
 
-public class Header extends BasePage {
+public class Header extends BaseElement {
     @FindBy(xpath = LOGO_XPATH)
     private WebElement logo;
     @FindBy(xpath = ICON_XPATH)

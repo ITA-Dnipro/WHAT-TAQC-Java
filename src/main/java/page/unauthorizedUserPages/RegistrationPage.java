@@ -4,14 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
-import page.base.BasePage;
+import page.base.BaseElement;
 import util.UnassignedUser;
 
 import java.io.IOException;
 
 import static constants.Locators.RegistrationPage.*;
 
-public class RegistrationPage extends BasePage {
+public class RegistrationPage extends BaseElement {
 
     @FindBy(xpath = FIRST_NAME_INPUT_FIELD_XPATH)
     WebElement firstNameInputField;

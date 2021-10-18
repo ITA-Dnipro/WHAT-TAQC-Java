@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.mentors.MentorsTablePage;
 import page.students.StudentsPage;
-import page.base.BasePage;
+import page.base.BaseElement;
 import page.base.Page;
 import page.lessons.LessonsPage;
 import util.Role;
@@ -20,7 +20,7 @@ import java.util.Map;
 import static constants.Locators.Auth.*;
 import static org.awaitility.Awaitility.await;
 
-public class AuthPage extends BasePage {
+public class AuthPage extends BaseElement {
 
     @FindBy(name = EMAIL_INPUT_FIELD_NAME)
     WebElement mailInput;

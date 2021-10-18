@@ -3,6 +3,7 @@ package lessons.util;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class UserApi {
+
     String first_name;
     String  last_name;
     Integer role;
