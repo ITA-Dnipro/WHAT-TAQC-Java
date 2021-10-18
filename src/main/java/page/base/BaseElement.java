@@ -50,4 +50,8 @@ public abstract class BaseElement {
     private void hardClear(WebElement field) {
         field.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
     }
+
+    public void assertAll() {
+        softAssert.assertAll();
+    }
 }
