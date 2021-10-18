@@ -20,7 +20,7 @@ public class ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRol
     private CoursesPage coursesPage;
 
     public ListOfCoursesPage_VerifyCourseSearchField_ValidValidData_AnyUserRole() throws IOException {
-        searchName = SearchFunctionTest.getCourseNameForSearch(PathsToFiles.Сourses.SEARCH_COURSES_NAME);
+        searchName = SearchFunctionTest.getCourseNameForSearch(PathsToFiles.Courses.SEARCH_COURSES_NAME);
     }
 
     @DataProvider(name = "course-namePositive")

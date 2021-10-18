@@ -21,7 +21,7 @@ public class EditLesson_VerifyErrorMessages extends EditLesson_VerifyEditLesson_
 
     @BeforeClass
     @Override
-    public void precondition() throws IOException {
+    public void precondition() throws Exception {
         super.precondition();
         editLessonPage = lessonsPage
                 .clickEditIcon(0)

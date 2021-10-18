@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import static constants.Locators.CommonElements.*;
 
-public class SideBar extends BasePage {
+public class SideBar extends BaseElement {
 
     @FindBy(xpath = SIDE_BAR_XPATH)
     private List<WebElement> sideBarItems;

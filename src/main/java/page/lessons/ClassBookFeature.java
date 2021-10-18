@@ -3,11 +3,11 @@ package page.lessons;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import page.base.BasePage;
+import page.base.BaseElement;
 import java.util.List;
 import static constants.Locators.ClassBook.*;
 
-public class ClassBookFeature extends BasePage {
+public class ClassBookFeature extends BaseElement {
 
     @FindBy(xpath = LIST_OF_STUDENTS_XPATH)
     private List<WebElement>  listOfStudents;
@@ -23,10 +23,6 @@ public class ClassBookFeature extends BasePage {
 
     public ClassBookFeature(WebDriver driver) {
         super(driver);
-    }
-
-    public WebElement getStudentByName(String name){
-        return getItemFromMenu(listOfStudents, name);
     }
 
     public Integer getStudentIdByName(String name){

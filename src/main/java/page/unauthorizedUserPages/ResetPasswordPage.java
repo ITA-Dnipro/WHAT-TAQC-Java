@@ -1,9 +1,9 @@
 package page.unauthorizedUserPages;
 
 import org.openqa.selenium.WebDriver;
-import page.base.BasePage;
+import page.base.BaseElement;
 
-public class ResetPasswordPage extends BasePage {
+public class ResetPasswordPage extends BaseElement {
 
     public ResetPasswordPage(WebDriver driver) {
         super(driver);

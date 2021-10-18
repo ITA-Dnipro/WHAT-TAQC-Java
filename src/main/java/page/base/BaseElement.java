@@ -12,12 +12,12 @@ import java.util.List;
  *
  * @author fresh-ash
  */
-public abstract class BasePage {
+public abstract class BaseElement {
 
     protected WebDriver driver;
     protected final Logger log = Logger.getLogger(getClass());
 
-    public BasePage(WebDriver driver) {
+    public BaseElement(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -26,6 +26,7 @@ public abstract class BasePage {
         if(field.getAttribute("disabled") == null
                 && field.getAttribute("readonly") == null){
             field.click();
+            field.clear();
             hardClear(field);
             field.sendKeys(text);
        }
