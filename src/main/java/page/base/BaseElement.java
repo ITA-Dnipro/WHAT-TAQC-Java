@@ -5,6 +5,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.asserts.SoftAssert;
+
 import java.util.List;
 
 /**
@@ -16,10 +18,12 @@ public abstract class BaseElement {
 
     protected WebDriver driver;
     protected final Logger log = Logger.getLogger(getClass());
+    protected SoftAssert softAssert;
 
     public BaseElement(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        softAssert = new SoftAssert();
     }
 
     protected void fillField(WebElement field, String text) {
