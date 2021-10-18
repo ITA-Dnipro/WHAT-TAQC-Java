@@ -14,7 +14,6 @@ public class EditMentorsDetailsPage extends Page<EditMentorsDetailsPage> {
     }
 
 
-
     @FindBy(xpath = MENTORS_DETAILS_TAB_XPATH)
     protected WebElement mentorsDetailsTab;
     @FindBy(xpath = EDIT_MENTOR_TAB_XPATH)
@@ -53,14 +52,17 @@ public class EditMentorsDetailsPage extends Page<EditMentorsDetailsPage> {
     protected WebElement lastNameError;
     @FindBy(xpath = EMAIL_ERROR)
     protected WebElement emailError;
+    @FindBy(xpath = REMOVE_MENTOR_BUTTON)
+    protected WebElement deleteMentor;
 
+    SoftAssert softAssert = new SoftAssert();
 
     public MentorsTablePage backToMentorsTable() {
         clickElement(arrowButton);
         return new MentorsTablePage(driver);
     }
 
-    public MentorsDetailsPage  openMentorDetailPage() {
+    public MentorsDetailsPage openMentorDetailPage() {
         clickElement(mentorsDetailsTab);
         return new MentorsDetailsPage(driver);
     }
@@ -72,15 +74,18 @@ public class EditMentorsDetailsPage extends Page<EditMentorsDetailsPage> {
 
     public EditMentorsDetailsPage editName(String name) {
         fillField(firstNameInputField, name);
+        verifyInputName(name);
         return this;
     }
 
     public EditMentorsDetailsPage editSurname(String surname) {
         fillField(secondNameInputField, surname);
+        verifyInputSurName(surname);
         return this;
     }
 
     public EditMentorsDetailsPage editEmail(String email) {
+        verifyInputEmail(email);
         fillField(emailInputField, email);
         return this;
     }
@@ -115,9 +120,9 @@ public class EditMentorsDetailsPage extends Page<EditMentorsDetailsPage> {
         return this;
     }
 
-    public MentorsTablePage removeMentor() {
+    public EditMentorsDetailsPage deleteMentor() {
         clickElement(disableButton);
-        return new MentorsTablePage(driver);
+        return this;
     }
 
     public EditMentorsDetailsPage clearFields() {
@@ -129,24 +134,53 @@ public class EditMentorsDetailsPage extends Page<EditMentorsDetailsPage> {
         clickElement(saveButton);
         return new MentorsTablePage(driver);
     }
+public MentorsTablePage removeMentor(){
+        clickElement(deleteMentor);
+        return new MentorsTablePage(driver);
+}
 
-    SoftAssert softAssert;
-    public void setSoftAssert(SoftAssert softAssert) {
-        this.softAssert = softAssert;
-    }
-    public String getFirstNameError(){
+    public String getFirstNameError() {
         return firstNameError.getText();
     }
-    public String getLastNameError(){
+
+    public String getLastNameError() {
         return lastNameError.getText();
     }
-    public String getEmailError(){
+
+    public String getEmailError() {
         return emailError.getText();
     }
-    public EditMentorsDetailsPage loseFocus(){
+
+    public EditMentorsDetailsPage loseFocus() {
         clickElement(tittleEditMentors);
         return this;
     }
+
+    public String getFirstName() {
+        return firstNameInputField.getAttribute("value");
+    }
+
+    public String getLastName() {
+        return secondNameInputField.getAttribute("value");
+    }
+
+    public String getEmail() {
+        return emailInputField.getAttribute("value");
+    }
+
+    public EditMentorsDetailsPage verifyInputName(String name) {
+        softAssert.assertEquals(firstNameInputField.getText(), name);
+        return new EditMentorsDetailsPage(driver);
+    }
+    public EditMentorsDetailsPage verifyInputSurName(String lastName) {
+        softAssert.assertEquals(secondNameInputField.getText(), lastName);
+        return new EditMentorsDetailsPage(driver);
+    }
+    public EditMentorsDetailsPage verifyInputEmail(String email) {
+        softAssert.assertEquals(emailInputField.getText(), email);
+        return new EditMentorsDetailsPage(driver);
+    }
+
     @Override
     public boolean isAt() {
         return tittleEditMentors.getText().equals("Mentor Editing");

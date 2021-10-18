@@ -31,19 +31,9 @@
     "name": "-name",
     "errorName" : "Invalid first name",
     "last_name": "n2me",
-    "errorSurname": "Invalid first name",
-    "email": "",
-    "errorEmail": "This field is required"
+    "errorSurname": "Invalid last name",
+    "email": "email",
+    "errorEmail": "Invalid email address"
 
-  },
-
-
-  {
-    "name": "",
-    "errorName": "This field is required",
-    "last_name": "",
-    "errorSurname": "This field is required",
-    "email" : "email",
-    "errorEmail" : "Invalid email address"
   }
 ]

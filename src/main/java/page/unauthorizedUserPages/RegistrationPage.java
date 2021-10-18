@@ -42,10 +42,11 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = CONFIRM_PASSWORD_ERROR_XPATH)
     WebElement confirmPasswordError;
 
-    private SoftAssert softAssert = new SoftAssert();
+    private SoftAssert softAssert;
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
+        softAssert = new SoftAssert();
     }
 
     public AuthPage registerUser(UnassignedUser user) throws IOException {

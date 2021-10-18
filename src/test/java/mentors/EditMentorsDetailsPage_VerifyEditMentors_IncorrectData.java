@@ -3,6 +3,7 @@ package mentors;
 import base.BaseTest;
 import constants.Endpoints;
 import constants.PathsToFiles;
+import mentors.data.InvalidData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -39,7 +40,7 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
     }
 
     @BeforeClass
-    public void precondition() throws IOException, InterruptedException {
+    public void precondition() throws IOException {
 
         editMentorsPage = AuthPage.init(driver)
                 .clickRegistrationLink()
@@ -49,6 +50,7 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
                 .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
                 .isAtPage(waitTime)
                 .addRole(mentor.getEmail(), UnassignedRole.MENTOR)
+                .isAtPage(waitTime)
                 .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)
                 .inputSearchMentor("a")
                 .inputSearchMentor(mentor.getFirstName()+" "+mentor.getLastName())
@@ -67,8 +69,29 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
     @Test(dataProvider = "errors")
     public void checkFirstNameErrors(InvalidData firstName) {
         String expectedResult= firstName.getErrorName();
-        String actualResult= editMentorsPage.editName(firstName.getName())
+        String actualResult= editMentorsPage
+                .clearFields()
+                .editName(firstName.getName())
                 .loseFocus().getFirstNameError();
         Assert.assertEquals(actualResult,expectedResult);
+    }
+    @Test(dataProvider = "errors")
+    public void chekLastNameErrors(InvalidData lastName){
+        String expectedResult=lastName.getErrorSurname();
+        String actualResult= editMentorsPage
+                .clearFields()
+                .editSurname(lastName.getLast_name())
+                .loseFocus()
+                .getLastNameError();
+        Assert.assertEquals(actualResult,expectedResult);
+    }
+    @Test(dataProvider = "errors")
+    public void checkEmailErrors(InvalidData email){
+        String expectedResult=email.getErrorEmail();
+        String actualResult=editMentorsPage
+                .clearFields()
+                .editEmail(email.getEmail())
+                .loseFocus()
+                .getEmailError();
     }
 }

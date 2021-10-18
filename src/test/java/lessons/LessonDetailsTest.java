@@ -8,7 +8,6 @@ import page.students.StudentsPage;
 import page.unauthorizedUserPages.AuthPage;
 import page.lessons.LessonsPage;
 import util.Role;
-
 import java.io.IOException;
 
 public class LessonDetailsTest extends BaseTest {
