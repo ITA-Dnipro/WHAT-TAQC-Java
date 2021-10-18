@@ -20,8 +20,7 @@ public class WebAddLessonStrategy implements AddLessonStrategy{
     @Override
     public boolean addNewLesson(User user) throws Exception {
         int waitTime = 5;
-
-          page = AuthPage.init(driver)
+        page = AuthPage.init(driver)
                   .logInAs(Role.ADMIN, StudentsPage.class)
                   .isAtPage(waitTime)
                   .redirectTo(Endpoints.LESSONS, LessonsPage.class)
@@ -29,13 +28,9 @@ public class WebAddLessonStrategy implements AddLessonStrategy{
                   .clickAddLessonButton()
                   .addLessonForTest(user)
                   .isAtPage(waitTime);
+        boolean result = page.getAlertText() != null;
+        page.logOut();
 
-          boolean result = page.getAlertText() != null;
-          page.logOut();
         return result;
-    }
-
-    public LessonsPage getPage() {
-        return page;
     }
 }

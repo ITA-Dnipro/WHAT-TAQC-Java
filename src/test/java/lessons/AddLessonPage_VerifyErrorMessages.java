@@ -47,21 +47,18 @@ public class AddLessonPage_VerifyErrorMessages extends BaseTest {
                 .fillLessonTheme(errors.getTheme())
                 .verifyThemeNameInputFieldIsFilled(errors.getTheme())
                 .loseFocus()
-                .verifyThemeNameError(errors.getTheme_result())
-                .fillGroupName(errors.getG_name())
-                .verifyGroupNameInputFieldIsFilled(errors.getG_name())
+                .verifyThemeNameError(errors.getThemeResult())
+                .fillGroupName(errors.getGroupName())
+                .verifyGroupNameInputFieldIsFilled(errors.getGroupName())
                 .loseFocus()
-                .verifyGroupNameError(errors.getG_name_result())
+                .verifyGroupNameError(errors.getGroupNameResult())
                 .fillDateInput(errors.getDate())
                 .verifyDateInputFieldIsFilled()
                 .loseFocus()
                 .fillEmailInput(errors.getEmail())
                 .verifyMentorEmailInputFieldIsFilled(errors.getEmail())
                 .loseFocus()
-                .verifyMentorMailError(errors.getEmail_result())
-                .verifyAll()
-                .clickClassRegisterButton()
-                .clickSaveButton()
-                .isAtPage(waitTime);
+                .verifyMentorMailError(errors.getEmailResult())
+                .verifyAll();
     }
 }

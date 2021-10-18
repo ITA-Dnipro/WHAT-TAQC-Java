@@ -1,6 +1,5 @@
 package page.lessons;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,12 +15,13 @@ public class EditLessonPage extends Page<EditLessonPage> {
     WebElement timeInput;
 
     @FindBy(className = EDIT_LESSON_THEME_ERROR_CLASS)
-    WebElement error;
+    WebElement themeError;
 
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement title;
 
     ClassBookFeature classBook;
+    private final String VALUE = "value";
 
     public EditLessonPage(WebDriver driver) {
         super(driver);
@@ -53,14 +53,28 @@ public class EditLessonPage extends Page<EditLessonPage> {
         return this;
     }
 
-    public String getThemeInputError(){
-        return error.getText();
-    }
-
-
-
     public LessonsPage clickSaveButton(){
         classBook.clickSaveButton();
         return new LessonsPage(driver);
+    }
+
+    public EditLessonPage verifyThemeNameError(String error){
+        softAssert.assertEquals(themeError.getText(), error);
+        return this;
+    }
+
+    public EditLessonPage verifyThemeNameInputFieldIsFilled(String text){
+        softAssert.assertEquals(lessonThemeInput.getAttribute(VALUE), text);
+        return this;
+    }
+
+    public EditLessonPage verifyDateInputFieldIsFilled(){
+        softAssert.assertFalse(timeInput.getAttribute(VALUE).equals(""));
+        return this;
+    }
+
+    public EditLessonPage verifyAll(){
+        softAssert.assertAll();
+        return this;
     }
 }
