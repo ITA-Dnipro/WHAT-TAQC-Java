@@ -1,0 +1,12 @@
+{
+  "themeName": "NewLesson",
+  "mentorId": "6",
+  "studentGroupId": "10",
+  "lessonVisits": [{
+    "studentId": "1",
+    "studentMark": "5",
+    "presence" : "true",
+    "comment": "null"
+  }],
+  "lessonDate": "2021-10-17T20:56:38.480Z"
+}

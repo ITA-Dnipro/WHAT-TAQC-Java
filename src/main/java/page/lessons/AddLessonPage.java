@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 import util.RandomStringsGenerator;
+import util.User;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -112,12 +114,12 @@ public class AddLessonPage extends Page<AddLessonPage> {
         return this;
     }
 
-    public LessonsPage addLessonForTest(){
+    public LessonsPage addLessonForTest(User user){
         fillLessonTheme(RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5))
                 .selectExistedGroup()
                 .fillDateInput(LocalDateTime.now().minusDays(1)
                         .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm")))
-                .selectExistedMentor()
+                .fillEmailInput(user.getMail())
                 .clickClassRegisterButton()
                 .clickSaveButton();
         return new LessonsPage(driver);

@@ -11,6 +11,7 @@ public class PathsToFiles {
         String ADD_LESSON_CORRECT_DATA = BASE_PATH + "lessons/AddLessonIncorrectData.json";
         String ADD_LESSON_ERRORS = BASE_PATH + "lessons/AddLessonErrors.json";
         String EDIT_LESSON_ERRORS = BASE_PATH + "lessons/EditLessonErrors.json";
+        String ADD_NEW_LESSON = BASE_PATH + "lessons/lesson.json";
     }
 
     public interface ChangePassword {
@@ -18,7 +19,7 @@ public class PathsToFiles {
         String CHANGE_PASSWORD_VALID_DATA = BASE_PATH + "changePassword/ChangePasswordWithPasswords.json";
     }
 
-    public interface Сourses {
+    public interface Courses {
         String ADD_COURSES_VALID_DATA = BASE_PATH + "courses/addCourses/AddCourses_ValidData.json";
         String EDIT_COURSES_INVALID_DATA = BASE_PATH + "courses/EditCourses/EditCourseDetails_InvalidData.json";
         String EDIT_COURSES_VALID_DATA = BASE_PATH + "courses/EditCourses/EditCourseDetails_ValidData.json";
