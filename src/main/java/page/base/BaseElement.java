@@ -27,13 +27,13 @@ public abstract class BaseElement {
     }
 
     protected void fillField(WebElement field, String text) {
-        if(field.getAttribute("disabled") == null
-                && field.getAttribute("readonly") == null){
+        if (field.getAttribute("disabled") == null
+                && field.getAttribute("readonly") == null) {
             field.click();
             field.clear();
             hardClear(field);
             field.sendKeys(text);
-       }
+        }
     }
 
     protected WebElement getItemFromMenu(List<WebElement> webElementList, String name) {
@@ -47,7 +47,7 @@ public abstract class BaseElement {
         element.click();
     }
 
-    private void hardClear(WebElement field){
+    private void hardClear(WebElement field) {
         field.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
     }
 }
