@@ -1,6 +1,7 @@
 package constants;
 
 import org.openqa.selenium.WebDriver;
+import page.secretarys.EditSecrysDetailsPage;
 import page.students.StudentsPage;
 import page.base.Page;
 import page.lessons.AddLessonPage;
@@ -27,6 +28,9 @@ public class Endpoints {
     public static final String STUDENTS = BASE_URL + "/students";
     public static final String MENTORS=BASE_URL+"/mentors";
     public static final String EDIT_MENTORS=MENTORS+"/edit";
+    public static final String SECRETARIES = BASE_URL + "/secretaries";
+    public static final String EDIT_SECRETARIES = SECRETARIES + "/edit/";
+
 
     public static Map<String, Page> getPages(WebDriver driver){
         Map<String, Page> pages = new HashMap<>();
@@ -37,6 +41,8 @@ public class Endpoints {
         pages.put(UNASSIGNED_USERS,new UnassignedUsersPage(driver));
         pages.put(MENTORS,new MentorsTablePage(driver));
         pages.put(EDIT_MENTORS,new EditMentorsDetailsPage(driver));
+        pages.put(EDIT_SECRETARIES,new EditSecrysDetailsPage(driver));
+
         return pages;
     }
 }
