@@ -2,10 +2,8 @@ package mentors;
 
 import base.BaseTest;
 import constants.Endpoints;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import page.mentors.EditMentorsDetailsPage;
 import page.mentors.MentorsTablePage;
 import page.students.StudentsPage;
@@ -15,6 +13,7 @@ import page.unauthorizedUserPages.AuthPage;
 import util.RandomStringsGenerator;
 import util.Role;
 import util.UnassignedUser;
+
 import java.io.IOException;
 
 public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData extends BaseTest {
@@ -51,41 +50,29 @@ public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData extends B
                 .addRole(mentor.getEmail(), UnassignedRole.MENTOR)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)
-                .inputSearchMentor("a")
                 .inputSearchMentor(mentor.getFirstName()+" "+mentor.getLastName())
-                .editMentors(0).isAtPage(waitTime);
+                .editMentors(0)
+                .isAtPage(waitTime);
         editMentorURL=driver.getCurrentUrl();
-
     }
     @Test
     public void verifyInputFields(){
-        SoftAssert softAssert = new SoftAssert();
-        editMentor.editName(newNameOfMentors)
-                .editSurname(newSurNameOfMentors)
-                .editEmail(newEmailOfMentors)
-                .saveMentor();
-        softAssert.assertAll();
-    }
-    @Test
-    public void verifyNewFirstName(){
-        driver.get(editMentorURL);
-        String actualResult=editMentor.getFirstName();
-        String expectResult=newNameOfMentors;
-        Assert.assertEquals(actualResult,expectResult);
-    }
-    @Test
-    public void verifyNewLastName(){
-        driver.get(editMentorURL);
-        String actualResult=editMentor.getLastName();
-        String expectResult=newSurNameOfMentors;
-        Assert.assertEquals(actualResult,expectResult);
-    }
-    @Test
-    public void verifyNewEmail(){
-        driver.get(editMentorURL);
-        String actualResult=editMentor.getEmail();
-        String expectResult=newEmailOfMentors;
-        Assert.assertEquals(actualResult,expectResult);
+
+        editMentor.inputFirstName(newNameOfMentors)
+                .inputSurname(newSurNameOfMentors)
+                .verifyInputSurName(newSurNameOfMentors)
+                .inputEmail(newEmailOfMentors)
+                .verifyInputEmail(newEmailOfMentors)
+                .saveMentor()
+                .isAtPage(waitTime)
+                .inputSearchMentor(newNameOfMentors+" "+newSurNameOfMentors)
+                .verifyInputSearchField(newNameOfMentors+" "+newSurNameOfMentors)
+                .editMentors(0)
+                .isAtPage(waitTime)
+                .verifyInputName(newNameOfMentors)
+                .verifyInputSurName(newSurNameOfMentors)
+                .verifyInputEmail(newEmailOfMentors)
+                .assertAll();
     }
 }
 

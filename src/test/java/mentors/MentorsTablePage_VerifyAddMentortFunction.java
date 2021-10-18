@@ -44,16 +44,16 @@ public class MentorsTablePage_VerifyAddMentortFunction extends BaseTest {
     }
     @Test
     public void verifyAddMenorFunction(){
-        List<String>actualData=mentorsTablePage
+        List<String>exceptData= Arrays.asList(nameMentors,surNameMentors,emailMentors);
+        mentorsTablePage
                 .addMentor()
                 .isAtPage(waitTime)
                 .addRole(emailMentors, UnassignedRole.MENTOR)
                 .redirectTo(Endpoints.MENTORS,MentorsTablePage.class)
                 .isAtPage(waitTime)
-                .inputSearchMentor("a")
                 .inputSearchMentor(nameMentors+" "+surNameMentors)
-                .getMentorsData();
-        List<String>exceptData= Arrays.asList(nameMentors,surNameMentors,emailMentors);
-        Assert.assertEquals(actualData,exceptData);
+                .verifyInputSearchField(nameMentors+" "+surNameMentors)
+                .verifyAddMentorsData(exceptData);
+
     }
 }

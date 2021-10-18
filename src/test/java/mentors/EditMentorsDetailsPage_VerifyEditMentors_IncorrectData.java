@@ -67,31 +67,21 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
     }
 
     @Test(dataProvider = "errors")
-    public void checkFirstNameErrors(InvalidData firstName) {
-        String expectedResult= firstName.getErrorName();
-        String actualResult= editMentorsPage
+    public void checkFirstNameErrors(InvalidData errors) {
+        String expectedNameError= errors.getErrorName();
+        String expectedSurNameError=errors.getErrorSurname();
+        String expectedEmailError=errors.getErrorEmail();
+        editMentorsPage
                 .clearFields()
-                .editName(firstName.getName())
-                .loseFocus().getFirstNameError();
-        Assert.assertEquals(actualResult,expectedResult);
-    }
-    @Test(dataProvider = "errors")
-    public void chekLastNameErrors(InvalidData lastName){
-        String expectedResult=lastName.getErrorSurname();
-        String actualResult= editMentorsPage
-                .clearFields()
-                .editSurname(lastName.getLast_name())
+                .inputFirstName(errors.getName())
+                .verifyInputName(errors.getName())
                 .loseFocus()
-                .getLastNameError();
-        Assert.assertEquals(actualResult,expectedResult);
-    }
-    @Test(dataProvider = "errors")
-    public void checkEmailErrors(InvalidData email){
-        String expectedResult=email.getErrorEmail();
-        String actualResult=editMentorsPage
-                .clearFields()
-                .editEmail(email.getEmail())
-                .loseFocus()
-                .getEmailError();
+                .verifyFirstNameErrors(expectedNameError)
+                .inputSurname(errors.getLast_name())
+                .verifyInputSurName(errors.getLast_name())
+                .verifyLastNameErrors(expectedSurNameError)
+                .inputEmail(errors.getEmail())
+                .verifyInputEmail(errors.getEmail())
+                .verifyEmailErrors(errors.getErrorEmail());
     }
 }

@@ -2,10 +2,8 @@ package mentors;
 
 import base.BaseTest;
 import constants.Endpoints;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import page.mentors.EditMentorsDetailsPage;
 import page.mentors.MentorsTablePage;
 import page.students.StudentsPage;
 import page.unassigned.UnassignedRole;
@@ -59,12 +57,12 @@ public class MentorsTablePage_VerifySwitchDisabledMentors extends BaseTest {
     }
     @Test
     public void verifySwithDisableMentors(){
-        List<String> actualData=mentorsTablePage
+        List<String>expectData= Arrays.asList(nameMentors,surNameMentors,emailMentors);
+        mentorsTablePage
                 .showDisableMentors()
                 .inputSearchMentor("a")
                 .inputSearchMentor(nameMentors+" "+surNameMentors)
-                .getMentorsData();
-        List<String>expectData= Arrays.asList(nameMentors,surNameMentors,emailMentors);
-        Assert.assertEquals(actualData,expectData);
+                .verifyAddMentorsData(expectData);
+
     }
 }

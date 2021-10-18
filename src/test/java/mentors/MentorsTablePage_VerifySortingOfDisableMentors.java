@@ -2,7 +2,6 @@ package mentors;
 
 import base.BaseTest;
 import constants.Endpoints;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.mentors.MentorsTablePage;
@@ -11,8 +10,6 @@ import page.unauthorizedUserPages.AuthPage;
 import util.Role;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 public class MentorsTablePage_VerifySortingOfDisableMentors extends BaseTest {
     MentorsTablePage mentorsTablePage;
@@ -33,54 +30,20 @@ public class MentorsTablePage_VerifySortingOfDisableMentors extends BaseTest {
     }
 
     @Test
-    public void verifySoftByNameASC() {
-        List<String> actualResult = mentorsTablePage.sortByName().getMentorsName();
-        List<String> expectResult = actualResult;
-        Collections.sort(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
-    }
-
-    @Test
-    public void verifySoftByNameDEC() {
-        List<String> actualResult = mentorsTablePage.sortByName().getMentorsName();
-        List<String> expectResult = actualResult;
-        Collections.sort(expectResult);
-        Collections.reverse(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
-    }
-
-    @Test
-    public void verifySoftBySurNAmeASC() {
-        List<String> actualResult = mentorsTablePage.sortBySurname().getMentorsSurname();
-        List<String> expectResult = actualResult;
-        Collections.sort(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
-    }
-
-    @Test
-    public void verifySoftBySurNameDEC() {
-        List<String> actualResult = mentorsTablePage.sortBySurname().getMentorsSurname();
-        List<String> expectResult = actualResult;
-        Collections.sort(expectResult);
-        Collections.reverse(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
-    }
-
-    @Test
-    public void verifySoftByEmailASC() {
-        List<String> actualResult = mentorsTablePage.sortByEmail().getMentorsSurname();
-        List<String> expectResult = actualResult;
-        Collections.sort(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
-    }
-
-    @Test
-    public void verifySoftByEmailDEC() {
-        List<String> actualResult = mentorsTablePage.sortByEmail().getMentorsSurname();
-        List<String> expectResult = actualResult;
-        Collections.sort(expectResult);
-        Collections.reverse(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
+    public void verifySort() {
+        mentorsTablePage
+                .sortByName()
+                .verifySoftByNameASC()
+                .sortByName()
+                .verifySoftByNameDEC()
+                .sortBySurname()
+                .verifySoftBySurNameASC()
+                .sortBySurname()
+                .verifySoftBySurNameDEC()
+                .sortByEmail()
+                .verifySoftByEmailASC()
+                .sortByEmail()
+                .verifySoftByEmailDEC();
     }
 
 }

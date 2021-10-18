@@ -6,9 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 import page.unassigned.UnassignedUsersPage;
-import util.UnassignedUser;
+import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static constants.Locators.MentorsTablePage.*;
@@ -54,6 +55,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
     }
 
     public MentorsTablePage inputSearchMentor(String nameSurname) {
+        fillField(searchInputField, "a");
         fillField(searchInputField, nameSurname);
         return this;
     }
@@ -97,11 +99,6 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         return null;
     }
 
-    public EditMentorsDetailsPage editMentorsByName(String name) {
-        clickElement(editButtonXpath.get(getMentorsIdByName(name)));
-        return new EditMentorsDetailsPage(driver);
-    }
-
     public List<String> getMentorsName() {
         List<String> mentorsNames = new ArrayList<String>();
         for (int i = 0; i < mentorsRow.size(); i = i + 3) {
@@ -134,7 +131,67 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         }
         return mentorsData;
     }
-    public String getDataById(int index){
-        return mentorsRow.get(index).getText();
+
+    public MentorsTablePage verifyInputSearchField(String search) {
+        Assert.assertEquals(searchInputField.getAttribute("value"), search);
+        return this;
     }
+
+    public MentorsTablePage verifyAddMentorsData(List<String> mentorsData) {
+        Assert.assertEquals(getMentorsData(), mentorsData);
+        return this;
+    }
+
+    public MentorsTablePage verifySoftByNameASC() {
+        List<String> actualResult = getMentorsName();
+        List<String> expectResult = actualResult;
+        Collections.sort(expectResult);
+        Assert.assertEquals(actualResult, expectResult);
+        return this;
+    }
+
+    public MentorsTablePage verifySoftByNameDEC() {
+        List<String> actualResult = getMentorsName();
+        List<String> expectResult = actualResult;
+        Collections.sort(expectResult);
+        Collections.reverse(expectResult);
+        Assert.assertEquals(actualResult, expectResult);
+        return this;
+    }
+
+    public MentorsTablePage verifySoftBySurNameASC() {
+        List<String> actualResult = getMentorsSurname();
+        List<String> expectResult = actualResult;
+        Collections.sort(expectResult);
+        Assert.assertEquals(actualResult, expectResult);
+        return this;
+    }
+
+    public MentorsTablePage verifySoftBySurNameDEC() {
+        List<String> actualResult = getMentorsSurname();
+        List<String> expectResult = actualResult;
+        Collections.sort(expectResult);
+        Collections.reverse(expectResult);
+        Assert.assertEquals(actualResult, expectResult);
+        return this;
+    }
+
+    public MentorsTablePage verifySoftByEmailASC() {
+        List<String> actualResult = getMentorsSurname();
+        List<String> expectResult = actualResult;
+        Collections.sort(expectResult);
+        Assert.assertEquals(actualResult, expectResult);
+        return this;
+    }
+
+    public MentorsTablePage verifySoftByEmailDEC() {
+        List<String> actualResult = getMentorsSurname();
+        List<String> expectResult = actualResult;
+        Collections.sort(expectResult);
+        Collections.reverse(expectResult);
+        Assert.assertEquals(actualResult, expectResult);
+        return this;
+    }
+
+
 }
