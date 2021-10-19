@@ -129,6 +129,7 @@ public class Locators {
         String TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
         String TABLE_UNASSIGNED_USERS_XPATH = "//tbody";
         String TABLE_ROW_TAG_NAME = "tr";
+        String TABLE_ROW_UNASSIGNED ="//td[not(contains(@class,'text-center'))]";
         String TABLE_CELL_TAG_NAME = "td";
         String TABLE_ROLES_DROPDOWN_MENU_TAG_NAME = "select";
         String TABLE_ROLE_DROPDOWN_MENU_OPTIONS_TAG_NAME = "option";

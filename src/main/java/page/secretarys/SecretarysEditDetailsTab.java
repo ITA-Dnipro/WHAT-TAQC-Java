@@ -3,21 +3,12 @@ package page.secretarys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
+import static constants.Locators.EditSecretary.*;
 import page.base.Page;
-
-import static constants.Locators.EditSecretary.*;
-
-public class SecretarysEditDetailsTab extends Page<SecretarysEditDetailsTab> {
-    public SecretarysEditDetailsTab(WebDriver driver) {
-        super(driver);
-    }
-
-
-import static constants.Locators.EditSecretary.*;
 
 
 public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <SecretarysEditDetailsTab>{
+
     public SecretarysEditDetailsTab(WebDriver driver) {
         super(driver);
     }
@@ -42,9 +33,9 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
     @FindBy(xpath = EDIT_SECRETARY_TAB_XPATH)
     protected WebElement editSecretaryDetailsTab;
 
-        public SecretariesPage backToSecretariesTab() {
+        public SecretarysPage backToSecretariesTab() {
         clickElement(arrowButton);
-        return new SecretariesPage(driver);
+        return new SecretarysPage(driver);
     }
 
     public SecretarysDetailsTab openSecretaryEditDetailsTab() {
@@ -100,9 +91,9 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
         return new SecretarysEditDetailsTab(driver);
     }
 
-    public SecretariesPage returnToSecretaryPage() {
+    public SecretarysPage returnToSecretaryPage() {
         clickElement(arrowButton);
-        return new SecretariesPage(driver);
+        return new SecretarysPage(driver);
 
     }
 
@@ -136,36 +127,30 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
     public boolean isAt() {
         return secretaryDetailsTab.getText().equals("Secretary's details");
     }
-}
-
-
-
-
-
-
     @FindBy(xpath = SECRETARIES_CLEAR_BUTTON_XPATH)
     protected WebElement clearButton;
     @FindBy(xpath = SECRETARIES_SAVE_BUTTON_XPATH )
-    protected WebElement saveButton;
-
-    public SecretarysEditDetailsTab fillDetEmailInput(String email) {
-            fillField(emailInput, email);
-            return this;
-        }
-
-        public SecretarysEditDetailsTab fillDetFirstName(String firstName) {
-            fillField(firstNameInput, firstName);
-            return this;
-        }
-        public SecretarysEditDetailsTab fillDetLasttName(String lastName) {
-            fillField(lastNameInput, lastName);
-            return this;
-        }
-
-
-
-    @Override
-    public boolean isAt() {
-        return secretaryPageTitle.getText().equals("Edit Secretary's details");
-   }
+    protected WebElement getSaveButton;
 }
+
+//    public SecretarysEditDetailsTab fillDetEmailInput(String email) {
+//            fillField(emailInput, email);
+//            return this;
+//        }
+//
+//        public SecretarysEditDetailsTab fillDetFirstName(String firstName) {
+//            fillField(firstNameInput, firstName);
+//            return this;
+//        }
+//        public SecretarysEditDetailsTab fillDetLasttName(String lastName) {
+//            fillField(lastNameInput, lastName);
+//            return this;
+//        }
+//
+//
+//
+//    @Override
+//    public boolean isAt() {
+//        return secretaryPageTitle.getText().equals("Edit Secretary's details");
+//   }
+//}

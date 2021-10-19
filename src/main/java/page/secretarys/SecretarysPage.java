@@ -51,10 +51,10 @@ public class SecretarysPage extends Page<SecretarysPage> {
         return new SecretarysEditDetailsTab(driver);
 
     }
-    public SecretarysEditDetailsPage layOffSecretery(){
-        clickElement(layOffButton);
-        return this;
-    }
+//    public SecretarysPage layOffSecretery(){
+//        clickElement(layOffButton);
+//        return this;                      в єдит дитейлс таб
+//    }
 
     public static SecretarysPage init(WebDriver driver) {
         return new SecretarysPage(driver);
