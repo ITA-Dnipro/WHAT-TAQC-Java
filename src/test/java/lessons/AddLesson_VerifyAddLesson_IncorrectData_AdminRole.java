@@ -12,7 +12,6 @@ import page.lessons.LessonsPage;
 import page.students.StudentsPage;
 import page.unauthorizedUserPages.AuthPage;
 import util.Role;
-
 import java.io.IOException;
 
 
@@ -26,7 +25,7 @@ public class AddLesson_VerifyAddLesson_IncorrectData_AdminRole extends BaseTest{
     }
 
     @BeforeClass
-    public void precondition() throws IOException {
+    public void setUp() throws IOException {
         addLessonPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
@@ -53,7 +52,7 @@ public class AddLesson_VerifyAddLesson_IncorrectData_AdminRole extends BaseTest{
 
         addLessonPage
                 .fillLessonTheme(addLessonData.getTheme())
-                .fillGroupName(addLessonData.getG_name())
+                .fillGroupName(addLessonData.getGroupName())
                 .fillDateInput(addLessonData.getDate())
                 .fillEmailInput(addLessonData.getEmail())
                 .clickSaveButton()

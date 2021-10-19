@@ -3,18 +3,18 @@
     "theme" : "",
     "result" : "This field is required",
     "date" : "",
-    "d_result" : ""
+    "dateResult": ""
   },
   {
     "theme" : "$@",
     "result" : "Invalid lesson theme",
     "date" : "",
-    "d_result" : ""
+    "dateResult": ""
   },
   {
     "theme" : "Themename1Themename1Themename1Themename1Themename1Themename1",
     "result" : "Too long",
     "date" : "",
-    "d_result" : ""
+    "dateResult": ""
   }
 ]

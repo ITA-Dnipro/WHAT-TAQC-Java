@@ -34,9 +34,4 @@ public class LessonDetailsPage extends Page<LessonDetailsPage> {
         return new LessonDetailsPage(driver);
     }
 
-    //Wait for Group
-    public Page clickGroupNameLink(){
-        clickElement(groupName);
-        return null;
-    }
 }

@@ -1,30 +1,52 @@
 package lessons;
 
+import base.BaseTest;
+import constants.Endpoints;
 import constants.PathsToFiles;
 import lessons.data.EditLessonError;
-import org.testng.Assert;
+import lessons.util.AddLessonStrategy;
+import lessons.util.ApiAddLessonStrategy;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import page.lessons.EditLessonPage;
-
+import page.lessons.LessonsPage;
+import page.students.StudentsPage;
+import page.unauthorizedUserPages.AuthPage;
+import util.Role;
+import util.User;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class EditLesson_VerifyErrorMessages extends EditLesson_VerifyEditLesson_CorrectData_AdminRole{
+public class EditLesson_VerifyErrorMessages extends BaseTest {
 
     EditLessonError[] errors;
     EditLessonPage editLessonPage;
+    AddLessonStrategy addLessonStrategy;
+    User user;
+    Integer firstIcon;
 
     public EditLesson_VerifyErrorMessages() throws IOException {
-        this.errors = EditLessonError.getErrors(PathsToFiles.Lessons.EDIT_LESSON_ERRORS);
+        errors = EditLessonError.getErrors(PathsToFiles.Lessons.EDIT_LESSON_ERRORS);
+        user = User.get(PathsToFiles.CREDENTIALS).get(Role.ADMIN.getRoleName());
+        firstIcon = 0;
     }
 
     @BeforeClass
-    @Override
-    public void precondition() throws Exception {
-        super.precondition();
-        editLessonPage = lessonsPage
-                .clickEditIcon(0)
+    public void setUp() throws Exception {
+
+        addLessonStrategy = new ApiAddLessonStrategy();
+        if (addLessonStrategy.addNewLesson(user)){
+            log.info("Lesson was added with API!");
+        }
+
+        editLessonPage = AuthPage.init(driver)
+                .logInAs(Role.ADMIN, StudentsPage.class)
+                .isAtPage(waitTime)
+                .redirectTo(Endpoints.LESSONS, LessonsPage.class)
+                .isAtPage(waitTime)
+                .clickEditIcon(firstIcon)
                 .isAtPage(waitTime);
     }
 
@@ -38,15 +60,16 @@ public class EditLesson_VerifyErrorMessages extends EditLesson_VerifyEditLesson_
     }
 
     @Test(description = "DP213-153", dataProvider = "editLessonErrors")
-    public void verifyThemeInputErrors(EditLessonError error) {
+    public void verifyInputFieldsErrors(EditLessonError error) {
 
-        String expectedResult = error.getResult();
-
-        String actualResult = editLessonPage
+        editLessonPage
                 .fillLessonThemeInput(error.getTheme())
+                .verifyThemeNameInputFieldIsFilled(error.getTheme())
                 .loseFocus()
-                .getThemeInputError();
-
-        Assert.assertEquals(actualResult, expectedResult);
+                .verifyThemeNameError(error.getResult())
+                .fillTimeInput(LocalDateTime.now().minusDays(1)
+                        .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm")))
+                .verifyDateInputFieldIsFilled()
+                .verifyAll();
     }
 }
