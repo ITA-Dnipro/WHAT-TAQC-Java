@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class MentorsTablePage_VerifySwitchDisabledMentors extends BaseTest {
+public class MentrorsTablePage_VerifySearchingOfActiveMentors_AdminRole extends BaseTest {
     String nameMentors;
     String surNameMentors;
     String passwordMentors;
@@ -25,14 +25,13 @@ public class MentorsTablePage_VerifySwitchDisabledMentors extends BaseTest {
     UnassignedUser mentor;
     MentorsTablePage mentorsTablePage;
 
-    public MentorsTablePage_VerifySwitchDisabledMentors() throws IOException {
+    public MentrorsTablePage_VerifySearchingOfActiveMentors_AdminRole() throws IOException {
         nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
         emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
         mentor = UnassignedUser.getUnassignedUser(nameMentors, surNameMentors, emailMentors, passwordMentors);
     }
-
 
     @BeforeClass
     public void precondition() throws IOException {
@@ -46,23 +45,19 @@ public class MentorsTablePage_VerifySwitchDisabledMentors extends BaseTest {
                 .isAtPage(waitTime)
                 .addRole(mentor.getEmail(), UnassignedRole.MENTOR)
                 .isAtPage(waitTime)
-                .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)
-                .inputSearchMentor("a")
-                .inputSearchMentor(mentor.getFirstName() + " " + mentor.getLastName())
-                .editMentors(0)
-                .isAtPage(waitTime)
-                .deleteMentor()
-                .removeMentor()
-                .isAtPage(waitTime);
+                .redirectTo(Endpoints.MENTORS, MentorsTablePage.class);
     }
-    @Test
-    public void verifySwithDisableMentors(){
-        List<String>expectData= Arrays.asList(nameMentors,surNameMentors,emailMentors);
-        mentorsTablePage
-                .showDisableMentors()
-                .inputSearchMentor("a")
-                .inputSearchMentor(nameMentors+" "+surNameMentors)
-                .verifyAddMentorsData(expectData);
 
+    @Test(description = "DP213-167")
+    public void verifySearchingOfActiveMentors() {
+        String invalidData="6";
+        List<String> expectFound = Arrays.asList(nameMentors, surNameMentors, emailMentors);
+        mentorsTablePage.inputSearchMentor(nameMentors + " " + surNameMentors)
+                .verifyInputSearchField(nameMentors + " " + surNameMentors)
+                .verifyMentorsDataInTheTable(expectFound)
+                .inputSearchMentor(invalidData)
+                .verifyInputSearchField(invalidData)
+                .verifyNotFoundResult()
+                .assertAll();
     }
 }

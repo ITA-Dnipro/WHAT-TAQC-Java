@@ -43,6 +43,8 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
     protected List<WebElement> mentorsRow;
     @FindBy(xpath = SWITCH_VIEW_BUTTONS_XPATH)
     protected List<WebElement> switchViewButton;
+    @FindBy(xpath = MENTORS_NOT_FOUND_MESSAGE_SEARS)
+    protected WebElement notFoundMessage;
 
     public MentorsTablePage showDisableMentors() {
         clickElement(disableMentorsSwitch);
@@ -133,12 +135,12 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
     }
 
     public MentorsTablePage verifyInputSearchField(String search) {
-        Assert.assertEquals(searchInputField.getAttribute("value"), search);
+        softAssert.assertEquals(searchInputField.getAttribute("value"), search);
         return this;
     }
 
-    public MentorsTablePage verifyAddMentorsData(List<String> mentorsData) {
-        Assert.assertEquals(getMentorsData(), mentorsData);
+    public MentorsTablePage verifyMentorsDataInTheTable(List<String> mentorsData) {
+        softAssert.assertEquals(getMentorsData(), mentorsData);
         return this;
     }
 
@@ -146,7 +148,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         List<String> actualResult = getMentorsName();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
+        softAssert.assertEquals(actualResult, expectResult);
         return this;
     }
 
@@ -155,7 +157,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
+        softAssert.assertEquals(actualResult, expectResult);
         return this;
     }
 
@@ -163,7 +165,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         List<String> actualResult = getMentorsSurname();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
+        softAssert.assertEquals(actualResult, expectResult);
         return this;
     }
 
@@ -172,7 +174,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
+        softAssert.assertEquals(actualResult, expectResult);
         return this;
     }
 
@@ -180,7 +182,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         List<String> actualResult = getMentorsSurname();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
+        softAssert.assertEquals(actualResult, expectResult);
         return this;
     }
 
@@ -189,9 +191,12 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
-        Assert.assertEquals(actualResult, expectResult);
+        softAssert.assertEquals(actualResult, expectResult);
         return this;
     }
 
-
+    public MentorsTablePage verifyNotFoundResult() {
+        softAssert.assertEquals(notFoundMessage.getText(), "Mentor is not found");
+        return this;
+    }
 }

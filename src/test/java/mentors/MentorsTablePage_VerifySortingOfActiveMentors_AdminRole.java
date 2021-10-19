@@ -11,15 +11,15 @@ import util.Role;
 
 import java.io.IOException;
 
-public class MentorsTablePage_VerifySortingOfActiveMentors extends BaseTest {
+public class MentorsTablePage_VerifySortingOfActiveMentors_AdminRole extends BaseTest {
     MentorsTablePage mentorsTablePage;
 
-    public MentorsTablePage_VerifySortingOfActiveMentors() {
+    public MentorsTablePage_VerifySortingOfActiveMentors_AdminRole() {
         mentorsTablePage = new MentorsTablePage(driver);
     }
 
     @BeforeClass
-    public void precondition() throws IOException {
+    public void setUp() throws IOException {
         mentorsTablePage = AuthPage
                 .init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
@@ -28,8 +28,8 @@ public class MentorsTablePage_VerifySortingOfActiveMentors extends BaseTest {
                 .isAtPage(waitTime);
     }
 
-    @Test
-    public void verifySort() {
+    @Test(description = "DP213-67")
+    public void verifySortingOfActiveMentors() {
         mentorsTablePage
                 .sortByName()
                 .verifySoftByNameASC()
@@ -44,5 +44,4 @@ public class MentorsTablePage_VerifySortingOfActiveMentors extends BaseTest {
                 .sortByEmail()
                 .verifySoftByEmailDEC();
     }
-
 }

@@ -16,7 +16,7 @@ import util.UnassignedUser;
 
 import java.io.IOException;
 
-public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData extends BaseTest {
+public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData_AdminRole extends BaseTest {
     String nameMentors ;
     String surNameMentors ;
     String passwordMentors ;
@@ -28,7 +28,7 @@ public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData extends B
     EditMentorsDetailsPage editMentor;
     String editMentorURL;
 
-    public EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData() {
+    public EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData_AdminRole() {
         nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
@@ -39,7 +39,7 @@ public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData extends B
         mentor= UnassignedUser.getUnassignedUser(nameMentors,surNameMentors,emailMentors,passwordMentors);
     }
     @BeforeClass
-    public void precondition() throws IOException {
+    public void setUp() throws IOException {
         editMentor= AuthPage.init(driver)
                 .clickRegistrationLink()
                 .registerUser(mentor)
@@ -55,8 +55,8 @@ public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData extends B
                 .isAtPage(waitTime);
         editMentorURL=driver.getCurrentUrl();
     }
-    @Test
-    public void verifyInputFields(){
+    @Test(description = "DP213-150")
+    public void VerifyEditMentorDetails_CorrectData(){
 
         editMentor.inputFirstName(newNameOfMentors)
                 .inputSurname(newSurNameOfMentors)

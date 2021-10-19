@@ -59,9 +59,9 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
     public WebElement findUserRowByEmail(String email) {
         WebElement rowUser;
         do {
-            for (WebElement row : tableRows) {
-                System.out.println(row.getText());
-            }
+//            for (WebElement row : tableRows) {
+//                System.out.println(row.getText());
+//            }
             rowUser = tableRows.stream()
                     .filter(row -> {
                         List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME))

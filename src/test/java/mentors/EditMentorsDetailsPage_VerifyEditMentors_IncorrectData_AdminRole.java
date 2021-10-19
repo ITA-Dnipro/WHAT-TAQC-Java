@@ -21,7 +21,7 @@ import util.UnassignedUser;
 
 import java.io.IOException;
 
-public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends BaseTest {
+public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData_AdminRole extends BaseTest {
     InvalidData[] data;
     String nameMentors ;
     String surNameMentors ;
@@ -30,7 +30,7 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
     UnassignedUser mentor;
    EditMentorsDetailsPage editMentorsPage;
 
-    public EditMentorsDetailsPage_VerifyEditMentors_IncorrectData() throws IOException {
+    public EditMentorsDetailsPage_VerifyEditMentors_IncorrectData_AdminRole() throws IOException {
         nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
@@ -40,7 +40,7 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
     }
 
     @BeforeClass
-    public void precondition() throws IOException {
+    public void setUp() throws IOException {
 
         editMentorsPage = AuthPage.init(driver)
                 .clickRegistrationLink()
@@ -52,9 +52,9 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
                 .addRole(mentor.getEmail(), UnassignedRole.MENTOR)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)
-                .inputSearchMentor("a")
-                .inputSearchMentor(mentor.getFirstName()+" "+mentor.getLastName())
-                .editMentors(0).isAtPage(waitTime);
+                .inputSearchMentor(mentor.getFirstName() + " " + mentor.getLastName())
+                .editMentors(0)
+                .isAtPage(waitTime);
     }
 
     @DataProvider(name = "errors")
@@ -66,22 +66,22 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
         return list;
     }
 
-    @Test(dataProvider = "errors")
-    public void checkFirstNameErrors(InvalidData errors) {
-        String expectedNameError= errors.getErrorName();
-        String expectedSurNameError=errors.getErrorSurname();
-        String expectedEmailError=errors.getErrorEmail();
+    @Test(description = "DP213-170", dataProvider = "errors")
+    public void verifyEditMentors_IncorrectData(InvalidData errors) {
+
         editMentorsPage
+                .isAtPage(waitTime)
                 .clearFields()
                 .inputFirstName(errors.getName())
                 .verifyInputName(errors.getName())
                 .loseFocus()
-                .verifyFirstNameErrors(expectedNameError)
+                .verifyFirstNameErrors(errors.getErrorName())
                 .inputSurname(errors.getLast_name())
                 .verifyInputSurName(errors.getLast_name())
-                .verifyLastNameErrors(expectedSurNameError)
+                .verifyLastNameErrors(errors.getErrorSurname())
                 .inputEmail(errors.getEmail())
                 .verifyInputEmail(errors.getEmail())
-                .verifyEmailErrors(errors.getErrorEmail());
+                .verifyEmailErrors(errors.getErrorEmail())
+                .assertAll();
     }
 }
