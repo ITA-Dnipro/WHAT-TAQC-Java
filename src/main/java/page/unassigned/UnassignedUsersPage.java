@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
-import page.mentors.MentorsTablePage;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -61,7 +59,10 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
     public WebElement findUserRowByEmail(String email) {
         WebElement rowUser;
         do {
-                        rowUser = tableRows.stream()
+//            for (WebElement row : tableRows) {
+//                System.out.println(row.getText());
+//            }
+            rowUser = tableRows.stream()
                     .filter(row -> {
                         List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME))
                                 .stream()

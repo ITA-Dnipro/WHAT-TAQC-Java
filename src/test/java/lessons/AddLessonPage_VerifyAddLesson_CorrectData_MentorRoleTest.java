@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class AddLesson_VerifyAddLesson_CorrectData_MentorRole extends BaseTest {
+public class AddLessonPage_VerifyAddLesson_CorrectData_MentorRoleTest extends BaseTest {
 
     protected LessonsPage lessonsPage;
     String themeName;

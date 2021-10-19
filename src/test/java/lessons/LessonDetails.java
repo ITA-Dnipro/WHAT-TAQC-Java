@@ -10,7 +10,7 @@ import page.unauthorizedUserPages.AuthPage;
 import util.Role;
 import java.io.IOException;
 
-public class LessonDetailsTest extends BaseTest {
+public class LessonDetails extends BaseTest {
 
     LessonsPage lessonsPage;
 
