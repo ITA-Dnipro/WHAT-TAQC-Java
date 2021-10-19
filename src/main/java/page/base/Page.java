@@ -2,12 +2,11 @@ package page.base;
 
 import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
-import org.testng.asserts.SoftAssert;
 import page.myProfile.MyProfilePage;
 import page.unauthorizedUserPages.AuthPage;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import static org.awaitility.Awaitility.await;
 
 /**
@@ -19,16 +18,16 @@ public abstract class Page<I extends Page<I>> extends BaseElement {
 
     protected Header header;
     protected SideBar sideBar;
-    protected SoftAssert softAssert;
+    protected Pagination pagination;
 
     public Page(WebDriver driver) {
         super(driver);
         sideBar = new SideBar(driver);
         header = new Header(driver);
-        softAssert = new SoftAssert();
+        pagination = new Pagination (driver);
     }
 
-    public <T> T redirectTo(String url, Class<T> type){
+    public <T> T redirectTo(String url, Class<T> type) {
         driver.get(url);
         await().until(() -> driver.getCurrentUrl().equals(url));
         return type.cast(Endpoints.getPages(driver).get(url));
@@ -38,7 +37,7 @@ public abstract class Page<I extends Page<I>> extends BaseElement {
         return header;
     }
 
-    public MyProfilePage clickUserIcon() throws InterruptedException {
+    public MyProfilePage clickUserIcon() {
         return header.clickUserIcon();
     }
 
@@ -49,22 +48,18 @@ public abstract class Page<I extends Page<I>> extends BaseElement {
 
     public abstract boolean isAt();
 
-    public I isAtPage(long timeout){
-        try{
+    public I isAtPage(long timeout) {
+        try {
             await().atMost(timeout, TimeUnit.SECONDS)
                     .ignoreExceptions()
                     .until(() -> isAt());
             return (I) this;
-        }catch(Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 
     public AuthPage logOut() throws IOException {
         return header.logOut();
-    }
-
-    public void assertAll() {
-        softAssert.assertAll();
     }
 }

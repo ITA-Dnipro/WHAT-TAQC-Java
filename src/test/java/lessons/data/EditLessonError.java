@@ -9,7 +9,7 @@ public class EditLessonError {
     String theme;
     String result;
     String date;
-    String d_result;
+    String dateResult;
 
     public String getTheme() {
         return theme;
@@ -23,8 +23,8 @@ public class EditLessonError {
         return date;
     }
 
-    public String getD_result() {
-        return d_result;
+    public String getDateResult() {
+        return dateResult;
     }
     public static EditLessonError[] getErrors(String filename) throws IOException {
         return new ObjectMapper().readValue(new File(filename), EditLessonError[].class);

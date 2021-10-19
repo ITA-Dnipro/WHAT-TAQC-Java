@@ -2,7 +2,6 @@ package lessons;
 
 import base.BaseTest;
 import constants.Endpoints;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.lessons.LessonsPage;
@@ -17,9 +16,15 @@ import java.time.format.DateTimeFormatter;
 public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
 
      protected LessonsPage lessonsPage;
+     String themeName;
+     String date;
 
     @BeforeClass
-    public void precondition() throws IOException {
+    public void setUp() throws IOException {
+        themeName = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5);
+        date = LocalDateTime.now().minusDays(1)
+                .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm"));
+
         lessonsPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
@@ -28,22 +33,24 @@ public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
     }
 
     @Test(description = "DP213-62")
-    public void verifyAddLesson() throws IOException {
+    public void verifyAddLesson() {
 
         String expectedResult = "×\nClose alert\nThe lesson has been added successfully!";
 
-        String actualResult = lessonsPage
-                .clickAddLessonButton().isAtPage(this.waitTime)
-                .fillLessonTheme(RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5))
+       lessonsPage
+                .clickAddLessonButton().isAtPage(waitTime)
+                .fillLessonTheme(themeName)
+                .verifyThemeNameInputFieldIsFilled(themeName)
                 .selectExistedGroup()
-                .fillDateInput(LocalDateTime.now().minusDays(1)
-                        .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm")))
+                .verifyGroupNameInputFieldIsFilled()
+                .fillDateInput(date)
+                .verifyDateInputFieldIsFilled()
                 .selectExistedMentor()
+                .verifyMentorEmailInputFieldIsFilled()
+                .verifyAll()
                 .clickClassRegisterButton()
                 .clickSaveButton()
                 .isAtPage(waitTime)
-                .getAlertText();
-
-        Assert.assertEquals(actualResult, expectedResult);
+                .verifyAlertMessageText(expectedResult);
     }
 }

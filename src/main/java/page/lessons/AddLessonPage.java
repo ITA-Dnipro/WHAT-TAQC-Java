@@ -1,7 +1,6 @@
 package page.lessons;
 
 import constants.Endpoints;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -55,6 +54,7 @@ public class AddLessonPage extends Page<AddLessonPage> {
     //endregion
 
     ClassBookFeature classBook;
+    private final String VALUE = "value";
 
     public AddLessonPage(WebDriver driver) {
         super(driver);
@@ -87,11 +87,6 @@ public class AddLessonPage extends Page<AddLessonPage> {
         return this;
     }
 
-    public LessonsPage clickCancelButton(){
-        clickElement(cancelButton);
-        return new LessonsPage(driver);
-    }
-
     public AddLessonPage clickClassRegisterButton(){
         clickElement(classRegisterButton);
         return this;
@@ -104,15 +99,20 @@ public class AddLessonPage extends Page<AddLessonPage> {
 
     public AddLessonPage selectExistedGroup(){
         if(listOfGroups.size() != 0){
-            fillGroupName(listOfGroups.get(0).getAttribute("value"));
+            fillGroupName(listOfGroups.get(0).getAttribute(VALUE));
         }
         return this;
     }
 
     public AddLessonPage selectExistedMentor(){
         if(listOfMentors.size() != 0){
-            fillEmailInput(listOfMentors.get(0).getAttribute("value"));
+            fillEmailInput(listOfMentors.get(0).getAttribute(VALUE));
         }
+        return this;
+    }
+
+    public AddLessonPage loseFocus(){
+        pageTitle.click();
         return this;
     }
 
@@ -128,43 +128,62 @@ public class AddLessonPage extends Page<AddLessonPage> {
     }
     //endregion
 
+    //region Verify
     public AddLessonPage verifyThemeNameInputFieldIsFilled(String text){
-        softAssert.assertEquals(lessonThemeInput.getText(), text);
+        softAssert.assertEquals(lessonThemeInput.getAttribute(VALUE), text);
         return this;
     }
 
     public AddLessonPage verifyGroupNameInputFieldIsFilled(String text){
-        softAssert.assertEquals(groupNameInput.getText(), text);
+        softAssert.assertEquals(groupNameInput.getAttribute(VALUE), text);
+        return this;
+    }
+
+    public AddLessonPage verifyGroupNameInputFieldIsFilled(){
+        softAssert.assertFalse(groupNameInput.getAttribute(VALUE).equals(""));
         return this;
     }
 
     public AddLessonPage verifyDateInputFieldIsFilled(String text){
-        softAssert.assertEquals(dateInput.getText(), text);
+        softAssert.assertEquals(dateInput.getAttribute(VALUE), text);
+        return this;
+    }
+
+    public AddLessonPage verifyDateInputFieldIsFilled(){
+        softAssert.assertFalse(dateInput.getAttribute(VALUE).equals(""));
         return this;
     }
 
     public AddLessonPage verifyMentorEmailInputFieldIsFilled(String text){
-        softAssert.assertEquals(emailInput.getText(), text);
+        softAssert.assertEquals(emailInput.getAttribute(VALUE), text);
         return this;
     }
 
-
-
-    public String getThemeError() {
-        return themeError.getText();
-    }
-
-    public String getGroupError() {
-        return groupError.getText();
-    }
-
-    public String getMailError() {
-        return mailError.getText();
-    }
-
-    public AddLessonPage loseFocus(){
-        pageTitle.click();
+    public AddLessonPage verifyMentorEmailInputFieldIsFilled(){
+        softAssert.assertFalse(emailInput.getAttribute(VALUE).equals(""));
         return this;
     }
+
+    public AddLessonPage verifyAll(){
+        softAssert.assertAll();
+        return this;
+    }
+
+    public AddLessonPage verifyThemeNameError(String error){
+        softAssert.assertEquals(themeError.getText(), error);
+        return this;
+    }
+
+    public AddLessonPage verifyGroupNameError(String error){
+        softAssert.assertEquals(themeError.getText(), error);
+        return this;
+    }
+
+    public AddLessonPage verifyMentorMailError(String error){
+        softAssert.assertEquals(mailError.getText(), error);
+        return this;
+    }
+    //endregion
+
 
 }

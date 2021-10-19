@@ -95,9 +95,4 @@ public class AuthPage extends BaseElement {
     private void clickLogInButton() {
         clickElement(signInButton);
     }
-
-    public Page clickSignIn() {
-        clickElement(signInButton);
-        return new LessonsPage(driver);
-    }
 }

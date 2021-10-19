@@ -7,16 +7,16 @@ import java.io.IOException;
 public class AddLessonData {
 
     protected String theme;
-    protected String g_name;
+    protected String groupName;
     protected String date;
     protected String email;
 
     public AddLessonData() {
     }
 
-    public AddLessonData(String theme, String g_name, String date, String email) {
+    public AddLessonData(String theme, String groupName, String date, String email) {
         this.theme = theme;
-        this.g_name = g_name;
+        this.groupName = groupName;
         this.date = date;
         this.email = email;
     }
@@ -29,12 +29,12 @@ public class AddLessonData {
         this.theme = theme;
     }
 
-    public String getG_name() {
-        return g_name;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setG_name(String g_name) {
-        this.g_name = g_name;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     public String getDate() {
