@@ -1,32 +1,32 @@
 [
   {
     "theme" : "",
-    "theme_result" : "This field is required",
-    "g_name" : "",
-    "g_name_result" : "This field is required",
+    "themeResult": "This field is required",
+    "groupName": "",
+    "groupNameResult": "This field is required",
     "date" : "",
-    "date_result" : "",
+    "dateResult": "",
     "email" : "",
-    "email_result" : "This field is required"
+    "emailResult": "This field is required"
   },
   {
     "theme" : "T",
-    "theme_result" : "Too short",
-    "g_name" : "T",
-    "g_name_result" : "Too short",
+    "themeResult": "Too short",
+    "groupName": "T",
+    "groupNameResult": "Too short",
     "date" : "",
-    "date_result" : "",
+    "dateResult": "",
     "email" : "T",
-    "email_result" : "Invalid mentor email"
+    "emailResult": "Invalid mentor email"
   },
   {
     "theme" : "Ttttttttttttttttttttttttttttttttttttttttttttttttttt",
-    "theme_result" : "Too long",
-    "g_name" : "Ttttttttttttttttttttttttttttttttttttttttttttttttttt",
-    "g_name_result" : "Too long",
+    "themeResult": "Too long",
+    "groupName": "Ttttttttttttttttttttttttttttttttttttttttttttttttttt",
+    "groupNameResult": "Too long",
     "date" : "",
-    "date_result" : "",
+    "dateResult": "",
     "email" : "",
-    "email_result" : ""
+    "emailResult": ""
   }
 ]

@@ -38,7 +38,7 @@ public class HttpHelper {
                 new InputStreamReader(
                         inputStream));
         UserApi userApi = new ObjectMapper().readValue(in.readLine(), UserApi.class);
-        log.info("Logged in as " + userApi.getFirst_name() + " " + userApi.getLast_name());
+        log.info("Logged in as " + userApi.getFirstName() + " " + userApi.getLastName());
         userApi.setToken(http.getHeaderField("Authorization"));
         in.close();
         http.disconnect();

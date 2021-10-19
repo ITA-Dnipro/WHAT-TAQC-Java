@@ -26,7 +26,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
     private Map<String, User> users;
 
     public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser() throws IOException {
-        users = User.get(PathsToFiles.CREDENTIALS);
+        users = User.get(PathsToFiles.getPathToCredentials());
         passwordsData = ChangePasswordValidData.passwordsList(
                 PathsToFiles.ChangePassword.CHANGE_PASSWORD_VALID_DATA);
     }
@@ -34,7 +34,6 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
     @BeforeClass
     public void preconditions() {
         user = users.get(Role.MENTOR.getRoleName());
-
     }
 
     @DataProvider(name = "log_in")

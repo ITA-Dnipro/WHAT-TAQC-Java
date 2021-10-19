@@ -3,7 +3,6 @@ package page.unauthorizedUserPages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
 import page.base.BaseElement;
 import util.UnassignedUser;
 
@@ -42,15 +41,11 @@ public class RegistrationPage extends BaseElement {
     @FindBy(xpath = CONFIRM_PASSWORD_ERROR_XPATH)
     WebElement confirmPasswordError;
 
-    private SoftAssert softAssert;
-
     public RegistrationPage(WebDriver driver) {
         super(driver);
-        softAssert = new SoftAssert();
     }
 
     public AuthPage registerUser(UnassignedUser user) throws IOException {
-
         fillInputFirstName(user.getFirstName())
                 .fillInputLastName(user.getLastName())
                 .fillInputEmail(user.getEmail())
@@ -100,29 +95,30 @@ public class RegistrationPage extends BaseElement {
         clickElement(logInLinkedText);
         return new AuthPage(driver);
     }
+
     public RegistrationPage verifyFillingFirstNameInputField(String data) {
-        softAssert.assertEquals(firstNameInputField.getText(), data);
+        softAssert.assertEquals(firstNameInputField.getAttribute("value"), data);
         return this;
     }
 
     public RegistrationPage verifyFillingLastNameInputField(String data) {
-        softAssert.assertEquals(lastNameInputField.getText(), data);
+        softAssert.assertEquals(lastNameInputField.getAttribute("value"), data);
         return this;
     }
 
     public RegistrationPage verifyFillingEmailInputField(String data) {
-        softAssert.assertEquals(emailInputField.getText(), data);
+        softAssert.assertEquals(emailInputField.getAttribute("value"), data);
         return this;
     }
 
     public RegistrationPage verifyFillingPasswordInputField(String data) {
-        softAssert.assertEquals(emailInputField.getText(), data);
+        softAssert.assertEquals(passwordInputField.getAttribute("value"), data);
         return this;
     }
 
     // TODO verify confirmPasswordField is filled with asterisks
     public RegistrationPage verifyFillingConfirmPasswordInputField(String data) {
-        softAssert.assertEquals(emailInputField.getText(), data);
+        softAssert.assertEquals(confirmPasswordInputField.getAttribute("value"), data);
         return this;
     }
 
@@ -172,6 +168,7 @@ public class RegistrationPage extends BaseElement {
             return verifyEmailErrorIsDisplayed(true);
         }
     }
+
     public RegistrationPage verifyPasswordErrorIsDisplayed(boolean condition) {
         boolean result = !passwordError.getText().equals("");
         softAssert.assertEquals(result, condition);
@@ -186,6 +183,7 @@ public class RegistrationPage extends BaseElement {
             return verifyPasswordErrorIsDisplayed(true);
         }
     }
+
     public RegistrationPage verifyConfirmPasswordErrorIsDisplayed(boolean condition) {
         boolean result = !confirmPasswordError.getText().equals("");
         softAssert.assertEquals(result, condition);
@@ -201,12 +199,37 @@ public class RegistrationPage extends BaseElement {
         }
     }
 
-    public RegistrationPage verifyModalWindowIsOpened(){
+    public RegistrationPage verifySingInButtonIsEnabled() {
+        softAssert.assertTrue(singUpButton.isEnabled());
+        return this;
+    }
+
+    public RegistrationPage verifyLogInLinkIsEnabled() {
+        softAssert.assertTrue(logInLinkedText.isEnabled());
+        return this;
+    }
+
+    public RegistrationPage verifyModalWindowIsOpened() {
         softAssert.assertTrue(modalWindow.isDisplayed());
         return this;
     }
 
-    public SoftAssert getSoftAssert() {
-        return softAssert;
+    public RegistrationPage verifyInputFieldsAreEmpty() {
+        this.verifyFillingFirstNameInputField("")
+                .verifyFillingLastNameInputField("")
+                .verifyFillingEmailInputField("")
+                .verifyFillingPasswordInputField("")
+                .verifyFillingConfirmPasswordInputField("");
+        return this;
     }
+
+    public RegistrationPage verifyErrorMessagesAreNotDisplayed() {
+        this.verifyFirstNameErrorIsDisplayed(false)
+                .verifyLastNameErrorIsDisplayed(false)
+                .verifyEmailErrorIsDisplayed(false)
+                .verifyPasswordErrorIsDisplayed(false)
+                .verifyConfirmPasswordErrorIsDisplayed(false);
+        return this;
+    }
+
 }
