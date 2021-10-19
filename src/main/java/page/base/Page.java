@@ -18,7 +18,7 @@ public abstract class Page<I extends Page<I>> extends BaseElement {
 
     protected Header header;
     protected SideBar sideBar;
-    protected Pagination pagination
+    protected Pagination pagination;
 
     public Page(WebDriver driver) {
         super(driver);
