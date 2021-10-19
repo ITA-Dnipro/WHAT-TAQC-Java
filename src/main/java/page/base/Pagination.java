@@ -11,9 +11,9 @@ import static constants.Locators.Pagination.*;
 public class Pagination extends BaseElement {
 
     @FindBy(xpath = PAGES_XPATH)
-    List<WebElement> pages;
+    private List<WebElement> pages;
     @FindBy(xpath = NEXT_PAGE_ARROW_BUTTON_XPATH)
-    WebElement nextPageArrowButton;
+    private WebElement nextPageArrowButton;
 
     public Pagination(WebDriver driver) {
         super(driver);
