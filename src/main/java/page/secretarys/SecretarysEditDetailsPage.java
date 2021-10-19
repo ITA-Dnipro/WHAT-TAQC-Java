@@ -14,7 +14,8 @@ abstract public class SecretarysEditDetailsPage <T extends Page<T>> extends Page
     @FindBy(xpath = SECRETARY_DETAILS_TAB_XPATH )
     protected WebElement secretaryDetailsTab;
     @FindBy(xpath = EDIT_SECRETARY_TAB_XPATH)
-    protected WebElement EditSecretaryDetailsTab;
+    protected WebElement editSecretaryDetailsTab;
+
 
     public SecretarysEditDetailsPage(WebDriver driver) {
         super(driver);
@@ -29,5 +30,11 @@ abstract public class SecretarysEditDetailsPage <T extends Page<T>> extends Page
             return new SecretarysDetailsTab(super.driver);
         }
 
+    public SecretarysEditDetailsTab openStudentDetailsTab() {
+        clickElement(secretaryDetailsTab);
+        return new SecretarysEditDetailsTab(driver);
+    }
 
 }
+
+

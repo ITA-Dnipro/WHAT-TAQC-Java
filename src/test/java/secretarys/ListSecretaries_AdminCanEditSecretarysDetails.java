@@ -1,49 +1,63 @@
 package secretarys;
 
 import base.BaseTest;
-import base.RandomStringsGenerator;
-import base.Role;
+import page.mentors.MentorsTablePage;
+import page.secretarys.SecretarysEditDetailsPage;
+import page.secretarys.SecretarysPage;
+import page.students.StudentsPage;
+import util.RandomStringsGenerator;
+import util.UnassignedUser;
 import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import page.base.BasePage;
-import page.secretarys.SecretarysDetailsPage;
-import page.secretarys.SecretarysPage;
+import page.unassigned.UnassignedRole;
+import page.unassigned.UnassignedUsersPage;
+import page.unauthorizedUserPages.AuthPage;
+import util.RandomStringsGenerator;
+import util.Role;
+import util.UnassignedUser;
+import java.io.IOException;
 
 
 
 public class ListSecretaries_AdminCanEditSecretarysDetails extends BaseTest{
 
-    SecretarysPage secretarys;
-    BasePage basePage;
-    RandomStringsGenerator randomStringsGenerator;
+    String nameSecretary;
+    String surNameSecretary;
+    String passwordSecretary;
+    String emailSecretary;
+    String newNameOfSecretary;
+    String newSurNameOfSecretary;
+    String newEmailOfSecretary;
+    UnassignedUser secretary;
+    SecretarysEditDetailsPage editSecretary;
+    String editSecretaryURL;
 
-    @BeforeClass
-    public void preconditions() throws Exception{
-        driver.get(Endpoints.BASE_URL);
-        secretarys = new SecretarysPage(driver);
+    public ListSecretaries_AdminCanEditSecretarysDetails(){
+        nameSecretary = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
+        surNameSecretary = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
+        passwordSecretary = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
+        emailSecretary = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
+        newNameOfSecretary=nameSecretary+"new";
+        newSurNameOfSecretary=surNameSecretary+"new";
+        newEmailOfSecretary=emailSecretary+"new";
+        secretary= UnassignedUser.getUnassignedUser(nameSecretary,surNameSecretary,emailSecretary,passwordSecretary);
     }
+        @BeforeClass
+        public void precondition() throws IOException {
+            editSecretary= AuthPage.init(driver)
+                    .clickRegistrationLink()
+                    .registerUser(secretary)
+                    .logInAs(Role.ADMIN, StudentsPage.class)
+                    .isAtPage(waitTime)
+                    .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
+                    .isAtPage(waitTime)
+                    .addRole(secretary.getEmail(), UnassignedRole.SECRETARY)
+                    .isAtPage(waitTime)
+                    .redirectTo(Endpoints.SECRETARIES, SecretarysPage.class)
+                    .inputSearchSecretary("a")
+                    .inputSearchSecretary(secretary.getFirstName()+" "+secretary.getLastName())
+                    .(1).isAtPage(waitTime);
+            editMentorURL=driver.getCurrentUrl();
 
-    @DataProvider(name = "log-in")
-    public Object[][] provideCredentials(){
-        return new Object[][]{{Role.ADMIN}};
-    }
+        }
 
-    @Test(dataProvider = "log-in")
-    public void editSecretarys(Role role){
-
-        helper.logInAs(role);
-
-        driver.get(Endpoints.SECRETARYS);
-
-//        SoftAssert softAssert = new SoftAssert();
-//        editSecretarysPage.setSoftAssert(softAssert);
-
-        SecretarysDetailsPage secretarysDetailsPage = secretarys.ClickEditButton();
-
-    }
-
-
-}

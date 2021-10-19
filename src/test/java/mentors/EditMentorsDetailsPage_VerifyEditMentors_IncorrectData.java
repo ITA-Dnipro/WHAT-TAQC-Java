@@ -36,7 +36,7 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
         passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
         emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
         mentor= UnassignedUser.getUnassignedUser(nameMentors,surNameMentors,emailMentors,passwordMentors);
-        data=InvalidData.getData(PathsToFiles.Mentors.EDIT_MENTOR_ERRORS);
+        data=InvalidData.getData(PathsToFiles.Mentors.EDIT_MENTOR_ERRORS); // паст оф файлс
     }
 
     @BeforeClass

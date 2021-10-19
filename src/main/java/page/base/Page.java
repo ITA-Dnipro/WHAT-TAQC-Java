@@ -67,4 +67,6 @@ public abstract class Page<I extends Page<I>> extends BasePage {
     public SoftAssert getSoftAssert() {
         return softAssert;
     }
+
+
 }

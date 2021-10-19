@@ -19,8 +19,6 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
     protected WebElement lastNameInput;
     @FindBy(xpath = SECRETARIES_EMAIL_WINDOW_XPATH)
     protected WebElement emailInput;
-    @FindBy(xpath = SECRETARIES_LAY_OFF_BUTTON_XPATH)
-    protected WebElement layOffButton;
     @FindBy(xpath = SECRETARIES_CLEAR_BUTTON_XPATH)
     protected WebElement clearButton;
     @FindBy(xpath = SECRETARIES_SAVE_BUTTON_XPATH )
@@ -41,8 +39,9 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
         }
 
 
+
     @Override
     public boolean isAt() {
         return secretaryPageTitle.getText().equals("Edit Secretary's details");
-    }
+   }
 }
