@@ -30,6 +30,8 @@ public class Endpoints {
     public static final String EDIT_MENTORS=MENTORS+"/edit";
     public static final String SECRETARIES=BASE_URL+"/secretaries";
 
+    public static final String SECRETARIES = BASE_URL+"/secretaries";
+
     public static Map<String, Page> getPages(WebDriver driver){
         Map<String, Page> pages = new HashMap<>();
         pages.put(STUDENTS, new StudentsPage(driver));
