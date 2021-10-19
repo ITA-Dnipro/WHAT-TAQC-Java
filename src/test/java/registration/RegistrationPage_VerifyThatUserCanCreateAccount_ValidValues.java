@@ -14,24 +14,24 @@ import util.UnassignedUser;
 
 import java.io.IOException;
 
-public class RegistrationPage_VerifyRegistrationUser_ValidParameters extends BaseTest {
+public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValues extends BaseTest {
 
     private RegistrationPage registrationPage;
     private UnassignedUser user;
 
     @BeforeClass
-    public void precondition() throws IOException {
+    public void precondition() {
         user = UnassignedUser.getUnassignedUser();
-        registrationPage = AuthPage.init(driver)
-                .clickRegistrationLink();
     }
 
-    @Test(description = "")
-    public void verifyCreateNewUserValidParameters() throws IOException {
-        registrationPage
+    @Test(description = "DP213-155")
+    public void verifyCreateNewUserValidParameters() throws IOException, InterruptedException {
+        registrationPage = AuthPage.init(driver)
+                .clickRegistrationLink()
                 .verifyInputFieldsAreEmpty()
                 .verifyErrorMessagesAreNotDisplayed()
-
+                .verifySingInButtonIsEnabled()
+                .verifyLogInLinkIsEnabled()
                 .fillInputFirstName(user.getFirstName())
                 .verifyFillingFirstNameInputField(user.getFirstName())
                 .fillInputLastName(user.getLastName())
@@ -44,14 +44,14 @@ public class RegistrationPage_VerifyRegistrationUser_ValidParameters extends Bas
                 .verifyFillingConfirmPasswordInputField(user.getPassword())
 
                 .clickSingUpButton()
-                .verifyModalWindowIsOpened()
-                .assertAll();
+                .verifyModalWindowIsOpened();
+        registrationPage.assertAll();
 
-        boolean actualResult = registrationPage
-                .clickModalWindowBackButton()
-                .logInAs(Role.ADMIN, StudentsPage.class)
-                .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
-                .isUserPresented(user.getEmail());
+        boolean actualResult =
+                registrationPage.clickModalWindowBackButton()
+                        .logInAs(Role.ADMIN, StudentsPage.class)
+                        .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
+                        .isUserPresented(user.getEmail());
 
         Assert.assertTrue(actualResult);
     }
