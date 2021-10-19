@@ -298,6 +298,10 @@ public class Locators {
         String SIGN_UP_BUTTON_XPATH = "//button[text()= 'Sign up']";
         String LOG_IN_XPATH = "//a[@href='/auth']";
         String MODAL_WINDOW = "//*[contains(@class,'modal-content')]";
-        String MODAL_WINDOW_BUTTON = "//button[.='Back']";
+        String MODAL_WINDOW_BUTTON = "//button[text()='Back']";
+    }
+    public interface Pagination{
+        String PAGES_XPATH = "//div[contains(@class,'col')]//child::ul[2]//child::button";
+        String NEXT_PAGE_ARROW_BUTTON_XPATH = "//div[contains(@class,'col')]//child::ul[3]";
     }
 }
