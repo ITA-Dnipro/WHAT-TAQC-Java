@@ -23,7 +23,7 @@ public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryR
     String newName;
 
     public ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryRoles() throws IOException {
-        data = EditCourseValidData.getEditCoursesValidData(PathsToFiles.Сourses.EDIT_COURSES_VALID_DATA);
+        data = EditCourseValidData.getEditCoursesValidData(PathsToFiles.Courses.EDIT_COURSES_VALID_DATA);
     }
 
     @BeforeClass
@@ -35,7 +35,7 @@ public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryR
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.COURSES, CoursesPage.class)
                 .isAtPage(waitTime)
-                .addCoursePage()
+                .redirectToAddCoursePage()
                 .fillInputAddCourseName(addedCourseName)
                 .saveNewCourse()
                 .isAtPage(waitTime);
@@ -59,8 +59,8 @@ public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryR
                 .verifyOldCourseNameExist(addedCourseName)
                 .isAtPage(waitTime)
                 .fillCourseSearchField(newName)
-                .isAtPage(waitTime);
-        coursesPage.getSoftAssert().assertAll();
+                .isAtPage(waitTime)
+                .assertAll();
 
         Assert.assertEquals(coursesPage.getCoursesRowsList().get(0).getText(), newName);
         Assert.assertEquals(coursesPage.getAlertAddCourse().getText(), expectedResult);

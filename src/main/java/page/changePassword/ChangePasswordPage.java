@@ -127,21 +127,6 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return errMessageConfirmPassword.getText();
     }
 
-    public ChangePasswordPage verifyCurrentPasswordError(String expectedErrorMessage, String currentPasswordError) {
-        softAssert.assertEquals(currentPasswordError, expectedErrorMessage);
-        return this;
-    }
-
-    public ChangePasswordPage verifyNewPasswordError(String expectedErrorMessage, String newPasswordError) {
-        softAssert.assertEquals(newPasswordError, expectedErrorMessage);
-        return this;
-    }
-
-    public ChangePasswordPage verifyConfirmPasswordError(String expectedErrorMessage, String confirmPasswordError) {
-        softAssert.assertEquals(confirmPasswordError, expectedErrorMessage);
-        return this;
-    }
-
     public ChangePasswordPage loseFocus() {
         loseFocus.click();
         return this;
@@ -161,5 +146,20 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         softAssert.assertEquals(confirmPasswordField.getAttribute(VALUE), data);
         return this;
     }
+    public ChangePasswordPage verifyCurrentPasswordError(String expectedErrorMessage, String currentPasswordError) {
+        softAssert.assertEquals(currentPasswordError, expectedErrorMessage);
+        return this;
+    }
+
+    public ChangePasswordPage verifyNewPasswordError(String expectedErrorMessage, String newPasswordError) {
+        softAssert.assertEquals(newPasswordError, expectedErrorMessage);
+        return this;
+    }
+
+    public ChangePasswordPage verifyConfirmPasswordError(String expectedErrorMessage, String confirmPasswordError) {
+        softAssert.assertEquals(confirmPasswordError, expectedErrorMessage);
+        return this;
+    }
+
 
 }

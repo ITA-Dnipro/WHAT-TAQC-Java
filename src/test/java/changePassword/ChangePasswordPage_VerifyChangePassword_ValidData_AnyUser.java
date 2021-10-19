@@ -4,6 +4,7 @@ import base.BaseTest;
 import changePassword.dataPasswords.data.ChangePasswordValidData;
 import constants.Endpoints;
 import constants.PathsToFiles;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -19,11 +20,10 @@ import java.util.Map;
 public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends BaseTest {
 
     private ChangePasswordValidData[] passwordsData;
-    private String currentPassword;
     private User user;
+    private String currentPassword;
+    private String newUserPassword;
     private Map<String, User> users;
-
-    private AuthPage authPage;
 
     public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser() throws IOException {
         users = User.get(PathsToFiles.CREDENTIALS);
@@ -34,6 +34,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
     @BeforeClass
     public void preconditions() {
         user = users.get(Role.MENTOR.getRoleName());
+
     }
 
     @DataProvider(name = "log_in")
@@ -47,26 +48,32 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
 
     @Test(description = "DP213-27", dataProvider = "log_in")
     public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException, InterruptedException {
+        newUserPassword = newPassword.getNewPassword();
         currentPassword = user.getPass();
 
         AuthPage.init(driver)
                 .logInAs(Role.MENTOR, user, LessonsPage.class)
                 .isAtPage(waitTime)
                 .clickUserIcon()
-                .isAtPage(5)
+                .isAtPage(waitTime)
                 .redirectTo(Endpoints.CHANGE_PASSWORD, ChangePasswordPage.class)
                 .isAtPage(waitTime)
                 .fillCurrentPasswordField(currentPassword)
                 .verifyCurrentPasswordFieldFielded(currentPassword)
-                .fillNewPasswordField(newPassword.getNewPassword())
-                .verifyNewPasswordFieldFielded(newPassword.getNewPassword())
-                .fillConfirmPasswordField(newPassword.getNewPassword())
-                .verifyConfirmPasswordFieldFielded(newPassword.getNewPassword())
+                .fillNewPasswordField(newUserPassword)
+                .verifyNewPasswordFieldFielded(newUserPassword)
+                .fillConfirmPasswordField(newUserPassword)
+                .verifyConfirmPasswordFieldFielded(newUserPassword)
                 .saveChangePassword()
                 .isAtPage(waitTime)
                 .confirmChangedPassword()
                 .isAtPage(waitTime)
+                .myProfileAssert()
                 .logOut();
-        user.setPass(newPassword.getNewPassword());
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        user.setPass(newUserPassword);
     }
 }

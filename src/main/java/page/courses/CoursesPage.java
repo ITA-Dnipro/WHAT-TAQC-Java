@@ -67,7 +67,7 @@ public class CoursesPage extends Page<CoursesPage> {
         return new CourseDetailsTab(driver);
     }
 
-    public AddCoursePage addCoursePage() {
+    public AddCoursePage redirectToAddCoursePage() {
         clickElement(addCourseButton);
         return new AddCoursePage(driver);
     }
@@ -77,7 +77,7 @@ public class CoursesPage extends Page<CoursesPage> {
         return this;
     }
 
-    public CoursesPage titleSortResult() {
+    public CoursesPage clickTitleSortResult() {
         clickElement(titleSort);
         return this;
     }
@@ -112,6 +112,16 @@ public class CoursesPage extends Page<CoursesPage> {
 
     public CoursesPage verifyOldCourseNameExist(String oldName) {
         softAssert.assertTrue(getCoursesRowsList().get(0).isDisplayed(), oldName);
+        return this;
+    }
+
+    public CoursesPage verifySearchCourseFieldFielded(String data) {
+        softAssert.assertEquals(searchField.getText(), data);
+        return this;
+    }
+
+    public CoursesPage verifyAddCourseAlertExist (String data) {
+        softAssert.assertEquals(getAlertAddCourse().getText(), data);
         return this;
     }
 }

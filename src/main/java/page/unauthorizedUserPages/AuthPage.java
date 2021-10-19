@@ -5,17 +5,17 @@ import constants.PathsToFiles;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import page.mentors.MentorsTablePage;
-import page.students.StudentsPage;
 import page.base.BaseElement;
 import page.base.Page;
 import page.lessons.LessonsPage;
+import page.mentors.MentorsTablePage;
+import page.students.StudentsPage;
 import util.Role;
 import util.User;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 
 import static constants.Locators.Auth.*;
 import static org.awaitility.Awaitility.await;
@@ -35,6 +35,7 @@ public class AuthPage extends BaseElement {
 
     Map<String, Page> defaultPages;
     Map<String, User> users;
+    User user = new User();
 
 
     public AuthPage(WebDriver driver) throws IOException {
@@ -70,7 +71,7 @@ public class AuthPage extends BaseElement {
         return type.cast(defaultPages.get(role.getRoleName()));
     }
 
-    public <T extends Page> T logInAs(Role role, User user, Class<T> type){
+    public <T extends Page> T logInAs(Role role, User user, Class<T> type) {
         fillMail(user.getMail())
                 .fillPass(user.getPass())
                 .clickLogInButton();
@@ -84,11 +85,11 @@ public class AuthPage extends BaseElement {
     }
 
     public AuthPage isAt() {
-        try{
+        try {
             await().until(() -> driver.getCurrentUrl().equals(Endpoints.AUTH));
             return this;
-        }catch(Exception e){
-            return  null;
+        } catch (Exception e) {
+            return null;
         }
     }
 
