@@ -18,11 +18,13 @@ public abstract class Page<I extends Page<I>> extends BaseElement {
 
     protected Header header;
     protected SideBar sideBar;
+    protected Pagination pagination;
 
     public Page(WebDriver driver) {
         super(driver);
         sideBar = new SideBar(driver);
         header = new Header(driver);
+        pagination = new Pagination (driver);
     }
 
     public <T> T redirectTo(String url, Class<T> type) {
