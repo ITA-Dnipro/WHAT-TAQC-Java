@@ -1,5 +1,6 @@
 package page.groups;
 
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,14 +30,14 @@ public class GroupsPage extends Page<GroupsPage> {
 
     @Override
     public boolean isAt() {
-        return false;
+        return driver.getCurrentUrl().equals(Endpoints.GROUPS);
     }
 
     public static GroupsPage init(WebDriver driver){
         return new GroupsPage(driver);
     }
 
-    public AddGroupPage clickAddLessonButton(){
+    public AddGroupPage clickAddGroupButton(){
         clickElement(addGroupButton);
         return new AddGroupPage(driver);
     }

@@ -6,7 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 import page.lessons.LessonsPage;
+import util.RandomStringsGenerator;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static constants.Locators.AddGroupPage.*;
@@ -84,6 +88,17 @@ public class AddGroupPage extends Page<AddGroupPage> {
 
     public GroupsPage clickConfirmButton(){
         clickElement(confirmButton);
+        return new GroupsPage(driver);
+    }
+
+    public GroupsPage addGroupForTest(){
+        fillGroupName(RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5))
+                .selectCourse()
+                .fillStartDate(LocalDate.now()
+                        .format(DateTimeFormatter.ofPattern("ddMMyyyy")))
+                .fillFinishDate(LocalDate.now().plusDays(1)
+                        .format(DateTimeFormatter.ofPattern("ddMMyyyy")))
+                .clickConfirmButton();
         return new GroupsPage(driver);
     }
 }
