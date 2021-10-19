@@ -1,0 +1,34 @@
+[
+   {
+      "lastName":"",
+      "lastNameError":"This field is required"
+   },
+   {
+      "lastName":"a",
+      "lastNameError":"Too short"
+   },
+   {
+      "lastName":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "lastNameError":"Too long"
+   },
+   {
+      "lastName":"name ",
+      "lastNameError":"Invalid last name"
+   },
+   {
+      "lastName":" name",
+      "lastNameError":"Invalid last name"
+   },
+   {
+      "lastName":"-name",
+      "lastNameError":"Invalid last name"
+   },
+   {
+      "lastName":"name-",
+      "lastNameError":"Invalid last name"
+   },
+   {
+      "lastName":"name!@#$%^&*()_+=",
+      "lastNameError":"Invalid last name"
+   }
+]

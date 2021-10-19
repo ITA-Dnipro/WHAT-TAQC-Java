@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 import page.unassigned.UnassignedUsersPage;
+import util.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -72,5 +73,25 @@ public class StudentsPage extends Page<StudentsPage> {
                 .stream()
                 .findFirst()
                 .orElse(null);
+    }
+
+    public boolean verifyAddStudentButtonIsEnable(){
+        return addStudentButton.isEnabled();
+    }
+
+    public StudentEditDetailsTab openStudentEditDetailsTab (User user){
+        WebElement row = findStudentRowInTableByEmail(user.getMail());
+        List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME));
+        WebElement cellWithPencilIcon = listCells.stream()
+                .skip(3)
+                .findAny()
+                .orElse(null);
+        clickElement(cellWithPencilIcon);
+        return new StudentEditDetailsTab(driver);
+    }
+    public StudentDetailsTab openStudentDetailsTab (User user){
+        WebElement row = findStudentRowInTableByEmail(user.getMail());
+        clickElement(row);
+        return new StudentDetailsTab(driver);
     }
 }

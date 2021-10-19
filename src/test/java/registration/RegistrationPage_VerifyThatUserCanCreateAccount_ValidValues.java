@@ -26,12 +26,13 @@ public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValues extends
 
     @Test(description = "DP213-155")
     public void verifyCreateNewUserValidParameters() throws IOException, InterruptedException {
-        registrationPage = AuthPage.init(driver)
+         AuthPage.init(driver)
                 .clickRegistrationLink()
                 .verifyInputFieldsAreEmpty()
                 .verifyErrorMessagesAreNotDisplayed()
                 .verifySingInButtonIsEnabled()
                 .verifyLogInLinkIsEnabled()
+
                 .fillInputFirstName(user.getFirstName())
                 .verifyFillingFirstNameInputField(user.getFirstName())
                 .fillInputLastName(user.getLastName())
@@ -42,10 +43,9 @@ public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValues extends
                 .verifyFillingPasswordInputField(user.getPassword())
                 .fillInputConfirmPassword(user.getPassword())
                 .verifyFillingConfirmPasswordInputField(user.getPassword())
-
                 .clickSingUpButton()
-                .verifyModalWindowIsOpened();
-        registrationPage.assertAll();
+                .verifyModalWindowIsOpened()
+                .assertAll();
 
         boolean actualResult =
                 registrationPage.clickModalWindowBackButton()
