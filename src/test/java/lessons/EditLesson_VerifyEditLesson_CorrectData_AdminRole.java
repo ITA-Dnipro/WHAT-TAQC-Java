@@ -29,7 +29,7 @@ public class EditLesson_VerifyEditLesson_CorrectData_AdminRole extends BaseTest 
         theme = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5);
         firstIcon = 0;
 
-        user = User.get(PathsToFiles.CREDENTIALS)
+        user = User.get(PathsToFiles.getPathToCredentials())
                 .get(Role.MENTOR.getRoleName());
     }
 

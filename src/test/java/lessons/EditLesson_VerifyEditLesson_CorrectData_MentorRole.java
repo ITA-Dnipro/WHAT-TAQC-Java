@@ -24,7 +24,7 @@ public class EditLesson_VerifyEditLesson_CorrectData_MentorRole extends BaseTest
 
     @BeforeClass
     public void precondition() throws Exception {
-        user = User.get(PathsToFiles.CREDENTIALS).get(Role.MENTOR.getRoleName());
+        user = User.get(PathsToFiles.getPathToCredentials()).get(Role.MENTOR.getRoleName());
         addLessonStrategy = new ApiAddLessonStrategy();
 
         if (addLessonStrategy.addNewLesson(user)){

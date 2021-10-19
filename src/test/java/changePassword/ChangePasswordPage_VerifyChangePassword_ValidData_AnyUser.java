@@ -26,7 +26,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
     private AuthPage authPage;
 
     public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser() throws IOException {
-        users = User.get(PathsToFiles.CREDENTIALS);
+        users = User.get(PathsToFiles.getPathToCredentials());
         passwordsData = ChangePasswordValidData.passwordsList(
                 PathsToFiles.ChangePassword.CHANGE_PASSWORD_VALID_DATA);
     }
@@ -46,7 +46,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
     }
 
     @Test(description = "DP213-27", dataProvider = "log_in")
-    public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException, InterruptedException {
+    public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException {
         currentPassword = user.getPass();
 
         authPage = AuthPage.init(driver)

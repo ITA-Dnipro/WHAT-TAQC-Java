@@ -29,7 +29,7 @@ public class EditLesson_VerifyErrorMessages extends BaseTest {
 
     public EditLesson_VerifyErrorMessages() throws IOException {
         errors = EditLessonError.getErrors(PathsToFiles.Lessons.EDIT_LESSON_ERRORS);
-        user = User.get(PathsToFiles.CREDENTIALS).get(Role.ADMIN.getRoleName());
+        user = User.get(PathsToFiles.getPathToCredentials()).get(Role.ADMIN.getRoleName());
         firstIcon = 0;
     }
 
