@@ -33,9 +33,6 @@ public class PathsToFiles {
     public interface ChangePassword {
         String CHANGE_PASSWORD_INVALID_DATA = BASE_PATH + "changePassword/ChangePassword_InvalidData.json";
         String CHANGE_PASSWORD_VALID_DATA = BASE_PATH + "changePassword/ChangePasswordWithPasswords.json";
-        String DATA_FLOW_1_ = BASE_PATH + "changePassword/flowData/Flow_1_InvalidData.json";
-        String DATA_FLOW_2_ = BASE_PATH + "changePassword/flowData/Flow_2_InvalidData.json";
-        String DATA_FLOW_3_ = BASE_PATH + "changePassword/flowData/Flow_3_InvalidData.json";
     }
 
     public interface Courses {

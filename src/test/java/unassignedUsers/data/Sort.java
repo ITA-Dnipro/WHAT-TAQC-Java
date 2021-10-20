@@ -1,12 +1,12 @@
-package mentors;
+package unassignedUsers.data;
 
 import base.BaseTest;
 import constants.Endpoints;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import page.mentors.MentorsTablePage;
 import page.students.StudentsPage;
+import page.unassigned.UnassignedUsersPage;
 import page.unauthorizedUserPages.AuthPage;
 import util.Role;
 
@@ -14,75 +14,67 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-public class MentorsTablePage_VerifySortingOfDisableMentors extends BaseTest {
-    MentorsTablePage mentorsTablePage;
+public class Sort extends BaseTest{
 
-    public MentorsTablePage_VerifySortingOfDisableMentors() {
-        mentorsTablePage = new MentorsTablePage(driver);
+
+    UnassignedUsersPage unassignedUsersPage;
+
+    public Sort() {
+        unassignedUsersPage = new UnassignedUsersPage(driver);
     }
 
     @BeforeClass
     public void precondition() throws IOException {
-        mentorsTablePage = AuthPage
+        unassignedUsersPage = AuthPage
                 .init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
-                .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)
-                .isAtPage(waitTime)
-                .showDisableMentors();
+                .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
+                .isAtPage(waitTime);
     }
-
     @Test
     public void verifySoftByNameASC() {
-        List<String> actualResult = mentorsTablePage.sortByName().getMentorsName();
+        List<String> actualResult = unassignedUsersPage.sortByName().getUnassignedUsersName();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Assert.assertEquals(actualResult, expectResult);
     }
-
     @Test
     public void verifySoftByNameDEC() {
-        List<String> actualResult = mentorsTablePage.sortByName().getMentorsName();
+        List<String> actualResult = unassignedUsersPage.sortByName().getUnassignedUsersName();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
         Assert.assertEquals(actualResult, expectResult);
     }
-
     @Test
-    public void verifySoftBySurNAmeASC() {
-        List<String> actualResult = mentorsTablePage.sortBySurname().getMentorsSurname();
+    public void verifySoftBySurNameASC() {
+        List<String> actualResult = unassignedUsersPage.sortBySurName().getUnassignedUsersSurname();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Assert.assertEquals(actualResult, expectResult);
     }
-
     @Test
     public void verifySoftBySurNameDEC() {
-        List<String> actualResult = mentorsTablePage.sortBySurname().getMentorsSurname();
+        List<String> actualResult = unassignedUsersPage.sortBySurName().getUnassignedUsersSurname();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
         Assert.assertEquals(actualResult, expectResult);
     }
-
     @Test
     public void verifySoftByEmailASC() {
-        List<String> actualResult = mentorsTablePage.sortByEmail().getMentorsSurname();
+        List<String> actualResult = unassignedUsersPage.sortByEmail().getUnassignedUsersEmail();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Assert.assertEquals(actualResult, expectResult);
     }
-
     @Test
-    public void verifySoftByEmailDEC() {
-        List<String> actualResult = mentorsTablePage.sortByEmail().getMentorsSurname();
+    public void verifySoftEmailDEC() {
+        List<String> actualResult = unassignedUsersPage.sortByEmail().getUnassignedUsersEmail();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
         Assert.assertEquals(actualResult, expectResult);
     }
-
 }
-
-

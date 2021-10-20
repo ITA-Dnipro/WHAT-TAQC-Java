@@ -74,26 +74,6 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         return this;
     }
 
-    public EditCourseDetailsTab deleteCourse() {
-        clickElement(deleteButtonEditCourseTab);
-        return this;
-    }
-
-    public EditCourseDetailsTab cancelDeleteAction() {
-        clickElement(cancelButton);
-        return this;
-    }
-
-    public EditCourseDetailsTab closeConfirmAction() {
-        clickElement(closeButton);
-        return this;
-    }
-
-    public CoursesPage confirmDeleteCourse() {
-        clickElement(deleteButtonEditCourseTab);
-        return new CoursesPage(driver);
-    }
-
     public EditCourseDetailsTab clearChanges() {
         clickElement(clearButton);
         return this;

@@ -27,6 +27,6 @@
   {
     "courseName" : "Course2",
     "newCourseName" : "Maximize Long1234567891234  DP 213 TAQC DP 214 TAQC",
-    "message" : "Too long"
+    "message" : "Invalid course name"
   }
 ]

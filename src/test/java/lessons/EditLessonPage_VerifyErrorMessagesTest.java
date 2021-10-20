@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class EditLesson_VerifyErrorMessages extends BaseTest {
+public class EditLessonPage_VerifyErrorMessagesTest extends BaseTest {
 
     EditLessonError[] errors;
     EditLessonPage editLessonPage;
@@ -27,7 +27,7 @@ public class EditLesson_VerifyErrorMessages extends BaseTest {
     User user;
     Integer firstIcon;
 
-    public EditLesson_VerifyErrorMessages() throws IOException {
+    public EditLessonPage_VerifyErrorMessagesTest() throws IOException {
         errors = EditLessonError.getErrors(PathsToFiles.Lessons.EDIT_LESSON_ERRORS);
         user = User.get(PathsToFiles.getPathToCredentials()).get(Role.ADMIN.getRoleName());
         firstIcon = 0;

@@ -15,12 +15,12 @@ import util.Role;
 import java.io.IOException;
 
 
-public class AddLesson_VerifyAddLesson_IncorrectData_AdminRole extends BaseTest{
+public class AddLessonPage_VerifyAddLesson_IncorrectData_AdminRoleTest extends BaseTest{
 
     AddLessonData[] data;
     AddLessonPage addLessonPage;
 
-    public AddLesson_VerifyAddLesson_IncorrectData_AdminRole() throws IOException {
+    public AddLessonPage_VerifyAddLesson_IncorrectData_AdminRoleTest() throws IOException {
         data = AddLessonData.getData(PathsToFiles.Lessons.ADD_LESSON_CORRECT_DATA);
     }
 

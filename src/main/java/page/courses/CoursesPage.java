@@ -79,27 +79,6 @@ public class CoursesPage extends Page<CoursesPage> {
         return this;
     }
 
-    public CoursesPage clickTitleSortResult() {
-        clickElement(titleSort);
-        return this;
-    }
-
-    public CoursesPage changeDisplayRowsNumber(String rowsNumber) {
-        clickElement(displayRowsValue);
-        getItemFromMenu(numberOfVisibleUsersList, rowsNumber).click();
-        return this;
-    }
-
-    public CoursesPage switchingCoursesPage(int indexCoursePage) {
-        clickElement(paginationList.get(indexCoursePage));
-        return this;
-    }
-
-    public CoursesPage switchingCoursesLook() {
-        clickElement(switcherCoursesTable);
-        return this;
-    }
-
     public List<WebElement> getCoursesRowsList() {
         return rowsList;
     }

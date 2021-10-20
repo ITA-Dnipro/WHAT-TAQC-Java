@@ -3,7 +3,6 @@ package page.courses;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 import page.base.Page;
 
 import static constants.Locators.CourseDetailsPage.*;
@@ -29,27 +28,8 @@ public class CourseDetailsTab extends Page<CourseDetailsTab> {
         return title.getText().contains(courseDetailsTabTitle);
     }
 
-    public CoursesPage outFromCourseDetails() {
-        clickElement(arrowButton);
-        return new CoursesPage(driver);
-    }
-
-    public EditCourseDetailsTab redirectToEditCourseDetailsTab() {
-        clickElement(editCourseTab);
-        return new EditCourseDetailsTab(driver);
-    }
-
-    public WebElement getEditCourseDetailsTabWebElement() {
-        return editCourseTab;
-    }
-
     public EditCourseDetailsTab refreshPage() {
         driver.navigate().refresh();
         return new EditCourseDetailsTab(driver);
-    }
-
-    public CourseDetailsTab verifyEditCourseDetailsTabDoesntExist(WebElement element) {
-        Assert.assertNull(element);
-        return this;
     }
 }

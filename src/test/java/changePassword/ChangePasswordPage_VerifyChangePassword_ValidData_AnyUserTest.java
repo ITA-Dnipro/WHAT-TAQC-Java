@@ -32,7 +32,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest exten
     }
 
     @BeforeClass
-    public void preconditions() {
+    public void setUp() {
         user = users.get(Role.MENTOR.getRoleName());
     }
 
@@ -63,11 +63,11 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest exten
                 .verifyNewPasswordFieldFielded(newUserPassword)
                 .fillConfirmPasswordField(newUserPassword)
                 .verifyConfirmPasswordFieldFielded(newUserPassword)
+                .assertChangePasswordPage()
                 .saveChangePassword()
                 .isAtPage(waitTime)
                 .confirmChangedPassword()
                 .isAtPage(waitTime)
-                .myProfileAssert()
                 .logOut();
     }
 
