@@ -1,0 +1,262 @@
+[
+   {
+      "firstName":"",
+      "firstNameError":"This field is required",
+	  "lastName": null,
+      "lastNameError": null,
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName":"a",
+      "firstNameError":"Too short",
+	  "lastName": null,
+      "lastNameError": null,
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "firstNameError":"Too long",
+	  "lastName": null,
+      "lastNameError": null,
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName":"name ",
+      "firstNameError":"Invalid first name",
+	  "lastName": null,
+      "lastNameError": null,
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName":" name",
+      "firstNameError":"Invalid first name",
+	  "lastName": null,
+      "lastNameError": null,
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName":"-name",
+      "firstNameError":"Invalid first name",
+	  "lastName": null,
+      "lastNameError": null,
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName":"name-",
+      "firstNameError":"Invalid first name",
+	  "lastName": null,
+      "lastNameError": null,
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName":"name!@#$%^&*()_+=",
+      "firstNameError":"Invalid first name",
+	  "lastName": null,
+      "lastNameError": null,
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+      "lastName":"",
+      "lastNameError":"This field is required",
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+      "lastName":"a",
+      "lastNameError":"Too short",
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+      "lastName":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "lastNameError":"Too long",
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+      "lastName":"name ",
+      "lastNameError":"Invalid last name",
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+     "firstName": null,
+      "firstNameError": null,
+      "lastName":" name",
+      "lastNameError":"Invalid last name",
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+      "lastName":"-name",
+      "lastNameError":"Invalid last name",
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+      "lastName":"name-",
+      "lastNameError":"Invalid last name",
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+      "lastName":"name!@#$%^&*()_+=",
+      "lastNameError":"Invalid last name",
+	  "email": null,
+      "emailError": null,
+	  "password": null,
+      "passwordError": null
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+      "lastName":null,
+      "lastNameError":null,
+      "email":"",
+      "emailError":"This field is required",
+	  "password": null,
+      "passwordError": null
+   },
+   {
+	  "firstName": null,
+      "firstNameError": null,
+      "lastName":null,
+      "lastNameError":null,
+      "email":"example@",
+      "emailError":"Invalid email address",
+	  "password": null,
+      "passwordError": null
+   },
+   {
+	  "firstName": null,
+      "firstNameError": null,
+      "lastName":null,
+      "lastNameError":null,
+      "email":"@example.com",
+      "emailError":"Invalid email address",
+	  "password": null,
+      "passwordError": null
+   },
+   {
+	  "firstName": null,
+      "firstNameError": null,
+	  "lastName": null,
+      "lastNameError": null,
+      "email":"пример@example.com",
+      "emailError":"Invalid email address",
+	  "password": null,
+      "passwordError": null
+   },
+  {
+	  "firstName": null,
+      "firstNameError": null,
+	  "lastName": null,
+      "lastNameError": null,
+      "email": null,
+      "emailError": null,
+      "password":"",
+      "passwordError":"This field is required"
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+	  "lastName": null,
+      "lastNameError": null,
+      "email": null,
+      "emailError": null,
+      "password":"Aa_",
+      "passwordError":"Password must contain at least 8 characters"
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+	  "lastName": null,
+      "lastNameError": null,
+      "email": null,
+      "emailError": null,
+      "password":"Aaaaaaaaaaaaaaaa_",
+      "passwordError":"Password must contain 16 characters maximum"
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+	  "lastName": null,
+      "lastNameError": null,
+      "email": null,
+      "emailError": null,
+      "password":"Aaaaa123",
+      "passwordError":"Password must contain at least one uppercase, one lowercase, one number and one special symbol (!@#$%^&*()_+-=)"
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+	  "lastName": null,
+      "lastNameError": null,
+      "email": null,
+      "emailError": null,
+      "password":"Aaaaaaa_",
+      "passwordError":"Password must contain at least one uppercase, one lowercase, one number and one special symbol (!@#$%^&*()_+-=)"
+   },
+   {
+      "firstName": null,
+      "firstNameError": null,
+	  "lastName": null,
+      "lastNameError": null,
+      "email": null,
+      "emailError": null,
+      "password":"aaaaaaaa_123",
+      "passwordError":"Password must contain at least one uppercase, one lowercase, one number and one special symbol (!@#$%^&*()_+-=)"
+   }
+]

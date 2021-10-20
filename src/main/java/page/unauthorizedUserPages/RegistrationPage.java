@@ -135,7 +135,6 @@ public class RegistrationPage extends BaseElement {
         } else {
             return verifyFirstNameErrorIsDisplayed(true);
         }
-
     }
 
     public RegistrationPage verifyLastNameErrorIsDisplayed(boolean condition) {

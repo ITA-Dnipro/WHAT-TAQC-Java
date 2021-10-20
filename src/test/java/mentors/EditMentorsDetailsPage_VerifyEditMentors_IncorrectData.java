@@ -76,7 +76,7 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
         Assert.assertEquals(actualResult,expectedResult);
     }
     @Test(dataProvider = "errors")
-    public void chekLastNameErrors(InvalidData lastName){
+    public void checkLastNameErrors(InvalidData lastName){
         String expectedResult=lastName.getErrorSurname();
         String actualResult= editMentorsPage
                 .clearFields()

@@ -39,8 +39,6 @@ public class PathsToFiles {
         String EDIT_MENTOR_ERRORS=BASE_PATH + "mentors/InvalidData.json";
     }
     public interface Registration{
-        String REGISTRATION_INVALID_FIRST_NAME=BASE_PATH + "registration/RegistrationInvalidFirstName.json";
-        String REGISTRATION_INVALID_LAST_NAME=BASE_PATH + "registration/RegistrationInvalidLastName.json";
-        String REGISTRATION_INVALID_EMAIL=BASE_PATH + "registration/RegistrationInvalidEmail.json";
+        String REGISTRATION_INVALID_DATA =BASE_PATH + "registration/RegistrationInvalidData" + ".json";
     }
 }
