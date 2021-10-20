@@ -50,17 +50,14 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
         return this;
     }
 
-    public boolean isUserPresented(String email) {
-        if (findUserRowByEmail(email) == null) {
-            return false;
-        }
-        return true;
+    public UnassignedUsersPage isUserPresented(String email) {
+        softAssert.assertNotNull(findUserRowByEmail(email));
+        return this;
     }
 
     public WebElement findUserRowByEmail(String email) {
         WebElement rowUser;
         do {
-
             rowUser = tableRows.stream()
                     .filter(row -> {
                         List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME))
