@@ -20,7 +20,7 @@ public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValues extends
     private UnassignedUser user;
 
     @BeforeClass
-    public void precondition() {
+    public void setUp() {
         user = UnassignedUser.getUnassignedUser();
     }
 
@@ -45,15 +45,12 @@ public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValues extends
                 .verifyFillingConfirmPasswordInputField(user.getPassword())
                 .clickSingUpButton()
                 .verifyModalWindowIsOpened()
+                .clickModalWindowBackButton()
+                 
+                .logInAs(Role.ADMIN, StudentsPage.class)
+                .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
+                .isUserPresented(user.getEmail())
                 .assertAll();
-
-        boolean actualResult =
-                registrationPage.clickModalWindowBackButton()
-                        .logInAs(Role.ADMIN, StudentsPage.class)
-                        .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
-                        .isUserPresented(user.getEmail());
-
-        Assert.assertTrue(actualResult);
     }
 
 }
