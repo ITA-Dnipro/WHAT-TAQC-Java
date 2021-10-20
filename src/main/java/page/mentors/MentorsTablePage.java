@@ -179,7 +179,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
     }
 
     public MentorsTablePage verifySoftByEmailASC() {
-        List<String> actualResult = getMentorsSurname();
+        List<String> actualResult = getMentorsEmail();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         softAssert.assertEquals(actualResult, expectResult);
@@ -187,7 +187,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
     }
 
     public MentorsTablePage verifySoftByEmailDEC() {
-        List<String> actualResult = getMentorsSurname();
+        List<String> actualResult = getMentorsEmail();
         List<String> expectResult = actualResult;
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
