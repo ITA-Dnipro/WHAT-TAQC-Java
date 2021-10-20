@@ -4,6 +4,7 @@ import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import page.base.Page;
 
 import java.util.List;
@@ -73,6 +74,7 @@ public class CoursesPage extends Page<CoursesPage> {
     }
 
     public CoursesPage fillCourseSearchField(String courseName) {
+        fillField(searchField, " ");
         fillField(searchField, courseName);
         return this;
     }
@@ -115,13 +117,33 @@ public class CoursesPage extends Page<CoursesPage> {
         return this;
     }
 
-    public CoursesPage verifySearchCourseFieldFielded(String data) {
+    public CoursesPage fillCourseSearchFields(String courseName) {
+        fillField(searchField, courseName);
+        return this;
+    }
+
+    public CoursesPage verifySearchCourseFieldFilled(String data) {
         softAssert.assertEquals(searchField.getText(), data);
         return this;
     }
 
-    public CoursesPage verifyAddCourseAlertExist (String data) {
+    public CoursesPage verifyAddCourseAlertExist(String data) {
         softAssert.assertEquals(getAlertAddCourse().getText(), data);
+        return this;
+    }
+
+    public CoursesPage verifyCourseExists(String courseName) {
+        Assert.assertEquals(getCoursesRowsList().get(0).getText(), courseName);
+        return this;
+    }
+
+    public CoursesPage assertAllCoursePages() {
+        assertAll();
+        return this;
+    }
+
+    public CoursesPage verifyCourseNameEdited(String newName) {
+        Assert.assertEquals(getCoursesRowsList().get(0).getText(), newName);
         return this;
     }
 }

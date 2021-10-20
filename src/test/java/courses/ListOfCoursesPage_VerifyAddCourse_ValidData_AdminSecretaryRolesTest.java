@@ -2,7 +2,6 @@ package courses;
 
 import base.BaseTest;
 import constants.Endpoints;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page.courses.AddCoursePage;
@@ -14,7 +13,7 @@ import util.Role;
 
 import java.io.IOException;
 
-public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles extends BaseTest {
+public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRolesTest extends BaseTest {
 
     private AddCoursePage addCoursesPage;
     private CoursesPage coursesPage;
@@ -23,29 +22,27 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRoles ext
     @BeforeMethod
     public void preconditions() throws IOException {
         coursesPage = new CoursesPage(driver);
-        addCoursesPage = AuthPage
-                .init(driver)
+        AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.ADD_COURSE, AddCoursePage.class);
     }
 
     @Test(description = "DP213-42")
-    public void addCourse() throws IOException {
-        courseName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + " 7";
+    public void VerifyAddCourse() throws IOException {
+        courseName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + " 2";
         String expectedResult = "×\nClose alert\nThe course has been successfully added";
+        addCoursesPage = new AddCoursePage(driver);
 
         addCoursesPage
                 .fillInputAddCourseName(courseName)
+                .verifyAddCourseFieldFilled(courseName)
                 .saveNewCourse()
-                .fillCourseSearchField(" ")
                 .isAtPage(waitTime)
-                .fillCourseSearchField(courseName);
-
-        Assert.assertEquals(coursesPage.getCoursesRowsList().get(0).getText(), courseName);
-        Assert.assertEquals(coursesPage.getAlertAddCourse().getText(), expectedResult);
-
-        addCoursesPage.logOut();
-        addCoursesPage.redirectTo(Endpoints.AUTH, AuthPage.class);
+                .fillCourseSearchField(courseName)
+                .verifySearchCourseFieldFilled(courseName)
+                .verifyCourseExists(courseName)
+                .verifyAddCourseAlertExist(expectedResult)
+                .logOut();
     }
 }

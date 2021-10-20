@@ -163,7 +163,7 @@ public class Locators {
     }
 
     public interface AddCoursePage {
-        String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
+        String ADD_COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@lessons.data-testid='cancelBtn']";
         String SAVE_BUTTON_XPATH = "//button[@id='addCourseSubmit']";
     }

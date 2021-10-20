@@ -13,6 +13,9 @@ import static constants.Locators.ChangePasswordPage.*;
 
 public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
+    private final String VALUE = "value";
+    private SoftAssert softAssert = new SoftAssert();
+
     @FindBy(id = EMAIL_INPUT_FIELD_ID)
     private WebElement emailInput;
 
@@ -51,9 +54,6 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement loseFocus;
-
-    final String VALUE = "value";
-    SoftAssert softAssert = new SoftAssert();
 
     public ChangePasswordPage(WebDriver driver) {
         super(driver);
@@ -112,15 +112,18 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
     public String getCurrentPasswordError() {
         try {
-            errMessageCurrPassword.getText();
-        } catch (NotFoundException e) {
-            return "";
-        }
         return errMessageCurrPassword.getText();
+        } catch (NotFoundException e) {
+        return "";
+        }
     }
 
     public String getNewPasswordError() {
-        return errMessageNewPassword.getText();
+        try {
+            return errMessageNewPassword.getText();
+        } catch (NotFoundException e) {
+            return "";
+        }
     }
 
     public String getConfirmPasswordError() {
@@ -146,8 +149,9 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         softAssert.assertEquals(confirmPasswordField.getAttribute(VALUE), data);
         return this;
     }
+
     public ChangePasswordPage verifyCurrentPasswordError(String expectedErrorMessage, String currentPasswordError) {
-        softAssert.assertEquals(currentPasswordError, expectedErrorMessage);
+        softAssert.assertEquals(expectedErrorMessage, currentPasswordError);
         return this;
     }
 
@@ -156,10 +160,9 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return this;
     }
 
-    public ChangePasswordPage verifyConfirmPasswordError(String expectedErrorMessage, String confirmPasswordError) {
+    public ChangePasswordPage verifyConfirmPasswordError(String expectedErrorMessage, String
+            confirmPasswordError) {
         softAssert.assertEquals(confirmPasswordError, expectedErrorMessage);
         return this;
     }
-
-
 }

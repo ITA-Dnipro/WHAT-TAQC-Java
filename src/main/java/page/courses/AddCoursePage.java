@@ -19,8 +19,8 @@ public class AddCoursePage extends Page<AddCoursePage> {
         return driver.getCurrentUrl().equals(Endpoints.ADD_COURSE);
     }
 
-    @FindBy(xpath = COURSE_NAME_INPUT_FIELD_XPATH)
-    private WebElement courseNameInput;
+    @FindBy(xpath = ADD_COURSE_NAME_INPUT_FIELD_XPATH)
+    private WebElement addCourseNameInput;
 
     @FindBy(xpath = SAVE_BUTTON_XPATH)
     private WebElement addCourseSaveButton;
@@ -29,7 +29,7 @@ public class AddCoursePage extends Page<AddCoursePage> {
     private WebElement cancelFromAddCoursePage;
 
     public AddCoursePage fillInputAddCourseName(String courseName) {
-        fillField(courseNameInput, courseName);
+        fillField(addCourseNameInput, courseName);
         return this;
     }
 
@@ -41,5 +41,10 @@ public class AddCoursePage extends Page<AddCoursePage> {
     public CoursesPage cancelAddCoursePage() {
         clickElement(cancelFromAddCoursePage);
         return new CoursesPage(driver);
+    }
+
+    public AddCoursePage verifyAddCourseFieldFilled(String data) {
+        softAssert.assertEquals(addCourseNameInput.getText(), data);
+        return this;
     }
 }

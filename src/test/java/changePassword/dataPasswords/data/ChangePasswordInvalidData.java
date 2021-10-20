@@ -1,11 +1,13 @@
 package changePassword.dataPasswords.data;
 
+import base.BaseTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import page.changePassword.ChangePasswordPage;
 
 import java.io.File;
 import java.io.IOException;
 
-public class ChangePasswordInvalidData {
+public class ChangePasswordInvalidData extends BaseTest {
 
     private String currantPassword;
     private String currantPasswordResult;
@@ -19,8 +21,8 @@ public class ChangePasswordInvalidData {
     }
 
     public String getCurrantPasswordResult() {
-        return currantPasswordResult;
-    }
+            return currantPasswordResult;
+        }
 
     public String getNewPassword() {
         return newPassword;

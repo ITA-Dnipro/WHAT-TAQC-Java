@@ -10,6 +10,8 @@ import static constants.Locators.CourseDetailsPage.*;
 
 public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
 
+    private final String VALUE = "value";
+
     public EditCourseDetailsTab(WebDriver driver) {
         super(driver);
     }
@@ -57,7 +59,7 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         return title;
     }
 
-    public CoursesPage outFromEditCourseDetails() {
+    public CoursesPage redirectOutFromEditCourseDetails() {
         clickElement(arrowButton);
         return new CoursesPage(driver);
     }
@@ -104,6 +106,21 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
 
     public EditCourseDetailsTab verifyEditCourseError(String expectedError) {
         Assert.assertEquals(errorMessage.getText(), expectedError);
+        return this;
+    }
+
+    public EditCourseDetailsTab verifyReturnToEditCourseDetailsTabAfterRefresh(String title) {
+        Assert.assertEquals(getEditTabTitle().getText(), title);
+        return this;
+    }
+
+    public EditCourseDetailsTab verifyCourseNameFieldFilled(String name) {
+        softAssert.assertEquals(courseNameInput.getAttribute(VALUE), name);
+        return this;
+    }
+
+    public EditCourseDetailsTab assertAllCoursePage() {
+        assertAll();
         return this;
     }
 }

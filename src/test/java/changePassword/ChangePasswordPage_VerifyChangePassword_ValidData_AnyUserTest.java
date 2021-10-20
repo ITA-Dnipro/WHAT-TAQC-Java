@@ -17,7 +17,7 @@ import util.User;
 import java.io.IOException;
 import java.util.Map;
 
-public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends BaseTest {
+public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest extends BaseTest {
 
     private ChangePasswordValidData[] passwordsData;
     private User user;
@@ -25,10 +25,10 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
     private String newUserPassword;
     private Map<String, User> users;
 
-    public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser() throws IOException {
+    public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest() throws IOException {
         users = User.get(PathsToFiles.getPathToCredentials());
         passwordsData = ChangePasswordValidData.passwordsList(
-                PathsToFiles.ChangePassword.CHANGE_PASSWORD_VALID_DATA);
+                PathsToFiles.getPathToValidPasswords());
     }
 
     @BeforeClass

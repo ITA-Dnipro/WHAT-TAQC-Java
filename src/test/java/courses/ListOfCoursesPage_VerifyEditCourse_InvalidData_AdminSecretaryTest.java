@@ -1,14 +1,12 @@
 package courses;
 
 import base.BaseTest;
-import constants.Endpoints;
 import constants.PathsToFiles;
 import courses.coursesData.EditCourseInvalidData;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
+import page.base.SideBar;
 import page.courses.CoursesPage;
 import page.students.StudentsPage;
 import page.unauthorizedUserPages.AuthPage;
@@ -16,22 +14,20 @@ import util.Role;
 
 import java.io.IOException;
 
-public class ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary extends BaseTest {
+public class ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretaryTest extends BaseTest {
 
-    private CoursesPage coursesPage;
+    private StudentsPage studentsPage;
     private EditCourseInvalidData[] data;
-    private SoftAssert softAssert;
 
-    public ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary() throws IOException {
+    public ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretaryTest() throws IOException {
         data = EditCourseInvalidData.getEditCoursesInvalidData(PathsToFiles.Courses.EDIT_COURSES_INVALID_DATA);
     }
 
     @BeforeClass
-    public void preconditions() throws IOException {
-        coursesPage = AuthPage.init(driver)
+    public void setUp() throws IOException {
+        AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
-                .isAtPage(waitTime)
-                .redirectTo(Endpoints.COURSES, CoursesPage.class);
+                .isAtPage(waitTime);
     }
 
     @DataProvider(name = "editCourseInvalidData")
@@ -44,20 +40,28 @@ public class ListOfCoursesPage_VerifyEditCourse_InvalidData_AdminSecretary exten
     }
 
     @Test(description = "DP213-45", dataProvider = "editCourseInvalidData")
-    public void verifyEditCourse_InvalidData(EditCourseInvalidData editData) {
-        softAssert = new SoftAssert();
+    public void verifyEditCourseInvalidData(EditCourseInvalidData editData) {
+        studentsPage = new StudentsPage(driver);
 
-        coursesPage.fillCourseSearchField(editData.getCourseName())
+        studentsPage
+                .getSideBar()
+                .clickSideBarItem(SideBar.SideMenuItem.COURSES, new CoursesPage(driver))
                 .isAtPage(waitTime)
+                .fillCourseSearchFields(editData.getCourseName())
+                .isAtPage(waitTime)
+                .verifySearchCourseFieldFilled(editData.getCourseName())
                 .clickEditCourseDetailsTab(0)
                 .isAtPage(waitTime)
                 .fillCourseName(editData.getNewCourseName())
+                .isAtPage(waitTime)
+                .verifyCourseNameFieldFilled(editData.getNewCourseName())
+                .isAtPage(waitTime)
                 .verifyEditCourseError(editData.getMessage())
+                .assertAllCoursePage()
+                .isAtPage(waitTime)
                 .clearChanges()
-                .outFromEditCourseDetails()
+                .isAtPage(waitTime)
+                .redirectOutFromEditCourseDetails()
                 .isAtPage(waitTime);
-
-        softAssert.assertAll();
-        Assert.assertEquals(driver.getCurrentUrl(), Endpoints.COURSES);
     }
 }

@@ -1,6 +1,7 @@
 package constants;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -10,14 +11,20 @@ public class PathsToFiles {
 
     public static String getPathToCredentials() throws IOException {
         Properties properties = new Properties();
-        properties.load(new FileInputStream(BASE_PATH + "paths.properties"));
+        properties.load(new FileInputStream(BASE_PATH + "validRequirements.properties"));
         return properties.getProperty("credentials");
+    }
+
+    public static String getPathToValidPasswords() throws IOException {
+        Properties properties = new Properties();
+        properties.load(new FileInputStream(BASE_PATH + "validRequirements.properties"));
+        return properties.getProperty("valid.password");
     }
 
     public static final String BASE_PATH = "./src/main/resources/";
 
     public interface Lessons {
-        String ADD_LESSON_CORRECT_DATA = BASE_PATH + "lessons/AddLessonIncorrectData.json";
+        String ADD_LESSON_CORRECT_DATA = "./src/main/resources/lessons/AddLessonIncorrectData.json";
         String ADD_LESSON_ERRORS = BASE_PATH + "lessons/AddLessonErrors.json";
         String EDIT_LESSON_ERRORS = BASE_PATH + "lessons/EditLessonErrors.json";
         String ADD_NEW_LESSON = BASE_PATH + "lessons/lesson.json";
@@ -26,6 +33,9 @@ public class PathsToFiles {
     public interface ChangePassword {
         String CHANGE_PASSWORD_INVALID_DATA = BASE_PATH + "changePassword/ChangePassword_InvalidData.json";
         String CHANGE_PASSWORD_VALID_DATA = BASE_PATH + "changePassword/ChangePasswordWithPasswords.json";
+        String DATA_FLOW_1_ = BASE_PATH + "changePassword/flowData/Flow_1_InvalidData.json";
+        String DATA_FLOW_2_ = BASE_PATH + "changePassword/flowData/Flow_2_InvalidData.json";
+        String DATA_FLOW_3_ = BASE_PATH + "changePassword/flowData/Flow_3_InvalidData.json";
     }
 
     public interface Courses {

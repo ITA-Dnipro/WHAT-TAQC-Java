@@ -4,7 +4,6 @@ import base.BaseTest;
 import constants.Endpoints;
 import constants.PathsToFiles;
 import courses.coursesData.EditCourseValidData;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.courses.CoursesPage;
@@ -15,19 +14,19 @@ import util.Role;
 
 import java.io.IOException;
 
-public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryRoles extends BaseTest {
+public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryRolesTest extends BaseTest {
 
     CoursesPage coursesPage;
     EditCourseValidData[] data;
     String addedCourseName;
     String newName;
 
-    public ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryRoles() throws IOException {
+    public ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryRolesTest() throws IOException {
         data = EditCourseValidData.getEditCoursesValidData(PathsToFiles.Courses.EDIT_COURSES_VALID_DATA);
     }
 
     @BeforeClass
-    public void precondition() throws IOException {
+    public void setUp() throws IOException {
         addedCourseName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(6) + " 2";
 
         AuthPage.init(driver)
@@ -43,9 +42,10 @@ public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryR
 
 
     @Test(description = "DP213-43")
-    public void verifyEditCourse_ValidData() throws IOException {
-        newName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(10) + " 2";
-        String expectedResult = "×\nClose alert\nThe course has been successfully added";
+    public void verifyEditCourseValidData() throws IOException {
+        newName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(10) + " 5";
+        coursesPage = new CoursesPage(driver);
+
         coursesPage.fillCourseSearchField(addedCourseName)
                 .isAtPage(waitTime)
                 .clickEditCourseDetailsTab(0)
@@ -60,11 +60,8 @@ public class ListOfCoursesPage_VerifyEditCourseDetails_ValidData_AdminSecretaryR
                 .isAtPage(waitTime)
                 .fillCourseSearchField(newName)
                 .isAtPage(waitTime)
-                .assertAll();
-
-        Assert.assertEquals(coursesPage.getCoursesRowsList().get(0).getText(), newName);
-        Assert.assertEquals(coursesPage.getAlertAddCourse().getText(), expectedResult);
-
-        coursesPage.logOut();
+                .assertAllCoursePages()
+                .verifyCourseNameEdited(newName)
+                .logOut();
     }
 }
