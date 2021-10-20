@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 import util.RandomStringsGenerator;
 import util.User;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -175,7 +174,7 @@ public class AddLessonPage extends Page<AddLessonPage> {
     }
 
     public AddLessonPage verifyGroupNameError(String error){
-        softAssert.assertEquals(themeError.getText(), error);
+        softAssert.assertEquals(groupError.getText(), error);
         return this;
     }
 
@@ -184,6 +183,5 @@ public class AddLessonPage extends Page<AddLessonPage> {
         return this;
     }
     //endregion
-
 
 }
