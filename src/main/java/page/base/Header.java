@@ -3,6 +3,7 @@ package page.base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import page.changePassword.ChangePasswordPage;
 import page.myProfile.MyProfilePage;
 import page.unauthorizedUserPages.AuthPage;
 
@@ -29,6 +30,27 @@ public class Header extends BaseElement {
     public Header(WebDriver driver) {
         super(driver);
     }
+
+    public void openDropDownMenu() {
+        clickElement(triangleIcon);
+    }
+
+    public void openMyProfileByDropdownMenu() {
+        openDropDownMenu();
+        clickElement(dropDownMenuMyProfile);
+    }
+
+    public MyProfilePage openMyProfileByIcon() {
+        clickElement(icon);
+        return new MyProfilePage(driver);
+    }
+
+    public ChangePasswordPage changePassword() {
+        openDropDownMenu();
+        clickElement(dropDownMenuChangePassword);
+        return new ChangePasswordPage(driver);
+    }
+
 
     public AuthPage logOut() throws IOException {
         clickElement(triangleIcon);

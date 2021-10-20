@@ -21,7 +21,7 @@ import util.UnassignedUser;
 
 import java.io.IOException;
 
-public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends BaseTest {
+public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData_AdminRole extends BaseTest {
     InvalidData[] data;
     String nameMentors ;
     String surNameMentors ;
@@ -30,17 +30,17 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
     UnassignedUser mentor;
    EditMentorsDetailsPage editMentorsPage;
 
-    public EditMentorsDetailsPage_VerifyEditMentors_IncorrectData() throws IOException {
+    public EditMentorsDetailsPage_VerifyEditMentors_IncorrectData_AdminRole() throws IOException {
         nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
         emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
         mentor= UnassignedUser.getUnassignedUser(nameMentors,surNameMentors,emailMentors,passwordMentors);
-        data=InvalidData.getData(PathsToFiles.Mentors.EDIT_MENTOR_ERRORS);
+        data=InvalidData.getData(PathsToFiles.Mentors.EDIT_MENTOR_ERRORS); // паст оф файлс
     }
 
     @BeforeClass
-    public void precondition() throws IOException {
+    public void setUp() throws IOException {
 
         editMentorsPage = AuthPage.init(driver)
                 .clickRegistrationLink()
@@ -52,9 +52,9 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
                 .addRole(mentor.getEmail(), UnassignedRole.MENTOR)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)
-                .inputSearchMentor("a")
-                .inputSearchMentor(mentor.getFirstName()+" "+mentor.getLastName())
-                .editMentors(0).isAtPage(waitTime);
+                .inputSearchMentor(mentor.getFirstName() + " " + mentor.getLastName())
+                .editMentors(0)
+                .isAtPage(waitTime);
     }
 
     @DataProvider(name = "errors")
@@ -66,32 +66,22 @@ public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData extends Base
         return list;
     }
 
-    @Test(dataProvider = "errors")
-    public void checkFirstNameErrors(InvalidData firstName) {
-        String expectedResult= firstName.getErrorName();
-        String actualResult= editMentorsPage
+    @Test(description = "DP213-170", dataProvider = "errors")
+    public void verifyEditMentors_IncorrectData(InvalidData errors) {
+
+        editMentorsPage
+                .isAtPage(waitTime)
                 .clearFields()
-                .editName(firstName.getName())
-                .loseFocus().getFirstNameError();
-        Assert.assertEquals(actualResult,expectedResult);
-    }
-    @Test(dataProvider = "errors")
-    public void checkLastNameErrors(InvalidData lastName){
-        String expectedResult=lastName.getErrorSurname();
-        String actualResult= editMentorsPage
-                .clearFields()
-                .editSurname(lastName.getLast_name())
+                .inputFirstName(errors.getName())
+                .verifyInputName(errors.getName())
                 .loseFocus()
-                .getLastNameError();
-        Assert.assertEquals(actualResult,expectedResult);
-    }
-    @Test(dataProvider = "errors")
-    public void checkEmailErrors(InvalidData email){
-        String expectedResult=email.getErrorEmail();
-        String actualResult=editMentorsPage
-                .clearFields()
-                .editEmail(email.getEmail())
-                .loseFocus()
-                .getEmailError();
+                .verifyFirstNameErrors(errors.getErrorName())
+                .inputSurname(errors.getLast_name())
+                .verifyInputSurName(errors.getLast_name())
+                .verifyLastNameErrors(errors.getErrorSurname())
+                .inputEmail(errors.getEmail())
+                .verifyInputEmail(errors.getEmail())
+                .verifyEmailErrors(errors.getErrorEmail())
+                .assertAll();
     }
 }

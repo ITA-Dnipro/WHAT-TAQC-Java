@@ -13,7 +13,7 @@ import util.User;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class EditLesson_VerifyEditLesson_CorrectData_MentorRole extends BaseTest {
+public class EditLessonPage_VerifyEditLesson_CorrectData_MentorRoleTest extends BaseTest {
 
     AddLessonStrategy addLessonStrategy;
     LessonsPage lessonsPage;

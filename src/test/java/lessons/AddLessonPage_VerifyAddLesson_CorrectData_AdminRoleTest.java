@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class AddLesson_VerifyAddLesson_CorrectData_AdminRole extends BaseTest {
+public class AddLessonPage_VerifyAddLesson_CorrectData_AdminRoleTest extends BaseTest {
 
      protected LessonsPage lessonsPage;
      String themeName;
