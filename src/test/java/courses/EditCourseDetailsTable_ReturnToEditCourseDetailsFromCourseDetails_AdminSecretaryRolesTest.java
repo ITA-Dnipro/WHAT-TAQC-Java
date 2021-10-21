@@ -2,8 +2,6 @@ package courses;
 
 import base.BaseTest;
 import constants.Endpoints;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,18 +15,16 @@ import util.Role;
 
 import java.io.IOException;
 
-import static constants.Locators.CourseDetailsPage.EDIT_COURSE_DETAILS_TAB_TITLE_XPATH;
+public class EditCourseDetailsTable_ReturnToEditCourseDetailsFromCourseDetails_AdminSecretaryRolesTest extends BaseTest {
 
-public class EditCourseDetailsTable_ReturnToEditCourseDetailsFromCourseDetails_AdminSecretaryRoles extends BaseTest {
-
-    EditCourseDetailsTab coursesPage;
-    AuthPage authPage;
-    String courseName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(8);
+    private EditCourseDetailsTab editCourseDetailsTab;
+    private String courseName;
 
     @BeforeMethod
-    public void preconditions() throws IOException, InterruptedException {
-        authPage = AuthPage
-                .init(driver)
+    public void setUp() throws IOException{
+        courseName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(8) + " 1";
+
+        AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.ADD_COURSE, AddCoursePage.class)
@@ -39,27 +35,28 @@ public class EditCourseDetailsTable_ReturnToEditCourseDetailsFromCourseDetails_A
 
     @DataProvider(name = "redirectToEditCourseTab")
     public Object[][] getData() {
-        return new Object[][] {{Role.ADMIN}};
+        return new Object[][]{{Role.ADMIN}};
     }
 
     @Test(description = "DP213-141", dataProvider = "redirectToEditCourseTab")
-    public void verifyEditCourse_InvalidData(Role role) throws IOException, InterruptedException {
-
+    public void verifyRedirectToEditCourseTabAfterRefresh(Role role) throws IOException {
+        editCourseDetailsTab = new EditCourseDetailsTab(driver);
         String courseDetailsTabTitle = "Course Editing";
 
-        coursesPage = AuthPage.init(driver)
+        AuthPage.init(driver)
                 .logInAs(role, StudentsPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.COURSES, CoursesPage.class)
-                .fillCourseSearchField(" ")
                 .isAtPage(waitTime)
                 .fillCourseSearchField(courseName)
+                .verifySearchCourseFieldFilled(courseName)
                 .isAtPage(waitTime)
                 .clickEditCourseDetailsTab(0)
+                .isAtPage(waitTime)
                 .redirectToCourseDetailsTab()
-                .refreshPage();
-
-        Assert.assertEquals(driver.findElement(By.xpath(
-                EDIT_COURSE_DETAILS_TAB_TITLE_XPATH)).getText(), courseDetailsTabTitle);
+                .refreshPage()
+                .isAtPage(waitTime)
+                .verifyReturnToEditCourseDetailsTabAfterRefresh(courseDetailsTabTitle)
+                .isAtPage(waitTime);
     }
 }
