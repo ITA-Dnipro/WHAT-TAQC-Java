@@ -21,12 +21,12 @@
   },
   {
     "courseName" : "Course2",
-    "newCourseName" : "Maximize Long1234567891234  DP 213 TAQC DP 214 TAQC",
-    "message" : "Too long"
+    "newCourseName" : "",
+    "message" : "This field is required"
   },
   {
     "courseName" : "Course2",
-    "newCourseName" : "",
-    "message" : "This field is required"
+    "newCourseName" : "Maximize Long1234567891234  DP 213 TAQC DP 214 TAQC",
+    "message" : "Invalid course name"
   }
 ]
