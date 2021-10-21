@@ -1,4 +1,4 @@
-package unassignedUsers.data;
+package unassignedUsers;
 
 import base.BaseTest;
 import constants.Endpoints;

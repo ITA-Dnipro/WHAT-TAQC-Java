@@ -5,7 +5,7 @@ import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import page.secretarys.SecretariesPage;
+//import page.secretarys.SecretariesPage;
 import page.secretarys.SecretarysEditDetailsTab;
 import page.students.StudentsPage;
 import page.unassigned.UnassignedRole;
@@ -39,23 +39,23 @@ public class EditSecretarysDiteils extends BaseTest {
         newEmailOfSecretary=emailSecretary+"new";
         secretary= UnassignedUser.getUnassignedUser(nameSecretary,surNameSecretary,emailSecretary,passwordSecretary);
     }
-    @BeforeClass
-    public void setUp() throws IOException {
-        editSecretary = AuthPage.init(driver)
-                .clickRegistrationLink()
-                .registerUser(secretary)
-                .logInAs(Role.ADMIN, StudentsPage.class)
-                .isAtPage(waitTime)
-                .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
-                .isAtPage(waitTime)
-                .addRole(secretary.getEmail(), UnassignedRole.SECRETARY)
-                .isAtPage(waitTime)
-                .redirectTo(Endpoints.SECRETARIES, SecretariesPage.class)
-                .inputSearchSecretaries("a")
-                .inputSearchSecretaries(secretary.getFirstName()+" "+secretary.getLastName())
-                .editSecretarys(0).isAtPage(waitTime);
-        editSecretaryURL=driver.getCurrentUrl();
-                    }
+//    @BeforeClass
+//    public void setUp() throws IOException {
+//        editSecretary = AuthPage.init(driver)
+//                .clickRegistrationLink()
+//                .registerUser(secretary)
+//                .logInAs(Role.ADMIN, StudentsPage.class)
+//                .isAtPage(waitTime)
+//                .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
+//                .isAtPage(waitTime)
+//                .addRole(secretary.getEmail(), UnassignedRole.SECRETARY)
+//                .isAtPage(waitTime)
+//                .redirectTo(Endpoints.SECRETARIES, SecretariesPage.class)
+//                .inputSearchSecretaries("a")
+//                .inputSearchSecretaries(secretary.getFirstName()+" "+secretary.getLastName())
+//                .editSecretarys(0).isAtPage(waitTime);
+//        editSecretaryURL=driver.getCurrentUrl();
+//                    }
     @Test
     public void verifyInputFields(){
         SoftAssert softAssert = new SoftAssert();

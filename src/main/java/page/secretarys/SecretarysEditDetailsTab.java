@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import static constants.Locators.EditSecretary.*;
-import page.base.Page;
+
 
 
 public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <SecretarysEditDetailsTab>{
@@ -20,8 +20,6 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
     protected WebElement lastNameInput;
     @FindBy(xpath = SECRETARIES_EMAIL_WINDOW_XPATH)
     protected WebElement emailInput;
-    @FindBy(xpath = SECRETARIES_LAY_OFF_BUTTON_XPATH)
-    protected WebElement layOffSecretaryButton;
     @FindBy(xpath = SECRETARIES_SAVE_BUTTON_XPATH)
     protected WebElement saveButton;
     @FindBy(xpath = EDIT_SECRETARY_TAB_XPATH)
@@ -32,6 +30,11 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
     protected WebElement secretaryDetailsTab;
     @FindBy(xpath = EDIT_SECRETARY_TAB_XPATH)
     protected WebElement editSecretaryDetailsTab;
+    @FindBy(xpath = SECRETARIES_CLEAR_BUTTON_XPATH)
+    protected WebElement clearButton;
+    @FindBy(xpath = SECRETARIES_SAVE_BUTTON_XPATH )
+    protected WebElement getSaveButton;
+
 
         public SecretarysPage backToSecretariesTab() {
         clickElement(arrowButton);
@@ -63,11 +66,6 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
     public SecretarysEditDetailsTab editEmail(String email) {
         verifyInputEmail(email);
         fillField(emailInput, email);
-        return this;
-    }
-
-    public SecretarysEditDetailsTab deleteSecretary() {
-        clickElement(layOffSecretaryButton);
         return this;
     }
 
@@ -127,30 +125,8 @@ public class SecretarysEditDetailsTab extends SecretarysEditDetailsPage <Secreta
     public boolean isAt() {
         return secretaryDetailsTab.getText().equals("Secretary's details");
     }
-    @FindBy(xpath = SECRETARIES_CLEAR_BUTTON_XPATH)
-    protected WebElement clearButton;
-    @FindBy(xpath = SECRETARIES_SAVE_BUTTON_XPATH )
-    protected WebElement getSaveButton;
+
 }
 
-//    public SecretarysEditDetailsTab fillDetEmailInput(String email) {
-//            fillField(emailInput, email);
-//            return this;
-//        }
-//
-//        public SecretarysEditDetailsTab fillDetFirstName(String firstName) {
-//            fillField(firstNameInput, firstName);
-//            return this;
-//        }
-//        public SecretarysEditDetailsTab fillDetLasttName(String lastName) {
-//            fillField(lastNameInput, lastName);
-//            return this;
-//        }
-//
-//
-//
-//    @Override
-//    public boolean isAt() {
-//        return secretaryPageTitle.getText().equals("Edit Secretary's details");
-//   }
-//}
+
+

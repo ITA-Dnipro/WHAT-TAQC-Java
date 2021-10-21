@@ -1,5 +1,12 @@
 package constants;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+
+import static constants.Locators.MentorsTablePage.MENTORS_ROW_XPATH;
+
 public class Locators {
 
     private Locators() {
@@ -65,7 +72,8 @@ public class Locators {
         String SECRETARY_TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
         String SECRETARY_PAGE_TITLE_XPATH = "//h2[text()='Secretaries']";
         String SECRETARY_EDIT_ICON_XPATH = "//td[@class='text-center']";
-           }
+        String SECRETARY_ROW_XPATH = "//td[not(contains(@class,'text-center'))]";
+                  }
 
     public interface AddLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Add a Lesson']";
@@ -316,5 +324,10 @@ public class Locators {
     public interface Pagination{
         String PAGES_XPATH = "//div[contains(@class,'col')]//child::ul[2]//child::button";
         String NEXT_PAGE_ARROW_BUTTON_XPATH = "//div[contains(@class,'col')]//child::ul[3]";
+        String FIRST_PAGE = "(//button[contains(.,'1')])[1]";
+        String SECOND_PAGE = "(//button[contains(.,'2')])[1]";
+        String THIRD_PAGE = "(//button[contains(.,'3')])[1]";
+        String FOURTH_PAGE = "(//button[contains(.,'4')])[1]";
+        String BACK_ARROW = "(//button[@class='page-link pagination__link___2AEaH'][contains(.,'<')])[1]";
     }
 }

@@ -6,8 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+import page.mentors.MentorsTablePage;
 import page.unassigned.UnassignedUsersPage;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +39,8 @@ public class StudentsPage extends Page<StudentsPage> {
     public StudentsPage(WebDriver driver) {
         super(driver);
     }
+
+
 
     @Override
     public boolean isAt() {
@@ -73,4 +77,18 @@ public class StudentsPage extends Page<StudentsPage> {
                 .findFirst()
                 .orElse(null);
     }
+    public StudentsPage inputSearchStudent(String nameSurname) {
+        fillField(searchInputFieldBox, "a");
+        fillField(searchInputFieldBox, nameSurname);
+        return this;
+    }
+
+        public List<String> getStudentData() {
+            List<String> studentData = new ArrayList<>();
+
+            for (int i = 0; i < tableStudentsRows.size(); i++) {
+                studentData.add(tableStudentsRows.get(i).getText());
+            }
+            return studentData;
+        }
 }

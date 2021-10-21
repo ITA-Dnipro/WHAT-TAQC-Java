@@ -1,4 +1,4 @@
-package unassignedUsers.data;
+package unassignedUsers;
 
 import base.BaseTest;
 import constants.Endpoints;
@@ -21,8 +21,8 @@ public class AddRoleMentor extends BaseTest {
     private UnassignedUser mentor;
 
     @BeforeClass
-    public void setUp (){
-        mentor = UnassignedUser.getUnassignedUser(); //в переменную ментор попадает юзер
+    public void setUp () {
+        mentor = UnassignedUser.getUnassignedUser();
     }
     @Test
     public void verifyAddMentorRole() throws IOException {
