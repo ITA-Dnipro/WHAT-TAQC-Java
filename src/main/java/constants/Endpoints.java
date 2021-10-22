@@ -38,7 +38,7 @@ public class Endpoints {
     public static final String ADD_COURSE = COURSES + "/add";
     public static final String MY_PROFILE = BASE_URL + "/my-profile";
     public static final String SECRETARY = BASE_URL+ "/secretaries";
-    public static final String EDIT_SECRETARY = SECRETARY + "/secretaries/2";
+
 
 
     public static Map<String, Page> getPages(WebDriver driver) {
@@ -54,8 +54,7 @@ public class Endpoints {
         pages.put(COURSES, new CoursesPage(driver));
         pages.put(ADD_COURSE, new AddCoursePage(driver));
         pages.put(MY_PROFILE, new MyProfilePage(driver));
-        pages.put(EDIT_SECRETARY, new SecretarysPage(driver));
-        pages.put(SECRETARY, new CoursesPage(driver));
+        pages.put(SECRETARY, new SecretarysPage(driver));
         return pages;
     }
 }

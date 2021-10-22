@@ -142,6 +142,7 @@ public class Locators {
         String TABLE_ROLES_DROPDOWN_MENU_TAG_NAME = "select";
         String TABLE_ROLE_DROPDOWN_MENU_OPTIONS_TAG_NAME = "option";
         String TABLE_ADD_ROLE_BUTTON_TAG_NAME = "button";
+        String TITLE_XPATH="//th[text()='Choose role']";
     }
 
     public interface Courses {

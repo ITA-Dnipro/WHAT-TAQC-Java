@@ -1,18 +1,13 @@
 package page.unassigned;
 
-import constants.Endpoints;
-import constants.Locators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
-import page.courses.CoursesPage;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static constants.Locators.Lessons.TABLE_ROWS_XPATH;
 import static constants.Locators.Pagination.*;
 import static constants.Locators.UnassignedUsers.*;
@@ -42,6 +37,10 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     protected WebElement usersFromTable;
     @FindBy(xpath = BACK_ARROW)
     protected WebElement backArrow;
+    @FindBy(xpath = TITLE_XPATH)
+    protected WebElement title;
+    @FindBy (xpath = TABLE_ADD_ROLE_BUTTON_TAG_NAME)
+    protected List<WebElement> addButton;
 
     public UnassignedUsersPage(WebDriver driver) {
         super(driver);
@@ -49,7 +48,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
 
     @Override
     public boolean isAt() {
-        return driver.getCurrentUrl().equals(Endpoints.UNASSIGNED_USERS);
+        return addButton.get(0).getText().equals("Add role");
     }
 
     public UnassignedUsersPage addRole(String email, UnassignedRole role) {

@@ -91,4 +91,12 @@ public class StudentsPage extends Page<StudentsPage> {
             }
             return studentData;
         }
+        public StudentsPage verify(List<String>expectdata){
+        softAssert.assertEquals(getStudentData() ,expectdata);
+        return this;
+        }
+        public StudentsPage assertStud(){
+        softAssert.assertAll();
+        return this;
+    }
 }

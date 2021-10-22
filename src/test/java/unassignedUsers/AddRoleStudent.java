@@ -2,7 +2,6 @@ package unassignedUsers;
 
 import base.BaseTest;
 import constants.Endpoints;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.students.StudentsPage;
@@ -18,6 +17,7 @@ import java.util.List;
 
 public class AddRoleStudent extends BaseTest {
         private UnassignedUser student;
+        StudentsPage studentsPage;
 
         @BeforeClass
         public void setUp () {
@@ -25,18 +25,26 @@ public class AddRoleStudent extends BaseTest {
         }
         @Test
         public void verifyAddStudentRole() throws IOException {
-            List<String> actualData= AuthPage.init(driver)
+            List<String> exceptData= Arrays.asList(student.getFirstName(),student.getLastName(),student.getEmail());
+            studentsPage= AuthPage.init(driver)
+                    .isAt()
                     .clickRegistrationLink()
+                    .isAt()
                     .registerUser(student)
+                    .isAt()
                     .logInAs(Role.ADMIN, StudentsPage.class)
+                    .isAtPage(waitTime)
                     .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
+                    .isAtPage(waitTime)
                     .addRole(student.getEmail(), UnassignedRole.STUDENT)
                     .redirectTo(Endpoints.STUDENTS, StudentsPage.class)
+                    .isAtPage(waitTime)
                     .inputSearchStudent("a")
                     .inputSearchStudent(student.getFirstName()+" "+ student.getLastName())
-                    .getStudentData();
-            List<String> exceptData= Arrays.asList(student.getFirstName(),student.getLastName(),student.getEmail());
-            Assert.assertEquals(actualData,exceptData);
+                    .verify(exceptData)
+                    .assertStud();
+
+
         }
 
     }
