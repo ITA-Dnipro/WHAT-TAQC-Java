@@ -60,7 +60,6 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
     public WebElement findUserRowByEmail(String email) {
         WebElement rowUser;
         do {
-
             rowUser = tableRows.stream()
                     .filter(row -> {
                         List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME))
@@ -117,6 +116,5 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
         }
         return mentorsNames;
     }
-
 }
 
