@@ -50,9 +50,4 @@ public class MyProfilePage extends Page<MyProfilePage> {
         softAssert.assertEquals(emailUser(),email);
         return this;
     }
-
-    public MyProfilePage myProfileAssert() {
-        assertAll();
-        return this;
-    }
 }

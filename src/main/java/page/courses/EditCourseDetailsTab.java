@@ -55,6 +55,7 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         return title.getText().contains(courseDetailsTabTitle);
     }
 
+    //region Actions
     public WebElement getEditTabTitle() {
         return title;
     }
@@ -83,7 +84,9 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         clickElement(saveButton);
         return new CoursesPage(driver);
     }
+    //endregion
 
+    //region Verifies
     public EditCourseDetailsTab verifyEditCourseError(String expectedError) {
         Assert.assertEquals(errorMessage.getText(), expectedError);
         return this;
@@ -103,4 +106,5 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         assertAll();
         return this;
     }
+    //endregion
 }
