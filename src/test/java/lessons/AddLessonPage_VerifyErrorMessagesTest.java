@@ -13,12 +13,12 @@ import page.lessons.AddLessonPage;
 import util.Role;
 import java.io.IOException;
 
-public class AddLessonPage_VerifyErrorMessages extends BaseTest {
+public class AddLessonPage_VerifyErrorMessagesTest extends BaseTest {
 
     AddLessonErrors[] errors;
     AddLessonPage addLessonPage;
 
-    public AddLessonPage_VerifyErrorMessages() throws IOException {
+    public AddLessonPage_VerifyErrorMessagesTest() throws IOException {
         errors = AddLessonErrors.getErrors(PathsToFiles.Lessons.ADD_LESSON_ERRORS);
     }
 

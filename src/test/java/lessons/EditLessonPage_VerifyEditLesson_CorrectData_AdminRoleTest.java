@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class EditLesson_VerifyEditLesson_CorrectData_AdminRole extends BaseTest {
+public class EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest extends BaseTest {
 
     LessonsPage lessonsPage;
     AddLessonStrategy addLessonStrategy;
@@ -25,7 +25,7 @@ public class EditLesson_VerifyEditLesson_CorrectData_AdminRole extends BaseTest 
     String theme;
     Integer firstIcon;
 
-    public EditLesson_VerifyEditLesson_CorrectData_AdminRole() throws IOException {
+    public EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest() throws IOException {
         theme = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5);
         firstIcon = 0;
 

@@ -8,6 +8,4 @@ public class ResetPasswordPage extends BaseElement {
     public ResetPasswordPage(WebDriver driver) {
         super(driver);
     }
-
-
 }
