@@ -15,6 +15,7 @@ public class LessonServiceApi implements LessonsService {
     }
 
     public AddLessonJson[] getLessons(){
+
         return requests.sendGet("/lessons").getBody().as(AddLessonJson[].class);
     }
 }
