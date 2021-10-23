@@ -20,4 +20,7 @@ public class SearchFunctionTest {
     public static SearchFunctionTest[] getCourseNameForSearch(String filename) throws IOException {
         return new ObjectMapper().readValue(new File(filename), SearchFunctionTest[].class);
     }
+    public static SearchFunctionTest[] getUnassignedNameForSearch(String filename) throws IOException {
+        return new ObjectMapper().readValue(new File(filename), SearchFunctionTest[].class);
+    }
 }
