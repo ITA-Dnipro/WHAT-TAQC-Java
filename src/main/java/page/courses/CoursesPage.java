@@ -58,6 +58,7 @@ public class CoursesPage extends Page<CoursesPage> {
         return driver.getCurrentUrl().equals(Endpoints.COURSES);
     }
 
+    //region Actions
     public EditCourseDetailsTab clickEditCourseDetailsTab(int numberRow) {
         clickElement(editButton.get(numberRow));
         return new EditCourseDetailsTab(driver);
@@ -91,18 +92,21 @@ public class CoursesPage extends Page<CoursesPage> {
         return alertAddCourse;
     }
 
-    public CoursesPage verifyOldCourseNameExist(String oldName) {
-        softAssert.assertTrue(getCoursesRowsList().get(0).isDisplayed(), oldName);
-        return this;
-    }
 
     public CoursesPage fillCourseSearchFields(String courseName) {
         fillField(searchField, courseName);
         return this;
     }
+    //endregion
 
+    //region Verifies
     public CoursesPage verifySearchCourseFieldFilled(String data) {
         softAssert.assertEquals(searchField.getText(), data);
+        return this;
+    }
+
+    public CoursesPage verifyOldCourseNameExist(String oldName) {
+        softAssert.assertTrue(getCoursesRowsList().get(0).isDisplayed(), oldName);
         return this;
     }
 
@@ -125,4 +129,5 @@ public class CoursesPage extends Page<CoursesPage> {
         Assert.assertEquals(getCoursesRowsList().get(0).getText(), newName);
         return this;
     }
+    //endregion
 }

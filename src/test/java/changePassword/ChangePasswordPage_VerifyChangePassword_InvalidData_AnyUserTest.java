@@ -26,7 +26,7 @@ public class ChangePasswordPage_VerifyChangePassword_InvalidData_AnyUserTest ext
     }
 
     @BeforeClass
-    public void preconditions() throws IOException {
+    public void setUp() throws IOException {
 
         AuthPage.init(driver).logInAs(Role.MENTOR, LessonsPage.class)
                 .isAtPage(waitTime)

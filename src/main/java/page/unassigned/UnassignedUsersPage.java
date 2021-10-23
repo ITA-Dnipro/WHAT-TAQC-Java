@@ -94,6 +94,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
         clickElement(tableHeadEmail);
         return this;
     }
+
     public List<String> getUnassignedUsersName() {
         List<String> mentorsNames = new ArrayList<String>();
         for (int i = 0; i < tableRows.size(); i = i + 3) {
@@ -109,6 +110,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
         }
         return mentorsSurname;
     }
+
     public List<String> getUnassignedUsersEmail() {
         List<String> mentorsNames = new ArrayList<String>();
         for (int i = 0; i < tableRows.size(); i = i + 3) {
@@ -116,5 +118,9 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
         }
         return mentorsNames;
     }
+<<<<<<<<< Temporary merge branch 1
+
+=========
+>>>>>>>>> Temporary merge branch 2
 }
 

@@ -11,7 +11,7 @@ public class PathsToFiles {
 
     public static String getPathToCredentials() throws IOException {
         Properties properties = new Properties();
-        properties.load(new FileInputStream(BASE_PATH + "validRequirements.properties"));
+        properties.load(new FileInputStream(BASE_PATH + "paths.properties"));
         return properties.getProperty("credentials");
     }
 
@@ -45,5 +45,9 @@ public class PathsToFiles {
 
     public interface Mentors{
         String EDIT_MENTOR_ERRORS=BASE_PATH + "mentors/InvalidData.json";
+    }
+
+        public interface Secretarys{
+    String SECRETARYS_NAME = BASE_PATH +"secretarys/SecretarysName.json";
     }
 }

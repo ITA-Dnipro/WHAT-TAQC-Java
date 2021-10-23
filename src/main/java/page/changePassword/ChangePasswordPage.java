@@ -64,7 +64,7 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return driver.getCurrentUrl().equals(Endpoints.CHANGE_PASSWORD);
     }
 
-    //region Methods
+    //region Actions
     public ChangePasswordPage checkEmailField() {
         if (emailInput.isDisplayed() && !emailInput.isEnabled())
             clickElement(emailInput);
@@ -85,17 +85,6 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         fillField(confirmPasswordField, confirmPassword);
         return this;
     }
-
-    public ChangePasswordPage saveChangePassword() {
-        clickElement(saveButton);
-        return this;
-    }
-
-    public MyProfilePage confirmChangedPassword() {
-        clickElement(confirmButton);
-        return new MyProfilePage(driver);
-    }
-
     public String getCurrentPasswordError() {
         try {
             return errMessageCurrPassword.getText();
@@ -114,6 +103,16 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
     public String getConfirmPasswordError() {
         return errMessageConfirmPassword.getText();
+    }
+
+    public ChangePasswordPage saveChangePassword() {
+        clickElement(saveButton);
+        return this;
+    }
+
+    public MyProfilePage confirmChangedPassword() {
+        clickElement(confirmButton);
+        return new MyProfilePage(driver);
     }
 
     public ChangePasswordPage loseFocus() {

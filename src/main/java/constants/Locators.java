@@ -17,11 +17,6 @@ public class Locators {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
     }
 
-    public interface HomePageUrl {
-        String ADMIN_HOME_PAGE = "http://localhost:8080/students";
-
-    }
-
     public interface Header {
         String LOGO_XPATH = "//*[contains(@class,'logo')]";
         String ICON_XPATH = "//*[contains(@class,'icon')]";
@@ -65,7 +60,10 @@ public class Locators {
         String SECRETARY_TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
         String SECRETARY_PAGE_TITLE_XPATH = "//h2[text()='Secretaries']";
         String SECRETARY_EDIT_ICON_XPATH = "//td[@class='text-center']";
-           }
+
+        String SECRETARY_ROW_XPATH = "//td[not(contains(@class,'text-center'))]";
+                  }
+
 
     public interface AddLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Add a Lesson']";
@@ -134,6 +132,7 @@ public class Locators {
         String TABLE_ROLES_DROPDOWN_MENU_TAG_NAME = "select";
         String TABLE_ROLE_DROPDOWN_MENU_OPTIONS_TAG_NAME = "option";
         String TABLE_ADD_ROLE_BUTTON_TAG_NAME = "button";
+        String TITLE_XPATH="//th[text()='Choose role']";
     }
 
     public interface Courses {
@@ -316,5 +315,10 @@ public class Locators {
     public interface Pagination{
         String PAGES_XPATH = "//div[contains(@class,'col')]//child::ul[2]//child::button";
         String NEXT_PAGE_ARROW_BUTTON_XPATH = "//div[contains(@class,'col')]//child::ul[3]";
+        String FIRST_PAGE = "(//button[contains(.,'1')])[1]";
+        String SECOND_PAGE = "(//button[contains(.,'2')])[1]";
+        String THIRD_PAGE = "(//button[contains(.,'3')])[1]";
+        String FOURTH_PAGE = "(//button[contains(.,'4')])[1]";
+        String BACK_ARROW = "(//button[@class='page-link pagination__link___2AEaH'][contains(.,'<')])[1]";
     }
 }
