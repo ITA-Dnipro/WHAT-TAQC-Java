@@ -3,6 +3,9 @@ package lessons.util;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.List;
+import java.util.Map;
+
 public class UserApi {
 
     @JsonAlias("first_name")
@@ -16,6 +19,16 @@ public class UserApi {
 
     @JsonIgnore
     String token;
+
+    Map<String,String> roleList;
+
+    public Map<String, String> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(Map<String, String> roleList) {
+        this.roleList = roleList;
+    }
 
     public String getToken() {
         return token;
