@@ -28,16 +28,6 @@ public class CourseDetailsTab extends Page<CourseDetailsTab> {
         return title.getText().contains(courseDetailsTabTitle);
     }
 
-    public CoursesPage outFromCourseDetails() {
-        clickElement(arrowButton);
-        return new CoursesPage(driver);
-    }
-
-    public EditCourseDetailsTab redirectToEditCourseDetailsTab() {
-        clickElement(editCourseTab);
-        return new EditCourseDetailsTab(driver);
-    }
-
     public EditCourseDetailsTab refreshPage() {
         driver.navigate().refresh();
         return new EditCourseDetailsTab(driver);
