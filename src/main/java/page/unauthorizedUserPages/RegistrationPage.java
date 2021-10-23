@@ -1,5 +1,6 @@
 package page.unauthorizedUserPages;
 
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,7 @@ import util.UnassignedUser;
 import java.io.IOException;
 
 import static constants.Locators.RegistrationPage.*;
+import static org.awaitility.Awaitility.await;
 
 public class RegistrationPage extends BaseElement {
 
@@ -153,7 +155,6 @@ public class RegistrationPage extends BaseElement {
             softAssert.assertEquals(firstNameError.getText(), expectedErrorMessage);
         }
         return this;
-
     }
 
     public RegistrationPage verifyLastNameErrorIsDisplayed(boolean condition) {
@@ -191,7 +192,7 @@ public class RegistrationPage extends BaseElement {
     public RegistrationPage verifyPasswordErrorMessage(String expectedErrorMessage) {
         if (expectedErrorMessage != null) {
             String actualResult = passwordError.getText();
-            softAssert.assertEquals(actualResult, expectedErrorMessage, "Password message is wrong"+confirmPasswordError.getText());
+            softAssert.assertEquals(actualResult, expectedErrorMessage, "Password message is wrong" + confirmPasswordError.getText());
         }
         return this;
     }
@@ -204,7 +205,7 @@ public class RegistrationPage extends BaseElement {
 
     public RegistrationPage verifyConfirmPasswordErrorMessage(String expectedErrorMessage) {
         if (expectedErrorMessage != null) {
-            softAssert.assertEquals(confirmPasswordError.getText(), expectedErrorMessage, "ConfirmPassword message is wrong"+confirmPasswordError.getText());
+            softAssert.assertEquals(confirmPasswordError.getText(), expectedErrorMessage, "ConfirmPassword message is wrong" + confirmPasswordError.getText());
         }
         return this;
     }
@@ -242,11 +243,10 @@ public class RegistrationPage extends BaseElement {
         return this;
     }
 
-    public RegistrationPage loseFocus() throws InterruptedException {
+    public RegistrationPage loseFocus() {
         clickElement(pageTitleName);
         return this;
     }
-
     public RegistrationPage isAt() {
         try {
             await().until(() -> driver.getCurrentUrl().equals(Endpoints.REGISTRATION));
