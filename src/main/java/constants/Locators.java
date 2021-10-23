@@ -262,7 +262,7 @@ public class Locators {
 
     public interface StudentsPage {
         String PAGE_TITLE_TAG_NAME = "h2";
-        String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput";
+        String SEARCH_INPUT_BOX_CLASSNAME = "//input[@class='search__searchInput___34nMl']";
         String SHOW_DISABLED_SWITCHER_ID = "show-disabled-check";
         String ADD_STUDENT_BUTTON_XPATH = "//*[contains(text(), 'Add a student')]";
         String TABLE_STUDENTS_XPATH = "//tbody";

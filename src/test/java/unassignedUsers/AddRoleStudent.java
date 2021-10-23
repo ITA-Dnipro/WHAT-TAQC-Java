@@ -10,42 +10,38 @@ import page.unassigned.UnassignedUsersPage;
 import page.unauthorizedUserPages.AuthPage;
 import util.Role;
 import util.UnassignedUser;
-
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class AddRoleStudent extends BaseTest {
-        private UnassignedUser student;
-        StudentsPage studentsPage;
+    private UnassignedUser student;
+    StudentsPage studentsPage;
 
-        @BeforeClass
-        public void setUp () {
-            student = UnassignedUser.getUnassignedUser();
-        }
-        @Test
-        public void verifyAddStudentRole() throws IOException {
-            List<String> exceptData= Arrays.asList(student.getFirstName(),student.getLastName(),student.getEmail());
-            studentsPage= AuthPage.init(driver)
-                    .isAt()
-                    .clickRegistrationLink()
-                    .isAt()
-                    .registerUser(student)
-                    .isAt()
-                    .logInAs(Role.ADMIN, StudentsPage.class)
-                    .isAtPage(waitTime)
-                    .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
-                    .isAtPage(waitTime)
-                    .addRole(student.getEmail(), UnassignedRole.STUDENT)
-                    .redirectTo(Endpoints.STUDENTS, StudentsPage.class)
-                    .isAtPage(waitTime)
-                    .inputSearchStudent("a")
-                    .inputSearchStudent(student.getFirstName()+" "+ student.getLastName())
-                    .verify(exceptData)
-                    .assertStud();
+    public AddRoleStudent() {
+        student = UnassignedUser.getUnassignedUser();
+    }
 
+    @BeforeClass
 
-        }
+    public void setUp() throws IOException {
+        studentsPage= AuthPage.init(driver)
+                .clickRegistrationLink()
+                .registerUser(student)
+                .logInAs(Role.ADMIN, StudentsPage.class)
+                .isAtPage(waitTime)
+                .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
+                .isAtPage(waitTime)
+                .addRole(student.getEmail(), UnassignedRole.STUDENT)
+                .isAtPage(waitTime)
+                .redirectTo(Endpoints.STUDENTS, StudentsPage.class)
+                .fillSearch(student.getFirstName()+" "+student.getLastName())
+                .isAtPage(waitTime);
 
     }
+    @Test
+    public void VerifyEditMentorDetails_CorrectData(){
+    }
+}
+
+
 

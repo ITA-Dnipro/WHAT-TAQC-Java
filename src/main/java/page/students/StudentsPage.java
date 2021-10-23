@@ -77,9 +77,9 @@ public class StudentsPage extends Page<StudentsPage> {
                 .findFirst()
                 .orElse(null);
     }
-    public StudentsPage inputSearchStudent(String nameSurname) {
-        fillField(searchInputFieldBox, "a");
-        fillField(searchInputFieldBox, nameSurname);
+    public  StudentsPage fillSearch(String search){
+        fillField(searchInputFieldBox,"a");
+        fillField(searchInputFieldBox,search);
         return this;
     }
 
