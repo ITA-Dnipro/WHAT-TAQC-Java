@@ -1,6 +1,5 @@
 package page.unauthorizedUserPages;
 
-import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,10 +9,11 @@ import util.UnassignedUser;
 import java.io.IOException;
 
 import static constants.Locators.RegistrationPage.*;
-import static org.awaitility.Awaitility.await;
 
 public class RegistrationPage extends BaseElement {
 
+    @FindBy(tagName = PAGE_TITLE_TAG_NAME)
+    WebElement pageTitleName;
     @FindBy(xpath = FIRST_NAME_INPUT_FIELD_XPATH)
     WebElement firstNameInputField;
     @FindBy(xpath = LAST_NAME_INPUT_FIELD_XPATH)
@@ -28,9 +28,9 @@ public class RegistrationPage extends BaseElement {
     WebElement singUpButton;
     @FindBy(xpath = LOG_IN_XPATH)
     WebElement logInLinkedText;
-    @FindBy(xpath = MODAL_WINDOW)
+    @FindBy(xpath = MODAL_WINDOW_XPATH)
     WebElement modalWindow;
-    @FindBy(xpath = MODAL_WINDOW_BUTTON)
+    @FindBy(xpath = MODAL_WINDOW_BUTTON_XPATH)
     WebElement modalWindowBackButton;
     @FindBy(xpath = FIRST_NAME_ERROR_XPATH)
     WebElement firstNameError;
@@ -59,27 +59,37 @@ public class RegistrationPage extends BaseElement {
     }
 
     public RegistrationPage fillInputFirstName(String firstName) {
-        fillField(firstNameInputField, firstName);
+        if (firstName != null) {
+            fillField(firstNameInputField, firstName);
+        }
         return this;
     }
 
     public RegistrationPage fillInputLastName(String lastName) {
-        fillField(lastNameInputField, lastName);
+        if (lastName != null) {
+            fillField(lastNameInputField, lastName);
+        }
         return this;
     }
 
     public RegistrationPage fillInputEmail(String email) {
-        fillField(emailInputField, email);
+        if (email != null) {
+            fillField(emailInputField, email);
+        }
         return this;
     }
 
     public RegistrationPage fillInputPassword(String password) {
-        fillField(passwordInputField, password);
+        if (password != null) {
+            fillField(passwordInputField, password);
+        }
         return this;
     }
 
     public RegistrationPage fillInputConfirmPassword(String password) {
-        fillField(confirmPasswordInputField, password);
+        if (password != null) {
+            fillField(confirmPasswordInputField, password);
+        }
         return this;
     }
 
@@ -99,7 +109,9 @@ public class RegistrationPage extends BaseElement {
     }
 
     public RegistrationPage verifyFillingFirstNameInputField(String data) {
-        softAssert.assertEquals(firstNameInputField.getAttribute("value"), data);
+        if (data != null) {
+            softAssert.assertEquals(firstNameInputField.getAttribute("value"), data);
+        }
         return this;
     }
 
@@ -109,18 +121,24 @@ public class RegistrationPage extends BaseElement {
     }
 
     public RegistrationPage verifyFillingEmailInputField(String data) {
-        softAssert.assertEquals(emailInputField.getAttribute("value"), data);
+        if (data != null) {
+            softAssert.assertEquals(emailInputField.getAttribute("value"), data);
+        }
         return this;
     }
 
     public RegistrationPage verifyFillingPasswordInputField(String data) {
-        softAssert.assertEquals(passwordInputField.getAttribute("value"), data);
+        if (data != null) {
+            softAssert.assertEquals(passwordInputField.getAttribute("value"), data);
+        }
         return this;
     }
 
     // TODO verify confirmPasswordField is filled with asterisks
     public RegistrationPage verifyFillingConfirmPasswordInputField(String data) {
-        softAssert.assertEquals(confirmPasswordInputField.getAttribute("value"), data);
+        if (data != null) {
+            softAssert.assertEquals(confirmPasswordInputField.getAttribute("value"), data);
+        }
         return this;
     }
 
@@ -133,10 +151,9 @@ public class RegistrationPage extends BaseElement {
     public RegistrationPage verifyFirstNameErrorMessage(String expectedErrorMessage) {
         if (!firstNameError.getText().equals("")) {
             softAssert.assertEquals(firstNameError.getText(), expectedErrorMessage);
-            return this;
-        } else {
-            return verifyFirstNameErrorIsDisplayed(true);
         }
+        return this;
+
     }
 
     public RegistrationPage verifyLastNameErrorIsDisplayed(boolean condition) {
@@ -146,13 +163,10 @@ public class RegistrationPage extends BaseElement {
     }
 
     public RegistrationPage verifyLastNameErrorMessage(String expectedErrorMessage) {
-        if (!lastNameError.getText().equals("")) {
+        if (expectedErrorMessage != null) {
             softAssert.assertEquals(lastNameError.getText(), expectedErrorMessage);
-            return this;
-        } else {
-            return verifyLastNameErrorIsDisplayed(true);
         }
-
+        return this;
     }
 
     public RegistrationPage verifyEmailErrorIsDisplayed(boolean condition) {
@@ -162,12 +176,10 @@ public class RegistrationPage extends BaseElement {
     }
 
     public RegistrationPage verifyEmailErrorMessage(String expectedErrorMessage) {
-        if (!emailError.getText().equals("")) {
+        if (expectedErrorMessage != null) {
             softAssert.assertEquals(emailError.getText(), expectedErrorMessage);
-            return this;
-        } else {
-            return verifyEmailErrorIsDisplayed(true);
         }
+        return this;
     }
 
     public RegistrationPage verifyPasswordErrorIsDisplayed(boolean condition) {
@@ -177,12 +189,11 @@ public class RegistrationPage extends BaseElement {
     }
 
     public RegistrationPage verifyPasswordErrorMessage(String expectedErrorMessage) {
-        if (!passwordError.getText().equals("")) {
-            softAssert.assertEquals(passwordError.getText(), expectedErrorMessage);
-            return this;
-        } else {
-            return verifyPasswordErrorIsDisplayed(true);
+        if (expectedErrorMessage != null) {
+            String actualResult = passwordError.getText();
+            softAssert.assertEquals(actualResult, expectedErrorMessage, "Password message is wrong"+confirmPasswordError.getText());
         }
+        return this;
     }
 
     public RegistrationPage verifyConfirmPasswordErrorIsDisplayed(boolean condition) {
@@ -192,12 +203,10 @@ public class RegistrationPage extends BaseElement {
     }
 
     public RegistrationPage verifyConfirmPasswordErrorMessage(String expectedErrorMessage) {
-        if (!confirmPasswordError.getText().equals("")) {
-            softAssert.assertEquals(confirmPasswordError.getText(), expectedErrorMessage);
-            return this;
-        } else {
-            return verifyConfirmPasswordErrorIsDisplayed(true);
+        if (expectedErrorMessage != null) {
+            softAssert.assertEquals(confirmPasswordError.getText(), expectedErrorMessage, "ConfirmPassword message is wrong"+confirmPasswordError.getText());
         }
+        return this;
     }
 
     public RegistrationPage verifySingInButtonIsEnabled() {
@@ -230,6 +239,11 @@ public class RegistrationPage extends BaseElement {
                 .verifyEmailErrorIsDisplayed(false)
                 .verifyPasswordErrorIsDisplayed(false)
                 .verifyConfirmPasswordErrorIsDisplayed(false);
+        return this;
+    }
+
+    public RegistrationPage loseFocus() throws InterruptedException {
+        clickElement(pageTitleName);
         return this;
     }
 

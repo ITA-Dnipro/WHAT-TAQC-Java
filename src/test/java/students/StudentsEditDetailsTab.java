@@ -26,12 +26,4 @@ public class StudentsEditDetailsTab extends BaseTest {
                 .addRole(user.getEmail(), UnassignedRole.STUDENT)
                 .logOut();
     }
-
-//    @Test
-//    public void verifyEditStudentFeatureAdminRole() throws IOException {
-//        AuthPage.init(driver)
-//                .logInAs()
-//                .findStudentRowInTableByEmail(user.getEmail())
-//
-//    }
 }

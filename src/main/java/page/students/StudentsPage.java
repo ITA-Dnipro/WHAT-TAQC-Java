@@ -75,6 +75,7 @@ public class StudentsPage extends Page<StudentsPage> {
     }
 
     public boolean verifyAddStudentButtonIsEnable(){
+
         return addStudentButton.isEnabled();
     }
 
