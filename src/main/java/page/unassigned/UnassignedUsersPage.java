@@ -41,7 +41,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     protected WebElement title;
     @FindBy (xpath = TABLE_ADD_ROLE_BUTTON_TAG_NAME)
     protected List<WebElement> addButton;
-    protected List<WebElement> tableRows;// через фабрику нашла все строки таблицы , то т.к у нас динамическая таблица, по этому сделано через find element
+    // через фабрику нашла все строки таблицы , то т.к у нас динамическая таблица, по этому сделано через find element
 
     public UnassignedUsersPage(WebDriver driver) {
         super(driver);

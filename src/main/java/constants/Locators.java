@@ -1,12 +1,5 @@
 package constants;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
-
-import static constants.Locators.MentorsTablePage.MENTORS_ROW_XPATH;
-
 public class Locators {
 
     private Locators() {
@@ -22,11 +15,6 @@ public class Locators {
 
     public interface CommonElements {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
-    }
-
-    public interface HomePageUrl {
-        String ADMIN_HOME_PAGE = "http://localhost:8080/students";
-
     }
 
     public interface Header {
@@ -75,7 +63,6 @@ public class Locators {
 
         String SECRETARY_ROW_XPATH = "//td[not(contains(@class,'text-center'))]";
                   }
-           }
 
 
     public interface AddLesson {

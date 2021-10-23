@@ -11,6 +11,14 @@ public class User {
     protected String mail;
     protected String pass;
 
+    public User() {
+    }
+
+    public User(String mail, String pass) {
+        this.mail = mail;
+        this.pass = pass;
+    }
+
     public String getMail(){
         return mail;
     }
@@ -32,4 +40,8 @@ public class User {
                 new TypeReference<Map<String, User>>() {});
     }
 
+    @Override
+    public String toString() {
+        return "{ \"email\": \"" + mail +"\", \"password\":\"" + pass + "\"}";
+    }
 }
