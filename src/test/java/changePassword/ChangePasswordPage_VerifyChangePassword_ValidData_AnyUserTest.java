@@ -4,6 +4,7 @@ import base.BaseTest;
 import changePassword.dataPasswords.data.ChangePasswordValidData;
 import constants.Endpoints;
 import constants.PathsToFiles;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -16,23 +17,22 @@ import util.User;
 import java.io.IOException;
 import java.util.Map;
 
-public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends BaseTest {
+public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest extends BaseTest {
 
     private ChangePasswordValidData[] passwordsData;
-    private String currentPassword;
     private User user;
+    private String currentPassword;
+    private String newUserPassword;
     private Map<String, User> users;
 
-    private AuthPage authPage;
-
-    public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser() throws IOException {
+    public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest() throws IOException {
         users = User.get(PathsToFiles.getPathToCredentials());
         passwordsData = ChangePasswordValidData.passwordsList(
-                PathsToFiles.ChangePassword.CHANGE_PASSWORD_VALID_DATA);
+                PathsToFiles.getPathToValidPasswords());
     }
 
     @BeforeClass
-    public void preconditions() {
+    public void setUp() {
         user = users.get(Role.MENTOR.getRoleName());
     }
 
@@ -46,24 +46,33 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUser extends B
     }
 
     @Test(description = "DP213-27", dataProvider = "log_in")
-    public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException {
+    public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException, InterruptedException {
+        newUserPassword = newPassword.getNewPassword();
         currentPassword = user.getPass();
 
-        authPage = AuthPage.init(driver)
+        AuthPage.init(driver)
                 .logInAs(Role.MENTOR, user, LessonsPage.class)
                 .isAtPage(waitTime)
                 .clickUserIcon()
-                .isAtPage(5)
+                .isAtPage(waitTime)
                 .redirectTo(Endpoints.CHANGE_PASSWORD, ChangePasswordPage.class)
                 .isAtPage(waitTime)
                 .fillCurrentPasswordField(currentPassword)
-                .fillNewPasswordField(newPassword.getNewPassword())
-                .fillConfirmPasswordField(newPassword.getNewPassword())
+                .verifyCurrentPasswordFieldFielded(currentPassword)
+                .fillNewPasswordField(newUserPassword)
+                .verifyNewPasswordFieldFielded(newUserPassword)
+                .fillConfirmPasswordField(newUserPassword)
+                .verifyConfirmPasswordFieldFielded(newUserPassword)
+                .assertChangePasswordPage()
                 .saveChangePassword()
                 .isAtPage(waitTime)
                 .confirmChangedPassword()
                 .isAtPage(waitTime)
                 .logOut();
-        user.setPass(newPassword.getNewPassword());
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        user.setPass(newUserPassword);
     }
 }

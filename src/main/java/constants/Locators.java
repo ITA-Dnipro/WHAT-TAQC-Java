@@ -154,7 +154,7 @@ public class Locators {
     public interface CourseDetailsPage {
         String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
         String COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Course details')]";
-        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Edit course details')]";
+        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(text(),'Edit course details')]";
         String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String DELETE_BUTTON_XPATH = "//button[contains(text(),'Delete')]";
         String CLEAR_BUTTON_XPATH = "//button[@type='reset']";
@@ -164,11 +164,11 @@ public class Locators {
         String CLOSE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@class='close']";
         String COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[text()='Course Details']";
         String EDIT_COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[text()='Course Editing']";
-        String COURSE_NAME_ERROR_MESSAGE_XPATH = "//p[contains(text(),'Too long')]";
+        String COURSE_NAME_ERROR_MESSAGE_XPATH = "//p[contains(@class,'text-danger')]";
     }
 
     public interface AddCoursePage {
-        String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
+        String ADD_COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@lessons.data-testid='cancelBtn']";
         String SAVE_BUTTON_XPATH = "//button[@id='addCourseSubmit']";
     }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-
 <suite name="FirstSuite" verbose="1" >
     <test name = "FirstTest">
-        <packages>
-            <package name="lessons"/>
-        </packages>
+        <classes>
+            <class name="lessons.AddLessonPage_VerifyAddLesson_CorrectData_AdminRoleTest"/>
+            <class name="lessons.AddLessonPage_VerifyAddLesson_CorrectData_MentorRoleTest"/>
+            <class name="lessons.EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest"/>
+            <class name="lessons.EditLessonPage_VerifyEditLesson_CorrectData_MentorRoleTest"/>
+        </classes>
     </test>
 </suite>
