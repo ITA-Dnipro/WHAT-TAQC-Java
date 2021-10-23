@@ -30,7 +30,7 @@ abstract public class SecretarysEditDetailsPage <T extends Page<T>> extends Page
             return new SecretarysDetailsTab(super.driver);
         }
 
-    public SecretarysEditDetailsTab openStudentDetailsTab() {
+    public SecretarysEditDetailsTab openSecretarysDetailsTab() {
         clickElement(secretaryDetailsTab);
         return new SecretarysEditDetailsTab(driver);
     }

@@ -10,6 +10,8 @@ import static constants.Locators.CourseDetailsPage.*;
 
 public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
 
+    private final String VALUE = "value";
+
     public EditCourseDetailsTab(WebDriver driver) {
         super(driver);
     }
@@ -53,7 +55,12 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         return title.getText().contains(courseDetailsTabTitle);
     }
 
-    public CoursesPage outFromEditCourseDetails() {
+    //region Actions
+    public WebElement getEditTabTitle() {
+        return title;
+    }
+
+    public CoursesPage redirectOutFromEditCourseDetails() {
         clickElement(arrowButton);
         return new CoursesPage(driver);
     }
@@ -63,33 +70,9 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         return new CourseDetailsTab(driver);
     }
 
-    public WebElement getCourseNameInput() {
-        return courseNameInput;
-    }
-
     public EditCourseDetailsTab fillCourseName(String courseName) {
         fillField(courseNameInput, courseName);
         return this;
-    }
-
-    public EditCourseDetailsTab deleteCourse() {
-        clickElement(deleteButtonEditCourseTab);
-        return this;
-    }
-
-    public EditCourseDetailsTab cancelDeleteAction() {
-        clickElement(cancelButton);
-        return this;
-    }
-
-    public EditCourseDetailsTab closeConfirmAction() {
-        clickElement(closeButton);
-        return this;
-    }
-
-    public CoursesPage confirmDeleteCourse() {
-        clickElement(deleteButtonEditCourseTab);
-        return new CoursesPage(driver);
     }
 
     public EditCourseDetailsTab clearChanges() {
@@ -101,9 +84,27 @@ public class EditCourseDetailsTab extends Page<EditCourseDetailsTab> {
         clickElement(saveButton);
         return new CoursesPage(driver);
     }
+    //endregion
 
+    //region Verifies
     public EditCourseDetailsTab verifyEditCourseError(String expectedError) {
         Assert.assertEquals(errorMessage.getText(), expectedError);
         return this;
     }
+
+    public EditCourseDetailsTab verifyReturnToEditCourseDetailsTabAfterRefresh(String title) {
+        Assert.assertEquals(getEditTabTitle().getText(), title);
+        return this;
+    }
+
+    public EditCourseDetailsTab verifyCourseNameFieldFilled(String name) {
+        softAssert.assertEquals(courseNameInput.getAttribute(VALUE), name);
+        return this;
+    }
+
+    public EditCourseDetailsTab assertAllCoursePage() {
+        assertAll();
+        return this;
+    }
+    //endregion
 }

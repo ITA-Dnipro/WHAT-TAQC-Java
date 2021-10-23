@@ -1,5 +1,6 @@
 package page.unauthorizedUserPages;
 
+import constants.Endpoints;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,7 @@ import util.UnassignedUser;
 import java.io.IOException;
 
 import static constants.Locators.RegistrationPage.*;
+import static org.awaitility.Awaitility.await;
 
 public class RegistrationPage extends BaseElement {
 
@@ -231,4 +233,12 @@ public class RegistrationPage extends BaseElement {
         return this;
     }
 
+    public RegistrationPage isAt() {
+        try {
+            await().until(() -> driver.getCurrentUrl().equals(Endpoints.REGISTRATION));
+            return this;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

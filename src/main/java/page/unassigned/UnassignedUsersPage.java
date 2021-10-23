@@ -92,8 +92,9 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
         clickElement(tableHeadEmail);
         return this;
     }
+
     public List<String> getUnassignedUsersName() {
-        List<String> mentorsNames = new ArrayList<String>();
+        List<String> mentorsNames = new ArrayList<>();
         for (int i = 0; i < tableRows.size(); i = i + 3) {
             mentorsNames.add(tableRows.get(i).getText());
         }
@@ -101,19 +102,18 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
     }
 
     public List<String> getUnassignedUsersSurname() {
-        List<String> mentorsSurname = new ArrayList<String>();
+        List<String> mentorsSurname = new ArrayList<>();
         for (int i = 1; i < tableRows.size(); i = i + 3) {
             mentorsSurname.add(tableRows.get(i).getText());
         }
         return mentorsSurname;
     }
+
     public List<String> getUnassignedUsersEmail() {
-        List<String> mentorsNames = new ArrayList<String>();
+        List<String> mentorsNames = new ArrayList<>();
         for (int i = 0; i < tableRows.size(); i = i + 3) {
             mentorsNames.add(tableRows.get(i).getText());
         }
         return mentorsNames;
     }
-
 }
-

@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 import page.unassigned.UnassignedUsersPage;
-import util.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -93,5 +92,27 @@ public class StudentsPage extends Page<StudentsPage> {
         WebElement row = findStudentRowInTableByEmail(user.getMail());
         clickElement(row);
         return new StudentDetailsTab(driver);
+    }
+    public StudentsPage inputSearchStudent(String nameSurname) {
+        fillField(searchInputFieldBox, "a");
+        fillField(searchInputFieldBox, nameSurname);
+        return this;
+    }
+
+        public List<String> getStudentData() {
+            List<String> studentData = new ArrayList<>();
+
+            for (int i = 0; i < tableStudentsRows.size(); i++) {
+                studentData.add(tableStudentsRows.get(i).getText());
+            }
+            return studentData;
+        }
+        public StudentsPage verify(List<String>expectdata){
+        softAssert.assertEquals(getStudentData() ,expectdata);
+        return this;
+        }
+        public StudentsPage assertStud(){
+        softAssert.assertAll();
+        return this;
     }
 }

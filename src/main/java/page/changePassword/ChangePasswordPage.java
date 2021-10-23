@@ -13,6 +13,9 @@ import static constants.Locators.ChangePasswordPage.*;
 
 public class ChangePasswordPage extends Page<ChangePasswordPage> {
 
+    private final String VALUE = "value";
+    private SoftAssert softAssert = new SoftAssert();
+
     @FindBy(id = EMAIL_INPUT_FIELD_ID)
     private WebElement emailInput;
 
@@ -52,8 +55,6 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
     @FindBy(xpath = PAGE_TITLE_XPATH)
     WebElement loseFocus;
 
-    SoftAssert softAssert = new SoftAssert();
-
     public ChangePasswordPage(WebDriver driver) {
         super(driver);
     }
@@ -63,6 +64,7 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return driver.getCurrentUrl().equals(Endpoints.CHANGE_PASSWORD);
     }
 
+    //region Actions
     public ChangePasswordPage checkEmailField() {
         if (emailInput.isDisplayed() && !emailInput.isEnabled())
             clickElement(emailInput);
@@ -83,19 +85,28 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         fillField(confirmPasswordField, confirmPassword);
         return this;
     }
+    public String getCurrentPasswordError() {
+        try {
+            return errMessageCurrPassword.getText();
+        } catch (NotFoundException e) {
+            return "";
+        }
+    }
 
-    public MyProfilePage cancelChangePassword() {
-        clickElement(cancelButton);
-        return new MyProfilePage(driver);
+    public String getNewPasswordError() {
+        try {
+            return errMessageNewPassword.getText();
+        } catch (NotFoundException e) {
+            return "";
+        }
+    }
+
+    public String getConfirmPasswordError() {
+        return errMessageConfirmPassword.getText();
     }
 
     public ChangePasswordPage saveChangePassword() {
         clickElement(saveButton);
-        return this;
-    }
-
-    public ChangePasswordPage cancelConfirmAction() {
-        clickElement(cancelConfirmAction);
         return this;
     }
 
@@ -104,30 +115,30 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return new MyProfilePage(driver);
     }
 
-    public ChangePasswordPage closeConfirmAction() {
-        clickElement(closeConfirmAction);
+    public ChangePasswordPage loseFocus() {
+        loseFocus.click();
+        return this;
+    }
+    //endregion
+
+    //region Verifies
+    public ChangePasswordPage verifyCurrentPasswordFieldFielded(String data) {
+        softAssert.assertEquals(currentPasswordField.getAttribute(VALUE), data);
         return this;
     }
 
-    public String getCurrentPasswordError() {
-        try {
-            errMessageCurrPassword.getText();
-        } catch (NotFoundException e) {
-            return "";
-        }
-        return errMessageCurrPassword.getText();
+    public ChangePasswordPage verifyNewPasswordFieldFielded(String data) {
+        softAssert.assertEquals(newPasswordField.getAttribute(VALUE), data);
+        return this;
     }
 
-    public String getNewPasswordError() {
-        return errMessageNewPassword.getText();
-    }
-
-    public String getConfirmPasswordError() {
-        return errMessageConfirmPassword.getText();
+    public ChangePasswordPage verifyConfirmPasswordFieldFielded(String data) {
+        softAssert.assertEquals(confirmPasswordField.getAttribute(VALUE), data);
+        return this;
     }
 
     public ChangePasswordPage verifyCurrentPasswordError(String expectedErrorMessage, String currentPasswordError) {
-        softAssert.assertEquals(currentPasswordError, expectedErrorMessage);
+        softAssert.assertEquals(expectedErrorMessage, currentPasswordError);
         return this;
     }
 
@@ -136,13 +147,14 @@ public class ChangePasswordPage extends Page<ChangePasswordPage> {
         return this;
     }
 
-    public ChangePasswordPage verifyConfirmPassword(String expectedErrorMessage, String confirmPasswordError) {
+    public ChangePasswordPage verifyConfirmPasswordError(String expectedErrorMessage, String confirmPasswordError) {
         softAssert.assertEquals(confirmPasswordError, expectedErrorMessage);
         return this;
     }
 
-    public ChangePasswordPage loseFocus() {
-        loseFocus.click();
+    public ChangePasswordPage assertChangePasswordPage() {
+        assertAll();
         return this;
     }
+    //endregion
 }

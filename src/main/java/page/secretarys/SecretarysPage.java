@@ -1,14 +1,15 @@
 package page.secretarys;
 
-import constants.Endpoints;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
 import page.unassigned.UnassignedUsersPage;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import static constants.Locators.EditSecretary.SECRETARIES_LAY_OFF_BUTTON_XPATH;
 import static constants.Locators.Secretaries.*;
 
 
@@ -16,11 +17,11 @@ import static constants.Locators.Secretaries.*;
 
 public class SecretarysPage extends Page<SecretarysPage> {
 
-    @FindBy(tagName = SECRETARY_PAGE_TITLE_XPATH)
+    @FindBy(xpath = SECRETARY_PAGE_TITLE_XPATH)
     protected WebElement pageName;
-    @FindBy(className = SEARCH_WINDOW_SECRETARIES_NAME_XPATH)
+    @FindBy(xpath = SEARCH_WINDOW_SECRETARIES_NAME_XPATH)
     protected WebElement searchInputFieldBox;
-    @FindBy(id = SWITCH_VIEW_DISABLED_SECRETARIES_XPATH)
+    @FindBy(xpath = SWITCH_VIEW_DISABLED_SECRETARIES_XPATH)
     protected WebElement showDisabledSwitcher;
     @FindBy(xpath = ADD_SECRETARY_BUTTON_XPATH)
     protected WebElement addSecretaryButton;
@@ -32,9 +33,8 @@ public class SecretarysPage extends Page<SecretarysPage> {
     protected WebElement tableHeadEmail;
     @FindBy(xpath = SECRETARY_EDIT_ICON_XPATH)
     List <WebElement> editIcon;
-    @FindBy(xpath = SECRETARIES_LAY_OFF_BUTTON_XPATH)
-    protected WebElement layOffButton;
-
+    @FindBy(xpath = SECRETARY_ROW_XPATH)
+    protected List<WebElement> secretaryRow;
 
     public SecretarysPage(WebDriver driver) {
         super(driver);
@@ -51,14 +51,18 @@ public class SecretarysPage extends Page<SecretarysPage> {
         return new SecretarysEditDetailsTab(driver);
 
     }
-//    public SecretarysPage layOffSecretery(){
-//        clickElement(layOffButton);
-//        return this;                      в єдит дитейлс таб
-//    }
+    public List<String> getSecretaryData() {
+        List<String> secretaryData = new ArrayList<>();
 
-    public static SecretarysPage init(WebDriver driver) {
-        return new SecretarysPage(driver);
+        for (int i = 0; i < secretaryRow.size(); i++) {
+            secretaryData.add(secretaryRow.get(i).getText());
+        }
+        return secretaryData;
     }
+
+//    public static SecretarysPage init(WebDriver driver) {
+//        return new SecretarysPage(driver);
+//    }
 
     public SecretarysPage inputSearchSecretary(String nameSurname) {
         fillField(searchInputFieldBox, nameSurname);
@@ -83,7 +87,7 @@ public class SecretarysPage extends Page<SecretarysPage> {
         clickElement(showDisabledSwitcher);
         return this;
     }
-   @Override
+       @Override
     public boolean isAt() {
         return pageName.getText().equals("Secretaries");
   }
