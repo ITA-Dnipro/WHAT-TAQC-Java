@@ -12,7 +12,7 @@ import util.UnassignedUser;
 
 import java.io.IOException;
 
-public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValues extends BaseTest {
+public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValuesTest extends BaseTest {
 
     private UnassignedUser user;
 

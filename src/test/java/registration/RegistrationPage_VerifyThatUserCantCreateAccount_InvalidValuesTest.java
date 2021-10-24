@@ -12,12 +12,12 @@ import java.io.IOException;
 
 import static constants.PathsToFiles.Registration.REGISTRATION_INVALID_DATA;
 
-public class RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValues extends BaseTest {
+public class RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValuesTest extends BaseTest {
 
     private RegistrationInvalidData[] invalidData;
     private RegistrationPage registrationPage;
 
-    RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValues() throws IOException {
+    RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValuesTest() throws IOException {
         invalidData = RegistrationInvalidData.getData(REGISTRATION_INVALID_DATA);
     }
 
