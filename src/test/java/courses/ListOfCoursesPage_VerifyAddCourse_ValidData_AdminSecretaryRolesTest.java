@@ -20,7 +20,7 @@ public class ListOfCoursesPage_VerifyAddCourse_ValidData_AdminSecretaryRolesTest
     private String courseName;
 
     @BeforeMethod
-    public void preconditions() throws IOException {
+    public void setUp() throws IOException {
         coursesPage = new CoursesPage(driver);
         AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)

@@ -11,6 +11,7 @@ import page.lessons.LessonsPage;
 import page.mentors.EditMentorsDetailsPage;
 import page.mentors.MentorsTablePage;
 import page.myProfile.MyProfilePage;
+import page.secretarys.SecretarysPage;
 import page.students.StudentsPage;
 import page.unassigned.UnassignedUsersPage;
 
@@ -36,6 +37,8 @@ public class Endpoints {
     public static final String COURSES = BASE_URL + "/courses";
     public static final String ADD_COURSE = COURSES + "/add";
     public static final String MY_PROFILE = BASE_URL + "/my-profile";
+    public static final String SECRETARY = BASE_URL+ "/secretaries";
+
 
 
     public static Map<String, Page> getPages(WebDriver driver) {
@@ -51,6 +54,7 @@ public class Endpoints {
         pages.put(COURSES, new CoursesPage(driver));
         pages.put(ADD_COURSE, new AddCoursePage(driver));
         pages.put(MY_PROFILE, new MyProfilePage(driver));
+        pages.put(SECRETARY, new SecretarysPage(driver));
         return pages;
     }
 }
