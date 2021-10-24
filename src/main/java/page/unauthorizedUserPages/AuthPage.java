@@ -45,6 +45,7 @@ public class AuthPage extends BaseElement {
         initDefaultPages();
     }
 
+   //region Action
     public AuthPage fillMail(String mail) {
         fillField(mailInput, mail);
         return this;
@@ -63,6 +64,7 @@ public class AuthPage extends BaseElement {
     public static AuthPage init(WebDriver driver) throws IOException {
         return new AuthPage(driver);
     }
+//endregion
 
     public <T extends Page> T logInAs(Role role, Class<T> type) {
         fillMail(users.get(role.getRoleName()).getMail())
