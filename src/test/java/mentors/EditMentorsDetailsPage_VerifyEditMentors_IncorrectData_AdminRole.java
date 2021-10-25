@@ -23,20 +23,12 @@ import java.io.IOException;
 
 public class EditMentorsDetailsPage_VerifyEditMentors_IncorrectData_AdminRole extends BaseTest {
     InvalidData[] data;
-    String nameMentors ;
-    String surNameMentors ;
-    String passwordMentors ;
-    String emailMentors ;
     UnassignedUser mentor;
    EditMentorsDetailsPage editMentorsPage;
 
     public EditMentorsDetailsPage_VerifyEditMentors_IncorrectData_AdminRole() throws IOException {
-        nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
-        emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
-        mentor= UnassignedUser.getUnassignedUser(nameMentors,surNameMentors,emailMentors,passwordMentors);
-        data=InvalidData.getData(PathsToFiles.Mentors.EDIT_MENTOR_ERRORS); // паст оф файлс
+        mentor= UnassignedUser.getUnassignedUser();
+        data=InvalidData.getData(PathsToFiles.Mentors.EDIT_MENTOR_ERRORS);
     }
 
     @BeforeClass
