@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static api.APIConstants.Headers.AUTHORIZATION;
 
-public class MentorRequests extends BaseRequests{
+public class MentorRequests extends BaseRequests {
 
     public MentorRequests() throws IOException {
         registeredUser = logIn(User.get(PathsToFiles.getPathToCredentials())

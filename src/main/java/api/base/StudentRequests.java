@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import static api.APIConstants.Headers.AUTHORIZATION;
 
-public class StudentRequests extends BaseRequests{
+public class StudentRequests extends BaseRequests {
 
     public StudentRequests() throws IOException {
         registeredUser = logIn(User.get(PathsToFiles.getPathToCredentials())

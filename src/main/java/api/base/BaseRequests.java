@@ -6,8 +6,10 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import util.User;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import static api.APIConstants.AccountEndpoints.AUTH_ENDPOINT;
 import static api.APIConstants.BASE_LINK;
 import static api.APIConstants.Headers.APPLICATION_JSON;
