@@ -2,20 +2,31 @@ package api.lessons;
 
 import api.base.request.AdminRequests;
 import api.base.request.BaseRequests;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import constants.PathsToFiles;
+import io.restassured.response.Response;
 import lessons.data.AddLessonJson;
 import util.User;
+import java.io.IOException;
 
 public class LessonServiceApi implements LessonsService {
 
-    BaseRequests requests = new AdminRequests(new User("james.smith@example.com", "_JkcG9dB"));
-
-    @Override
-    public <T> T addLesson(AddLessonJson addLessonJson) {
-        return null;
+    BaseRequests requests;
+    String lessons = "/lessons";
+    {
+        try {
+            requests = new AdminRequests(User.get(PathsToFiles.getPathToCredentials()).get("admin"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public AddLessonJson[] getLessons(){
+    public Response addLesson(AddLessonJson addLessonJson) throws JsonProcessingException {
+        return requests.sendPost(lessons, new ObjectMapper().writeValueAsString(addLessonJson));
+    }
 
-        return requests.sendGet("/lessons").getBody().as(AddLessonJson[].class);
+    public Response getLessons(){
+        return requests.sendGet(lessons);
     }
 }

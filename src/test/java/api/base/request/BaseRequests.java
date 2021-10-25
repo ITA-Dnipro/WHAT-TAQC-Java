@@ -16,7 +16,6 @@ public class BaseRequests {
 
     public BaseRequests() {
         request = RestAssured.given();
-        RestAssured.defaultParser = Parser.JSON;
         headers = new HashMap<>();
         headers.put("Content-type", "application/json");
     }
@@ -26,7 +25,6 @@ public class BaseRequests {
     }
 
     public Response sendPost(String url, String body){
-
         return request.accept("application/json")
                 .contentType(ContentType.JSON)
                 .headers(headers)
