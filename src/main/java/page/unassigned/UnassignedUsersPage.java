@@ -1,5 +1,6 @@
 package page.unassigned;
 
+import constants.Endpoints;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,7 +50,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
 
     @Override
     public boolean isAt() {
-        return addButton.get(0).getText().equals("Add role");
+        return driver.getCurrentUrl().equals(Endpoints.UNASSIGNED_USERS);
     }
 
     public UnassignedUsersPage addRole(String email, UnassignedRole role) {
