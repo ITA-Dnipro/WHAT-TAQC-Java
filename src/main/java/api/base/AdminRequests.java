@@ -1,8 +1,7 @@
-package api.base.request;
+package api.base;
 
-import lessons.util.UserApi;
+import api.entities.UserApi;
 import util.User;
-import java.util.HashMap;
 
 public class AdminRequests extends BaseRequests{
 
@@ -10,7 +9,6 @@ public class AdminRequests extends BaseRequests{
 
     public AdminRequests(User user) {
         this.user = new UnauthorizedRequests().logIn(user);
-        headers = new HashMap<>();
         this.headers.put("Authorization", this.user.getRoleList().get("admin"));
         setHeaders(this.headers);
     }

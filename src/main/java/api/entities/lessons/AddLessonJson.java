@@ -1,4 +1,4 @@
-package lessons.data;
+package api.entities.lessons;
 
 import java.util.List;
 
