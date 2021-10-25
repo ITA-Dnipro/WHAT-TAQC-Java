@@ -1,5 +1,6 @@
 package lessons.util;
 
+import api.entities.UserApi;
 import constants.PathsToFiles;
 import util.User;
 import java.nio.file.Files;

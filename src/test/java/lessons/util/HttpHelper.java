@@ -1,5 +1,6 @@
 package lessons.util;
 
+import api.entities.UserApi;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import util.User;
