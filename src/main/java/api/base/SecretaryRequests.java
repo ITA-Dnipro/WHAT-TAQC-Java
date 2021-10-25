@@ -8,12 +8,12 @@ import java.io.IOException;
 
 import static api.APIConstants.Headers.AUTHORIZATION;
 
-public class AdminRequests extends BaseRequests{
+public class SecretaryRequests extends BaseRequests{
 
-    public AdminRequests() throws IOException {
+    public SecretaryRequests() throws IOException {
         registeredUser = logIn(User.get(PathsToFiles.getPathToCredentials())
-                .get(Role.ADMIN.getRoleName()));
+                .get(Role.SECRETARY.getRoleName()));
         this.headers.put(AUTHORIZATION,
-                registeredUser.getRoleList().get(Role.ADMIN.getRoleName()));
+                registeredUser.getRoleList().get(Role.SECRETARY.getRoleName()));
     }
 }
