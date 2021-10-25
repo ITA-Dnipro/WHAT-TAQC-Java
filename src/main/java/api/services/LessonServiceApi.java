@@ -1,16 +1,16 @@
-package api.lessons;
+package api.services;
 
-import api.base.request.AdminRequests;
-import api.base.request.BaseRequests;
+import api.base.AdminRequests;
+import api.base.BaseRequests;
+import api.entities.lessons.AddLessonJson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import constants.PathsToFiles;
 import io.restassured.response.Response;
-import lessons.data.AddLessonJson;
 import util.User;
 import java.io.IOException;
 
-public class LessonServiceApi implements LessonsService {
+public class LessonServiceApi {
 
     BaseRequests requests;
     String lessons = "/lessons";

@@ -1,8 +1,7 @@
 package api.base;
 
-import api.lessons.LessonServiceApi;
+import api.services.LessonServiceApi;
 import org.testng.annotations.BeforeClass;
-import static org.assertj.core.api.Assertions.*;
 
 public class Test extends BaseTestApi{
 

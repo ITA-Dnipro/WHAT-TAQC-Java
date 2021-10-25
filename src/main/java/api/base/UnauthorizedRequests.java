@@ -1,6 +1,6 @@
-package api.base.request;
+package api.base;
 
-import lessons.util.UserApi;
+import api.entities.UserApi;
 import util.User;
 
 public class UnauthorizedRequests extends BaseRequests{
