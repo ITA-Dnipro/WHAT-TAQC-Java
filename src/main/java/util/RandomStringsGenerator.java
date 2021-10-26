@@ -36,4 +36,8 @@ public class RandomStringsGenerator {
         String generatedString = upperCaseCharacter.append(lowerCaseCharacters).toString();
         return generatedString;
     }
+    public static String getRandomEmail(int localPartLength, String domain){
+        String email = getAlphabeticStringLowerCaseCharacters(localPartLength)+"@"+domain;
+        return email;
+    }
 }
