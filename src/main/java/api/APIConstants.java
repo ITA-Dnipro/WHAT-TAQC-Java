@@ -4,11 +4,15 @@ public class APIConstants {
     public static final String BASE_LINK = "https://charliebackendapi.azurewebsites.net/api/v2";
 
     public interface AccountEndpoints {
-        String COURSES_ENDPOINT = "/courses"; //Нет нужды пихать сюда базовую линку. Она закручена в запросы.
         String AUTH_ENDPOINT = "/accounts/auth";
+        String CHANGE_PASSWORD = "/api/v2/accounts/password";
     }
 
-    public interface Lessons{
+    public interface Courses {
+        String COURSES_ENDPOINT = "/courses";
+    }
+
+    public interface Lessons {
         String LESSONS = "/lessons/";
         String ADD_LESSON = LESSONS + "add";
     }
