@@ -8,6 +8,7 @@ public class User {
     protected String firstName;
     protected String lastName;
     protected String password;
+    protected String confirmPassword;
 
     public User() {
     }
@@ -17,6 +18,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
+        this.confirmPassword = password;
     }
 
     public static User getUserWithRandomValues() {
@@ -57,5 +59,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }
