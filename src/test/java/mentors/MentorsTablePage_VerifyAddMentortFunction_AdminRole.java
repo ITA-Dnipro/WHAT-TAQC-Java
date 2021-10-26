@@ -17,19 +17,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MentorsTablePage_VerifyAddMentortFunction_AdminRole extends BaseTest {
-    String nameMentors;
-    String surNameMentors;
-    String passwordMentors;
-    String emailMentors;
     UnassignedUser mentor;
     MentorsTablePage mentorsTablePage;
 
     public MentorsTablePage_VerifyAddMentortFunction_AdminRole() {
-        nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
-        emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
-        mentor = UnassignedUser.getUnassignedUser(nameMentors, surNameMentors, emailMentors, passwordMentors);
+        mentor = UnassignedUser.getUnassignedUser();
     }
 
     @BeforeClass
@@ -45,15 +37,15 @@ public class MentorsTablePage_VerifyAddMentortFunction_AdminRole extends BaseTes
 
     @Test(description = "DP213-159")
     public void verifyAddMentorFunction() {
-        List<String> exceptData = Arrays.asList(nameMentors, surNameMentors, emailMentors);
+        List<String> exceptData = Arrays.asList(mentor.getFirstName(), mentor.getLastName(), mentor.getEmail());
         mentorsTablePage
                 .addMentor()
                 .isAtPage(waitTime)
-                .addRole(emailMentors, UnassignedRole.MENTOR)
+                .addRole(mentor.getEmail(), UnassignedRole.MENTOR)
                 .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)
                 .isAtPage(waitTime)
-                .inputSearchMentor(nameMentors + " " + surNameMentors)
-                .verifyInputSearchField(nameMentors + " " + surNameMentors)
+                .inputSearchMentor(mentor.getFirstName() + " " + mentor.getLastName())
+                .verifyInputSearchField(mentor.getFirstName() + " " + mentor.getLastName())
                 .verifyMentorsDataInTheTable(exceptData)
                 .assertAll();
 

@@ -17,10 +17,7 @@ import util.UnassignedUser;
 import java.io.IOException;
 
 public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData_AdminRole extends BaseTest {
-    String nameMentors ;
-    String surNameMentors ;
-    String passwordMentors ;
-    String emailMentors ;
+
     String newNameOfMentors;
     String newSurNameOfMentors;
     String newEmailOfMentors;
@@ -29,14 +26,10 @@ public class EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData_AdminRole
     String editMentorURL;
 
     public EditMentorDetailsPage_VerifyEditMentorDetails_CorrectData_AdminRole() {
-        nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
-        emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
-        newNameOfMentors=nameMentors+"new";
-        newSurNameOfMentors=surNameMentors+"new";
-        newEmailOfMentors=emailMentors+"new";
-        mentor= UnassignedUser.getUnassignedUser(nameMentors,surNameMentors,emailMentors,passwordMentors);
+        mentor= UnassignedUser.getUnassignedUser();
+        newNameOfMentors=mentor.getFirstName()+"new";
+        newSurNameOfMentors=mentor.getLastName()+"new";
+        newEmailOfMentors=mentor.getEmail()+"new";
     }
     @BeforeClass
     public void setUp() throws IOException {

@@ -238,21 +238,21 @@ public class Locators {
         String LIST_COURSES_XPATH = "//datalist[@id='course-list']/option";
         String DELETE_COURSE_BUTTON_XPATH = "//button[contains(@class,'delCourse')]";
         String ADD_COURSE_BUTTON_XPATH = "//button[@id='addCourse']";
-        String DISABLE_BUTTON_XPATH = "//button[text()='Disable']";
+        String DISABLE_BUTTON_XPATH = "//span[text()='Lay off']";
         String CLEAR_BUTTON_XPATH = "//button[text()='Reset']";
         String SAVE_BUTTON_XPATH = "//button[text()='Save']";
         String TITLE_XPATH = "//h3[text()='Mentor Editing']";
         String FIRST_NAME_ERROR = "//input[@id='firstName']/parent::div/div";
         String LAST_NAME_ERROR = "//input[@id='lastName']/parent::div/div";
         String EMAIL_ERROR = "//input[@id='email']/parent::div/div";
-        String REMOVE_MENTOR_BUTTON="//button[text()='Delete']";
+        String REMOVE_MENTOR_BUTTON="//button[text()='Lay off']";
         String LIST_OF_GROUPS_CARDS="//ul[@data-testid='li-groups']/li";
         String LIST_OF_COURSE_CARDS="//ul[@data-testid='li-courses']/li";
     }
 
     public interface StudentsPage {
         String PAGE_TITLE_TAG_NAME = "h2";
-        String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput";
+        String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput___34nMl";
         String SHOW_DISABLED_SWITCHER_ID = "show-disabled-check";
         String ADD_STUDENT_BUTTON_XPATH = "//*[contains(text(), 'Add a student')]";
         String TABLE_STUDENTS_XPATH = "//tbody";

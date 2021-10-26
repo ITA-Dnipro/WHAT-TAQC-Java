@@ -17,7 +17,7 @@ public class PathsToFiles {
 
     public static String getPathToValidPasswords() throws IOException {
         Properties properties = new Properties();
-        properties.load(new FileInputStream(BASE_PATH + "validRequirements.properties"));
+        properties.load(new FileInputStream(BASE_PATH + "paths.properties"));
         return properties.getProperty("valid.password");
     }
 

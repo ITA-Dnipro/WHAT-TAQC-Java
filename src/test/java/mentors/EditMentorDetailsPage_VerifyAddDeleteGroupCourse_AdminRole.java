@@ -20,19 +20,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class EditMentorDetailsPage_VerifyAddDeleteGroupCourse_AdminRole extends BaseTest {
-    String nameMentors;
-    String surNameMentors;
-    String passwordMentors;
-    String emailMentors;
     UnassignedUser mentor;
     EditMentorsDetailsPage editMentorsPage;
 
     public EditMentorDetailsPage_VerifyAddDeleteGroupCourse_AdminRole() {
-        nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
-        emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
-        mentor= UnassignedUser.getUnassignedUser(nameMentors,surNameMentors,emailMentors,passwordMentors);
+        mentor= UnassignedUser.getUnassignedUser();
     }
     @BeforeClass
     public void setUp() throws IOException {
