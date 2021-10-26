@@ -1,8 +1,16 @@
 package api.entities.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import util.RandomStringsGenerator;
 
 public class User {
+
+    @JsonIgnore
+    protected String id;
+    @JsonIgnore
+    protected Integer role;
+    @JsonIgnore
+    protected Boolean isActive;
 
     protected String email;
     protected String firstName;
@@ -24,9 +32,9 @@ public class User {
     public static User getUserWithRandomValues() {
         String firstName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
         String lastName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        String password = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
+        String password = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "A1_";
         String email = RandomStringsGenerator.getRandomEmail(5, "gmail.com");
-        return new User(firstName, lastName, email, password);
+        return new User(email, firstName, lastName, password);
     }
 
     public String getEmail() {
@@ -67,5 +75,29 @@ public class User {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean active) {
+        isActive = active;
     }
 }
