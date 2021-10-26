@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddRoleMentor extends BaseTest {
+public class UnassignedUsersPage_VerifyAddMentorsRole extends BaseTest {
     private UnassignedUser mentor;
 
     @BeforeClass

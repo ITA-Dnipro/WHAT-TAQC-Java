@@ -39,7 +39,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     protected WebElement backArrow;
     @FindBy(xpath = TITLE_XPATH)
     protected WebElement title;
-    @FindBy (xpath = TABLE_ADD_ROLE_BUTTON_TAG_NAME)
+    @FindBy (linkText = TABLE_ADD_ROLE_BUTTON_TAG_NAME)
     protected List<WebElement> addButton;
 
     public UnassignedUsersPage(WebDriver driver) {

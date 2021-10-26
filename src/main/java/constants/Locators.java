@@ -121,12 +121,12 @@ public class Locators {
         String SECRETARIES_LAST_NAME_WINDOW_XPATH = "//input[@name='lastName']";
         String SECRETARIES_EMAIL_WINDOW_XPATH = "//input[@name='email']";
         String SECRETARIES_LAY_OFF_BUTTON_XPATH = "//button[contains(text (), 'Lay off')]";
-        String SECRETARIES_CLEAR_BUTTON_XPATH = "//button[contains(text (), 'Clear')]";
         String SECRETARIES_SAVE_BUTTON_XPATH = "//button[contains(text (), 'Save')]";
         String SECRETARIES_DETAILS_TITLE = "//h3[contains(text (),'details')]";
         String SECRETARIES_DETAILS_FNAME= "//div[text()= 'First Name:']";
         String SECRETARIES_DETAILS_LNAME= "//div[text()= 'Last Name:']";
         String SECRETARIES_DETAILS_EMAIL= "//div[text()= 'Email address:']";
+        String REMOVE_SECRETARY_BUTTON="//button[text()='Delete']";
 
     }
 
@@ -141,7 +141,7 @@ public class Locators {
         String TABLE_CELL_TAG_NAME = "td";
         String TABLE_ROLES_DROPDOWN_MENU_TAG_NAME = "select";
         String TABLE_ROLE_DROPDOWN_MENU_OPTIONS_TAG_NAME = "option";
-        String TABLE_ADD_ROLE_BUTTON_TAG_NAME = "button";
+        String TABLE_ADD_ROLE_BUTTON_TAG_NAME = "Add role";
         String TITLE_XPATH="//th[text()='Choose role']";
     }
 

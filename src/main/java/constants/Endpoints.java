@@ -11,6 +11,7 @@ import page.lessons.LessonsPage;
 import page.mentors.EditMentorsDetailsPage;
 import page.mentors.MentorsTablePage;
 import page.myProfile.MyProfilePage;
+import page.secretarys.SecretarysEditDetailsPage;
 import page.secretarys.SecretarysPage;
 import page.students.StudentsPage;
 import page.unassigned.UnassignedUsersPage;
@@ -38,6 +39,7 @@ public class Endpoints {
     public static final String ADD_COURSE = COURSES + "/add";
     public static final String MY_PROFILE = BASE_URL + "/my-profile";
     public static final String SECRETARY = BASE_URL+ "/secretaries";
+    public static final String SECRETARY_EDIT= BASE_URL+"/secretaries/";
 
 
 
@@ -55,6 +57,7 @@ public class Endpoints {
         pages.put(ADD_COURSE, new AddCoursePage(driver));
         pages.put(MY_PROFILE, new MyProfilePage(driver));
         pages.put(SECRETARY, new SecretarysPage(driver));
+        pages.put(SECRETARY_EDIT, new SecretarysEditDetailsPage(driver));
         return pages;
     }
 }
