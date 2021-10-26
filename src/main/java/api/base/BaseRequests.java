@@ -1,6 +1,6 @@
 package api.base;
 
-import api.entities.RegisteredUser;
+import api.entities.users.RegisteredUser;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;

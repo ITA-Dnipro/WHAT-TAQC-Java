@@ -1,6 +1,6 @@
 package lessons.util;
 
-import api.entities.RegisteredUser;
+import api.entities.users.RegisteredUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import util.User;
