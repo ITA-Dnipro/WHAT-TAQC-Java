@@ -1,10 +1,19 @@
 package api.entities.mentors;
 
-public class MentorInformation {
+public class Mentor {
     Integer id;
     String email;
     String firstName;
     String lastName;
+    String avatarUrl;
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
 
     public Integer getId() {
         return id;

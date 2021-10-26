@@ -25,6 +25,5 @@ public class APIConstants {
     public interface Mentors{
         String MENTORS="/mentors/";
         String ACTIVE_MENTORS=MENTORS+"active/";
-        String GROUPS="/groups/";
     }
 }
