@@ -6,6 +6,7 @@ public class APIConstants {
     public interface AccountEndpoints {
         String AUTH_ENDPOINT = "/accounts/auth";
         String CHANGE_PASSWORD = "/api/v2/accounts/password";
+        String REGISTRATION = "/accounts/reg";
     }
 
     public interface Courses {
