@@ -1,9 +1,10 @@
-package lessons.util;
+package api.entities;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.Map;
 
-public class UserApi {
+public class RegisteredUser {
 
     @JsonAlias("first_name")
     String firstName;
@@ -16,6 +17,16 @@ public class UserApi {
 
     @JsonIgnore
     String token;
+
+    Map<String,String> roleList;
+
+    public Map<String, String> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(Map<String, String> roleList) {
+        this.roleList = roleList;
+    }
 
     public String getToken() {
         return token;

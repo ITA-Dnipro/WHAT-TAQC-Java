@@ -1,5 +1,6 @@
 package lessons.util;
 
+import api.entities.RegisteredUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import util.User;
@@ -14,7 +15,7 @@ public class HttpHelper {
     private static final String authPage = basePage + "/accounts/auth";
     private static final Logger log = Logger.getLogger(HttpHelper.class);
 
-    public static UserApi logInAPI(User user) throws Exception {
+    public static RegisteredUser logInAPI(User user) throws Exception {
         URL url = new URL(authPage);
         HttpURLConnection http = (HttpURLConnection)url.openConnection();
         http.setRequestMethod("POST");
@@ -37,7 +38,7 @@ public class HttpHelper {
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(
                         inputStream));
-        UserApi userApi = new ObjectMapper().readValue(in.readLine(), UserApi.class);
+        RegisteredUser userApi = new ObjectMapper().readValue(in.readLine(), RegisteredUser.class);
         log.info("Logged in as " + userApi.getFirstName() + " " + userApi.getLastName());
         userApi.setToken(http.getHeaderField("Authorization"));
         in.close();

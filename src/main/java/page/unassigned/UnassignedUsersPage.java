@@ -1,5 +1,6 @@
 package page.unassigned;
 
+import constants.Endpoints;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,6 +42,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     protected WebElement title;
     @FindBy (linkText = TABLE_ADD_ROLE_BUTTON_TAG_NAME)
     protected List<WebElement> addButton;
+    // через фабрику нашла все строки таблицы , то т.к у нас динамическая таблица, по этому сделано через find element
 
     public UnassignedUsersPage(WebDriver driver) {
         super(driver);
@@ -48,7 +50,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
 
     @Override
     public boolean isAt() {
-        return addButton.get(0).getText().equals("Add role");
+        return driver.getCurrentUrl().equals(Endpoints.UNASSIGNED_USERS);
     }
 
     public UnassignedUsersPage addRole(String email, UnassignedRole role) {
@@ -75,7 +77,6 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     public WebElement findUserRowByEmail(String email) {
         WebElement rowUser;
         do {
-
             rowUser = tableRows.stream()
                     .filter(row -> {
                         List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME))
@@ -134,7 +135,6 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
         }
         return mentorsNames;
     }
-
     public UnassignedUsersPage clickOnPaginationPage(int numberOfPage) {
         if (numberOfPage == 1) {
             clickElement(firstPage);
@@ -162,6 +162,5 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
         }
         return this;
     }
-
 }
 

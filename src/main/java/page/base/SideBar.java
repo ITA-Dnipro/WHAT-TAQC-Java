@@ -19,15 +19,14 @@ public class SideBar extends BaseElement {
         return getItemFromMenu(sideBarItems, item.itemName);
     }
 
-    public <T> T clickSideBarItem(SideMenuItem item, T page){
-        getItemFromMenu(sideBarItems, item.itemName).click();
-        return page;
-    }
-
     public List<WebElement> getSideBarItems() {
         return sideBarItems;
     }
 
+    public <T> T clickSideBarItem(SideMenuItem item, T page){
+        getItemFromMenu(sideBarItems, item.itemName).click();
+        return page;
+    }
     public enum SideMenuItem {
         STUDENTS("Students"),
         MENTORS("Mentors"),

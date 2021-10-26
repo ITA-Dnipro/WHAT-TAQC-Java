@@ -30,6 +30,7 @@ public class UnassignedUsersPage_VerifyAddSecretaryRole extends BaseTest {
                 .clickRegistrationLink()
                 .registerUser(secretary)
                 .logInAs(Role.ADMIN, StudentsPage.class)
+                .isAtPage(waitTime)
                 .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
                 .addRole(secretary.getEmail(), UnassignedRole.SECRETARY)
                 .redirectTo(Endpoints.SECRETARY, SecretarysPage.class)

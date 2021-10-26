@@ -1,4 +1,4 @@
-package unassignedUsers;
+package unassignedUsers.data;
 
 import base.BaseTest;
 import constants.Endpoints;
@@ -17,12 +17,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class UnassignedUsersPage_VerifyAddMentorsRole extends BaseTest {
+public class AddRoleMentor extends BaseTest {
     private UnassignedUser mentor;
 
     @BeforeClass
-    public void setUp () {
-        mentor = UnassignedUser.getUnassignedUser();
+    public void setUp (){
+        mentor = UnassignedUser.getUnassignedUser(); //в переменную ментор попадает юзер
     }
     @Test
     public void verifyAddMentorRole() throws IOException {
@@ -30,7 +30,6 @@ public class UnassignedUsersPage_VerifyAddMentorsRole extends BaseTest {
                 .clickRegistrationLink()
                 .registerUser(mentor)
                 .logInAs(Role.ADMIN, StudentsPage.class)
-                .isAtPage(waitTime)
                 .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
                 .addRole(mentor.getEmail(), UnassignedRole.MENTOR)
                 .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)

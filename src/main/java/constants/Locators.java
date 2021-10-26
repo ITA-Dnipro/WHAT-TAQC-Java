@@ -1,12 +1,5 @@
 package constants;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
-
-import static constants.Locators.MentorsTablePage.MENTORS_ROW_XPATH;
-
 public class Locators {
 
     private Locators() {
@@ -22,11 +15,6 @@ public class Locators {
 
     public interface CommonElements {
         String SIDE_BAR_XPATH = "//span[@class='sidebar__menu-item___1MMsk']";
-    }
-
-    public interface HomePageUrl {
-        String ADMIN_HOME_PAGE = "http://localhost:8080/students";
-
     }
 
     public interface Header {
@@ -141,7 +129,7 @@ public class Locators {
         String TABLE_CELL_TAG_NAME = "td";
         String TABLE_ROLES_DROPDOWN_MENU_TAG_NAME = "select";
         String TABLE_ROLE_DROPDOWN_MENU_OPTIONS_TAG_NAME = "option";
-        String TABLE_ADD_ROLE_BUTTON_TAG_NAME = "Add role";
+        String TABLE_ADD_ROLE_BUTTON_TAG_NAME = "button";
         String TITLE_XPATH="//th[text()='Choose role']";
     }
 
@@ -163,7 +151,7 @@ public class Locators {
     public interface CourseDetailsPage {
         String ARROW_BUTTON_XPATH = "//a[contains(@class,'align-items-center')]";
         String COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Course details')]";
-        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(@class,'1xEn9')and contains(text(),'Edit course details')]";
+        String EDIT_COURSE_DETAILS_TAB_XPATH = "//a[contains(text(),'Edit course details')]";
         String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String DELETE_BUTTON_XPATH = "//button[contains(text(),'Delete')]";
         String CLEAR_BUTTON_XPATH = "//button[@type='reset']";
@@ -173,11 +161,11 @@ public class Locators {
         String CLOSE_BUTTON_CONFIRM_ACTION_XPATH = "//button[@class='close']";
         String COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[text()='Course Details']";
         String EDIT_COURSE_DETAILS_TAB_TITLE_XPATH = "//h3[text()='Course Editing']";
-        String COURSE_NAME_ERROR_MESSAGE_XPATH = "//p[contains(text(),'Too long')]";
+        String COURSE_NAME_ERROR_MESSAGE_XPATH = "//p[contains(@class,'text-danger')]";
     }
 
     public interface AddCoursePage {
-        String COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
+        String ADD_COURSE_NAME_INPUT_FIELD_XPATH = "//input[@name='name']";
         String CANCEL_BUTTON_ADD_COURSE_XPATH = "//a[@lessons.data-testid='cancelBtn']";
         String SAVE_BUTTON_XPATH = "//button[@id='addCourseSubmit']";
     }
@@ -248,21 +236,21 @@ public class Locators {
         String LIST_COURSES_XPATH = "//datalist[@id='course-list']/option";
         String DELETE_COURSE_BUTTON_XPATH = "//button[contains(@class,'delCourse')]";
         String ADD_COURSE_BUTTON_XPATH = "//button[@id='addCourse']";
-        String DISABLE_BUTTON_XPATH = "//button[text()='Disable']";
+        String DISABLE_BUTTON_XPATH = "//span[text()='Lay off']";
         String CLEAR_BUTTON_XPATH = "//button[text()='Reset']";
         String SAVE_BUTTON_XPATH = "//button[text()='Save']";
         String TITLE_XPATH = "//h3[text()='Mentor Editing']";
         String FIRST_NAME_ERROR = "//input[@id='firstName']/parent::div/div";
         String LAST_NAME_ERROR = "//input[@id='lastName']/parent::div/div";
         String EMAIL_ERROR = "//input[@id='email']/parent::div/div";
-        String REMOVE_MENTOR_BUTTON="//button[text()='Delete']";
+        String REMOVE_MENTOR_BUTTON="//button[text()='Lay off']";
         String LIST_OF_GROUPS_CARDS="//ul[@data-testid='li-groups']/li";
         String LIST_OF_COURSE_CARDS="//ul[@data-testid='li-courses']/li";
     }
 
     public interface StudentsPage {
         String PAGE_TITLE_TAG_NAME = "h2";
-        String SEARCH_INPUT_BOX_CLASSNAME = "//input[@class='search__searchInput___34nMl']";
+        String SEARCH_INPUT_BOX_CLASSNAME = "search__searchInput___34nMl";
         String SHOW_DISABLED_SWITCHER_ID = "show-disabled-check";
         String ADD_STUDENT_BUTTON_XPATH = "//*[contains(text(), 'Add a student')]";
         String TABLE_STUDENTS_XPATH = "//tbody";

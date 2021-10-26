@@ -1,14 +1,12 @@
 package page.courses;
 
 import constants.Endpoints;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import page.base.Page;
 
-import java.security.Key;
 import java.util.List;
 
 import static constants.Locators.Courses.*;
@@ -48,7 +46,7 @@ public class CoursesPage extends Page<CoursesPage> {
     @FindBy(xpath = COURSE_TITLE_XPATH)
     private WebElement loseFocus;
 
-    @FindBy (xpath = ALERT_ADD_COURSE_XPATH)
+    @FindBy(xpath = ALERT_ADD_COURSE_XPATH)
     private WebElement alertAddCourse;
 
     public CoursesPage(WebDriver driver) {
@@ -60,44 +58,25 @@ public class CoursesPage extends Page<CoursesPage> {
         return driver.getCurrentUrl().equals(Endpoints.COURSES);
     }
 
+    //region Actions
     public EditCourseDetailsTab clickEditCourseDetailsTab(int numberRow) {
         clickElement(editButton.get(numberRow));
         return new EditCourseDetailsTab(driver);
     }
 
-    public CourseDetailsTab courseDetailsTab(int numberRow) {
+    public CourseDetailsTab clickCourseDetailsTab(int numberRow) {
         clickElement(courseRow.get(numberRow));
         return new CourseDetailsTab(driver);
     }
 
-    public AddCoursePage addCoursePage() {
+    public AddCoursePage redirectToAddCoursePage() {
         clickElement(addCourseButton);
         return new AddCoursePage(driver);
     }
 
     public CoursesPage fillCourseSearchField(String courseName) {
+        fillField(searchField, " ");
         fillField(searchField, courseName);
-        return this;
-    }
-
-    public CoursesPage titleSortResult() {
-        clickElement(titleSort);
-        return this;
-    }
-
-    public CoursesPage changeDisplayRowsNumber(String rowsNumber) {
-        clickElement(displayRowsValue);
-        getItemFromMenu(numberOfVisibleUsersList, rowsNumber).click();
-        return this;
-    }
-
-    public CoursesPage switchingCoursesPage(int indexCoursePage) {
-        clickElement(paginationList.get(indexCoursePage));
-        return this;
-    }
-
-    public CoursesPage switchingCoursesLook() {
-        clickElement(switcherCoursesTable);
         return this;
     }
 
@@ -113,8 +92,42 @@ public class CoursesPage extends Page<CoursesPage> {
         return alertAddCourse;
     }
 
+
+    public CoursesPage fillCourseSearchFields(String courseName) {
+        fillField(searchField, courseName);
+        return this;
+    }
+    //endregion
+
+    //region Verifies
+    public CoursesPage verifySearchCourseFieldFilled(String data) {
+        softAssert.assertEquals(searchField.getText(), data);
+        return this;
+    }
+
     public CoursesPage verifyOldCourseNameExist(String oldName) {
         softAssert.assertTrue(getCoursesRowsList().get(0).isDisplayed(), oldName);
         return this;
     }
+
+    public CoursesPage verifyAddCourseAlertExist(String data) {
+        softAssert.assertEquals(getAlertAddCourse().getText(), data);
+        return this;
+    }
+
+    public CoursesPage verifyCourseExists(String courseName) {
+        Assert.assertEquals(getCoursesRowsList().get(0).getText(), courseName);
+        return this;
+    }
+
+    public CoursesPage assertAllCoursePages() {
+        assertAll();
+        return this;
+    }
+
+    public CoursesPage verifyCourseNameEdited(String newName) {
+        Assert.assertEquals(getCoursesRowsList().get(0).getText(), newName);
+        return this;
+    }
+    //endregion
 }
