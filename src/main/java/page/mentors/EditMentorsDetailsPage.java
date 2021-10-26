@@ -161,17 +161,7 @@ public class EditMentorsDetailsPage extends Page<EditMentorsDetailsPage> {
         return new MentorsTablePage(driver);
     }
 
-    public String getFirstNameError() {
-        return firstNameError.getText();
-    }
 
-    public String getLastNameError() {
-        return lastNameError.getText();
-    }
-
-    public String getEmailError() {
-        return emailError.getText();
-    }
 
     public EditMentorsDetailsPage loseFocus() {
         clickElement(tittleEditMentors);

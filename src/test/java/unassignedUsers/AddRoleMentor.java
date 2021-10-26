@@ -30,6 +30,7 @@ public class AddRoleMentor extends BaseTest {
                 .clickRegistrationLink()
                 .registerUser(mentor)
                 .logInAs(Role.ADMIN, StudentsPage.class)
+                .isAtPage(waitTime)
                 .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
                 .addRole(mentor.getEmail(), UnassignedRole.MENTOR)
                 .redirectTo(Endpoints.MENTORS, MentorsTablePage.class)
