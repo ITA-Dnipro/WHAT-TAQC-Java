@@ -2,7 +2,7 @@ package api.lessons;
 
 import api.base.SecretaryRequests;
 import api.services.LessonServiceApi;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import java.io.IOException;
 
 public class Lessons_VerifyGettingListOfLessons_AsSecretary_Test {
@@ -14,7 +14,7 @@ public class Lessons_VerifyGettingListOfLessons_AsSecretary_Test {
         lessonServiceApi = new LessonServiceApi(new SecretaryRequests());
     }
 
-    @org.testng.annotations.Test
+    @Test
     public void getLessons() {
         lessonServiceApi.getLessons()
                 .then().assertThat()

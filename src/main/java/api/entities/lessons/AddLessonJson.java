@@ -21,51 +21,49 @@ public class AddLessonJson {
         this.id = id;
     }
 
-    public void setMentorId(Integer mentorId) {
+    public AddLessonJson setMentorId(Integer mentorId) {
         this.mentorId = mentorId;
+        return this;
     }
 
-    public void setStudentGroupId(Integer studentGroupId) {
+    public AddLessonJson setStudentGroupId(Integer studentGroupId) {
         this.studentGroupId = studentGroupId;
+        return this;
     }
 
     public String getThemeName() {
         return themeName;
     }
 
-    public void setThemeName(String themeName) {
+    public AddLessonJson setThemeName(String themeName) {
         this.themeName = themeName;
+        return this;
     }
 
     public int getMentorId() {
         return mentorId;
     }
 
-    public void setMentorId(int mentorId) {
+    public AddLessonJson setMentorId(int mentorId) {
         this.mentorId = mentorId;
-    }
-
-    public int getStudentGroupId() {
-        return studentGroupId;
-    }
-
-    public void setStudentGroupId(int studentGroupId) {
-        this.studentGroupId = studentGroupId;
+        return this;
     }
 
     public List<ClassBookItem> getLessonVisits() {
         return lessonVisits;
     }
 
-    public void setLessonVisits(List<ClassBookItem> lessonVisits) {
+    public AddLessonJson setLessonVisits(List<ClassBookItem> lessonVisits) {
         this.lessonVisits = lessonVisits;
+        return this;
     }
 
     public String getLessonDate() {
         return lessonDate;
     }
 
-    public void setLessonDate(String lessonDate) {
+    public AddLessonJson setLessonDate(String lessonDate) {
         this.lessonDate = lessonDate;
+        return this;
     }
 }
