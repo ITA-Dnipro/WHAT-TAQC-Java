@@ -1,4 +1,4 @@
-package lessons.data;
+package api.entities.lessons;
 
 public class ClassBookItem {
 

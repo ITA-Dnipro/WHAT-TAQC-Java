@@ -18,19 +18,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MentrorsTablePage_VerifySearchingOfActiveMentors_AdminRole extends BaseTest {
-    String nameMentors;
-    String surNameMentors;
-    String passwordMentors;
-    String emailMentors;
     UnassignedUser mentor;
     MentorsTablePage mentorsTablePage;
 
     public MentrorsTablePage_VerifySearchingOfActiveMentors_AdminRole() throws IOException {
-        nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        surNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
-        emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
-        mentor = UnassignedUser.getUnassignedUser(nameMentors, surNameMentors, emailMentors, passwordMentors);
+        mentor = UnassignedUser.getUnassignedUser();
     }
 
     @BeforeClass
@@ -51,9 +43,9 @@ public class MentrorsTablePage_VerifySearchingOfActiveMentors_AdminRole extends 
     @Test(description = "DP213-167")
     public void verifySearchingOfActiveMentors() {
         String invalidData="6";
-        List<String> expectFound = Arrays.asList(nameMentors, surNameMentors, emailMentors);
-        mentorsTablePage.inputSearchMentor(nameMentors + " " + surNameMentors)
-                .verifyInputSearchField(nameMentors + " " + surNameMentors)
+        List<String> expectFound = Arrays.asList(mentor.getFirstName(), mentor.getLastName(), mentor.getEmail());
+        mentorsTablePage.inputSearchMentor(mentor.getFirstName() + " " + mentor.getLastName())
+                .verifyInputSearchField(mentor.getFirstName() + " " + mentor.getLastName())
                 .verifyMentorsDataInTheTable(expectFound)
                 .inputSearchMentor(invalidData)
                 .verifyInputSearchField(invalidData)

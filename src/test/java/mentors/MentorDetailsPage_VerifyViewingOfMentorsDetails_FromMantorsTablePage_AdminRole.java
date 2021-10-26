@@ -16,19 +16,12 @@ import util.UnassignedUser;
 import java.io.IOException;
 
 public class MentorDetailsPage_VerifyViewingOfMentorsDetails_FromMantorsTablePage_AdminRole extends BaseTest {
-    String nameMentors;
-    String lastNameMentors;
-    String passwordMentors;
-    String emailMentors;
+
     UnassignedUser mentor;
     MentorsTablePage mentorsTablePage;
 
     public MentorDetailsPage_VerifyViewingOfMentorsDetails_FromMantorsTablePage_AdminRole() {
-        nameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        lastNameMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        passwordMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
-        emailMentors = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
-        mentor = UnassignedUser.getUnassignedUser(nameMentors, lastNameMentors, emailMentors, passwordMentors);
+        mentor = UnassignedUser.getUnassignedUser();
     }
 
     @BeforeClass
@@ -50,9 +43,9 @@ public class MentorDetailsPage_VerifyViewingOfMentorsDetails_FromMantorsTablePag
         @Test(description = "DP213-149")
     public void verifyViewingOfMentorsDetails_FromMentorsTablePage(){
         mentorsTablePage.viewMentorsDetails(0)
-                .verifyFirstName(nameMentors)
-                .verifyLastName(lastNameMentors)
-                .verifyEmail(emailMentors)
+                .verifyFirstName(mentor.getFirstName())
+                .verifyLastName(mentor.getLastName())
+                .verifyEmail(mentor.getEmail())
                 .assertAll();
         }
 
