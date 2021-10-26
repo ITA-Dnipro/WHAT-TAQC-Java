@@ -1,6 +1,6 @@
 package lessons.util;
 
-import api.entities.UserApi;
+import api.entities.RegisteredUser;
 import constants.PathsToFiles;
 import util.User;
 import java.nio.file.Files;
@@ -13,7 +13,7 @@ public class ApiAddLessonStrategy implements AddLessonStrategy{
 
     @Override
     public boolean addNewLesson(User user) throws Exception {
-        UserApi userApi = HttpHelper.logInAPI(user);
+        RegisteredUser userApi = HttpHelper.logInAPI(user);
 
         return HttpHelper.postRequest(endpoint, new String(Files.readAllBytes(
                 Paths.get(path))),
