@@ -1,6 +1,5 @@
 package api.services;
 
-import api.APIConstants;
 import api.base.BaseRequests;
 import io.restassured.response.Response;
 import static api.APIConstants.Student.*;
