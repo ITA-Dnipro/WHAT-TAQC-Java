@@ -38,18 +38,15 @@ public class AccountsServiceApi {
         return request.sendGet(GET_ALL_REGISTERED_USERS);
     }
 
-    private void initRole() throws IOException {
-        addUserRole.put(Role.MENTOR.getRoleName(), new MentorsServiceApi(new AdminRequests()));
-//        addUserRole.put(Role.STUDENT.getRoleName(), new LessonsPage(driver));
-    }
-    private RegisteredUser getUserWithRole(Role role, int id){
-        RegisteredUser registeredUser = addUserRole
-                .get(role.getRoleName())
-                .postAssignMentor(id)
+    public static RegisteredUser getMentor(RegisteredUser registeredUser) throws IOException {
+        return new MentorsServiceApi(new AdminRequests())
+                .postAssignMentor(registeredUser.getId())
                 .as(RegisteredUser.class);
-        return registeredUser;
     }
-
-
+    public static RegisteredUser getStudent(RegisteredUser registeredUser) throws IOException {
+        return new StudentServiceApi(new AdminRequests())
+                .postAssignStudent(registeredUser.getId())
+                .as(RegisteredUser.class);
+    }
 
 }

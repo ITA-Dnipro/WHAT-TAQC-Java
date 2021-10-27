@@ -15,8 +15,17 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class GetMentorTest {
 
 
-    public static void main(String[] args) throws JsonProcessingException {
-        RegisteredUser mentor = Helper.getMentor();
+    public static void main(String[] args) throws IOException {
+        User unassignedUser = User.getUserWithRandomValues();
+
+        AccountsServiceApi serviceApi = new AccountsServiceApi();
+
+        RegisteredUser mentor = serviceApi
+                .registrationAccount(unassignedUser)
+                .as(RegisteredUser.class);
+        System.out.println(mentor.toString());
+
+        mentor = AccountsServiceApi.getMentor(mentor);
 
         System.out.println(mentor.toString());
     }

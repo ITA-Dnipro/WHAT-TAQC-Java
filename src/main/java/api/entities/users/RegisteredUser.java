@@ -8,18 +8,15 @@ public class RegisteredUser {
 
     @JsonAlias({"first_name", "firstName"})
     String firstName;
-
     @JsonAlias({"last_name", "lastName"})
     String lastName;
-
-    Integer role;
-    Integer id;
-
-    @JsonIgnore
-    String token;
+    @JsonAlias({"active"})
     protected Boolean isActive;
 
+    protected Integer id;
     protected String email;
+    protected Integer role;
+    protected String token;
 
     Map<String,String> roleList;
 
@@ -29,14 +26,6 @@ public class RegisteredUser {
 
     public void setRoleList(Map<String, String> roleList) {
         this.roleList = roleList;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getFirstName() {
@@ -55,14 +44,6 @@ public class RegisteredUser {
         this.lastName = lastName;
     }
 
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -71,11 +52,11 @@ public class RegisteredUser {
         this.id = id;
     }
 
-    public Boolean getActive() {
+    public Boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
+    public void setIsActive(Boolean active) {
         isActive = active;
     }
 
@@ -87,14 +68,28 @@ public class RegisteredUser {
         this.email = email;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "RegisteredUser{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", role=" + role +
                 ", id=" + id +
-                ", token='" + token + '\'' +
                 ", isActive=" + isActive +
                 ", email='" + email + '\'' +
                 ", roleList=" + roleList +
