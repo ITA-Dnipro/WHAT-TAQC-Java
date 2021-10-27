@@ -1,6 +1,6 @@
 package lessons.util;
 
-import api.entities.RegisteredUser;
+import api.entities.users.RegisteredUser;
 import constants.PathsToFiles;
 import util.User;
 import java.nio.file.Files;

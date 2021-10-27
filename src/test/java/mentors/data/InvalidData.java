@@ -60,6 +60,7 @@ public class InvalidData {
     public void setErrorEmail(String errorEmail) {
         this.errorEmail = errorEmail;
     }
+
     public static InvalidData[] getData(String filename) throws IOException {
         return new ObjectMapper().readValue(new File(filename), InvalidData[].class);
     }
