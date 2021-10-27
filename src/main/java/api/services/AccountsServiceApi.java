@@ -28,4 +28,6 @@ public class AccountsServiceApi {
         return request.sendGet(GET_ALL_REGISTERED_USERS);
     }
 
+    public Response addGrantRoleToAccount
+
 }
