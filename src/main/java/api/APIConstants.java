@@ -28,4 +28,8 @@ public class APIConstants {
         String AUTHORIZATION = "Authorization";
         String ENCODING_UTF8 = "charset=utf-8";
     }
+    public interface Mentors{
+        String MENTORS="/mentors/";
+        String ACTIVE_MENTORS=MENTORS+"active/";
+    }
 }
