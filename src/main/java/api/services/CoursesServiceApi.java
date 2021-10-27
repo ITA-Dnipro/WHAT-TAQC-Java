@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 
-import static api.APIConstants.Courses.COURSES_ENDPOINT;
+import static api.APIConstants.Courses.COURSES;
 
 public class CoursesServiceApi {
 
@@ -17,11 +17,15 @@ public class CoursesServiceApi {
     }
 
     public Response addCourse(Course course) throws JsonProcessingException {
-        return requests.sendPost(COURSES_ENDPOINT, new ObjectMapper().writeValueAsString(course));
+        return requests.sendPost(COURSES, new ObjectMapper().writeValueAsString(course));
+    }
+
+    public Response addExistCourse(Course course) throws JsonProcessingException {
+        return requests.sendPost(COURSES, new ObjectMapper().writeValueAsString(course));
     }
 
     public Response getCourses() {
-        return requests.sendGet(COURSES_ENDPOINT);
+        return requests.sendGet(COURSES);
     }
 
     public BaseRequests getRequests() {
@@ -33,6 +37,6 @@ public class CoursesServiceApi {
     }
 
     public Response updateCourse(Integer id) {
-        return requests.sendPut(COURSES_ENDPOINT, id, Course.getCourseWithRandomName().toString());
+        return requests.sendPut(COURSES, id, Course.getCourseWithRandomName().toString());
     }
 }

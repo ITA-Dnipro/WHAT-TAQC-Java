@@ -9,7 +9,7 @@ public class APIConstants {
     }
 
     public interface Courses {
-        String COURSES_ENDPOINT = "/courses";
+        String COURSES = "/courses/";
     }
 
     public interface Lessons {

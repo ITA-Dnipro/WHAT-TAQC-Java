@@ -9,9 +9,10 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class Courses_VerifyAddCourseNegative_asAdmin {
+public class Courses_VerifyAddExistedCourseNegative_asAdmin {
     CoursesServiceApi coursesServiceApi;
     Course course = Course.getCourseWithRandomName();
+
 
     @BeforeClass
     public void setUp() throws IOException {
@@ -21,9 +22,10 @@ public class Courses_VerifyAddCourseNegative_asAdmin {
 
     @Test
     public void addCourseNegative() throws JsonProcessingException {
-        coursesServiceApi.addCourse(course)
-                .then()
+        coursesServiceApi.addExistCourse(course)
+                .then().log().all()
                 .assertThat()
                 .statusCode(409);
     }
 }
+//.extract().statusLine().equals("Course already exists");

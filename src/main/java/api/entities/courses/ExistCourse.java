@@ -1,24 +1,22 @@
 package api.entities.courses;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import util.RandomStringsGenerator;
 
-public class Course {
+public class ExistCourse {
 
-    boolean isActive;
     Integer id;
+    boolean isActive;
     String name;
 
-
-    private Course(String name) {
+    private ExistCourse(String name) {
         this.name = name;
     }
 
-    public Course() {
+    public ExistCourse() {
     }
 
-    public static Course getCourseWithRandomName() {
-        return new Course(RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9));
+    public static ExistCourse getCourseWithRandomName() {
+        return new ExistCourse(RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9));
     }
 
     public Integer getId() {
