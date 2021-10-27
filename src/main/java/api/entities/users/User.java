@@ -5,8 +5,7 @@ import util.RandomStringsGenerator;
 
 public class User {
 
-    @JsonIgnore
-    protected String id;
+    protected Integer id;
     @JsonIgnore
     protected Integer role;
     @JsonIgnore
@@ -83,11 +82,11 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -105,5 +104,19 @@ public class User {
 
     public void setIsActive(Boolean active) {
         isActive = active;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", role=" + role +
+                ", isActive=" + isActive +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                '}';
     }
 }

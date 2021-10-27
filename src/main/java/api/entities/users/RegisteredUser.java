@@ -6,10 +6,10 @@ import java.util.Map;
 
 public class RegisteredUser {
 
-    @JsonAlias("first_name")
+    @JsonAlias({"first_name", "firstName"})
     String firstName;
 
-    @JsonAlias("last_name")
+    @JsonAlias({"last_name", "lastName"})
     String lastName;
 
     Integer role;
@@ -17,6 +17,9 @@ public class RegisteredUser {
 
     @JsonIgnore
     String token;
+    protected Boolean isActive;
+
+    protected String email;
 
     Map<String,String> roleList;
 
@@ -66,5 +69,35 @@ public class RegisteredUser {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "RegisteredUser{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", role=" + role +
+                ", id=" + id +
+                ", token='" + token + '\'' +
+                ", isActive=" + isActive +
+                ", email='" + email + '\'' +
+                ", roleList=" + roleList +
+                '}';
     }
 }
