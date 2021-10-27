@@ -1,11 +1,11 @@
 package api.entities.mentors;
 
 public class Mentor {
-    Integer id;
-    String email;
-    String firstName;
-    String lastName;
-    String avatarUrl;
+    private Integer id;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String avatarUrl;
 
     public String getAvatarUrl() {
         return avatarUrl;
