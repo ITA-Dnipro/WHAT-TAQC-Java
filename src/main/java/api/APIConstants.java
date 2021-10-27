@@ -27,6 +27,6 @@ public class APIConstants {
         String ACTIVE_MENTORS=MENTORS+"active/";
     }
     public interface Student{
-        String STUDENT="/student";
+        String STUDENT="/student/";
     }
 }
