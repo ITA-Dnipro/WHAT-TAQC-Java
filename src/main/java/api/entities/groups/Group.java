@@ -9,11 +9,13 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static api.APIConstants.dateFormatForGroup;
+
 public class Group {
 
     private static final Integer minSizeOfCourseName = 1;
     private static final Integer maxSizeOfCourseName = 100;
-    private static final String dateFormatForGroup = "yyyy-MM-dd HH:mm:ss.SSS";
+
 
     Integer id;
     String name;

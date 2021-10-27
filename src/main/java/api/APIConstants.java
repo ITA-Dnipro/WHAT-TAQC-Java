@@ -2,6 +2,7 @@ package api;
 
 public class APIConstants {
     public static final String BASE_LINK = "https://charliebackendapi.azurewebsites.net/api/v2";
+    public static final String dateFormatForGroup = "yyyy-MM-dd HH:mm:ss.SSS";
 
     public interface AccountEndpoints {
         String AUTH_ENDPOINT = "/accounts/auth";
