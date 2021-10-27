@@ -19,7 +19,8 @@ public class Courses_VerifyGettingListOfCourses_AsSecretary_Test {
     @Test
     public void getCourses() {
         coursesServiceApi.getCourses()
-                .then().assertThat()
+                .then()
+                .assertThat()
                 .statusCode(200);
     }
 }

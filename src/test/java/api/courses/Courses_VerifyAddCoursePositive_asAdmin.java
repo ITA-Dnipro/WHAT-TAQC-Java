@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class Courses_VerifyAddCourse_asAdmin {
+public class Courses_VerifyAddCoursePositive_asAdmin {
     CoursesServiceApi coursesServiceApi;
 
     @BeforeClass
@@ -18,7 +18,7 @@ public class Courses_VerifyAddCourse_asAdmin {
     }
 
     @Test
-    public void addCourse() throws JsonProcessingException {
+    public void addCoursePositive() throws JsonProcessingException {
         coursesServiceApi.addCourse(Course.getCourseWithRandomName())
                 .then()
                 .assertThat()
