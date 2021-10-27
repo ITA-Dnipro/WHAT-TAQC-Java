@@ -18,6 +18,11 @@ public class User {
     protected String password;
     protected String confirmPassword;
 
+    protected static String emailDomain = "gmail.com";
+    protected static int emailLocalPathLength = 5;
+    protected static String specialSymbolForPassword = "1_";
+    protected static int nameLength = 5;
+
     public User() {
     }
 
@@ -30,10 +35,11 @@ public class User {
     }
 
     public static User getUserWithRandomValues() {
-        String firstName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        String lastName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        String password = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "A1_";
-        String email = RandomStringsGenerator.getRandomEmail(5, "gmail.com");
+        String firstName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(nameLength);
+        String lastName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(nameLength);
+        String password = RandomStringsGenerator
+                .getAlphabeticStringFirstUppercaseCharacters(9) + specialSymbolForPassword;
+        String email = RandomStringsGenerator.getRandomEmail(emailLocalPathLength, emailDomain);
         return new User(email, firstName, lastName, password);
     }
 

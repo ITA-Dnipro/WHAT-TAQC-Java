@@ -13,11 +13,11 @@ public class AccountsServiceApi {
 
     protected BaseRequests request;
 
-    public AccountsServiceApi(BaseRequests request){
+    public AccountsServiceApi(BaseRequests request) {
         this.request = request;
     }
 
-    public AccountsServiceApi(){
+    public AccountsServiceApi() {
         request = new BaseRequests();
     }
 
