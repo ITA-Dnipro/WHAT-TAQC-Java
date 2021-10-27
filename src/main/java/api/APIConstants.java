@@ -24,4 +24,8 @@ public class APIConstants {
         String CONTENT_TYPE = "Content-Type";
         String AUTHORIZATION = "Authorization";
     }
+    public interface Mentors{
+        String MENTORS="/mentors/";
+        String ACTIVE_MENTORS=MENTORS+"active/";
+    }
 }
