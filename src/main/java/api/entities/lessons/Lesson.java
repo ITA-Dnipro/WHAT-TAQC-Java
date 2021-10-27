@@ -2,7 +2,7 @@ package api.entities.lessons;
 
 import java.util.List;
 
-public class AddLessonJson {
+public class Lesson {
 
     Integer id;
     String themeName;
@@ -21,51 +21,49 @@ public class AddLessonJson {
         this.id = id;
     }
 
-    public void setMentorId(Integer mentorId) {
+    public Lesson setMentorId(Integer mentorId) {
         this.mentorId = mentorId;
+        return this;
     }
 
-    public void setStudentGroupId(Integer studentGroupId) {
+    public Lesson setStudentGroupId(Integer studentGroupId) {
         this.studentGroupId = studentGroupId;
+        return this;
     }
 
     public String getThemeName() {
         return themeName;
     }
 
-    public void setThemeName(String themeName) {
+    public Lesson setThemeName(String themeName) {
         this.themeName = themeName;
+        return this;
     }
 
     public int getMentorId() {
         return mentorId;
     }
 
-    public void setMentorId(int mentorId) {
+    public Lesson setMentorId(int mentorId) {
         this.mentorId = mentorId;
-    }
-
-    public int getStudentGroupId() {
-        return studentGroupId;
-    }
-
-    public void setStudentGroupId(int studentGroupId) {
-        this.studentGroupId = studentGroupId;
+        return this;
     }
 
     public List<ClassBookItem> getLessonVisits() {
         return lessonVisits;
     }
 
-    public void setLessonVisits(List<ClassBookItem> lessonVisits) {
+    public Lesson setLessonVisits(List<ClassBookItem> lessonVisits) {
         this.lessonVisits = lessonVisits;
+        return this;
     }
 
     public String getLessonDate() {
         return lessonDate;
     }
 
-    public void setLessonDate(String lessonDate) {
+    public Lesson setLessonDate(String lessonDate) {
         this.lessonDate = lessonDate;
+        return this;
     }
 }

@@ -2,6 +2,7 @@ package api;
 
 public class APIConstants {
     public static final String BASE_LINK = "https://charliebackendapi.azurewebsites.net/api/v2";
+    public static final String dateFormatForGroup = "yyyy-MM-dd HH:mm:ss.SSS";
 
     public interface AccountEndpoints {
         String AUTH_ENDPOINT = "/accounts/auth";
@@ -19,10 +20,15 @@ public class APIConstants {
         String ADD_LESSON = LESSONS + "add";
     }
 
+    public interface StudentGroups{
+        String STUDENT_GROUPS = "/student_groups/";
+    }
+
     public interface Headers {
         String APPLICATION_JSON = "application/json";
         String CONTENT_TYPE = "Content-Type";
         String AUTHORIZATION = "Authorization";
+        String ENCODING_UTF8 = "charset=utf-8";
     }
     public interface Mentors{
         String MENTORS="/mentors/";
