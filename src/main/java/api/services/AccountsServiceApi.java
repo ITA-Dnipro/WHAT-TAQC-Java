@@ -6,8 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 
-import static api.APIConstants.AccountEndpoints.GET_ALL_REGISTERED_USERS;
-import static api.APIConstants.AccountEndpoints.REGISTRATION;
+import static api.APIConstants.AccountEndpoints.*;
 
 public class AccountsServiceApi {
 
