@@ -2,6 +2,9 @@ package api.entities.groups;
 
 import api.base.AdminRequests;
 import api.entities.courses.Course;
+import api.entities.users.RegisteredUser;
+import api.entities.users.User;
+import api.services.AccountsServiceApi;
 import api.services.CoursesServiceApi;
 import util.RandomStringsGenerator;
 
@@ -25,17 +28,26 @@ public class Group {
     Integer[] studentIds;
     Integer[] mentorIds;
 
-    public static Group getGroupObject() throws IOException {
-        return new Group()
-                .setName(RandomStringsGenerator
-                        .getAlphabeticStringLowerCaseCharacters(
-                                (int) (Math.random() *
-                                        (maxSizeOfCourseName - minSizeOfCourseName)) + minSizeOfCourseName))
+    public static Group getGroupObject(AccountsServiceApi accountsServiceApi) throws IOException {
+
+        return new Group().setName(RandomStringsGenerator
+                .getAlphabeticStringLowerCaseCharacters(
+                        (int) (Math.random() *
+                                (maxSizeOfCourseName - minSizeOfCourseName)) + minSizeOfCourseName))
                 .setCourseId(new CoursesServiceApi(new AdminRequests())
                         .addCourse(Course.getCourseWithRandomName())
                         .as(Course.class).getId())
-                .setStartDate(new SimpleDateFormat(dateFormatForGroup).format(new Date()));
-    //            .setStudentIds(new Integer[]{})
+                .setStartDate(new SimpleDateFormat(dateFormatForGroup).format(new Date()))
+                .setFinishDate(new SimpleDateFormat(dateFormatForGroup).format(new Date()))
+                .setStudentIds(new Integer[]{
+                        AccountsServiceApi
+                        .getStudent(accountsServiceApi
+                                .registrationAccount(User.getUserWithRandomValues())
+                                .as(RegisteredUser.class)).getId()})
+                .setMentorIds(new Integer[]{AccountsServiceApi
+                        .getMentor(accountsServiceApi
+                                .registrationAccount(User.getUserWithRandomValues())
+                                .as(RegisteredUser.class)).getId()});
     }
 
     //region Getters and Setters

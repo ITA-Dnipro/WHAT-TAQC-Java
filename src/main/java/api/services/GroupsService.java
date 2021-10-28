@@ -1,10 +1,10 @@
 package api.services;
 
-import api.APIConstants;
 import api.base.BaseRequests;
 import api.entities.groups.Group;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.response.Response;
+import static api.APIConstants.StudentGroups.STUDENT_GROUPS;
 
 public class GroupsService extends BaseService{
 
@@ -13,7 +13,7 @@ public class GroupsService extends BaseService{
     }
 
     public Response addStudentGroup(Group group) throws JsonProcessingException {
-        return requests.sendPost(APIConstants.StudentGroups.STUDENT_GROUPS,
+        return requests.sendPost(STUDENT_GROUPS,
                 mapper.writeValueAsString(group));
     }
 }
