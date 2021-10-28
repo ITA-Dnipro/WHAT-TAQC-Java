@@ -36,7 +36,7 @@ public class CoursesServiceApi {
         this.requests = requests;
     }
 
-    public Response updateCourse(Integer id) {
-        return requests.sendPut(COURSES, id, Course.getCourseWithRandomName().toString());
+    public Response updateCourse(Course course) throws JsonProcessingException {
+        return requests.sendPut(COURSES, course.getId(), new ObjectMapper().writeValueAsString(course));
     }
 }

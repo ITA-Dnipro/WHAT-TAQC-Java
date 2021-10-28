@@ -1,11 +1,13 @@
 package api.entities.courses;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import util.RandomStringsGenerator;
 
 public class Course {
-
+    @JsonAlias ({"active", "isActive"})
     boolean isActive;
+
     Integer id;
     String name;
 
@@ -29,11 +31,11 @@ public class Course {
         this.id = id;
     }
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
 
@@ -41,7 +43,8 @@ public class Course {
         return name;
     }
 
-    public void setName(String name) {
+    public Course setName(String name) {
         this.name = name;
+        return this;
     }
 }

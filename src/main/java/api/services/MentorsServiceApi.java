@@ -1,11 +1,7 @@
 package api.services;
 
-import api.base.BaseRequests;
 import api.APIConstants;
 import api.base.BaseRequests;
-import api.entities.lessons.AddLessonJson;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 
 public class MentorsServiceApi {
@@ -16,7 +12,7 @@ public class MentorsServiceApi {
     }
 
     public Response getCourseOfMentor(Integer id) {
-        return requests.sendGet(APIConstants.Mentors.MENTORS, APIConstants.Courses.COURSES_ENDPOINT, id);
+        return requests.sendGet(APIConstants.Mentors.MENTORS, APIConstants.Courses.COURSES, id);
     }
 
     public Response getMentors() {
@@ -36,15 +32,15 @@ public class MentorsServiceApi {
     }
 
     public Response enableMentor(Integer id) {
-        return requests.sendPatch(APIConstants.Mentors.MENTORS, id,"");
+        return requests.sendPatch(APIConstants.Mentors.MENTORS, id, "");
     }
 
     public Response postAssignMentor(Integer id) {
-        return requests.sendPost(APIConstants.Mentors.MENTORS+id.toString(),"");
+        return requests.sendPost(APIConstants.Mentors.MENTORS + id.toString(), "");
     }
 
     public Response getListOfLessonsMentors(Integer id) {
-        return requests.sendGet(APIConstants.Mentors.MENTORS,APIConstants.Lessons.LESSONS, id);
+        return requests.sendGet(APIConstants.Mentors.MENTORS, APIConstants.Lessons.LESSONS, id);
     }
 
 
