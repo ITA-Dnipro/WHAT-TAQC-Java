@@ -18,16 +18,16 @@ public class Accounts_VerifyCantRegistrationAccountWithInExistingEmail_Test {
     public void setUp() throws IOException {
         accountsServiceApi = new AccountsServiceApi(new AdminRequests());
         user = User.getUserWithRandomValues();
-    }
-
-    @Test
-    public void verifyCantRegistrationAccountWithExistingEmail() throws JsonProcessingException {
         User[] users = accountsServiceApi.getAllRegisteredAccounts()
                 .then()
                 .statusCode(200)
                 .extract()
                 .as(User[].class);
         user.setEmail(users[0].getEmail());
+    }
+
+    @Test
+    public void verifyCantRegistrationAccountWithExistingEmail() throws JsonProcessingException {
         accountsServiceApi.registrationAccount(user)
                 .then()
                 .assertThat()
