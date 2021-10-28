@@ -10,6 +10,7 @@ import util.RandomStringsGenerator;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import static api.APIConstants.dateFormatForGroup;
@@ -30,7 +31,8 @@ public class Group {
 
     public static Group getGroupObject(AccountsServiceApi accountsServiceApi) throws IOException {
 
-        return new Group().setName(RandomStringsGenerator
+        return new Group()
+                .setName(RandomStringsGenerator
                 .getAlphabeticStringLowerCaseCharacters(
                         (int) (Math.random() *
                                 (maxSizeOfCourseName - minSizeOfCourseName)) + minSizeOfCourseName))
@@ -114,4 +116,14 @@ public class Group {
         return this;
     }
     //endregion
+
+
+    @Override
+    public boolean equals(Object obj) {
+        return  ((Group) obj).id != null &&
+                name.equals(((Group) obj).name) &&
+                courseId.equals(((Group) obj).courseId) &&
+                Arrays.equals(studentIds, ((Group) obj).studentIds) &&
+                Arrays.equals(mentorIds, ((Group) obj).mentorIds);
+    }
 }

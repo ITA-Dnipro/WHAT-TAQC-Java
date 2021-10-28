@@ -6,9 +6,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import io.restassured.response.Response;
 import static api.APIConstants.StudentGroups.STUDENT_GROUPS;
 
-public class GroupsService extends BaseService{
+public class GroupsServiceApi extends BaseService{
 
-    public GroupsService(BaseRequests requests) {
+    public GroupsServiceApi(BaseRequests requests) {
         super(requests);
     }
 
