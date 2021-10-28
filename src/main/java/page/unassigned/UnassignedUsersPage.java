@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import page.base.Page;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import static constants.Locators.Lessons.TABLE_ROWS_XPATH;
-import static constants.Locators.Pagination.*;
+
 import static constants.Locators.UnassignedUsers.*;
 
-public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
+public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
     @FindBy(xpath = SEARCH_INPUT_FIELD_XPATH)
     protected WebElement searchInputField;
     @FindBy(xpath = TABLE_HEAD_NAME_XPATH)
@@ -25,24 +25,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     @FindBy(xpath = TABLE_UNASSIGNED_USERS_XPATH)
     protected WebElement table;
     @FindBy(tagName = TABLE_ROW_TAG_NAME)
-    protected List<WebElement> tableRows;
-    @FindBy(xpath = FIRST_PAGE)
-    protected WebElement firstPage;
-    @FindBy(xpath = SECOND_PAGE)
-    protected WebElement secondPage;
-    @FindBy(xpath = THIRD_PAGE)
-    protected WebElement thirdPage;
-    @FindBy(xpath = FOURTH_PAGE)
-    protected WebElement fourthPage;
-    @FindBy(xpath = TABLE_ROWS_XPATH)
-    protected WebElement usersFromTable;
-    @FindBy(xpath = BACK_ARROW)
-    protected WebElement backArrow;
-    @FindBy(xpath = TITLE_XPATH)
-    protected WebElement title;
-    @FindBy (linkText = TABLE_ADD_ROLE_BUTTON_TAG_NAME)
-    protected List<WebElement> addButton;
-    // через фабрику нашла все строки таблицы , то т.к у нас динамическая таблица, по этому сделано через find element
+    protected List<WebElement> tableRows;// через фабрику нашла все строки таблицы , то т.к у нас динамическая таблица, по этому сделано через find element
 
     public UnassignedUsersPage(WebDriver driver) {
         super(driver);
@@ -67,11 +50,9 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
         return this;
     }
 
-    public boolean isUserPresented(String email) {
-        if (findUserRowByEmail(email) == null) {
-            return false;
-        }
-        return true;
+    public UnassignedUsersPage isUserPresented(String email) {
+        softAssert.assertNotNull(findUserRowByEmail(email));
+        return this;
     }
 
     public WebElement findUserRowByEmail(String email) {
@@ -113,7 +94,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     }
 
     public List<String> getUnassignedUsersName() {
-        List<String> mentorsNames = new ArrayList<String>();
+        List<String> mentorsNames = new ArrayList<>();
         for (int i = 0; i < tableRows.size(); i = i + 3) {
             mentorsNames.add(tableRows.get(i).getText());
         }
@@ -121,7 +102,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     }
 
     public List<String> getUnassignedUsersSurname() {
-        List<String> mentorsSurname = new ArrayList<String>();
+        List<String> mentorsSurname = new ArrayList<>();
         for (int i = 1; i < tableRows.size(); i = i + 3) {
             mentorsSurname.add(tableRows.get(i).getText());
         }
@@ -129,38 +110,10 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage>  {
     }
 
     public List<String> getUnassignedUsersEmail() {
-        List<String> mentorsNames = new ArrayList<String>();
+        List<String> mentorsNames = new ArrayList<>();
         for (int i = 0; i < tableRows.size(); i = i + 3) {
             mentorsNames.add(tableRows.get(i).getText());
         }
         return mentorsNames;
     }
-    public UnassignedUsersPage clickOnPaginationPage(int numberOfPage) {
-        if (numberOfPage == 1) {
-            clickElement(firstPage);
-        }
-        if (numberOfPage == 2) {
-            clickElement(secondPage);
-        }
-        if (numberOfPage == 3) {
-            clickElement(thirdPage);
-        }
-        if (numberOfPage == 4) {
-            clickElement(fourthPage);
-        }
-        return this;
-    }
-
-    public int getNumberOfUsersOnThePage() {
-        List<WebElement> elements = driver.findElements(By.xpath(TABLE_ROWS_XPATH));
-        return elements.size();
-    }
-
-    public UnassignedUsersPage clickOnBackArrow(int numberOfClick) {
-        for (int i = 0; i < numberOfClick; i++) {
-            clickElement(backArrow);
-        }
-        return this;
-    }
 }
-

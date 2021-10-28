@@ -40,8 +40,6 @@ public class StudentsPage extends Page<StudentsPage> {
         super(driver);
     }
 
-
-
     @Override
     public boolean isAt() {
         return driver.getCurrentUrl().equals(Endpoints.STUDENTS);
@@ -52,10 +50,7 @@ public class StudentsPage extends Page<StudentsPage> {
         return new UnassignedUsersPage(driver);
     }
 
-    // TODO
-    public void verifySortingByName() {
-        clickElement(tableHeadFirstName);
-    }
+
 
     private List<WebElement> findRows(String value) {
         List<WebElement> suitableList = tableStudentsRows.stream()
@@ -77,26 +72,26 @@ public class StudentsPage extends Page<StudentsPage> {
                 .findFirst()
                 .orElse(null);
     }
-    public  StudentsPage fillSearch(String search){
-        fillField(searchInputFieldBox,"a");
-        fillField(searchInputFieldBox,search);
-        return this;
+
+    public boolean verifyAddStudentButtonIsEnable(){
+        return addStudentButton.isEnabled();
     }
 
-        public List<String> getStudentData() {
-            List<String> studentData = new ArrayList<>();
-
-            for (int i = 0; i < tableStudentsRows.size(); i++) {
-                studentData.add(tableStudentsRows.get(i).getText());
-            }
-            return studentData;
-        }
-        public StudentsPage verify(List<String>expectdata){
-        softAssert.assertEquals(getStudentData() ,expectdata);
-        return this;
-        }
-        public StudentsPage assertStud(){
-        softAssert.assertAll();
-        return this;
+    public StudentEditDetailsTab openStudentEditDetailsTab (User user){
+        WebElement row = findStudentRowInTableByEmail(user.getMail());
+        List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME));
+        WebElement cellWithPencilIcon = listCells.stream()
+                .skip(3)
+                .findAny()
+                .orElse(null);
+        clickElement(cellWithPencilIcon);
+        return new StudentEditDetailsTab(driver);
     }
+
+    public StudentDetailsTab openStudentDetailsTab (User user){
+        WebElement row = findStudentRowInTableByEmail(user.getMail());
+        clickElement(row);
+        return new StudentDetailsTab(driver);
+    }
+
 }
