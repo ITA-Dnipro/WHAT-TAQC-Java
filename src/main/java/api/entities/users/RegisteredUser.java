@@ -6,17 +6,17 @@ import java.util.Map;
 
 public class RegisteredUser {
 
-    @JsonAlias("first_name")
+    @JsonAlias({"first_name", "firstName"})
     String firstName;
-
-    @JsonAlias("last_name")
+    @JsonAlias({"last_name", "lastName"})
     String lastName;
+    @JsonAlias({"active"})
+    protected Boolean isActive;
 
-    Integer role;
-    Integer id;
-
-    @JsonIgnore
-    String token;
+    protected Integer id;
+    protected String email;
+    protected Integer role;
+    protected String token;
 
     Map<String,String> roleList;
 
@@ -26,14 +26,6 @@ public class RegisteredUser {
 
     public void setRoleList(Map<String, String> roleList) {
         this.roleList = roleList;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getFirstName() {
@@ -52,6 +44,38 @@ public class RegisteredUser {
         this.lastName = lastName;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(Boolean active) {
+        isActive = active;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public Integer getRole() {
         return role;
     }
@@ -60,11 +84,15 @@ public class RegisteredUser {
         this.role = role;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "RegisteredUser{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", id=" + id +
+                ", isActive=" + isActive +
+                ", email='" + email + '\'' +
+                ", roleList=" + roleList +
+                '}';
     }
 }

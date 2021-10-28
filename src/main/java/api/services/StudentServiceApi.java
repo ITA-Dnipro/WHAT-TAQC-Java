@@ -9,7 +9,7 @@ public class StudentServiceApi {
     public StudentServiceApi(BaseRequests baseRequests) {
         this.baseRequests = baseRequests;
     }
-    public Response assignStudent(Integer id){
+    public Response postAssignStudent(Integer id){
         return baseRequests.sendPost(STUDENT+id.toString(),"");
     }
 }
