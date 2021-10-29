@@ -15,8 +15,8 @@ import static api.APIConstants.dateFormatForGroup;
 
 public class Lesson implements Cloneable{
 
-    private static final Integer minSizeOfCourseName = 1;
-    private static final Integer maxSizeOfCourseName = 100;
+    private static final Integer minSizeOfThemeName = 1;
+    private static final Integer maxSizeOfThemeName = 100;
     private static final Integer minMark = 1;
     private static final Integer maxMark = 12;
     private static final Integer firstItem = 0;
@@ -37,14 +37,14 @@ public class Lesson implements Cloneable{
                 .setThemeName(RandomStringsGenerator
                     .getAlphabeticStringLowerCaseCharacters(
                         (int) (Math.random() *
-                                (maxSizeOfCourseName - minSizeOfCourseName)) + minSizeOfCourseName))
+                                (maxSizeOfThemeName - minSizeOfThemeName)) + minSizeOfThemeName))
                 .setMentorId(group.getMentorIds()[firstItem])
                 .setStudentGroupId(group.getId())
                 .setLessonVisits(new ClassBookItem[]{new ClassBookItem().setStudentId(group.getStudentIds()[firstItem])
                         .setPresence(true).setStudentMark((int) (Math.random() * (maxMark - minMark)) + minMark)
                         .setComment(RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(
                                 (int) (Math.random() *
-                                        (maxSizeOfCourseName - minSizeOfCourseName)) + minSizeOfCourseName))})
+                                        (maxSizeOfThemeName - minSizeOfThemeName)) + minSizeOfThemeName))})
                 .setLessonDate(LocalDateTime.now().minusDays(1)
                         .format(DateTimeFormatter.ofPattern(dateFormatForGroup)));
     }
