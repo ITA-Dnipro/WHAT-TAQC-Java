@@ -13,7 +13,7 @@ import java.util.Objects;
 
 import static api.APIConstants.dateFormatForGroup;
 
-public class Lesson {
+public class Lesson implements Cloneable{
 
     private static final Integer minSizeOfCourseName = 1;
     private static final Integer maxSizeOfCourseName = 100;
@@ -109,6 +109,11 @@ public class Lesson {
     }
 
     @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -116,7 +121,8 @@ public class Lesson {
         return  lesson.id != null &&
                 Objects.equals(themeName, lesson.themeName) &&
                 Objects.equals(mentorId, lesson.mentorId) &&
-                Objects.equals(studentGroupId, lesson.studentGroupId);
+                Objects.equals(studentGroupId, lesson.studentGroupId) &&
+                Objects.equals(lessonDate, lesson.lessonDate);
     }
 
     @Override

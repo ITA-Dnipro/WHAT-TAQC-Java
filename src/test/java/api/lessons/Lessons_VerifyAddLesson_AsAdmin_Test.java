@@ -27,7 +27,9 @@ public class Lessons_VerifyAddLesson_AsAdmin_Test {
 
         Lesson addedLesson = lessonServiceApi
                 .addLesson(lesson)
-                .then().statusCode(200)
+                .then()
+                .log().all()
+                .statusCode(200)
                 .headers(HEADERS)
                 .extract()
                 .response()

@@ -18,6 +18,10 @@ public class LessonServiceApi extends BaseService{
         return requests.sendPost(LESSONS, mapper.writeValueAsString(lesson));
     }
 
+    public Response editLesson(Lesson lesson) throws JsonProcessingException {
+        return requests.sendPut(LESSONS, lesson.getId(), mapper.writeValueAsString(lesson));
+    }
+
     public Response getLessons(){
         return requests.sendGet(LESSONS);
     }
