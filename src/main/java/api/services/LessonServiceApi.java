@@ -15,7 +15,7 @@ public class LessonServiceApi extends BaseService{
     }
 
     public Response addLesson(Lesson lesson) throws JsonProcessingException {
-        return requests.sendPost(ADD_LESSON, mapper.writeValueAsString(lesson));
+        return requests.sendPost(LESSONS, mapper.writeValueAsString(lesson));
     }
 
     public Response getLessons(){
