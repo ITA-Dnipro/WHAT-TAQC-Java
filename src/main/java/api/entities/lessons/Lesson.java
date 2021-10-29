@@ -41,8 +41,8 @@ public class Lesson implements Cloneable{
                 .setMentorId(group.getMentorIds()[firstItem])
                 .setStudentGroupId(group.getId())
                 .setLessonVisits(new ClassBookItem[]{new ClassBookItem().setStudentId(group.getStudentIds()[firstItem])
-                        .setPresence(true).setStudentMark((int) (Math.random() * (maxMark - minMark)) + minMark).setComment(RandomStringsGenerator
-                        .getAlphabeticStringLowerCaseCharacters(
+                        .setPresence(true).setStudentMark((int) (Math.random() * (maxMark - minMark)) + minMark)
+                        .setComment(RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(
                                 (int) (Math.random() *
                                         (maxSizeOfCourseName - minSizeOfCourseName)) + minSizeOfCourseName))})
                 .setLessonDate(LocalDateTime.now().minusDays(1)
