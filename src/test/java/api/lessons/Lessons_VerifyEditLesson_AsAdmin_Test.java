@@ -7,7 +7,6 @@ import api.services.LessonServiceApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import util.RandomStringsGenerator;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -15,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 import static api.APIConstants.HEADERS;
 import static api.APIConstants.dateFormatForGroup;
+import static api.APIConstants.StatusCodes.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Lessons_VerifyEditLesson_AsAdmin_Test {
@@ -40,7 +40,7 @@ public class Lessons_VerifyEditLesson_AsAdmin_Test {
                         .setThemeName("NewTheme")) //Waiting for random string with random count)))
                 .then()
                 .log().all()
-                .statusCode(200)
+                .statusCode(OK)
                 .headers(HEADERS)
                 .extract()
                 .response()

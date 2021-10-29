@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static api.APIConstants.HEADERS;
+import static api.APIConstants.StatusCodes.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Lessons_VerifyAddLesson_AsAdmin_Test {
@@ -29,7 +30,7 @@ public class Lessons_VerifyAddLesson_AsAdmin_Test {
                 .addLesson(lesson)
                 .then()
                 .log().all()
-                .statusCode(200)
+                .statusCode(OK)
                 .headers(HEADERS)
                 .extract()
                 .response()
