@@ -7,6 +7,7 @@ public class APIConstants {
     public static final String BASE_LINK = "https://charliebackendapi.azurewebsites.net/api/v2";
     public static final String dateFormatForGroup = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final Map<String, String> HEADERS = new HashMap<>();
+    public static final String EMPTY_STRING = "";
 
     static {
         HEADERS.put("Transfer-Encoding", "chunked");
@@ -16,6 +17,15 @@ public class APIConstants {
         HEADERS.put("Server", "Microsoft-IIS/10.0");
         HEADERS.put("api-supported-versions", "1.0, 2.0");
         HEADERS.put("X-Powered-By", "ASP.NET");
+    }
+
+    public interface StatusCodes {
+        Integer OK = 200;
+        Integer UNAUTHORIZED = 401;
+        Integer FORBIDDEN = 403;
+        Integer ACCOUNT_NOT_FOUND = 404;
+        Integer NO_RIGHTS = 409;
+        Integer BAD_REQUEST = 400;
     }
 
     public interface AccountEndpoints {
