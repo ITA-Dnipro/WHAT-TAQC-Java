@@ -11,7 +11,7 @@ import java.io.IOException;
 import static api.APIConstants.HEADERS;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class Lessons_VerifyAddLesson_AsAMentor_Test {
+public class Lessons_VerifyAddLesson_AsMentor_Test {
 
     LessonServiceApi lessonServiceApi;
 
