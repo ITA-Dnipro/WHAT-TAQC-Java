@@ -72,6 +72,16 @@ public class SecretarysPage extends Page<SecretarysPage> {
         return this;
     }
 
+    public SecretarysPage verifyInputSearchSecretary(String search) {
+        softAssert.assertEquals(searchInputFieldBox.getAttribute("value"), search);
+        return this;
+    }
+
+    public SecretarysPage verifySecretarysDataInTheTable(List<String> secretarysData) {
+        softAssert.assertEquals(getSecretaryData(), secretarysData);
+        return this;
+    }
+
     public SecretarysPage sortByName() {
         clickElement(tableHeadFirstName);
         return this;
