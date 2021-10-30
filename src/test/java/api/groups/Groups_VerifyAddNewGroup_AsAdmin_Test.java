@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static api.APIConstants.HEADERS;
+import static api.APIConstants.StatusCodes.OK;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Groups_VerifyAddNewGroup_AsAdmin_Test {
@@ -31,7 +32,9 @@ public class Groups_VerifyAddNewGroup_AsAdmin_Test {
                 .addStudentGroup(group);
 
         Group addedGroup = response
-                .then().statusCode(200)
+                .then()
+                .log().all()
+                .statusCode(OK)
                 .headers(HEADERS)
                 .extract()
                 .response()

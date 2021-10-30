@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Objects;
 
 import static api.APIConstants.dateFormatForGroup;
 
@@ -119,11 +120,24 @@ public class Group {
 
 
     @Override
-    public boolean equals(Object obj) {
-        return  ((Group) obj).id != null &&
-                name.equals(((Group) obj).name) &&
-                courseId.equals(((Group) obj).courseId) &&
-                Arrays.equals(studentIds, ((Group) obj).studentIds) &&
-                Arrays.equals(mentorIds, ((Group) obj).mentorIds);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Group group = (Group) o;
+        return  group.id != null &&
+                Objects.equals(name, group.name) &&
+                Objects.equals(courseId, group.courseId) &&
+                Objects.equals(startDate, group.startDate) &&
+                Objects.equals(finishDate, group.finishDate) &&
+                Arrays.equals(studentIds, group.studentIds) &&
+                Arrays.equals(mentorIds, group.mentorIds);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, courseId, startDate, finishDate);
+        result = 31 * result + Arrays.hashCode(studentIds);
+        result = 31 * result + Arrays.hashCode(mentorIds);
+        return result;
     }
 }
