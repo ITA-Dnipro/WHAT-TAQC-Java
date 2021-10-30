@@ -1,12 +1,10 @@
 package api.lessons;
 
-import api.APIConstants;
 import api.base.AdminRequests;
 import api.entities.error.Error;
 import api.entities.error.ResponseError;
 import api.entities.lessons.Lesson;
 import api.services.LessonServiceApi;
-import org.jsoup.Connection;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -52,6 +50,9 @@ public class Lessons_VerifyAddLesson_IncorrectData_AsAdmin {
 
                 {lesson.clone().setMentorId(0),
                 new ResponseError(new Error().setMessage(Lessons.EMPTY_MENTOR_ID_MESSAGE))},
+
+                {lesson.clone().setThemeName(STRING_WITH_SPECIAL_SYMBOLS),
+                        new ResponseError(new Error().setMessage(Lessons.BAD_THEME_NAME))},
 
                 {lesson.clone().setThemeName(RandomStringsGenerator
                         .getAlphabeticStringLowerCaseCharacters(0)),

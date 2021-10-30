@@ -1,6 +1,5 @@
 package api.lessons;
 
-import api.APIConstants;
 import api.base.AdminRequests;
 import api.base.BaseRequests;
 import api.entities.error.Error;
@@ -45,6 +44,9 @@ public class Lessons_VerifyEditLesson_IncorrectData_AsAdmin_Test {
 
                 {lesson.clone().setLessonDate(futureDate),
                         new ResponseError(new Error().setMessage(Lessons.BAD_DATE_MESSAGE))},
+
+                {lesson.clone().setThemeName(STRING_WITH_SPECIAL_SYMBOLS),
+                        new ResponseError(new Error().setMessage(Lessons.BAD_THEME_NAME))},
 
                 {lesson.clone().setThemeName(RandomStringsGenerator
                         .getAlphabeticStringLowerCaseCharacters(overSizeOfThemeName)),

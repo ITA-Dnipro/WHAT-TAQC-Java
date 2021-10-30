@@ -8,6 +8,7 @@ public class APIConstants {
     public static final String dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final Map<String, String> HEADERS = new HashMap<>();
     public static final String EMPTY_STRING = "";
+    public static final String STRING_WITH_SPECIAL_SYMBOLS = "#@)g&$0";
 
     static {
         HEADERS.put("Transfer-Encoding", "chunked");
@@ -47,6 +48,7 @@ public class APIConstants {
         String EMPTY_STUDENT_GROUP_MESSAGE = "'Student Group Id' must not be empty.";
         String EMPTY_MENTOR_ID_MESSAGE = "'Mentor Id' must not be empty.";
         String EMPTY_THEME_NAME_MESSAGE = "'Theme Name' must not be empty.";
+        String BAD_THEME_NAME = "Incorrect 'Theme Name'";
     }
 
     public interface StudentGroups {
