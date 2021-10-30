@@ -11,12 +11,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-import static api.APIConstants.dateFormatForGroup;
+import static api.APIConstants.dateFormat;
 
 public class Lesson implements Cloneable{
 
-    private static final Integer minSizeOfThemeName = 1;
-    private static final Integer maxSizeOfThemeName = 100;
+    private static final Integer minLengthOfThemeName = 1;
+    private static final Integer maxLengthOfThemeName = 100;
+    private static final Integer minLengthOfComment = 0;
+    private static final Integer maxLengthOfComment = 1024;
     private static final Integer minMark = 1;
     private static final Integer maxMark = 12;
     private static final Integer firstItem = 0;
@@ -29,6 +31,11 @@ public class Lesson implements Cloneable{
     String lessonDate;
 
 
+    public static int getRandomNumberFromRange(Integer min, Integer max){
+        return (int) (Math.random() *
+                (max - min)) + min;
+    }
+
     public static Lesson getLessonObject() throws IOException {
         Group group = new GroupsServiceApi(new AdminRequests())
                 .addStudentGroup(Group.getGroupObject(new AccountsServiceApi(new AdminRequests()))).as(Group.class);
@@ -36,17 +43,16 @@ public class Lesson implements Cloneable{
         return new Lesson()
                 .setThemeName(RandomStringsGenerator
                     .getAlphabeticStringLowerCaseCharacters(
-                        (int) (Math.random() *
-                                (maxSizeOfThemeName - minSizeOfThemeName)) + minSizeOfThemeName))
+                        getRandomNumberFromRange(minLengthOfThemeName, maxLengthOfThemeName)))
                 .setMentorId(group.getMentorIds()[firstItem])
                 .setStudentGroupId(group.getId())
                 .setLessonVisits(new ClassBookItem[]{new ClassBookItem().setStudentId(group.getStudentIds()[firstItem])
-                        .setPresence(true).setStudentMark((int) (Math.random() * (maxMark - minMark)) + minMark)
-                        .setComment(RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(
-                                (int) (Math.random() *
-                                        (maxSizeOfThemeName - minSizeOfThemeName)) + minSizeOfThemeName))})
+                        .setPresence(true).setStudentMark(getRandomNumberFromRange(minMark, maxMark))
+                        .setComment(RandomStringsGenerator
+                        .getAlphabeticStringLowerCaseCharacters(
+                                getRandomNumberFromRange(minLengthOfComment, maxLengthOfComment)))})
                 .setLessonDate(LocalDateTime.now().minusDays(1)
-                        .format(DateTimeFormatter.ofPattern(dateFormatForGroup)));
+                        .format(DateTimeFormatter.ofPattern(dateFormat)));
     }
 
     public Integer getId() {

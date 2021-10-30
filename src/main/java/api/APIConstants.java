@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class APIConstants {
     public static final String BASE_LINK = "https://charliebackendapi.azurewebsites.net/api/v2";
-    public static final String dateFormatForGroup = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+    public static final String dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final Map<String, String> HEADERS = new HashMap<>();
     public static final String EMPTY_STRING = "";
 

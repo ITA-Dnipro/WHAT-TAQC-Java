@@ -2,6 +2,7 @@ package api.entities.groups;
 
 import api.base.AdminRequests;
 import api.entities.courses.Course;
+import api.entities.lessons.Lesson;
 import api.entities.users.RegisteredUser;
 import api.entities.users.User;
 import api.services.AccountsServiceApi;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
-import static api.APIConstants.dateFormatForGroup;
+import static api.APIConstants.dateFormat;
 
 public class Group {
 
@@ -35,13 +36,12 @@ public class Group {
         return new Group()
                 .setName(RandomStringsGenerator
                 .getAlphabeticStringLowerCaseCharacters(
-                        (int) (Math.random() *
-                                (maxSizeOfCourseName - minSizeOfCourseName)) + minSizeOfCourseName))
+                        Lesson.getRandomNumberFromRange(minSizeOfCourseName, maxSizeOfCourseName)))
                 .setCourseId(new CoursesServiceApi(new AdminRequests())
                         .addCourse(Course.getCourseWithRandomName())
                         .as(Course.class).getId())
-                .setStartDate(new SimpleDateFormat(dateFormatForGroup).format(new Date()))
-                .setFinishDate(new SimpleDateFormat(dateFormatForGroup).format(new Date()))
+                .setStartDate(new SimpleDateFormat(dateFormat).format(new Date()))
+                .setFinishDate(new SimpleDateFormat(dateFormat).format(new Date()))
                 .setStudentIds(new Integer[]{
                         AccountsServiceApi
                         .getStudent(accountsServiceApi

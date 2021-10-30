@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static api.APIConstants.HEADERS;
-import static api.APIConstants.dateFormatForGroup;
+import static api.APIConstants.dateFormat;
 import static api.APIConstants.StatusCodes.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -36,7 +36,7 @@ public class Lessons_VerifyEditLesson_AsAdmin_Test {
         Lesson oldLesson = (Lesson) lesson.clone();
 
         lesson = serviceApi.editLesson(lesson.setLessonDate(LocalDateTime.now().minusDays(1)
-                                .format(DateTimeFormatter.ofPattern(dateFormatForGroup)))
+                                .format(DateTimeFormatter.ofPattern(dateFormat)))
                         .setThemeName("NewTheme")) //Waiting for random string with random count)))
                 .then()
                 .log().all()
