@@ -36,6 +36,10 @@ public class Lessons_VerifyAddLesson_IncorrectData_AsAdmin {
     @DataProvider(name = "lesson")
     public Object[][] provide() throws CloneNotSupportedException {
         return new Object[][]{
+                {lesson.clone().setLessonDate(LocalDateTime.now()
+                        .minusYears(LocalDateTime.now().getYear()).format(DateTimeFormatter.ofPattern(dateFormat))),
+                        new ResponseError(new Error().setMessage(Lessons.BAD_DATE_MESSAGE))},
+
                 {lesson.clone().setLessonDate(futureDate),
                 new ResponseError(new Error().setMessage(Lessons.BAD_DATE_MESSAGE))},
 
