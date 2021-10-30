@@ -1,36 +1,52 @@
 package secretarys.APIsecretaryTest;
 
+import api.base.AdminRequests;
+import api.entities.error.ResponseError;
+import api.entities.users.RegisteredUser;
 import api.entities.users.User;
 import api.services.AccountsServiceApi;
+import api.services.MentorsServiceApi;
+import api.services.SecretaryServiceApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.restassured.response.Response;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static api.APIConstants.StatusCodes.BAD_REQUEST;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class AddSecretaryRol_Admin {
 
-    private AccountsServiceApi accountsServiceApi;
-    private User user;
+    User user;
+    RegisteredUser registeredUser;
+    AccountsServiceApi accountsServiceApi;
+    SecretaryServiceApi secretaryServiceApi;
 
-    @BeforeClass
-    public void setUp() throws IOException {
+    public AddSecretaryRol_Admin()  {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }
 
+    @BeforeClass
+    public void setUp() throws IOException {
+        registeredUser = accountsServiceApi
+                .registrationAccount(user)
+                .as(RegisteredUser.class);
+       secretaryServiceApi = new SecretaryServiceApi(new AdminRequests());
+    }
+
     @Test
-    public void verifyRegistrationAccount() throws JsonProcessingException {
-        accountsServiceApi.registrationAccount(user)
+    public void test() {
+        secretaryServiceApi.postAssignSecretary(registeredUser.getId());
+    Response test = secretaryServiceApi.postAssignSecretary(registeredUser.getId());
+               test.as(ResponseError.class);
+        test
                 .then()
                 .assertThat()
-                .statusCode(200)
-                .body("email", equalTo(user.getEmail()))
-                .body("firstName", equalTo(user.getFirstName()))
-                .body("lastName", equalTo(user.getLastName()))
-                .body("role", equalTo(0))
-                .body("isActive", equalTo(true));
+                .statusCode(BAD_REQUEST)
+                .body("error.message",equalTo("This account already assigned."))
+                .body("error.code",equalTo(0));
     }
 }
