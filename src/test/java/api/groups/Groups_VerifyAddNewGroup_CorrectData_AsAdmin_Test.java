@@ -14,7 +14,7 @@ import static api.APIConstants.HEADERS;
 import static api.APIConstants.StatusCodes.OK;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class Groups_VerifyAddNewGroup_AsAdmin_Test {
+public class Groups_VerifyAddNewGroup_CorrectData_AsAdmin_Test {
 
     AdminRequests requests;
     Group group;

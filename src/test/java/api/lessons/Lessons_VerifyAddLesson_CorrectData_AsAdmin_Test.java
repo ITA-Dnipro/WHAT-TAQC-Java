@@ -1,6 +1,6 @@
 package api.lessons;
 
-import api.base.MentorRequests;
+import api.base.AdminRequests;
 import api.entities.lessons.Lesson;
 import api.services.LessonServiceApi;
 import org.testng.annotations.BeforeClass;
@@ -12,13 +12,13 @@ import static api.APIConstants.HEADERS;
 import static api.APIConstants.StatusCodes.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class Lessons_VerifyAddLesson_AsMentor_Test {
+public class Lessons_VerifyAddLesson_CorrectData_AsAdmin_Test {
 
     LessonServiceApi lessonServiceApi;
 
     @BeforeClass
     public void setup() throws IOException {
-        lessonServiceApi = new LessonServiceApi(new MentorRequests());
+        lessonServiceApi = new LessonServiceApi(new AdminRequests());
     }
 
     @Test
