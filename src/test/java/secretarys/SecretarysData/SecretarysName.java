@@ -1,4 +1,4 @@
-package secretarys;
+package secretarys.SecretarysData;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

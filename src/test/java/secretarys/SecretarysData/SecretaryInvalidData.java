@@ -1,4 +1,4 @@
-package secretarys;
+package secretarys.SecretarysData;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import mentors.data.InvalidData;
@@ -6,7 +6,7 @@ import mentors.data.InvalidData;
 import java.io.File;
 import java.io.IOException;
 
-public class SecretaryInvalidData {
+public class  SecretaryInvalidData {
     private String name;
     private String errorName;
     private String last_name;

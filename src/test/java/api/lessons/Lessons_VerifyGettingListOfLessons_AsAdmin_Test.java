@@ -1,14 +1,15 @@
 package api.lessons;
 
 import api.base.AdminRequests;
-import api.base.SecretaryRequests;
 import api.entities.lessons.Lesson;
 import api.services.LessonServiceApi;
 import io.restassured.response.Response;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
 import java.io.IOException;
 
-import static api.APIConstants.Headers.*;
+import static api.APIConstants.Headers.CONTENT_TYPE;
 
 public class Lessons_VerifyGettingListOfLessons_AsAdmin_Test {
 

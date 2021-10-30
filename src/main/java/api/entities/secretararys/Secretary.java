@@ -1,20 +1,7 @@
 package api.entities.secretararys;
 
-class Add_Role_Secretary {
-    Integer id;
-    String email;
-    String firstName;
-    String lastName;
-
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
-
-    String avatarUrl;
+public class Secretary {
+    private Integer id;
 
     public Integer getId() {
         return id;
@@ -47,5 +34,17 @@ class Add_Role_Secretary {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-}
 
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String avatarUrl;
+}
