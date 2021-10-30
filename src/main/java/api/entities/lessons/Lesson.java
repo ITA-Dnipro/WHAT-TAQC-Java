@@ -15,13 +15,13 @@ import static api.APIConstants.dateFormat;
 
 public class Lesson implements Cloneable{
 
-    private static final Integer minLengthOfThemeName = 1;
-    private static final Integer maxLengthOfThemeName = 100;
-    private static final Integer minLengthOfComment = 0;
-    private static final Integer maxLengthOfComment = 1024;
-    private static final Integer minMark = 1;
-    private static final Integer maxMark = 12;
-    private static final Integer firstItem = 0;
+    public static final Integer minLengthOfThemeName = 1;
+    public static final Integer maxLengthOfThemeName = 100;
+    public static final Integer minLengthOfComment = 0;
+    public static final Integer maxLengthOfComment = 1024;
+    public static final Integer minMark = 1;
+    public static final Integer maxMark = 12;
+    public static final Integer firstItem = 0;
 
     Integer id;
     String themeName;
