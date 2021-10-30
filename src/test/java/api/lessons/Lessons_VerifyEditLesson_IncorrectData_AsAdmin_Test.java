@@ -39,6 +39,10 @@ public class Lessons_VerifyEditLesson_IncorrectData_AsAdmin_Test {
     @DataProvider(name = "lesson")
     public Object[][] provide() throws CloneNotSupportedException {
         return new Object[][]{
+                {lesson.clone().setLessonDate(LocalDateTime.now()
+                        .minusYears(LocalDateTime.now().getYear()).format(DateTimeFormatter.ofPattern(dateFormat))),
+                        new ResponseError(new Error().setMessage(Lessons.BAD_DATE_MESSAGE))},
+
                 {lesson.clone().setLessonDate(futureDate),
                         new ResponseError(new Error().setMessage(Lessons.BAD_DATE_MESSAGE))},
 
@@ -46,8 +50,7 @@ public class Lessons_VerifyEditLesson_IncorrectData_AsAdmin_Test {
                         .getAlphabeticStringLowerCaseCharacters(overSizeOfThemeName)),
                         new ResponseError(new Error().setMessage(Lessons.TOO_LONG_THEME_NAME_MESSAGE))},
 
-                {lesson.clone().setThemeName(RandomStringsGenerator
-                        .getAlphabeticStringLowerCaseCharacters(0)),
+                {lesson.clone().setThemeName(EMPTY_STRING),
                         new ResponseError(new Error().setMessage(Lessons.EMPTY_THEME_NAME_MESSAGE))}};
     }
 
