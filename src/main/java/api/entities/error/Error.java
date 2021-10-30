@@ -8,15 +8,17 @@ public class Error {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public Error setCode(Integer code) {
         this.code = code;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public Error setMessage(String message) {
         this.message = message;
+        return this;
     }
 }

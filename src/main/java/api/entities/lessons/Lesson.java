@@ -37,6 +37,7 @@ public class Lesson implements Cloneable{
     }
 
     public static Lesson getLessonObject() throws IOException {
+
         Group group = new GroupsServiceApi(new AdminRequests())
                 .addStudentGroup(Group.getGroupObject(new AccountsServiceApi(new AdminRequests()))).as(Group.class);
 
@@ -55,6 +56,7 @@ public class Lesson implements Cloneable{
                         .format(DateTimeFormatter.ofPattern(dateFormat)));
     }
 
+    //region Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -113,10 +115,11 @@ public class Lesson implements Cloneable{
     public Integer getStudentGroupId() {
         return studentGroupId;
     }
+//endregion
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Lesson clone() throws CloneNotSupportedException {
+        return (Lesson) super.clone();
     }
 
     @Override
