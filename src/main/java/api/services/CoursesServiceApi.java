@@ -39,4 +39,12 @@ public class CoursesServiceApi {
     public Response updateCourse(Course course) throws JsonProcessingException {
         return requests.sendPut(COURSES, course.getId(), new ObjectMapper().writeValueAsString(course));
     }
+
+    public Response deleteCourse (int id) throws JsonProcessingException {
+        return requests.sendDelete(COURSES, id);
+    }
+
+    public Response enableCourse (Course course) throws JsonProcessingException {
+        return requests.sendPatch(COURSES, course.getId(), new ObjectMapper().writeValueAsString(course));
+    }
 }

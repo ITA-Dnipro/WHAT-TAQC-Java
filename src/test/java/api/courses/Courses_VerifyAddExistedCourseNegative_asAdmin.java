@@ -9,6 +9,9 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static api.APIConstants.StatusCodes.NO_RIGHTS;
+import static api.APIConstants.StatusCodes.UNPROCESSABLE_ENTITY;
+
 public class Courses_VerifyAddExistedCourseNegative_asAdmin {
     CoursesServiceApi coursesServiceApi;
     Course course = Course.getCourseWithRandomName();
@@ -25,7 +28,6 @@ public class Courses_VerifyAddExistedCourseNegative_asAdmin {
         coursesServiceApi.addExistCourse(course)
                 .then().log().all()
                 .assertThat()
-                .statusCode(409);
+                .statusCode(UNPROCESSABLE_ENTITY);
     }
 }
-//.extract().statusLine().equals("Course already exists");

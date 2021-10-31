@@ -1,6 +1,6 @@
 package api.courses;
 
-import api.base.AdminRequests;
+import api.base.MentorRequests;
 import api.entities.courses.Course;
 import api.services.CoursesServiceApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,31 +10,27 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static api.APIConstants.HEADERS;
-import static api.APIConstants.StatusCodes.*;
+import static api.APIConstants.StatusCodes.FORBIDDEN;
+import static api.APIConstants.StatusCodes.OK;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class Courses_VerifyAddCoursePositive_asAdmin {
+public class Courses_VerifyAddCourseNegative_asMentor {
     CoursesServiceApi coursesServiceApi;
 
     @BeforeClass
     public void setUp() throws IOException {
-        coursesServiceApi = new CoursesServiceApi(new AdminRequests());
+        coursesServiceApi = new CoursesServiceApi(new MentorRequests());
     }
 
     @Test
-    public void addCoursePositive() throws JsonProcessingException {
-       Course course = Course.getCourseWithRandomName();
+    public void addCourseNegative() throws JsonProcessingException {
 
-        Course addCourse = coursesServiceApi
+        Course course = Course.getCourseWithRandomName();
+
+        coursesServiceApi
                 .addCourse(course)
                 .then()
                 .log().all()
-                .statusCode(OK)
-                .headers(HEADERS)
-                .extract()
-                .response()
-                .as(Course.class);
-
-        assertThat(course).isEqualTo(addCourse);
+                .statusCode(FORBIDDEN);
     }
 }

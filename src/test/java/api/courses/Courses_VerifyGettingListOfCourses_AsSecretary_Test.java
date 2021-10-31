@@ -7,6 +7,9 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static api.APIConstants.HEADERS;
+import static api.APIConstants.StatusCodes.OK;
+
 public class Courses_VerifyGettingListOfCourses_AsSecretary_Test {
 
     CoursesServiceApi coursesServiceApi;
@@ -21,6 +24,7 @@ public class Courses_VerifyGettingListOfCourses_AsSecretary_Test {
         coursesServiceApi.getCourses()
                 .then()
                 .assertThat()
-                .statusCode(200);
+                .headers(HEADERS)
+                .statusCode(OK);
     }
 }

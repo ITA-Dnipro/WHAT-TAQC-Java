@@ -6,35 +6,33 @@ import api.services.CoursesServiceApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import util.RandomStringsGenerator;
 
 import java.io.IOException;
 
 import static api.APIConstants.HEADERS;
-import static api.APIConstants.StatusCodes.*;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static api.APIConstants.StatusCodes.OK;
 
-public class Courses_VerifyAddCoursePositive_asAdmin {
+public class Courses_VerifyDisablingCourse_AsAdmin_Test {
+
     CoursesServiceApi coursesServiceApi;
+    Course course = Course.getCourseWithRandomName();
+    Integer id;
 
     @BeforeClass
     public void setUp() throws IOException {
         coursesServiceApi = new CoursesServiceApi(new AdminRequests());
+        id = coursesServiceApi.addCourse(course).as(Course.class).getId();
     }
 
     @Test
-    public void addCoursePositive() throws JsonProcessingException {
-       Course course = Course.getCourseWithRandomName();
-
-        Course addCourse = coursesServiceApi
-                .addCourse(course)
+    public void deleteCourse() throws JsonProcessingException {
+        coursesServiceApi
+                .deleteCourse(id)
+                .peek()
                 .then()
-                .log().all()
+                .assertThat()
                 .statusCode(OK)
-                .headers(HEADERS)
-                .extract()
-                .response()
-                .as(Course.class);
-
-        assertThat(course).isEqualTo(addCourse);
+                .headers(HEADERS);
     }
 }

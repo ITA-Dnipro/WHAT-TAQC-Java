@@ -15,10 +15,6 @@ public class ExistCourse {
     public ExistCourse() {
     }
 
-    public static ExistCourse getCourseWithRandomName() {
-        return new ExistCourse(RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9));
-    }
-
     public Integer getId() {
         return id;
     }

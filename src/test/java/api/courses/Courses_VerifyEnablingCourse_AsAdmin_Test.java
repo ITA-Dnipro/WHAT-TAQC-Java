@@ -10,31 +10,39 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static api.APIConstants.HEADERS;
-import static api.APIConstants.StatusCodes.*;
+import static api.APIConstants.StatusCodes.OK;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class Courses_VerifyAddCoursePositive_asAdmin {
+public class Courses_VerifyEnablingCourse_AsAdmin_Test {
+
     CoursesServiceApi coursesServiceApi;
+    Course course = Course.getCourseWithRandomName();
+    Integer id;
 
     @BeforeClass
     public void setUp() throws IOException {
         coursesServiceApi = new CoursesServiceApi(new AdminRequests());
+        course = coursesServiceApi.addCourse(course).as(Course.class);
+        id = course.getId();
+        coursesServiceApi.deleteCourse(id);
     }
 
     @Test
-    public void addCoursePositive() throws JsonProcessingException {
-       Course course = Course.getCourseWithRandomName();
+    public void enableCourse() throws JsonProcessingException, CloneNotSupportedException {
 
-        Course addCourse = coursesServiceApi
-                .addCourse(course)
+        Course oldCourse = course.clone();
+
+        coursesServiceApi
+                .enableCourse(course)
+                .peek()
                 .then()
-                .log().all()
+                .assertThat()
                 .statusCode(OK)
                 .headers(HEADERS)
                 .extract()
                 .response()
                 .as(Course.class);
 
-        assertThat(course).isEqualTo(addCourse);
+        assertThat(oldCourse).isEqualTo(course);
     }
 }
