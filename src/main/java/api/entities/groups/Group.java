@@ -140,4 +140,17 @@ public class Group {
         result = 31 * result + Arrays.hashCode(mentorIds);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", courseId=" + courseId +
+                ", startDate='" + startDate + '\'' +
+                ", finishDate='" + finishDate + '\'' +
+                ", studentIds=" + Arrays.toString(studentIds) +
+                ", mentorIds=" + Arrays.toString(mentorIds) +
+                '}';
+    }
 }
