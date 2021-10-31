@@ -11,7 +11,6 @@ public class Course {
     Integer id;
     String name;
 
-
     private Course(String name) {
         this.name = name;
     }
@@ -35,8 +34,8 @@ public class Course {
         return isActive;
     }
 
-    public void setIsActive(boolean active) {
-        isActive = active;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     public String getName() {
