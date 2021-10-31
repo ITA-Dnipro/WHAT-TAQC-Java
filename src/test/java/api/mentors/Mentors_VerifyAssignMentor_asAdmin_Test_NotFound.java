@@ -22,10 +22,10 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_NotFound {
     }
 
     @Test
-    public void test() {
-        Response test =mentorsServiceApi.postAssignMentor(notFoundId);
-        test.as(ResponseError.class);
-        test.then()
+    public void verifyAssignMentor() {
+        Response mentor =mentorsServiceApi.postAssignMentor(notFoundId);
+        mentor.as(ResponseError.class);
+        mentor.then()
                 .assertThat()
                 .statusCode(ACCOUNT_NOT_FOUND)
                 .body("error.message",equalTo("Account not found"))

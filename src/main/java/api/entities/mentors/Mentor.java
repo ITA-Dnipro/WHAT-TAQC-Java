@@ -1,49 +1,24 @@
 package api.entities.mentors;
 
-public class Mentor {
-    private Integer id;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String avatarUrl;
+import api.entities.users.RegisteredUser;
 
-    public String getAvatarUrl() {
-        return avatarUrl;
+public class Mentor extends RegisteredUser {
+    protected Integer[] courseIds;
+    protected Integer[] studentGroupsIds;
+
+    public Integer[] getCourseIds() {
+        return courseIds;
     }
 
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+    public void setCourseIds(Integer[] courseIds) {
+        this.courseIds = courseIds;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer[] getStudentGroupsIds() {
+        return studentGroupsIds;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setStudentGroupsIds(Integer[] studentGroupsIds) {
+        this.studentGroupsIds = studentGroupsIds;
     }
 }

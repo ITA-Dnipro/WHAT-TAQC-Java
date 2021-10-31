@@ -13,16 +13,14 @@ import java.io.IOException;
 
 import static api.APIConstants.HEADERS;
 import static api.APIConstants.StatusCodes.OK;
-import static org.hamcrest.core.IsEqual.equalTo;
 
-public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
-
+public class Mentors_VerifyGetActiveMentors_asAdmin_Test_Success {
     User user;
     RegisteredUser registeredUser;
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
 
-    public Mentors_VerifyAssignMentor_asAdmin_Test_Success()  {
+    public Mentors_VerifyGetActiveMentors_asAdmin_Test_Success() {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }
@@ -33,19 +31,19 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
                 .registrationAccount(user)
                 .as(RegisteredUser.class);
         mentorsServiceApi = new MentorsServiceApi(new AdminRequests());
+        mentorsServiceApi.postAssignMentor(registeredUser.getId());
     }
 
     @Test
-    public void verifyAssignMentor() {
-        Response mentor = mentorsServiceApi.postAssignMentor(registeredUser.getId());
-        mentor.as(RegisteredUser.class);
-        mentor
+    public void verifyGetActiveMentors() {
+
+        Response activeMentors = mentorsServiceApi.getActiveMentors();
+        activeMentors.as(RegisteredUser[].class);
+        activeMentors
                 .then()
                 .assertThat()
                 .statusCode(OK)
-                .headers(HEADERS)
-                .body("email", equalTo(registeredUser.getEmail()))
-                .body("firstName", equalTo(registeredUser.getFirstName()))
-                .body("lastName", equalTo(registeredUser.getLastName()));
+                .headers(HEADERS);
+
     }
 }

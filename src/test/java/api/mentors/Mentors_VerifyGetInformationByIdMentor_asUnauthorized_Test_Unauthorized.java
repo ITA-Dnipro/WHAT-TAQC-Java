@@ -1,6 +1,7 @@
 package api.mentors;
 
 import api.base.AdminRequests;
+import api.base.BaseRequests;
 import api.entities.users.RegisteredUser;
 import api.entities.users.User;
 import api.services.AccountsServiceApi;
@@ -11,20 +12,22 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static api.APIConstants.HEADERS;
-import static api.APIConstants.StatusCodes.OK;
-import static org.hamcrest.core.IsEqual.equalTo;
+import static api.APIConstants.StatusCodes.UNAUTHORIZED;
 
-public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
+public class Mentors_VerifyGetInformationByIdMentor_asUnauthorized_Test_Unauthorized {
 
     User user;
     RegisteredUser registeredUser;
+    RegisteredUser mentor;
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
+    MentorsServiceApi mentorsServiceApiUnauthorized;
 
-    public Mentors_VerifyAssignMentor_asAdmin_Test_Success()  {
+    public Mentors_VerifyGetInformationByIdMentor_asUnauthorized_Test_Unauthorized() throws IOException {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
+        mentorsServiceApi = new MentorsServiceApi(new AdminRequests());
+        mentorsServiceApiUnauthorized =new MentorsServiceApi(new BaseRequests());
     }
 
     @BeforeClass
@@ -32,20 +35,17 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
         registeredUser = accountsServiceApi
                 .registrationAccount(user)
                 .as(RegisteredUser.class);
-        mentorsServiceApi = new MentorsServiceApi(new AdminRequests());
-    }
 
+        mentor= mentorsServiceApi
+                .postAssignMentor(registeredUser.getId())
+                .as(RegisteredUser.class);
+    }
     @Test
-    public void verifyAssignMentor() {
-        Response mentor = mentorsServiceApi.postAssignMentor(registeredUser.getId());
-        mentor.as(RegisteredUser.class);
-        mentor
+    public void verifyEditMentors() {
+         mentorsServiceApiUnauthorized
+                 .getMentorsById(mentor.getId())
                 .then()
                 .assertThat()
-                .statusCode(OK)
-                .headers(HEADERS)
-                .body("email", equalTo(registeredUser.getEmail()))
-                .body("firstName", equalTo(registeredUser.getFirstName()))
-                .body("lastName", equalTo(registeredUser.getLastName()));
+                .statusCode(UNAUTHORIZED);
     }
 }
