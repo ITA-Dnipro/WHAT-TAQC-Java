@@ -5,9 +5,10 @@ import java.util.Map;
 
 public class APIConstants {
     public static final String BASE_LINK = "https://charliebackendapi.azurewebsites.net/api/v2";
-    public static final String dateFormatForGroup = "yyyy-MM-dd HH:mm:ss.SSS";
+    public static final String dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final Map<String, String> HEADERS = new HashMap<>();
     public static final String EMPTY_STRING = "";
+    public static final String STRING_WITH_SPECIAL_SYMBOLS = "#@)g&$0";
 
     static {
         HEADERS.put("Transfer-Encoding", "chunked");
@@ -41,7 +42,13 @@ public class APIConstants {
 
     public interface Lessons {
         String LESSONS = "/lessons/";
-        String ADD_LESSON = LESSONS + "add";
+        String BAD_DATE_MESSAGE = "Lesson date is incorrect";
+        String TOO_LONG_THEME_NAME_MESSAGE =
+                "The length of 'Theme Name' must be 100 characters or fewer. You entered 101 characters.";
+        String EMPTY_STUDENT_GROUP_MESSAGE = "'Student Group Id' must not be empty.";
+        String EMPTY_MENTOR_ID_MESSAGE = "'Mentor Id' must not be empty.";
+        String EMPTY_THEME_NAME_MESSAGE = "'Theme Name' must not be empty.";
+        String BAD_THEME_NAME = "Incorrect 'Theme Name'";
     }
 
     public interface StudentGroups {

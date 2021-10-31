@@ -17,7 +17,6 @@ public class CoursesServiceApi {
     }
 
     public Response addCourse(Course course) throws JsonProcessingException {
-        System.out.println(new ObjectMapper().writeValueAsString(course));
         return requests.sendPost(COURSES_ENDPOINT, new ObjectMapper().writeValueAsString(course));
     }
 

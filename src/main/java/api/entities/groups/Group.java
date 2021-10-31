@@ -2,14 +2,20 @@ package api.entities.groups;
 
 import api.base.AdminRequests;
 import api.entities.courses.Course;
+import api.entities.lessons.Lesson;
+import api.entities.users.RegisteredUser;
+import api.entities.users.User;
+import api.services.AccountsServiceApi;
 import api.services.CoursesServiceApi;
 import util.RandomStringsGenerator;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Objects;
 
-import static api.APIConstants.dateFormatForGroup;
+import static api.APIConstants.dateFormat;
 
 public class Group {
 
@@ -25,17 +31,26 @@ public class Group {
     Integer[] studentIds;
     Integer[] mentorIds;
 
-    public static Group getGroupObject() throws IOException {
+    public static Group getGroupObject(AccountsServiceApi accountsServiceApi) throws IOException {
+
         return new Group()
                 .setName(RandomStringsGenerator
-                        .getAlphabeticStringLowerCaseCharacters(
-                                (int) (Math.random() *
-                                        (maxSizeOfCourseName - minSizeOfCourseName)) + minSizeOfCourseName))
+                .getAlphabeticStringLowerCaseCharacters(
+                        Lesson.getRandomNumberFromRange(minSizeOfCourseName, maxSizeOfCourseName)))
                 .setCourseId(new CoursesServiceApi(new AdminRequests())
                         .addCourse(Course.getCourseWithRandomName())
                         .as(Course.class).getId())
-                .setStartDate(new SimpleDateFormat(dateFormatForGroup).format(new Date()));
-    //            .setStudentIds(new Integer[]{})
+                .setStartDate(new SimpleDateFormat(dateFormat).format(new Date()))
+                .setFinishDate(new SimpleDateFormat(dateFormat).format(new Date()))
+                .setStudentIds(new Integer[]{
+                        AccountsServiceApi
+                        .getStudent(accountsServiceApi
+                                .registrationAccount(User.getUserWithRandomValues())
+                                .as(RegisteredUser.class)).getId()})
+                .setMentorIds(new Integer[]{AccountsServiceApi
+                        .getMentor(accountsServiceApi
+                                .registrationAccount(User.getUserWithRandomValues())
+                                .as(RegisteredUser.class)).getId()});
     }
 
     //region Getters and Setters
@@ -102,4 +117,27 @@ public class Group {
         return this;
     }
     //endregion
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Group group = (Group) o;
+        return  group.id != null &&
+                Objects.equals(name, group.name) &&
+                Objects.equals(courseId, group.courseId) &&
+                Objects.equals(startDate, group.startDate) &&
+                Objects.equals(finishDate, group.finishDate) &&
+                Arrays.equals(studentIds, group.studentIds) &&
+                Arrays.equals(mentorIds, group.mentorIds);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, courseId, startDate, finishDate);
+        result = 31 * result + Arrays.hashCode(studentIds);
+        result = 31 * result + Arrays.hashCode(mentorIds);
+        return result;
+    }
 }
