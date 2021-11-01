@@ -1,7 +1,7 @@
 package api.entities.users;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Map;
 
 public class RegisteredUser {

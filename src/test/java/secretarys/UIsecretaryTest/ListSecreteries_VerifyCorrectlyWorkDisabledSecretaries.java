@@ -1,4 +1,4 @@
-package secretarys;
+package secretarys.UIsecretaryTest;
 
 import base.BaseTest;
 import constants.Endpoints;
@@ -34,26 +34,26 @@ public class ListSecreteries_VerifyCorrectlyWorkDisabledSecretaries extends Base
         secretary= UnassignedUser.getUnassignedUser(nameSecretary,surNameSecretary,emailSecretary,passwordSecretary);
     }
 
-    @BeforeClass
-    public void precondition() throws IOException {
-        secretarysPage = AuthPage.init(driver)
-                .clickRegistrationLink()
-                .registerUser(secretary)
-                .logInAs(Role.ADMIN, StudentsPage.class)
-                .isAtPage(waitTime)
-                .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
-                .isAtPage(waitTime)
-                .addRole(secretary.getEmail(), UnassignedRole.SECRETARY)
-                .isAtPage(waitTime)
-                .redirectTo(Endpoints.SECRETARY, SecretarysPage.class)
-                .inputSearchSecretary("a")
-                .inputSearchSecretary(secretary.getFirstName() + " " + secretary.getLastName())
-                .editSecretary(0)
-                .isAtPage(waitTime)
-                .layOff()
-                .removeSecretary()
-                .isAtPage(waitTime);
-    }
+//    @BeforeClass
+//    public void precondition() throws IOException {
+//        secretarysPage = AuthPage.init(driver)
+//                .clickRegistrationLink()
+//                .registerUser(secretary)
+//                .logInAs(Role.ADMIN, StudentsPage.class)
+//                .isAtPage(waitTime)
+//                .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
+//                .isAtPage(waitTime)
+//                .addRole(secretary.getEmail(), UnassignedRole.SECRETARY)
+//                .isAtPage(waitTime)
+//                .redirectTo(Endpoints.SECRETARY, SecretarysPage.class)
+//                .inputSearchSecretary("a")
+//                .inputSearchSecretary(secretary.getFirstName() + " " + secretary.getLastName())
+//                .openSecretaryEditDetailsTab(0)
+//                .isAtPage(waitTime)
+//                .removeSecretary()
+//                .deleteSecretary()
+//                .isAtPage(waitTime);
+//    }
     @Test
     public void VerifyCorrectlyWorkDisabledSecretaries(){
         List<String> actualData=secretarysPage

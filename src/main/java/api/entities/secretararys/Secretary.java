@@ -1,6 +1,10 @@
 package api.entities.secretararys;
 
 public class Secretary {
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String avatarUrl;
     private Integer id;
 
     public Integer getId() {
@@ -43,8 +47,5 @@ public class Secretary {
         this.avatarUrl = avatarUrl;
     }
 
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String avatarUrl;
+
 }

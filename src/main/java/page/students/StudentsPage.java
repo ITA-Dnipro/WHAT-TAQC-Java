@@ -77,21 +77,21 @@ public class StudentsPage extends Page<StudentsPage> {
         return addStudentButton.isEnabled();
     }
 
-    public StudentEditDetailsTab openStudentEditDetailsTab (User user){
-        WebElement row = findStudentRowInTableByEmail(user.getMail());
-        List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME));
-        WebElement cellWithPencilIcon = listCells.stream()
-                .skip(3)
-                .findAny()
-                .orElse(null);
-        clickElement(cellWithPencilIcon);
-        return new StudentEditDetailsTab(driver);
-    }
-
-    public StudentDetailsTab openStudentDetailsTab (User user){
-        WebElement row = findStudentRowInTableByEmail(user.getMail());
-        clickElement(row);
-        return new StudentDetailsTab(driver);
-    }
+//    public StudentEditDetailsTab openStudentEditDetailsTab (User user){
+//        WebElement row = findStudentRowInTableByEmail(user.getMail());
+//        List<WebElement> listCells = row.findElements(By.tagName(TABLE_CELL_TAG_NAME));
+//        WebElement cellWithPencilIcon = listCells.stream()
+//                .skip(3)
+//                .findAny()
+//                .orElse(null);
+//        clickElement(cellWithPencilIcon);
+//        return new StudentEditDetailsTab(driver);
+//    }
+//
+//    public StudentDetailsTab openStudentDetailsTab (User user){
+//        WebElement row = findStudentRowInTableByEmail(user.getMail());
+//        clickElement(row);
+//        return new StudentDetailsTab(driver);
+//    }
 
 }

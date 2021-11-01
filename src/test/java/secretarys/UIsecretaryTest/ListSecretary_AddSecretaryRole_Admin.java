@@ -1,4 +1,4 @@
-package secretarys;
+package secretarys.UIsecretaryTest;
 
 import base.BaseTest;
 import constants.Endpoints;

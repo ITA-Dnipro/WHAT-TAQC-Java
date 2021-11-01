@@ -1,37 +1,35 @@
-package secretarys;
+package secretarys.UIsecretaryTest;
 
 import base.BaseTest;
 import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.secretarys.SecretarysPage;
-import page.students.StudentsPage;
 import page.unauthorizedUserPages.AuthPage;
 import util.Role;
 
 import java.io.IOException;
 
-public class ListSecretaries_SortByDisableSecretary_AdminAndSecretary extends BaseTest {
+public class ListSecretaries_SortByActiveSecretary_Admin extends BaseTest {
     SecretarysPage secretarysPage;
 
-    public ListSecretaries_SortByDisableSecretary_AdminAndSecretary(){
-        secretarysPage =new SecretarysPage(driver);
+    public ListSecretaries_SortByActiveSecretary_Admin() {
+        secretarysPage = new SecretarysPage(driver);
     }
 
     @BeforeClass
-    public void setUp() throws IOException{
+    public void setUp() throws IOException {
         secretarysPage = AuthPage
                 .init(driver)
-                .logInAs(Role.ADMIN, StudentsPage.class)
+                .logInAs(Role.ADMIN, SecretarysPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.SECRETARY, SecretarysPage.class)
-                .isAtPage(waitTime)
-                .showDisableSecretarys();
+                .isAtPage(waitTime);
 
     }
 
-    @Test (description = "")
-    public void ListSecretaries_Sorting_AdminAndSecretary(){
+    @Test(description = "")
+    public void sortingOfActiveSecretary() {
         secretarysPage
                 .sortByName()
                 .verifySorttBySurNameASC()
@@ -39,11 +37,19 @@ public class ListSecretaries_SortByDisableSecretary_AdminAndSecretary extends Ba
                 .verifySortByNameDEC()
                 .sortByName()
                 .verifySorttBySurNameASC()
-                .sortBySurName()
+                .sortByName()
                 .verifySortBySurNameDEC()
                 .sortByEmail()
                 .verifySortByEmailASC()
                 .sortByEmail()
-                .verifySortBySurNameDEC();
+                .verifySortByEmailDEC();
     }
 }
+
+
+
+
+
+
+
+
