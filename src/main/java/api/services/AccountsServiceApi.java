@@ -37,13 +37,13 @@ public class AccountsServiceApi {
         return request.sendGet(GET_ALL_REGISTERED_USERS);
     }
 
-    public static RegisteredUser getMentor(RegisteredUser registeredUser) throws IOException {
+    public static RegisteredUser assignRoleMentor(RegisteredUser registeredUser) throws IOException {
         return new MentorsServiceApi(new AdminRequests())
                 .postAssignMentor(registeredUser.getId())
                 .as(RegisteredUser.class);
     }
 
-    public static RegisteredUser getStudent(RegisteredUser registeredUser) throws IOException {
+    public static RegisteredUser assignRoleStudent(RegisteredUser registeredUser) throws IOException {
         return new StudentServiceApi(new AdminRequests())
                 .postAssignStudent(registeredUser.getId())
                 .as(RegisteredUser.class);

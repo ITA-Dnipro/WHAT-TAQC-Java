@@ -41,7 +41,7 @@ public class APIConstants {
         Integer UNAUTHORIZED = 401;
         Integer FORBIDDEN = 403;
         Integer ACCOUNT_NOT_FOUND = 404;
-        Integer NO_RIGHTS = 409;
+        Integer CONFLICT = 409;
         Integer BAD_REQUEST = 400;
     }
 
@@ -50,6 +50,7 @@ public class APIConstants {
         String CHANGE_PASSWORD = "/api/v2/accounts/password";
         String REGISTRATION = "/accounts/reg";
         String GET_ALL_REGISTERED_USERS = "/accounts";
+        String EMAIL_EXISTED_MESSAGE = "Email already exists";
     }
 
     public interface Courses {

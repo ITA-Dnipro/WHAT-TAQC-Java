@@ -8,12 +8,16 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
+import static api.APIConstants.HEADERS;
+import static api.APIConstants.StatusCodes.OK;
+import static org.apache.commons.compress.archivers.ar.ArArchiveEntry.HEADER;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-public class Accounts_VerifyRegistrationAccount_Test {
+public class Accounts_VerifyRegistrationAccount_ValidData_Test {
 
     private AccountsServiceApi accountsServiceApi;
     private User user;
+    private static Integer UNASSIGNED_USER_ROLE_ID = 0;
 
     @BeforeClass
     public void setUp() throws IOException {
@@ -26,11 +30,13 @@ public class Accounts_VerifyRegistrationAccount_Test {
         accountsServiceApi.registrationAccount(user)
                 .then()
                 .assertThat()
-                .statusCode(200)
+                .log().all()
+                .statusCode(OK)
+                .headers(HEADERS)
                 .body("email", equalTo(user.getEmail()))
                 .body("firstName", equalTo(user.getFirstName()))
                 .body("lastName", equalTo(user.getLastName()))
-                .body("role", equalTo(0))
+                .body("role", equalTo(UNASSIGNED_USER_ROLE_ID))
                 .body("isActive", equalTo(true));
     }
 }

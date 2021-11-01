@@ -44,11 +44,11 @@ public class Group {
                 .setFinishDate(new SimpleDateFormat(dateFormat).format(new Date()))
                 .setStudentIds(new Integer[]{
                         AccountsServiceApi
-                        .getStudent(accountsServiceApi
+                        .assignRoleStudent(accountsServiceApi
                                 .registrationAccount(User.getUserWithRandomValues())
                                 .as(RegisteredUser.class)).getId()})
                 .setMentorIds(new Integer[]{AccountsServiceApi
-                        .getMentor(accountsServiceApi
+                        .assignRoleMentor(accountsServiceApi
                                 .registrationAccount(User.getUserWithRandomValues())
                                 .as(RegisteredUser.class)).getId()});
     }
