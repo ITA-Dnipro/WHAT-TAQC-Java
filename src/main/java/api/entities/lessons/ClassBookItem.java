@@ -10,40 +10,49 @@ public class ClassBookItem {
     public ClassBookItem() {
     }
 
-    public ClassBookItem(Integer studentId) {
-        this.studentId = studentId;
-        this.presence = false;
-    }
-
     public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Integer studentId) {
+    public ClassBookItem setStudentId(Integer studentId) {
         this.studentId = studentId;
+        return this;
     }
 
-    public void setStudentMark(Integer studentMark) {
+    public ClassBookItem setStudentMark(Integer studentMark) {
         this.studentMark = studentMark;
+        return this;
     }
 
     public int getStudentMark() {
         return studentMark;
     }
 
-    public boolean isPresence() {
+    public boolean getPresence() {
         return presence;
     }
 
-    public void setPresence(boolean presence) {
+    public ClassBookItem setPresence(boolean presence) {
         this.presence = presence;
+        return this;
     }
 
     public String getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
+    public ClassBookItem setComment(String comment) {
         this.comment = comment;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ClassBookItem{" +
+                "studentId=" + studentId +
+                ", studentMark=" + studentMark +
+                ", presence=" + presence +
+                ", comment='" + comment + '\'' +
+                '}';
     }
 }

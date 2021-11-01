@@ -16,6 +16,7 @@ public class RegisteredUser {
     protected String email;
     protected Integer role;
     protected String token;
+    protected String avatarUrl;
     protected String password;
 
     Map<String,String> roleList;
@@ -82,6 +83,14 @@ public class RegisteredUser {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
     public String getPassword() {
