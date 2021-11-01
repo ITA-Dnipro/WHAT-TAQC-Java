@@ -70,8 +70,9 @@ public class StudentsPage extends Page<StudentsPage> {
                 .orElse(null);
     }
 
-    public boolean verifyAddStudentButtonIsEnable(){
-        return addStudentButton.isEnabled();
+    public StudentsPage verifyAddStudentButtonIsDisplayed(boolean isDisplayed){
+        softAssert.assertEquals(addStudentButton.isDisplayed(), isDisplayed);
+        return this;
     }
 
     public StudentEditDetailsTab openStudentEditDetailsTab (User user){

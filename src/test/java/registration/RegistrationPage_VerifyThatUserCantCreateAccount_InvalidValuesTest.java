@@ -39,10 +39,8 @@ public class RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValuesTest 
         }
         return list;
     }
-
     @Test(description = "DP213-161", dataProvider = "invalidData")
-    public void verifyUserCantCreateAccount(RegistrationInvalidData data) throws IOException, InterruptedException {
-        System.out.println(data.toString());
+    public void verifyUserCantCreateAccount(RegistrationInvalidData data) throws InterruptedException {
         registrationPage
                 .fillInputFirstName(data.getFirstName())
                 .loseFocus()
@@ -53,15 +51,13 @@ public class RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValuesTest 
                 .loseFocus()
                 .verifyLastNameErrorMessage(data.getLastNameError())
 
+                .fillInputPassword(data.getPassword())
+                .loseFocus()
+                .verifyPasswordErrorMessage(data.getPasswordError())
+
                 .fillInputEmail(data.getEmail())
                 .loseFocus()
                 .verifyEmailErrorMessage(data.getEmailError())
-
-                .fillInputPassword(data.getPassword())
-                .fillInputConfirmPassword(data.getPassword())
-                .loseFocus()
-                .verifyPasswordErrorMessage(data.getPasswordError())
-                .verifyConfirmPasswordErrorMessage(data.getPasswordError())
 
                 .assertAll();
     }

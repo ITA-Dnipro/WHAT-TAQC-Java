@@ -25,7 +25,7 @@ public class UnassignedUsersPage extends Page<UnassignedUsersPage> {
     @FindBy(xpath = TABLE_UNASSIGNED_USERS_XPATH)
     protected WebElement table;
     @FindBy(tagName = TABLE_ROW_TAG_NAME)
-    protected List<WebElement> tableRows;// через фабрику нашла все строки таблицы , то т.к у нас динамическая таблица, по этому сделано через find element
+    protected List<WebElement> tableRows;
 
     public UnassignedUsersPage(WebDriver driver) {
         super(driver);

@@ -19,6 +19,5 @@ public class StudentsPage_VerifyAddStudentButtonDoesntExist_MentorRole extends B
                 .logInAs(Role.MENTOR, MentorsTablePage.class)
                 .redirectTo(Endpoints.STUDENTS, StudentsPage.class);
 
-        Assert.assertFalse(studentsPage.verifyAddStudentButtonIsEnable());
     }
 }
