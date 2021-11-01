@@ -5,7 +5,7 @@ import util.RandomStringsGenerator;
 
 import java.util.Objects;
 
-public class Course {
+public class Course implements Cloneable{
 
     @JsonAlias({"active", "isActive" })
     boolean isActive;

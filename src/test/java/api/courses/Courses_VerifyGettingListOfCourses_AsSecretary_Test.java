@@ -1,6 +1,7 @@
 package api.courses;
 
 import api.base.SecretaryRequests;
+import api.entities.courses.Course;
 import api.services.CoursesServiceApi;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -22,9 +23,12 @@ public class Courses_VerifyGettingListOfCourses_AsSecretary_Test {
     @Test
     public void getCourses() {
         coursesServiceApi.getCourses()
+                .peek()
                 .then()
                 .assertThat()
                 .headers(HEADERS)
-                .statusCode(OK);
+                .statusCode(OK)
+                .extract()
+                .as(Course[].class);
     }
 }
