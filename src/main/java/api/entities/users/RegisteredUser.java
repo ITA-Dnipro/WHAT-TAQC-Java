@@ -6,17 +6,17 @@ import java.util.Map;
 
 public class RegisteredUser {
 
-    @JsonAlias({"first_name", "firstName"})
+    @JsonAlias({"first_name"})
     String firstName;
-    @JsonAlias({"last_name", "lastName"})
+    @JsonAlias({"last_name"})
     String lastName;
     @JsonAlias({"active"})
     protected Boolean isActive;
-
     protected Integer id;
     protected String email;
     protected Integer role;
     protected String token;
+    protected String password;
 
     Map<String,String> roleList;
 
@@ -84,14 +84,25 @@ public class RegisteredUser {
         this.role = role;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "RegisteredUser{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", id=" + id +
                 ", isActive=" + isActive +
+                ", id=" + id +
                 ", email='" + email + '\'' +
+                ", role=" + role +
+                ", token='" + token + '\'' +
+                ", password='" + password + '\'' +
                 ", roleList=" + roleList +
                 '}';
     }

@@ -25,7 +25,7 @@ public class GetMentorTest {
                 .as(RegisteredUser.class);
         System.out.println("Mentor: " + mentor.toString());
 
-        mentor = AccountsServiceApi.getMentor(mentor);
+        mentor = AccountsServiceApi.assignRoleMentor(mentor);
 
         System.out.println(mentor.toString());
     }
@@ -39,7 +39,7 @@ public class GetMentorTest {
                 .as(RegisteredUser.class);
         System.out.println(student.toString());
 
-        student = AccountsServiceApi.getStudent(student);
+        student = AccountsServiceApi.assignRoleStudent(student);
 
         System.out.println(student.toString());
     }
