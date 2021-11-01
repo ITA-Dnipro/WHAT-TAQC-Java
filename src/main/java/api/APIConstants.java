@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class APIConstants {
+
+    private APIConstants() {
+    }
+
     public static final String BASE_LINK;
     public static final String dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final Map<String, String> HEADERS = new HashMap<>();
