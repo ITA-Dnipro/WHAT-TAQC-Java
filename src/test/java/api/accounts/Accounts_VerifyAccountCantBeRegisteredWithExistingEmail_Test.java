@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class Accounts_VerifyCantRegistrationAccountWithInExistingEmail_Test {
+    public class Accounts_VerifyAccountCantBeRegisteredWithExistingEmail_Test {
 
     protected AccountsServiceApi accountsServiceApi;
     protected User user;
@@ -31,6 +31,7 @@ public class Accounts_VerifyCantRegistrationAccountWithInExistingEmail_Test {
         accountsServiceApi.registrationAccount(user)
                 .then()
                 .assertThat()
-                .statusCode(409);
+                .statusCode(409)
+                .statusLine("Email already exists");
     }
 }

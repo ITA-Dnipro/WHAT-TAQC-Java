@@ -19,7 +19,7 @@ public class RegisteredUser {
     protected String avatarUrl;
     protected String password;
 
-    Map<String,String> roleList;
+    protected Map<String,String> roleList;
 
     public Map<String, String> getRoleList() {
         return roleList;
@@ -101,18 +101,4 @@ public class RegisteredUser {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "RegisteredUser{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", isActive=" + isActive +
-                ", id=" + id +
-                ", email='" + email + '\'' +
-                ", role=" + role +
-                ", token='" + token + '\'' +
-                ", password='" + password + '\'' +
-                ", roleList=" + roleList +
-                '}';
-    }
 }

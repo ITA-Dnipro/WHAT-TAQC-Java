@@ -6,6 +6,7 @@ import api.services.AccountsServiceApi;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import static api.APIConstants.HEADERS;
 
 import java.io.IOException;
 
@@ -15,6 +16,8 @@ public class Accounts_VerifyUserWithRoleCanSignIn_Test {
 
     protected AccountsServiceApi accountsServiceApi;
     protected RegisteredUser student;
+    private static Integer STUDENT_ROLE_ID = 1;
+
 
     @BeforeClass
     public void setUp() throws IOException {
@@ -25,7 +28,7 @@ public class Accounts_VerifyUserWithRoleCanSignIn_Test {
                 .registrationAccount(unassignedUser)
                 .as(RegisteredUser.class);
 
-        student = AccountsServiceApi.assignRoleStudent(registeredUser);
+        student = AccountsServiceApi.getStudent(registeredUser);
         student.setPassword(unassignedUser.getPassword());
     }
 
@@ -35,9 +38,9 @@ public class Accounts_VerifyUserWithRoleCanSignIn_Test {
                 .then()
                 .assertThat()
                 .statusCode(200)
+                .headers(HEADERS)
                 .body("first_name", equalTo(student.getFirstName()))
                 .body("last_name", equalTo(student.getLastName()))
-                .body("role", equalTo(student.getRole()))
-                .body("id", equalTo(student.getId()));
+                .body("role",equalTo(STUDENT_ROLE_ID));
     }
 }
