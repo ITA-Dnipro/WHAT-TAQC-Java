@@ -54,6 +54,9 @@ public class Lessons_VerifyAddLesson_IncorrectData_AsAdmin {
                 {lesson.clone().setThemeName(STRING_WITH_SPECIAL_SYMBOLS),
                         new ResponseError(new Error().setMessage(Lessons.BAD_THEME_NAME))},
 
+                {lesson.clone().setThemeName("лоси"),
+                        new ResponseError(new Error().setMessage(Lessons.BAD_THEME_NAME))},
+
                 {lesson.clone().setThemeName(RandomStringsGenerator
                         .getAlphabeticStringLowerCaseCharacters(0)),
                 new ResponseError(new Error().setMessage(Lessons.EMPTY_THEME_NAME_MESSAGE))}};

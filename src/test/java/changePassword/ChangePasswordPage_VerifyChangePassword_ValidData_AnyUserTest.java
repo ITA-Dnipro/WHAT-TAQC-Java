@@ -26,9 +26,9 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest exten
     private Map<String, User> users;
 
     public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest() throws IOException {
-        users = User.get(PathsToFiles.getPathToCredentials());
+        users = User.get(PathsToFiles.getProperty("valid.password"));
         passwordsData = ChangePasswordValidData.passwordsList(
-                PathsToFiles.getPathToValidPasswords());
+                PathsToFiles.getProperty("valid.password"));
     }
 
     @BeforeClass
@@ -46,7 +46,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest exten
     }
 
     @Test(description = "DP213-27", dataProvider = "log_in")
-    public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException, InterruptedException {
+    public void changePassword_ValidData_Test(ChangePasswordValidData newPassword) throws IOException {
         newUserPassword = newPassword.getNewPassword();
         currentPassword = user.getPass();
 
