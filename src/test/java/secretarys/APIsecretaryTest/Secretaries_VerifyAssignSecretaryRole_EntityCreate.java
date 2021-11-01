@@ -18,11 +18,10 @@ import static org.hamcrest.core.IsEqual.equalTo;
 public class Secretaries_VerifyAssignSecretaryRole_EntityCreate {
     User user;
     RegisteredUser registeredUser;
-    RegisteredUser registeredSecretary;
     AccountsServiceApi accountsServiceApi;
     SecretaryServiceApi secretaryServiceApi;
 
-    public void Secretaries_VerifyAssignSecretaryRole_EntityCreate() {
+    public Secretaries_VerifyAssignSecretaryRole_EntityCreate() {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }

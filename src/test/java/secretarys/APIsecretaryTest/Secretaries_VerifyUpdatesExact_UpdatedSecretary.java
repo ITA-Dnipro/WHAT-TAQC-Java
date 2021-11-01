@@ -22,7 +22,6 @@ public class Secretaries_VerifyUpdatesExact_UpdatedSecretary {
 
     User user;
     RegisteredUser registeredUser;
-    RegisteredUser registeredSecretary;
     AccountsServiceApi accountsServiceApi;
     SecretaryServiceApi secretaryServiceApi;
 
@@ -46,7 +45,7 @@ public class Secretaries_VerifyUpdatesExact_UpdatedSecretary {
         Secretary secretary = secretaryResponse.as(Secretary.class);
         secretary.setFirstName("Vika");
 
-        Response test = secretaryServiceApi.updateSecretary(secretary);//выполение теста. провекра апдейта
+        Response test = secretaryServiceApi.updateSecretary(secretary);
 
                 test
                 .then()

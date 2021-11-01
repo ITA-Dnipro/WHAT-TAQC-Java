@@ -42,14 +42,14 @@ public class Secretaries_VerifyDeleteSecretary_SuccessfullyDisabled {
     @Test
     public void VerifyDeleteSecretary_SuccessfullyDisabled() throws JsonProcessingException {
         Response deleteSecretaryResponse = secretaryServiceApi.deleteSecretary(registeredSecretary.getId());
-        deleteSecretaryResponse.as(String.class);
+       
 
         deleteSecretaryResponse
                 .then()
                 .assertThat()
                 .statusCode(OK)
                 .headers(HEADERS)
-                .body(containsString("true")); // прочитать про єтот метод
+                .body(containsString("true"));
 
     }
 }
