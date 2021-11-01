@@ -40,7 +40,7 @@ public class AuthPage extends BaseElement {
 
     public AuthPage(WebDriver driver) throws IOException {
         super(driver);
-        users = User.get(PathsToFiles.getPathToCredentials());
+        users = User.get(PathsToFiles.getProperty("credentials"));
         defaultPages = new HashMap<>();
         initDefaultPages();
     }

@@ -23,7 +23,26 @@ public class Endpoints {
     private Endpoints() {
     }
 
-    public static final String BASE_URL = "http://localhost:8080";
+    public static final String BASE_URL;
+
+    static {
+        if(System.getProperty("urlUI") != null){
+            if(System.getProperty("portUrlUI") != null)
+                BASE_URL = System.getProperty("urlUI") + System.getProperty("portUrlUI");
+            else {
+                BASE_URL = System.getProperty("urlUI") + PathsToFiles.getProperty("portUrlUI");
+            }
+        }
+        else {
+            if(System.getProperty("portUrlUI") != null)
+                BASE_URL = PathsToFiles.getProperty("urlUI") + System.getProperty("portUrlUI");
+            else {
+                BASE_URL = PathsToFiles.getProperty("urlUI") + PathsToFiles.getProperty("portUrlUI");
+            }
+        }
+    }
+
+
     public static final String LESSONS = BASE_URL + "/lessons";
     public static final String ADD_LESSON = LESSONS + "/add";
     public static final String AUTH = BASE_URL + "/auth";
