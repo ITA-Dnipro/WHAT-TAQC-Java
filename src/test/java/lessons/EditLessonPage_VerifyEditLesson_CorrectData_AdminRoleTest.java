@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static api.APIConstants.CREDENTIALS;
-
 public class EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest extends BaseTest {
 
     LessonsPage lessonsPage;
@@ -31,7 +29,7 @@ public class EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest extends B
         theme = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5);
         firstIcon = 0;
 
-        user = User.get(PathsToFiles.getCreds())
+        user = User.get(PathsToFiles.getCredentials())
                 .get(Role.MENTOR.getRoleName());
     }
 

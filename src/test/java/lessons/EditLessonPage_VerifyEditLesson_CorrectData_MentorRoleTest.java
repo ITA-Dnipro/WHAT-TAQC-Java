@@ -13,8 +13,6 @@ import util.User;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static api.APIConstants.CREDENTIALS;
-
 public class EditLessonPage_VerifyEditLesson_CorrectData_MentorRoleTest extends BaseTest {
 
     AddLessonStrategy addLessonStrategy;
@@ -26,7 +24,7 @@ public class EditLessonPage_VerifyEditLesson_CorrectData_MentorRoleTest extends 
 
     @BeforeClass
     public void precondition() throws Exception {
-        user = User.get(PathsToFiles.getCreds()).get(Role.MENTOR.getRoleName());
+        user = User.get(PathsToFiles.getCredentials()).get(Role.MENTOR.getRoleName());
         addLessonStrategy = new ApiAddLessonStrategy();
 
         if (addLessonStrategy.addNewLesson(user)){

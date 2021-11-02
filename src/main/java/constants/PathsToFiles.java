@@ -19,7 +19,7 @@ public class PathsToFiles {
     }
 
 
-    public static String getCreds(){
+    public static String getCredentials(){
         return System.getProperty("creds");
     }
 

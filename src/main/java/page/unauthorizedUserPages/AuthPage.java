@@ -35,12 +35,10 @@ public class AuthPage extends BaseElement {
 
     Map<String, Page> defaultPages;
     Map<String, User> users;
-    User user = new User();
-
 
     public AuthPage(WebDriver driver) throws IOException {
         super(driver);
-        users = User.get(PathsToFiles.getCreds());
+        users = User.get(PathsToFiles.getCredentials());
         defaultPages = new HashMap<>();
         initDefaultPages();
     }
@@ -63,6 +61,10 @@ public class AuthPage extends BaseElement {
 
     public static AuthPage init(WebDriver driver) throws IOException {
         return new AuthPage(driver);
+    }
+
+    private void clickLogInButton() {
+        clickElement(signInButton);
     }
 //endregion
 
@@ -93,9 +95,5 @@ public class AuthPage extends BaseElement {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    private void clickLogInButton() {
-        clickElement(signInButton);
     }
 }
