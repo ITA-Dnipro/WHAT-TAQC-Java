@@ -1,6 +1,7 @@
 package api;
 
 import constants.PathsToFiles;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,10 +19,9 @@ public class APIConstants {
 
 
     static {
-        if(System.getProperty("urlAPI") != null){
+        if (System.getProperty("urlAPI") != null) {
             BASE_LINK = System.getProperty("urlAPI");
-        }
-        else {
+        } else {
             BASE_LINK = PathsToFiles.getProperty("urlAPI");
         }
     }
@@ -50,6 +50,8 @@ public class APIConstants {
         String CHANGE_PASSWORD = "/api/v2/accounts/password";
         String REGISTRATION = "/accounts/reg";
         String GET_ALL_REGISTERED_USERS = "/accounts";
+        String BAD_REQUEST_MESSAGE = "This account already assigned.";
+        String NOT_FOUND_MESSAGE = "Account not found";
     }
 
     public interface Courses {
@@ -82,6 +84,7 @@ public class APIConstants {
         String MENTORS = "/mentors/";
         String ACTIVE_MENTORS = MENTORS + "active/";
         String GROUPS = "/groups/";
+        String NOT_FOUND_MENTOR_MESSAGE = "Mentor not found";
     }
 
     public interface Student {
