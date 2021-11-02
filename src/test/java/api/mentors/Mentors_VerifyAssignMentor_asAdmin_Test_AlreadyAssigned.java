@@ -36,11 +36,11 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_AlreadyAssigned {
     }
 
     @Test
-    public void test() {
+    public void verifyAssignMentor() {
         mentorsServiceApi.postAssignMentor(registeredUser.getId());
-        Response test = mentorsServiceApi.postAssignMentor(registeredUser.getId());
-        test.as(ResponseError.class);
-        test
+        Response mentor = mentorsServiceApi.postAssignMentor(registeredUser.getId());
+        mentor.as(ResponseError.class);
+        mentor
                 .then()
                 .assertThat()
                 .statusCode(BAD_REQUEST)

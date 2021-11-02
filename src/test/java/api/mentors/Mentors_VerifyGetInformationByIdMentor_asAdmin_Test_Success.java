@@ -15,14 +15,15 @@ import static api.APIConstants.HEADERS;
 import static api.APIConstants.StatusCodes.OK;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
+public class Mentors_VerifyGetInformationByIdMentor_asAdmin_Test_Success {
 
     User user;
     RegisteredUser registeredUser;
+    RegisteredUser mentor;
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
 
-    public Mentors_VerifyAssignMentor_asAdmin_Test_Success()  {
+    public Mentors_VerifyGetInformationByIdMentor_asAdmin_Test_Success()  {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }
@@ -33,19 +34,24 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
                 .registrationAccount(user)
                 .as(RegisteredUser.class);
         mentorsServiceApi = new MentorsServiceApi(new AdminRequests());
+        mentor= mentorsServiceApi
+                .postAssignMentor(registeredUser.getId())
+                .as(RegisteredUser.class);
     }
 
     @Test
-    public void verifyAssignMentor() {
-        Response mentor = mentorsServiceApi.postAssignMentor(registeredUser.getId());
-        mentor.as(RegisteredUser.class);
-        mentor
+    public void verifyGetInformationByIdMentors() {
+
+        Response mentorsById=mentorsServiceApi.getMentorsById(mentor.getId());
+        mentorsById.as(RegisteredUser.class);
+        mentorsById
                 .then()
                 .assertThat()
                 .statusCode(OK)
                 .headers(HEADERS)
-                .body("email", equalTo(registeredUser.getEmail()))
-                .body("firstName", equalTo(registeredUser.getFirstName()))
-                .body("lastName", equalTo(registeredUser.getLastName()));
+                .body("id",equalTo(mentor.getId()))
+                .body("email", equalTo(mentor.getEmail()))
+                .body("firstName", equalTo(mentor.getFirstName()))
+                .body("lastName", equalTo(mentor.getLastName()));
     }
 }

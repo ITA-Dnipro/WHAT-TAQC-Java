@@ -7,10 +7,6 @@ import api.entities.users.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
-import page.lessons.LessonsPage;
-import page.mentors.MentorsTablePage;
-import page.students.StudentsPage;
-import util.Role;
 
 import java.io.IOException;
 import java.util.Map;

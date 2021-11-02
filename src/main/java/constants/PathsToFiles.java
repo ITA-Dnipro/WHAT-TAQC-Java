@@ -1,7 +1,6 @@
 package constants;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -9,17 +8,16 @@ public class PathsToFiles {
 
     private PathsToFiles() {}
 
-    public static String getPathToCredentials() throws IOException {
+    public static String getProperty(String property) {
         Properties properties = new Properties();
-        properties.load(new FileInputStream(BASE_PATH + "paths.properties"));
-        return properties.getProperty("credentials");
+        try {
+            properties.load(new FileInputStream(BASE_PATH + "paths.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties.getProperty(property);
     }
 
-    public static String getPathToValidPasswords() throws IOException {
-        Properties properties = new Properties();
-        properties.load(new FileInputStream(BASE_PATH + "paths.properties"));
-        return properties.getProperty("valid.password");
-    }
 
     public static final String BASE_PATH = "./src/main/resources/";
 
