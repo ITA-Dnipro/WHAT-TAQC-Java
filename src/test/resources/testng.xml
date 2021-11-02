@@ -1,7 +1,8 @@
-<suite name="Lessons" verbose="1" >
+<suite name="All-Tests" verbose="1" >
         <test name="all-tests">
             <packages>
                 <package name="api.lessons"/>
+                <package name="api.groups"/>
                 <package name="lessons"/>
             </packages>
         </test>
