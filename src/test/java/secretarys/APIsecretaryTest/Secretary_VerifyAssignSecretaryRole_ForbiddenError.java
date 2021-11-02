@@ -37,12 +37,11 @@ public class Secretary_VerifyAssignSecretaryRole_ForbiddenError {
 
     @Test
     public void VerifyAssignSecretaryRole_ForbiddenError() {
-        //PREPARE!
         secretaryServiceApi.postAssignSecretary(registeredUser.getId());
-        // ASSERT
+
         Response test = secretaryServiceApi.postAssignSecretary(registeredUser.getId());
 
-        // Verify
+
         test.as(ResponseError.class);
         test
                 .then()

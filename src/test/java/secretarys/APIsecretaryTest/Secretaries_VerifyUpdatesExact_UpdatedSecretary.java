@@ -24,6 +24,7 @@ public class Secretaries_VerifyUpdatesExact_UpdatedSecretary {
     RegisteredUser registeredUser;
     AccountsServiceApi accountsServiceApi;
     SecretaryServiceApi secretaryServiceApi;
+    String newFirstName = "Vika";
 
     public Secretaries_VerifyUpdatesExact_UpdatedSecretary()  {
         accountsServiceApi = new AccountsServiceApi();
@@ -43,7 +44,7 @@ public class Secretaries_VerifyUpdatesExact_UpdatedSecretary {
     public void VerifyUpdatesExact_UpdatedSecretary() throws JsonProcessingException {
         Response secretaryResponse = secretaryServiceApi.postAssignSecretary(registeredUser.getId());
         Secretary secretary = secretaryResponse.as(Secretary.class);
-        secretary.setFirstName("Vika");
+        secretary.setFirstName(newFirstName);
 
         Response test = secretaryServiceApi.updateSecretary(secretary);
 
@@ -53,7 +54,7 @@ public class Secretaries_VerifyUpdatesExact_UpdatedSecretary {
                 .statusCode(OK)
                 .headers(HEADERS)
                 .body("email", equalTo(registeredUser.getEmail()))
-                .body("firstName", equalTo("Vika"))
+                .body("firstName", equalTo(newFirstName))
                 .body("lastName", equalTo(registeredUser.getLastName()));
     }
 }
