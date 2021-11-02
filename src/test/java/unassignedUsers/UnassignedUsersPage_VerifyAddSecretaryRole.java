@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddRoleSecretary extends BaseTest {
+public class UnassignedUsersPage_VerifyAddSecretaryRole extends BaseTest {
     private UnassignedUser secretary;
 
     @BeforeClass

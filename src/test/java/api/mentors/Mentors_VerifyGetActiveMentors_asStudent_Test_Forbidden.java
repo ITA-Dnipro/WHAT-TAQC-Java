@@ -12,12 +12,12 @@ import java.io.IOException;
 import static api.APIConstants.StatusCodes.FORBIDDEN;
 import static api.APIConstants.StatusCodes.UNAUTHORIZED;
 
-public class Mentors_VerifyGetActiveMentors_asStudent_Forbidden {
+public class Mentors_VerifyGetActiveMentors_asStudent_Test_Forbidden {
 
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
 
-    public Mentors_VerifyGetActiveMentors_asStudent_Forbidden() {
+    public Mentors_VerifyGetActiveMentors_asStudent_Test_Forbidden() {
         accountsServiceApi = new AccountsServiceApi();
     }
 

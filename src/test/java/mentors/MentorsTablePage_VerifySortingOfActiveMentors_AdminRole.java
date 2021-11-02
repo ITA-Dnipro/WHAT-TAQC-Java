@@ -31,7 +31,7 @@ public class MentorsTablePage_VerifySortingOfActiveMentors_AdminRole extends Bas
     @Test(description = "DP213-67")
     public void verifySortingOfActiveMentors() {
         mentorsTablePage
-                .sortByName()
+                 .sortByName()
                 .verifySoftByNameASC()
                 .sortByName()
                 .verifySoftByNameDEC()
@@ -42,6 +42,7 @@ public class MentorsTablePage_VerifySortingOfActiveMentors_AdminRole extends Bas
                 .sortByEmail()
                 .verifySoftByEmailASC()
                 .sortByEmail()
-                .verifySoftByEmailDEC();
+                .verifySoftByEmailDEC()
+                .assertAll();
     }
 }

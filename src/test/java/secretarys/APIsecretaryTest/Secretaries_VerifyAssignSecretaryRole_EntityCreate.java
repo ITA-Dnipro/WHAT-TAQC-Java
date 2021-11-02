@@ -1,12 +1,11 @@
-package api.mentors;
+package secretarys.APIsecretaryTest;
 
 import api.base.AdminRequests;
 import api.entities.users.RegisteredUser;
 import api.entities.users.User;
 import api.services.AccountsServiceApi;
-import api.services.MentorsServiceApi;
+import api.services.SecretaryServiceApi;
 import io.restassured.response.Response;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,15 +15,13 @@ import static api.APIConstants.HEADERS;
 import static api.APIConstants.StatusCodes.OK;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
-
+public class Secretaries_VerifyAssignSecretaryRole_EntityCreate {
     User user;
     RegisteredUser registeredUser;
     AccountsServiceApi accountsServiceApi;
-    MentorsServiceApi mentorsServiceApi;
-    RegisteredUser mentor;
+    SecretaryServiceApi secretaryServiceApi;
 
-    public Mentors_VerifyAssignMentor_asAdmin_Test_Success() {
+    public Secretaries_VerifyAssignSecretaryRole_EntityCreate() {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }
@@ -34,26 +31,20 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
         registeredUser = accountsServiceApi
                 .registrationAccount(user)
                 .as(RegisteredUser.class);
-        mentorsServiceApi = new MentorsServiceApi(new AdminRequests());
+        secretaryServiceApi = new SecretaryServiceApi(new AdminRequests());
     }
 
     @Test
-    public void verifyAssignMentor() {
-        mentor = mentorsServiceApi
-                .postAssignMentor(registeredUser.getId())
+    public void VerifyAssignSecretaryRole_EntityCreate() {
+        Response test = secretaryServiceApi.postAssignSecretary(registeredUser.getId());
+
+        test
                 .then()
+                .assertThat()
                 .statusCode(OK)
                 .headers(HEADERS)
                 .body("email", equalTo(registeredUser.getEmail()))
                 .body("firstName", equalTo(registeredUser.getFirstName()))
-                .body("lastName", equalTo(registeredUser.getLastName()))
-                .extract()
-                .as(RegisteredUser.class);
-    }
-
-    @AfterClass
-    public void tearDown() {
-        mentorsServiceApi.deleteMentor(mentor.getId());
-
+                .body("lastName", equalTo(registeredUser.getLastName()));
     }
 }
