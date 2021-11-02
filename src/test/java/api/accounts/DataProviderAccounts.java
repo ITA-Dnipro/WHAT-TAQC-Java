@@ -8,6 +8,8 @@ import org.testng.annotations.DataProvider;
 
 import java.io.IOException;
 
+import static api.APIConstants.EMPTY_STRING;
+
 public class DataProviderAccounts {
 
     private AccountsServiceApi accountsServiceApi;
@@ -22,6 +24,26 @@ public class DataProviderAccounts {
 
     public DataProviderAccounts() {
         accountsServiceApi = new AccountsServiceApi();
+    }
+
+    @DataProvider(name = "registrationInvalidData")
+    public Object[][] registrationInvalidData() {
+
+//region Data Preparation
+        User userInvalidFirstName = User.getUserWithRandomValues();
+        userInvalidFirstName.setFirstName(EMPTY_STRING);
+        User userInvalidLastName = User.getUserWithRandomValues();
+        userInvalidLastName.setLastName(EMPTY_STRING);
+        User userInvalidEmail = User.getUserWithRandomValues();
+        userInvalidEmail.setEmail(EMPTY_STRING);
+        User userInvalidPassword = User.getUserWithRandomValues();
+        userInvalidPassword.setPassword(EMPTY_STRING);
+        User userInvalidConfirmPassword = User.getUserWithRandomValues();
+        userInvalidConfirmPassword.setConfirmPassword(EMPTY_STRING);
+//endregion
+
+        return new Object[][]{{userInvalidFirstName}, {userInvalidLastName}, {userInvalidEmail},
+                {userInvalidPassword}, {userInvalidConfirmPassword}};
     }
 
     @DataProvider(name = "singIn")

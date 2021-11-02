@@ -43,6 +43,7 @@ public class Students_VerifyRoleStudentCanBeAssignToUnassignedUser_Admin_Test {
                 .body("email", equalTo(user.getEmail()))
                 .body("firstName", equalTo(user.getFirstName()))
                 .body("lastName", equalTo(user.getLastName()));
+
         List<RegisteredUser> activeStudentsList = studentServiceApi.getGetAllActiveStudents()
                 .jsonPath()
                 .getList(EMPTY_STRING, RegisteredUser.class);

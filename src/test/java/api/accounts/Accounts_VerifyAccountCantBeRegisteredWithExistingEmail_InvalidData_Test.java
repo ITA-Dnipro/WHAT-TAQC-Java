@@ -14,7 +14,7 @@ import java.io.IOException;
 import static api.APIConstants.AccountEndpoints.EMAIL_EXISTED_MESSAGE;
 import static api.APIConstants.StatusCodes.CONFLICT;
 
-public class Accounts_VerifyAccountCantBeRegisteredWithExistingEmail_IncorrectData_Test {
+public class Accounts_VerifyAccountCantBeRegisteredWithExistingEmail_InvalidData_Test {
 
     protected AccountsServiceApi accountsServiceApi;
     protected User user;
@@ -23,6 +23,7 @@ public class Accounts_VerifyAccountCantBeRegisteredWithExistingEmail_IncorrectDa
     public void setUp() throws IOException {
         accountsServiceApi = new AccountsServiceApi(new AdminRequests());
         user = User.getUserWithRandomValues();
+
         User[] users = accountsServiceApi.getAllRegisteredAccounts()
                 .then()
                 .extract()

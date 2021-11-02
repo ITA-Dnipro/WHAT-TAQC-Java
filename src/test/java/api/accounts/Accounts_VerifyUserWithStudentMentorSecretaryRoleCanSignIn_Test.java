@@ -22,7 +22,7 @@ public class Accounts_VerifyUserWithStudentMentorSecretaryRoleCanSignIn_Test {
     }
 
     @Test(dataProvider = "singIn", dataProviderClass = DataProviderAccounts.class)
-    public void verifyUserWithRoleCanSignIn(RegisteredUser user, Integer roleId, String roleName) throws JsonProcessingException {
+    public void singInData(RegisteredUser user, Integer roleId, String roleName) throws JsonProcessingException {
         RegisteredUser userFromResponse = accountsServiceApi.Auth(user)
                 .then()
                 .assertThat()
