@@ -1,0 +1,9 @@
+<suite name="Lessons" verbose="1" >
+        <test name="all-tests">
+            <packages>
+                <package name="api.lessons"/>
+                <package name="lessons"/>
+                <package name="api.mentors"/>
+            </packages>
+        </test>
+</suite>

@@ -33,9 +33,9 @@ public class Mentors_VerifyAssignMentor_asUnauthorized_Test_Unauthorized {
     }
 
     @Test
-    public void test() {
-        Response test = mentorsServiceApi.postAssignMentor(registeredUser.getId());
-        test
+    public void verifyAssignMentor() {
+        mentorsServiceApi
+                .postAssignMentor(registeredUser.getId())
                 .then()
                 .assertThat()
                 .statusCode(UNAUTHORIZED);

@@ -23,7 +23,6 @@ what-taqc.iml
 AuthPage.java
 /src/main/resources/credentials/
 /src/main/resources/log4j.properties
-/src/main/resources/paths.properties
 /allure-results/
 src/main/resources/changePassword/ChangePasswordWithPasswords.json
 D:/WHAT-TAQC-Java/ChangePasswordCourses.xml

@@ -6,13 +6,16 @@ import static api.APIConstants.Courses.*;
 import static api.APIConstants.Mentors.*;
 import static api.APIConstants.Lessons.*;
 import static api.APIConstants.EMPTY_STRING;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import api.entities.mentors.Mentor;
 import io.restassured.response.Response;
 
-public class MentorsServiceApi {
-    BaseRequests requests;
+public class MentorsServiceApi extends BaseService {
+
 
     public MentorsServiceApi(BaseRequests requests) {
-        this.requests = requests;
+        super(requests);
     }
 
     public Response getGroupOfMentor(Integer id) {
@@ -49,6 +52,10 @@ public class MentorsServiceApi {
 
     public Response getListOfLessonsMentors(Integer id) {
         return requests.sendGet(MENTORS, LESSONS, id);
+    }
+
+    public Response editMentor(Mentor mentor) throws JsonProcessingException {
+        return requests.sendPut(MENTORS, mentor.getId(), mapper.writeValueAsString(mentor));
     }
 
     public BaseRequests getRequests() {

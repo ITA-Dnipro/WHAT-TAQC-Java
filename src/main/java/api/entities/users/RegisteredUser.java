@@ -1,8 +1,9 @@
 package api.entities.users;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Map;
+import java.util.Objects;
 
 public class RegisteredUser {
 
@@ -17,6 +18,7 @@ public class RegisteredUser {
     protected String email;
     protected Integer role;
     protected String token;
+    protected String avatarUrl;
 
     Map<String,String> roleList;
 
@@ -84,6 +86,14 @@ public class RegisteredUser {
         this.role = role;
     }
 
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
     @Override
     public String toString() {
         return "RegisteredUser{" +
@@ -94,5 +104,20 @@ public class RegisteredUser {
                 ", email='" + email + '\'' +
                 ", roleList=" + roleList +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RegisteredUser that = (RegisteredUser) o;
+        return Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName,  email);
     }
 }

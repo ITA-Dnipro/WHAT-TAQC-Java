@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
-import page.secretarys.SecretarysEditDetailsTab;
 
 import java.util.List;
 
@@ -32,8 +31,7 @@ public class StudentEditDetailsTab extends StudentsEditDetailsPage<StudentEditDe
     protected WebElement clearButton;
     @FindBy(xpath = SAVE_BUTTON_XPATH)
     protected WebElement saveButton;
-    @FindBy(xpath = SECRETARIES_LAY_OFF_BUTTON_XPATH)
-    protected WebElement layOffButton;
+
 
     private SoftAssert softAssert = new SoftAssert();
 
@@ -105,10 +103,7 @@ public class StudentEditDetailsTab extends StudentsEditDetailsPage<StudentEditDe
         softAssert.assertEquals(saveButton.isEnabled(), condition);
         return this;
     }
-    public SecretarysEditDetailsTab deleteSecretary() {
-        clickElement(layOffButton);
-        return new SecretarysEditDetailsTab(driver);
-    }
+
 
 
     public SoftAssert getSoftAssert() {

@@ -6,6 +6,7 @@ import api.entities.users.User;
 import api.services.AccountsServiceApi;
 import api.services.MentorsServiceApi;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -21,8 +22,9 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
     RegisteredUser registeredUser;
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
+    RegisteredUser mentor;
 
-    public Mentors_VerifyAssignMentor_asAdmin_Test_Success()  {
+    public Mentors_VerifyAssignMentor_asAdmin_Test_Success() {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }
@@ -36,17 +38,22 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_Success {
     }
 
     @Test
-    public void test() {
-
-        Response test = mentorsServiceApi.postAssignMentor(registeredUser.getId());
-        test.as(RegisteredUser.class);
-        test
+    public void verifyAssignMentor() {
+        mentor = mentorsServiceApi
+                .postAssignMentor(registeredUser.getId())
                 .then()
-                .assertThat()
                 .statusCode(OK)
                 .headers(HEADERS)
                 .body("email", equalTo(registeredUser.getEmail()))
                 .body("firstName", equalTo(registeredUser.getFirstName()))
-                .body("lastName", equalTo(registeredUser.getLastName()));
+                .body("lastName", equalTo(registeredUser.getLastName()))
+                .extract()
+                .as(RegisteredUser.class);
+    }
+
+    @AfterClass
+    public void tearDown() {
+        mentorsServiceApi.deleteMentor(mentor.getId());
+
     }
 }

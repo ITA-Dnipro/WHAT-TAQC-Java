@@ -19,7 +19,7 @@ public class Mentors_VerifyAssignMentor_asStudent_Test_Forbiddens {
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
 
-    public Mentors_VerifyAssignMentor_asStudent_Test_Forbiddens()  {
+    public Mentors_VerifyAssignMentor_asStudent_Test_Forbiddens() {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }
@@ -33,9 +33,9 @@ public class Mentors_VerifyAssignMentor_asStudent_Test_Forbiddens {
     }
 
     @Test
-    public void test() {
-        Response test = mentorsServiceApi.postAssignMentor(registeredUser.getId());
-        test
+    public void verifyAssignMentor() {
+        mentorsServiceApi
+                .postAssignMentor(registeredUser.getId())
                 .then()
                 .assertThat()
                 .statusCode(FORBIDDEN);

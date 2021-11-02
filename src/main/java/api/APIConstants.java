@@ -1,14 +1,30 @@
 package api;
 
+import constants.PathsToFiles;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class APIConstants {
-    public static final String BASE_LINK = "https://charliebackendapi.azurewebsites.net/api/v2";
+
+    private APIConstants() {
+    }
+
+    public static final String BASE_LINK;
     public static final String dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
     public static final Map<String, String> HEADERS = new HashMap<>();
     public static final String EMPTY_STRING = "";
     public static final String STRING_WITH_SPECIAL_SYMBOLS = "#@)g&$0";
+    public static final String CREDENTIALS = "credentials";
+
+
+    static {
+        if (System.getProperty("urlAPI") != null) {
+            BASE_LINK = System.getProperty("urlAPI");
+        } else {
+            BASE_LINK = PathsToFiles.getProperty("urlAPI");
+        }
+    }
 
     static {
         HEADERS.put("Transfer-Encoding", "chunked");
@@ -35,6 +51,8 @@ public class APIConstants {
         String CHANGE_PASSWORD = "/api/v2/accounts/password";
         String REGISTRATION = "/accounts/reg";
         String GET_ALL_REGISTERED_USERS = "/accounts";
+        String BAD_REQUEST_MESSAGE = "This account already assigned.";
+        String NOT_FOUND_MESSAGE = "Account not found";
     }
 
     public interface Courses {
@@ -67,9 +85,16 @@ public class APIConstants {
         String MENTORS = "/mentors/";
         String ACTIVE_MENTORS = MENTORS + "active/";
         String GROUPS = "/groups/";
+        String NOT_FOUND_MENTOR_MESSAGE = "Mentor not found";
     }
 
     public interface Student {
         String STUDENT = "/students/";
+    }
+
+    public interface Secretary{
+        String SECRETARY = "/secretaries/";
+        String ACTIVE_SECRETARY = SECRETARY +"active/";
+        String GIVES_SECRETARY_ROLE = SECRETARY + "{accountId}";
     }
 }

@@ -60,10 +60,8 @@ public class Locators {
         String SECRETARY_TABLE_HEAD_EMAIL_XPATH = "//span[contains(text(),'Email')]";
         String SECRETARY_PAGE_TITLE_XPATH = "//h2[text()='Secretaries']";
         String SECRETARY_EDIT_ICON_XPATH = "//td[@class='text-center']";
-
         String SECRETARY_ROW_XPATH = "//td[not(contains(@class,'text-center'))]";
                   }
-
 
     public interface AddLesson {
         String PAGE_TITLE_XPATH = "//h3[text()='Add a Lesson']";
@@ -111,12 +109,12 @@ public class Locators {
         String SECRETARIES_LAST_NAME_WINDOW_XPATH = "//input[@name='lastName']";
         String SECRETARIES_EMAIL_WINDOW_XPATH = "//input[@name='email']";
         String SECRETARIES_LAY_OFF_BUTTON_XPATH = "//button[contains(text (), 'Lay off')]";
-        String SECRETARIES_CLEAR_BUTTON_XPATH = "//button[contains(text (), 'Clear')]";
         String SECRETARIES_SAVE_BUTTON_XPATH = "//button[contains(text (), 'Save')]";
         String SECRETARIES_DETAILS_TITLE = "//h3[contains(text (),'details')]";
         String SECRETARIES_DETAILS_FNAME= "//div[text()= 'First Name:']";
         String SECRETARIES_DETAILS_LNAME= "//div[text()= 'Last Name:']";
         String SECRETARIES_DETAILS_EMAIL= "//div[text()= 'Email address:']";
+        String REMOVE_SECRETARY_BUTTON="//button[text()='Delete']";
 
     }
 
