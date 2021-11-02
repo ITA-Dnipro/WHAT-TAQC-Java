@@ -3,6 +3,7 @@ package api.entities.users;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Map;
+import java.util.Objects;
 
 public class RegisteredUser {
 
@@ -103,5 +104,20 @@ public class RegisteredUser {
                 ", email='" + email + '\'' +
                 ", roleList=" + roleList +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RegisteredUser that = (RegisteredUser) o;
+        return Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName,  email);
     }
 }
