@@ -31,7 +31,7 @@ public class EditLessonPage_VerifyErrorMessagesTest extends BaseTest {
 
     public EditLessonPage_VerifyErrorMessagesTest() throws IOException {
         errors = EditLessonError.getErrors(PathsToFiles.Lessons.EDIT_LESSON_ERRORS);
-        user = User.get(PathsToFiles.getProperty(CREDENTIALS)).get(Role.ADMIN.getRoleName());
+        user = User.get(PathsToFiles.getCreds()).get(Role.ADMIN.getRoleName());
         firstIcon = 0;
     }
 

@@ -26,7 +26,7 @@ public class ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest exten
     private Map<String, User> users;
 
     public ChangePasswordPage_VerifyChangePassword_ValidData_AnyUserTest() throws IOException {
-        users = User.get(PathsToFiles.getProperty("valid.password"));
+        users = User.get(PathsToFiles.getCreds());
         passwordsData = ChangePasswordValidData.passwordsList(
                 PathsToFiles.getProperty("valid.password"));
     }

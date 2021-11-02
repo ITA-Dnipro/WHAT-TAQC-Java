@@ -19,6 +19,10 @@ public class PathsToFiles {
     }
 
 
+    public static String getCreds(){
+        return System.getProperty("creds");
+    }
+
     public static final String BASE_PATH = "./src/main/resources/";
 
     public interface Lessons {

@@ -31,7 +31,7 @@ public class EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest extends B
         theme = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5);
         firstIcon = 0;
 
-        user = User.get(PathsToFiles.getProperty(CREDENTIALS))
+        user = User.get(PathsToFiles.getCreds())
                 .get(Role.MENTOR.getRoleName());
     }
 

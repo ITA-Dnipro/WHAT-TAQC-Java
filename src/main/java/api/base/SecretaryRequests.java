@@ -12,7 +12,7 @@ import static api.APIConstants.Headers.AUTHORIZATION;
 public class SecretaryRequests extends BaseRequests {
 
     public SecretaryRequests() throws IOException {
-        registeredUser = logIn(User.get(PathsToFiles.getProperty(CREDENTIALS))
+        registeredUser = logIn(User.get(PathsToFiles.getCreds())
                 .get(Role.SECRETARY.getRoleName()));
         this.headers.put(AUTHORIZATION,
                 registeredUser.getRoleList().get(Role.SECRETARY.getRoleName()));
