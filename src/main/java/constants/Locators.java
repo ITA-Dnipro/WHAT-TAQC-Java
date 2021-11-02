@@ -258,7 +258,7 @@ public class Locators {
         String TABLE_HEAD_LAST_NAME_XPATH = "//span[@lessons.data-sorting-param='lastName']";
         String TABLE_HEAD_EMAIL_XPATH = "//span[@lessons.data-sorting-param='email']";
         String TABLE_ROW_TAG_NAME = "tr";
-        String TABLE_CELL_TAG_NAME = "td";
+        String PENCIL_ICON_XPATH = "//td[@class='text-center']";
     }
 
     public interface StudentsEditDetailsPage {
@@ -285,7 +285,7 @@ public class Locators {
         String GROUPS_PLUS_BUTTON_XPATH = "//button[text()= '+']";
         String GROUPS_LIST_XPATH = "//ul[@class='d-flex flex-wrap justify-content-between p-0']//child::li";
         String EXCLUDE_BUTTON_XPATH = "//button[text()= 'Exclude']";
-        String CLEAR_BUTTON_XPATH = "//button[text()= 'Clear']";
+        String CLEAR_BUTTON_XPATH = "//button[text()= 'Reset']";
         String SAVE_BUTTON_XPATH = "//button[text()= 'Save']";
     }
 
