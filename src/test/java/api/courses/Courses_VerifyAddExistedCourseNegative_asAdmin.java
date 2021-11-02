@@ -9,19 +9,25 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class Courses_VerifyAddCourse_asAdmin {
+import static api.APIConstants.StatusCodes.NO_RIGHTS;
+import static api.APIConstants.StatusCodes.UNPROCESSABLE_ENTITY;
+
+public class Courses_VerifyAddExistedCourseNegative_asAdmin {
     CoursesServiceApi coursesServiceApi;
+    Course course = Course.getCourseWithRandomName();
+
 
     @BeforeClass
     public void setUp() throws IOException {
         coursesServiceApi = new CoursesServiceApi(new AdminRequests());
+        coursesServiceApi.addCourse(course);
     }
 
     @Test
-    public void addCourse() throws JsonProcessingException {
-        coursesServiceApi.addCourse(Course.getCourseWithRandomName())
-                .then()
+    public void addCourseNegative() throws JsonProcessingException {
+        coursesServiceApi.addExistCourse(course)
+                .then().log().all()
                 .assertThat()
-                .statusCode(200);
+                .statusCode(UNPROCESSABLE_ENTITY);
     }
 }

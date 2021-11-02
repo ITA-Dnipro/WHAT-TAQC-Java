@@ -1,11 +1,16 @@
 package api.entities.courses;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import util.RandomStringsGenerator;
 
-public class Course {
+import java.util.Objects;
+
+public class Course implements Cloneable{
+
+    @JsonAlias({"active", "isActive" })
+    boolean isActive;
 
     Integer id;
-    boolean isActive;
     String name;
 
     private Course(String name) {
@@ -39,7 +44,26 @@ public class Course {
         return name;
     }
 
-    public void setName(String name) {
+    public Course setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return Objects.equals(name, course.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
+    public Course clone() throws CloneNotSupportedException {
+        return (Course) super.clone();
     }
 }
