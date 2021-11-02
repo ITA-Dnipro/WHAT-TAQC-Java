@@ -1,30 +1,30 @@
 package api.mentors;
 
 import api.base.AdminRequests;
-import api.entities.error.ResponseError;
 import api.entities.users.RegisteredUser;
 import api.entities.users.User;
 import api.services.AccountsServiceApi;
 import api.services.MentorsServiceApi;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static api.APIConstants.AccountEndpoints.BAD_REQUEST_MESSAGE;
 import static api.APIConstants.HEADERS;
-import static api.APIConstants.StatusCodes.BAD_REQUEST;
-import static org.hamcrest.core.IsEqual.equalTo;
+import static api.APIConstants.StatusCodes.OK;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class Mentors_VerifyAssignMentor_asAdmin_Test_AlreadyAssigned {
+public class Mentors_VerifyGetMentors_asAdmin_Test_Success {
     User user;
     RegisteredUser registeredUser;
+    RegisteredUser mentorAssign;
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
-    RegisteredUser mentor;
+    RegisteredUser[] listOfMentors;
 
-    public Mentors_VerifyAssignMentor_asAdmin_Test_AlreadyAssigned() {
+    public Mentors_VerifyGetMentors_asAdmin_Test_Success() {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }
@@ -35,23 +35,29 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_AlreadyAssigned {
                 .registrationAccount(user)
                 .as(RegisteredUser.class);
         mentorsServiceApi = new MentorsServiceApi(new AdminRequests());
-        mentor = mentorsServiceApi.postAssignMentor(registeredUser.getId()).as(RegisteredUser.class);
+        mentorAssign = mentorsServiceApi
+                .postAssignMentor(registeredUser.getId())
+                .as(RegisteredUser.class);
     }
 
     @Test
-    public void verifyAssignMentor() {
-        mentorsServiceApi
-                .postAssignMentor(registeredUser.getId())
+    public void verifyGetMentors() {
+        listOfMentors = mentorsServiceApi
+                .getMentors()
                 .then()
                 .assertThat()
-                .statusCode(BAD_REQUEST)
-                .body("error.message", equalTo(BAD_REQUEST_MESSAGE))
+                .statusCode(OK)
+                .headers(HEADERS)
                 .extract()
-                .as(ResponseError.class);
+                .as(RegisteredUser[].class);
+        for (RegisteredUser mentorFromList : listOfMentors) {
+            if (mentorFromList.getId().equals(mentorAssign.getId())) {
+                assertThat(mentorFromList).isEqualTo(mentorAssign);
+            }
+        }
     }
-
     @AfterClass
-    public void tearDown() {
-        mentorsServiceApi.deleteMentor(mentor.getId());
+    public void tearDown(){
+        mentorsServiceApi.deleteMentor(mentorAssign.getId());
     }
 }

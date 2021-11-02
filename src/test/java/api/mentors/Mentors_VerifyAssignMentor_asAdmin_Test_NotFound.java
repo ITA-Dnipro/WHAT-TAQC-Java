@@ -6,6 +6,8 @@ import api.services.AccountsServiceApi;
 import api.services.MentorsServiceApi;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+
+import static api.APIConstants.AccountEndpoints.NOT_FOUND_MESSAGE;
 import static api.APIConstants.StatusCodes.*;
 import static org.hamcrest.core.IsEqual.equalTo;
 
@@ -28,7 +30,8 @@ public class Mentors_VerifyAssignMentor_asAdmin_Test_NotFound {
         mentor.then()
                 .assertThat()
                 .statusCode(ACCOUNT_NOT_FOUND)
-                .body("error.message",equalTo("Account not found"))
-                .body("error.code",equalTo(3));
+                .body("error.message",equalTo(NOT_FOUND_MESSAGE))
+                .extract()
+                .as(ResponseError.class);
     }
 }

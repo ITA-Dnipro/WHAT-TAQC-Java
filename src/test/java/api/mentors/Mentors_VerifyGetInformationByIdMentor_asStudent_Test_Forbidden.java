@@ -6,6 +6,7 @@ import api.entities.users.RegisteredUser;
 import api.entities.users.User;
 import api.services.AccountsServiceApi;
 import api.services.MentorsServiceApi;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -46,5 +47,9 @@ public class Mentors_VerifyGetInformationByIdMentor_asStudent_Test_Forbidden {
                 .then()
                 .assertThat()
                 .statusCode(FORBIDDEN);
+    }
+    @AfterClass
+    public void tearDown(){
+        mentorsServiceApi.deleteMentor(mentor.getId());
     }
 }
