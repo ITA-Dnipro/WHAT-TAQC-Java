@@ -43,7 +43,8 @@ public class MentorsTablePage_VerifySortingOfDisableMentors_AdminRole extends Ba
                 .sortByEmail()
                 .verifySoftByEmailASC()
                 .sortByEmail()
-                .verifySoftByEmailDEC();
+                .verifySoftByEmailDEC()
+                .assertAll();
     }
 
 }
