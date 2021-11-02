@@ -1,6 +1,7 @@
-package secretarys.data;
+package secretarys.SecretarysData;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -19,4 +20,5 @@ public class SecretarysName {
     public static SecretarysName[] getData(String filename) throws IOException {
         return new ObjectMapper().readValue(new File(filename), SecretarysName[].class);
 }
-}
+
+   }

@@ -14,12 +14,12 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-public class Sort extends BaseTest{
+public class UnassignedUsersPage_VerifySorting extends BaseTest{
 
 
     UnassignedUsersPage unassignedUsersPage;
 
-    public Sort() {
+    public UnassignedUsersPage_VerifySorting() {
         unassignedUsersPage = new UnassignedUsersPage(driver);
     }
 

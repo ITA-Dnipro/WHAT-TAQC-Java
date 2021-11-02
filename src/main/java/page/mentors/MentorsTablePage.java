@@ -110,7 +110,7 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
     }
 
     public List<String> getMentorsSurname() {
-        List<String> mentorsSurname = new ArrayList<String>();
+        List<String> mentorsSurname = new ArrayList();
         for (int i = 1; i < mentorsRow.size(); i = i + 3) {
             mentorsSurname.add(mentorsRow.get(i).getText());
         }
