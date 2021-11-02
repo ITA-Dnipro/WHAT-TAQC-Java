@@ -36,7 +36,9 @@ public class ListOfCoursesPage_VerifyCourseSearchField_ValidData_AnyUserRoleTest
                 .clickSideBarItem(SideBar.SideMenuItem.COURSES, new CoursesPage(driver))
                 .isAtPage(waitTime)
                 .fillCourseSearchField(name.getCourseName())
+                .isAtPage(waitTime)
                 .verifySearchCourseFieldFilled(name.getCourseName())
+                .isAtPage(waitTime)
                 .verifyCourseExists(name.getCourseName())
                 .logOut();
     }

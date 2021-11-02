@@ -3,6 +3,7 @@ package api.courses;
 import api.base.SecretaryRequests;
 import api.entities.courses.Course;
 import api.services.CoursesServiceApi;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -10,9 +11,9 @@ import java.io.IOException;
 
 import static api.APIConstants.HEADERS;
 import static api.APIConstants.StatusCodes.OK;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class Courses_VerifyGettingListOfCourses_AsSecretary_Test {
-
+public class Courses_VerifyAddCoursePositive_asSecretary {
     CoursesServiceApi coursesServiceApi;
 
     @BeforeClass
@@ -21,14 +22,19 @@ public class Courses_VerifyGettingListOfCourses_AsSecretary_Test {
     }
 
     @Test
-    public void getCourses() {
-        coursesServiceApi.getCourses()
-                .peek()
+    public void addCoursePositive() throws JsonProcessingException {
+        Course course = Course.getCourseWithRandomName();
+
+        Course addCourse = coursesServiceApi
+                .addCourse(course)
                 .then()
-                .assertThat()
-                .headers(HEADERS)
+                .log().all()
                 .statusCode(OK)
+                .headers(HEADERS)
                 .extract()
-                .as(Course[].class);
+                .response()
+                .as(Course.class);
+
+        assertThat(course).isEqualTo(addCourse);
     }
 }

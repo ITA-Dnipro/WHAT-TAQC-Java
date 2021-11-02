@@ -43,6 +43,7 @@ public class APIConstants {
         Integer ACCOUNT_NOT_FOUND = 404;
         Integer NO_RIGHTS = 409;
         Integer BAD_REQUEST = 400;
+        Integer UNPROCESSABLE_ENTITY = 422;
     }
 
     public interface AccountEndpoints {
@@ -55,7 +56,7 @@ public class APIConstants {
     }
 
     public interface Courses {
-        String COURSES_ENDPOINT = "/courses";
+        String COURSES = "/courses/";
     }
 
     public interface Lessons {
