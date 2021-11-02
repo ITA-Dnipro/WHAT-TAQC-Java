@@ -6,6 +6,7 @@ import api.entities.users.User;
 import api.services.AccountsServiceApi;
 import api.services.MentorsServiceApi;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -23,7 +24,7 @@ public class Mentors_VerifyGetInformationByIdMentor_asAdmin_Test_Success {
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
 
-    public Mentors_VerifyGetInformationByIdMentor_asAdmin_Test_Success()  {
+    public Mentors_VerifyGetInformationByIdMentor_asAdmin_Test_Success() {
         accountsServiceApi = new AccountsServiceApi();
         user = User.getUserWithRandomValues();
     }
@@ -34,7 +35,7 @@ public class Mentors_VerifyGetInformationByIdMentor_asAdmin_Test_Success {
                 .registrationAccount(user)
                 .as(RegisteredUser.class);
         mentorsServiceApi = new MentorsServiceApi(new AdminRequests());
-        mentor= mentorsServiceApi
+        mentor = mentorsServiceApi
                 .postAssignMentor(registeredUser.getId())
                 .as(RegisteredUser.class);
     }
@@ -42,16 +43,21 @@ public class Mentors_VerifyGetInformationByIdMentor_asAdmin_Test_Success {
     @Test
     public void verifyGetInformationByIdMentors() {
 
-        Response mentorsById=mentorsServiceApi.getMentorsById(mentor.getId());
-        mentorsById.as(RegisteredUser.class);
-        mentorsById
+        mentorsServiceApi
+                .getMentorsById(mentor.getId())
                 .then()
                 .assertThat()
                 .statusCode(OK)
                 .headers(HEADERS)
-                .body("id",equalTo(mentor.getId()))
+                .body("id", equalTo(mentor.getId()))
                 .body("email", equalTo(mentor.getEmail()))
                 .body("firstName", equalTo(mentor.getFirstName()))
-                .body("lastName", equalTo(mentor.getLastName()));
+                .body("lastName", equalTo(mentor.getLastName()))
+                .extract()
+                .as(RegisteredUser.class);
+    }
+    @AfterClass
+    public void tearDown(){
+        mentorsServiceApi.deleteMentor(mentor.getId());
     }
 }

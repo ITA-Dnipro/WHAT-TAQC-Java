@@ -10,12 +10,12 @@ import java.io.IOException;
 
 import static api.APIConstants.StatusCodes.UNAUTHORIZED;
 
-public class Mentors_VerifyGetActiveMentors_asUnauthorized_Unauthorized {
+public class Mentors_VerifyGetActiveMentors_asUnauthorized_Test_Unauthorized {
 
     AccountsServiceApi accountsServiceApi;
     MentorsServiceApi mentorsServiceApi;
 
-    public Mentors_VerifyGetActiveMentors_asUnauthorized_Unauthorized() {
+    public Mentors_VerifyGetActiveMentors_asUnauthorized_Test_Unauthorized() {
         accountsServiceApi = new AccountsServiceApi();
     }
 

@@ -3,6 +3,7 @@
             <packages>
                 <package name="api.lessons"/>
                 <package name="lessons"/>
+                <package name="api.mentors"/>
             </packages>
         </test>
 </suite>

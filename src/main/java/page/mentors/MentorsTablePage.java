@@ -146,8 +146,8 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
 
     public MentorsTablePage verifySoftByNameASC() {
         List<String> actualResult = getMentorsName();
-        List<String> expectResult = new ArrayList<>();
-        expectResult=actualResult;
+        List<String> expectResult = new ArrayList<>(actualResult);
+        Collections.copy(expectResult,actualResult);
         Collections.sort(expectResult);
         softAssert.assertEquals(actualResult, expectResult);
         return this;
@@ -155,8 +155,8 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
 
     public MentorsTablePage verifySoftByNameDEC() {
         List<String> actualResult = getMentorsName();
-        List<String> expectResult = new ArrayList<>();
-        expectResult=actualResult;
+        List<String> expectResult = new ArrayList<>(actualResult);
+        Collections.copy(expectResult,actualResult);
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
         softAssert.assertEquals(actualResult, expectResult);
@@ -165,8 +165,8 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
 
     public MentorsTablePage verifySoftBySurNameASC() {
         List<String> actualResult = getMentorsSurname();
-        List<String> expectResult = new ArrayList<>();
-        expectResult=actualResult;
+        List<String> expectResult = new ArrayList<>(actualResult);
+        Collections.copy(expectResult,actualResult);
         Collections.sort(expectResult);
         softAssert.assertEquals(actualResult, expectResult);
         return this;
@@ -174,8 +174,8 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
 
     public MentorsTablePage verifySoftBySurNameDEC() {
         List<String> actualResult = getMentorsSurname();
-        List<String> expectResult = new ArrayList<>();
-        expectResult=actualResult;
+        List<String> expectResult = new ArrayList<>(actualResult);
+        Collections.copy(expectResult,actualResult);
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
         softAssert.assertEquals(actualResult, expectResult);
@@ -184,8 +184,8 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
 
     public MentorsTablePage verifySoftByEmailASC() {
         List<String> actualResult = getMentorsEmail();
-        List<String> expectResult = new ArrayList<>();
-        expectResult=actualResult;
+        List<String> expectResult = new ArrayList<>(actualResult);
+        Collections.copy(expectResult,actualResult);
         Collections.sort(expectResult);
         softAssert.assertEquals(actualResult, expectResult);
         return this;
@@ -193,8 +193,8 @@ public class MentorsTablePage extends Page<MentorsTablePage> {
 
     public MentorsTablePage verifySoftByEmailDEC() {
         List<String> actualResult = getMentorsEmail();
-        List<String> expectResult = new ArrayList<>();
-        expectResult=actualResult;
+        List<String> expectResult = new ArrayList<>(actualResult);
+        Collections.copy(expectResult,actualResult);
         Collections.sort(expectResult);
         Collections.reverse(expectResult);
         softAssert.assertEquals(actualResult, expectResult);

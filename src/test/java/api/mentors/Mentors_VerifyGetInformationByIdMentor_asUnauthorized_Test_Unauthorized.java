@@ -7,6 +7,7 @@ import api.entities.users.User;
 import api.services.AccountsServiceApi;
 import api.services.MentorsServiceApi;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -47,5 +48,9 @@ public class Mentors_VerifyGetInformationByIdMentor_asUnauthorized_Test_Unauthor
                 .then()
                 .assertThat()
                 .statusCode(UNAUTHORIZED);
+    }
+    @AfterClass
+    public void tearDown(){
+        mentorsServiceApi.deleteMentor(mentor.getId());
     }
 }
