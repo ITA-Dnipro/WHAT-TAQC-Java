@@ -2,6 +2,7 @@
         <test name="all-tests">
             <packages>
                 <package name="api.lessons"/>
+                <package name="lessons"/>
             </packages>
         </test>
 </suite>
