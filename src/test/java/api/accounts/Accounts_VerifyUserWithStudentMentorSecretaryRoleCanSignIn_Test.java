@@ -12,7 +12,7 @@ import java.io.IOException;
 import static api.APIConstants.HEADERS;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-public class Accounts_VerifyUserWithStudentRoleCanSignIn_Test {
+public class Accounts_VerifyUserWithStudentMentorSecretaryRoleCanSignIn_Test {
 
     protected AccountsServiceApi accountsServiceApi;
 

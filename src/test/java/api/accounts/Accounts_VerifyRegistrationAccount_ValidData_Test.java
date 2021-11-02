@@ -10,7 +10,6 @@ import java.io.IOException;
 
 import static api.APIConstants.HEADERS;
 import static api.APIConstants.StatusCodes.OK;
-import static org.apache.commons.compress.archivers.ar.ArArchiveEntry.HEADER;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class Accounts_VerifyRegistrationAccount_ValidData_Test {

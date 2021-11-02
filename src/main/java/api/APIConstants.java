@@ -87,5 +87,12 @@ public class APIConstants {
 
     public interface Student {
         String STUDENT = "/students/";
+        String ACTIVE_STUDENTS = STUDENT + "active/";
+    }
+
+    public interface Secretary{
+        String SECRETARY = "/secretaries/";
+        String ACTIVE_SECRETARY = SECRETARY +"active/";
+        String GIVES_SECRETARY_ROLE = SECRETARY + "{accountId}";
     }
 }

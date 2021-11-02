@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static api.APIConstants.AccountEndpoints.EMAIL_EXISTED_MESSAGE;
-import static api.APIConstants.HEADERS;
 import static api.APIConstants.StatusCodes.CONFLICT;
 
 public class Accounts_VerifyAccountCantBeRegisteredWithExistingEmail_IncorrectData_Test {

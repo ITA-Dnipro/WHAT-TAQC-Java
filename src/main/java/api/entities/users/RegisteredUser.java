@@ -101,4 +101,41 @@ public class RegisteredUser {
         this.password = password;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RegisteredUser)) return false;
+
+        RegisteredUser that = (RegisteredUser) o;
+
+        if (getFirstName() != null ? !getFirstName().equals(that.getFirstName()) : that.getFirstName() != null)
+            return false;
+        if (getLastName() != null ? !getLastName().equals(that.getLastName()) : that.getLastName() != null)
+            return false;
+        return getEmail() != null ? getEmail().equals(that.getEmail()) : that.getEmail() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getFirstName() != null ? getFirstName().hashCode() : 0;
+        result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
+        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "RegisteredUser{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", isActive=" + isActive +
+                ", id=" + id +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                ", token='" + token + '\'' +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", password='" + password + '\'' +
+                ", roleList=" + roleList +
+                '}';
+    }
 }

@@ -48,5 +48,10 @@ public class AccountsServiceApi {
                 .postAssignStudent(registeredUser.getId())
                 .as(RegisteredUser.class);
     }
+    public static RegisteredUser assignRoleSecretary(RegisteredUser registeredUser) throws IOException {
+        return new SecretaryServiceApi(new AdminRequests())
+                .postAssignSecretary(registeredUser.getId())
+                .as(RegisteredUser.class);
+    }
 
 }
