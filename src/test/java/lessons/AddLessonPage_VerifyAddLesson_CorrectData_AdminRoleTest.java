@@ -6,11 +6,11 @@ import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.lessons.AddLessonPage;
-import page.lessons.LessonsPage;
 import page.students.StudentsPage;
 import page.unauthorizedUserPages.AuthPage;
 import util.RandomStringsGenerator;
 import util.Role;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -31,9 +31,7 @@ public class AddLessonPage_VerifyAddLesson_CorrectData_AdminRoleTest extends Bas
         addLessonsPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
-                .redirectTo(Endpoints.LESSONS, LessonsPage.class)
-                .isAtPage(waitTime)
-                .clickAddLessonButton()
+                .redirectTo(Endpoints.ADD_LESSON, AddLessonPage.class)
                 .isAtPage(waitTime);
     }
 

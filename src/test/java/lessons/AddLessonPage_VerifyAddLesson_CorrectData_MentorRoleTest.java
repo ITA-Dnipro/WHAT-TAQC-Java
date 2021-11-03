@@ -5,17 +5,20 @@ import base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page.lessons.AddLessonPage;
-import page.unauthorizedUserPages.AuthPage;
 import page.lessons.LessonsPage;
+import page.unauthorizedUserPages.AuthPage;
 import util.RandomStringsGenerator;
 import util.Role;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import static constants.Endpoints.ADD_LESSON;
+
 public class AddLessonPage_VerifyAddLesson_CorrectData_MentorRoleTest extends BaseTest {
 
-    protected LessonsPage lessonsPage;
+    AddLessonPage addLessonPage;
     String themeName;
     String date;
 
@@ -26,8 +29,10 @@ public class AddLessonPage_VerifyAddLesson_CorrectData_MentorRoleTest extends Ba
         date = LocalDateTime.now().minusDays(1)
                 .format(DateTimeFormatter.ofPattern(AddLessonPage.DATE_FORMAT));
 
-        lessonsPage = AuthPage.init(driver).isAt()
+        addLessonPage = AuthPage.init(driver).isAt()
                 .logInAs(Role.MENTOR, LessonsPage.class)
+                .isAtPage(waitTime)
+                .redirectTo(ADD_LESSON, AddLessonPage.class)
                 .isAtPage(waitTime);
     }
 
@@ -35,8 +40,7 @@ public class AddLessonPage_VerifyAddLesson_CorrectData_MentorRoleTest extends Ba
     public void verifyAddLesson() {
         String expectedResult = "×\nClose alert\nThe lesson has been added successfully!";
 
-        lessonsPage
-                .clickAddLessonButton().isAtPage(waitTime)
+        addLessonPage
                 .fillLessonTheme(themeName)
                 .verifyThemeNameInputFieldIsFilled(themeName)
                 .selectExistedGroup()
