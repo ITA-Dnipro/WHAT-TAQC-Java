@@ -1,9 +1,11 @@
 package lessons;
 
+import api.entities.lessons.Lesson;
 import base.BaseTest;
 import constants.Endpoints;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import page.lessons.AddLessonPage;
 import page.lessons.LessonsPage;
 import page.students.StudentsPage;
 import page.unauthorizedUserPages.AuthPage;
@@ -15,20 +17,23 @@ import java.time.format.DateTimeFormatter;
 
 public class AddLessonPage_VerifyAddLesson_CorrectData_AdminRoleTest extends BaseTest {
 
-     protected LessonsPage lessonsPage;
+     AddLessonPage addLessonsPage;
      String themeName;
      String date;
 
     @BeforeClass
     public void setUp() throws IOException {
-        themeName = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5);
+        themeName = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(
+                Lesson.getRandomNumberFromRange(AddLessonPage.MIN_LENGTH_THEME, AddLessonPage.MAX_LENGTH_THEME));
         date = LocalDateTime.now().minusDays(1)
-                .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm"));
+                .format(DateTimeFormatter.ofPattern(AddLessonPage.DATE_FORMAT));
 
-        lessonsPage = AuthPage.init(driver)
+        addLessonsPage = AuthPage.init(driver)
                 .logInAs(Role.ADMIN, StudentsPage.class)
                 .isAtPage(waitTime)
                 .redirectTo(Endpoints.LESSONS, LessonsPage.class)
+                .isAtPage(waitTime)
+                .clickAddLessonButton()
                 .isAtPage(waitTime);
     }
 
@@ -37,8 +42,7 @@ public class AddLessonPage_VerifyAddLesson_CorrectData_AdminRoleTest extends Bas
 
         String expectedResult = "×\nClose alert\nThe lesson has been added successfully!";
 
-       lessonsPage
-                .clickAddLessonButton().isAtPage(waitTime)
+       addLessonsPage
                 .fillLessonTheme(themeName)
                 .verifyThemeNameInputFieldIsFilled(themeName)
                 .selectExistedGroup()

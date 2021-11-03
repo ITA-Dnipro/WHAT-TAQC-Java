@@ -21,7 +21,7 @@ public class AddLessonPage_VerifyAddLesson_IncorrectData_AdminRoleTest extends B
     AddLessonPage addLessonPage;
 
     public AddLessonPage_VerifyAddLesson_IncorrectData_AdminRoleTest() throws IOException {
-        data = AddLessonData.getData(PathsToFiles.Lessons.ADD_LESSON_CORRECT_DATA);
+        data = AddLessonData.getData(PathsToFiles.Lessons.ADD_LESSON_INCORRECT_DATA);
     }
 
     @BeforeClass

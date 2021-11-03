@@ -54,6 +54,9 @@ public class AddLessonPage extends Page<AddLessonPage> {
 
     ClassBookFeature classBook;
     private final String VALUE = "value";
+    public static final Integer MIN_LENGTH_THEME = 2;
+    public static final Integer MAX_LENGTH_THEME = 50;
+    public static final String DATE_FORMAT = "ddMMyyyyHH:mm";
 
     public AddLessonPage(WebDriver driver) {
         super(driver);

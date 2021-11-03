@@ -9,6 +9,7 @@ import lessons.util.ApiAddLessonStrategy;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import page.lessons.AddLessonPage;
 import page.lessons.EditLessonPage;
 import page.lessons.LessonsPage;
 import page.students.StudentsPage;
@@ -68,7 +69,7 @@ public class EditLessonPage_VerifyErrorMessagesTest extends BaseTest {
                 .loseFocus()
                 .verifyThemeNameError(error.getResult())
                 .fillTimeInput(LocalDateTime.now().minusDays(1)
-                        .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm")))
+                        .format(DateTimeFormatter.ofPattern(AddLessonPage.DATE_FORMAT)))
                 .verifyDateInputFieldIsFilled()
                 .verifyAll();
     }

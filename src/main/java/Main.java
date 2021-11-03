@@ -10,9 +10,7 @@ import java.util.Collections;
 
 
 public class Main {
-
-
-
+    
     public static void main(String[] args) throws URISyntaxException, IOException {
         TestNG testng = new TestNG();
         InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("testng.xml");

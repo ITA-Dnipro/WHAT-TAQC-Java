@@ -1,8 +1,10 @@
 package lessons;
 
+import api.entities.lessons.Lesson;
 import base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import page.lessons.AddLessonPage;
 import page.unauthorizedUserPages.AuthPage;
 import page.lessons.LessonsPage;
 import util.RandomStringsGenerator;
@@ -19,9 +21,10 @@ public class AddLessonPage_VerifyAddLesson_CorrectData_MentorRoleTest extends Ba
 
     @BeforeClass
     public void setUp() throws IOException {
-        themeName = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5);
+        themeName = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(
+                Lesson.getRandomNumberFromRange(AddLessonPage.MIN_LENGTH_THEME, AddLessonPage.MAX_LENGTH_THEME));
         date = LocalDateTime.now().minusDays(1)
-                .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm"));
+                .format(DateTimeFormatter.ofPattern(AddLessonPage.DATE_FORMAT));
 
         lessonsPage = AuthPage.init(driver).isAt()
                 .logInAs(Role.MENTOR, LessonsPage.class)

@@ -32,7 +32,7 @@ public class PathsToFiles {
     public static final String BASE_PATH = "./src/main/resources/";
 
     public interface Lessons {
-        String ADD_LESSON_CORRECT_DATA = "./src/main/resources/lessons/AddLessonIncorrectData.json";
+        String ADD_LESSON_INCORRECT_DATA = "./src/main/resources/lessons/AddLessonIncorrectData.json";
         String ADD_LESSON_ERRORS = BASE_PATH + "lessons/AddLessonErrors.json";
         String EDIT_LESSON_ERRORS = BASE_PATH + "lessons/EditLessonErrors.json";
         String ADD_NEW_LESSON = BASE_PATH + "lessons/lesson.json";

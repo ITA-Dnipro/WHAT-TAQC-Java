@@ -1,5 +1,6 @@
 package lessons;
 
+import api.entities.lessons.Lesson;
 import base.BaseTest;
 import constants.Endpoints;
 import constants.PathsToFiles;
@@ -7,6 +8,7 @@ import lessons.util.AddLessonStrategy;
 import lessons.util.WebAddLessonStrategy;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import page.lessons.AddLessonPage;
 import page.lessons.LessonsPage;
 import page.students.StudentsPage;
 import page.unauthorizedUserPages.AuthPage;
@@ -26,7 +28,8 @@ public class EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest extends B
     Integer firstIcon;
 
     public EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest() throws IOException {
-        theme = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(5);
+        theme = RandomStringsGenerator.getAlphabeticStringLowerCaseCharacters(Lesson.getRandomNumberFromRange(
+                AddLessonPage.MIN_LENGTH_THEME, AddLessonPage.MAX_LENGTH_THEME));
         firstIcon = 0;
 
         user = User.get(PathsToFiles.getCredentials())
@@ -59,7 +62,7 @@ public class EditLessonPage_VerifyEditLesson_CorrectData_AdminRoleTest extends B
                 .fillLessonThemeInput(theme)
                 .verifyThemeNameInputFieldIsFilled(theme)
                 .fillTimeInput(LocalDateTime.now().minusDays(1)
-                        .format(DateTimeFormatter.ofPattern("ddMMyyyyHH:mm")))
+                        .format(DateTimeFormatter.ofPattern(AddLessonPage.DATE_FORMAT)))
                 .verifyDateInputFieldIsFilled()
                 .verifyAll()
                 .clickSaveButton()
