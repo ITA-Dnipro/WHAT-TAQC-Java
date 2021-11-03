@@ -27,11 +27,11 @@ public class EditLessonPage_VerifyEditLesson_CorrectData_MentorRoleTest extends 
     @BeforeClass
     public void precondition() throws Exception {
         user = User.get(PathsToFiles.getCredentials()).get(Role.MENTOR.getRoleName());
-        addLessonStrategy = new WebAddLessonStrategy(driver);
+        addLessonStrategy = new ApiAddLessonStrategy();
         firstIcon = 0;
 
         if (addLessonStrategy.addNewLesson(user)){
-            log.info("Lesson was added with WEB-UI!");
+            log.info("Lesson was added with API!");
         }
 
         this.lessonsPage = AuthPage.init(driver).isAt()
