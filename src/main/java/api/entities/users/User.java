@@ -19,8 +19,8 @@ public class User {
 
     protected static String emailDomain = "gmail.com";
     protected static int emailLocalPathLength = 5;
+    protected static int passwordLength = 9;
     protected static String specialSymbolForPassword = "1_";
-    protected static int nameLength = 5;
 
     public User() {
     }
@@ -34,10 +34,10 @@ public class User {
     }
 
     public static User getUserWithRandomValues() {
-        String firstName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(nameLength);
-        String lastName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(nameLength);
+        String firstName = RandomStringsGenerator.getRandomName();
+        String lastName = RandomStringsGenerator.getRandomName();
         String password = RandomStringsGenerator
-                .getAlphabeticStringFirstUppercaseCharacters(9) + specialSymbolForPassword;
+                .getAlphabeticStringFirstUppercaseCharacters(passwordLength) + specialSymbolForPassword;
         String email = RandomStringsGenerator.getRandomEmail(emailLocalPathLength, emailDomain);
         return new User(email, firstName, lastName, password);
     }
@@ -106,17 +106,4 @@ public class User {
         isActive = active;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", role=" + role +
-                ", isActive=" + isActive +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                '}';
-    }
 }

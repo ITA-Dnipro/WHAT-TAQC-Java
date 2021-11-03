@@ -8,11 +8,12 @@ import page.base.BaseElement;
 import util.UnassignedUser;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import static constants.Locators.RegistrationPage.*;
 import static org.awaitility.Awaitility.await;
 
-public class RegistrationPage extends BaseElement {
+public class RegistrationPage extends BaseElement implements Waiter{
 
     @FindBy(tagName = PAGE_TITLE_TAG_NAME)
     WebElement pageTitleName;
@@ -45,8 +46,23 @@ public class RegistrationPage extends BaseElement {
     @FindBy(xpath = CONFIRM_PASSWORD_ERROR_XPATH)
     WebElement confirmPasswordError;
 
+    private final String EMPTY_STRING = "";
+
     public RegistrationPage(WebDriver driver) {
         super(driver);
+    }
+
+    public RegistrationPage isAt() {
+        try {
+            await().until(() -> driver.getCurrentUrl().equals(Endpoints.REGISTRATION));
+            return this;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public RegistrationPage waitUntilModalWindowVisible(){
+        waitUntilElementVisibility(driver,modalWindow, Duration.ofSeconds(3));
+        return this;
     }
 
     public AuthPage registerUser(UnassignedUser user) throws IOException {
@@ -56,42 +72,13 @@ public class RegistrationPage extends BaseElement {
                 .fillInputPassword(user.getPassword())
                 .fillInputConfirmPassword(user.getPassword())
                 .clickSingUpButton()
-                .clickModalWindowBackButton();
+                .clickConfirmRegistrationModalWindowBackButton();
         return new AuthPage(driver);
     }
 
-    public RegistrationPage fillInputFirstName(String firstName) {
-        if (firstName != null) {
-            fillField(firstNameInputField, firstName);
-        }
-        return this;
-    }
-
-    public RegistrationPage fillInputLastName(String lastName) {
-        if (lastName != null) {
-            fillField(lastNameInputField, lastName);
-        }
-        return this;
-    }
-
-    public RegistrationPage fillInputEmail(String email) {
-        if (email != null) {
-            fillField(emailInputField, email);
-        }
-        return this;
-    }
-
-    public RegistrationPage fillInputPassword(String password) {
-        if (password != null) {
-            fillField(passwordInputField, password);
-        }
-        return this;
-    }
-
-    public RegistrationPage fillInputConfirmPassword(String password) {
-        if (password != null) {
-            fillField(confirmPasswordInputField, password);
-        }
+    //    region Actions on the Page
+    public RegistrationPage loseFocus() {
+        clickElement(pageTitleName);
         return this;
     }
 
@@ -100,115 +87,145 @@ public class RegistrationPage extends BaseElement {
         return this;
     }
 
-    public AuthPage clickModalWindowBackButton() throws IOException {
+    public AuthPage clickConfirmRegistrationModalWindowBackButton() throws IOException {
         clickElement(modalWindowBackButton);
         return new AuthPage(driver);
     }
 
-    public AuthPage returnToLogInPage() throws IOException {
-        clickElement(logInLinkedText);
-        return new AuthPage(driver);
+    // region Fill Inputs
+    private RegistrationPage fillInputField(WebElement inputField, String data) {
+        if (data != null) {
+            fillField(inputField, data);
+        }
+        return this;
+    }
+
+    public RegistrationPage fillInputFirstName(String firstName) {
+        return fillInputField(firstNameInputField, firstName);
+    }
+
+    public RegistrationPage fillInputLastName(String lastName) {
+        return fillInputField(lastNameInputField, lastName);
+    }
+
+    public RegistrationPage fillInputEmail(String email) {
+        return fillInputField(emailInputField, email);
+    }
+
+    public RegistrationPage fillInputPassword(String password) {
+        return fillInputField(passwordInputField, password);
+    }
+
+    public RegistrationPage fillInputConfirmPassword(String password) {
+        return fillInputField(confirmPasswordInputField, password);
+    }
+    // endregion
+    // endregion
+
+    //    region Verify Input fields filling by data
+    public RegistrationPage verifyInputFieldsAreEmpty() {
+
+        verifyFillingFirstNameInputField(EMPTY_STRING)
+                .verifyFillingLastNameInputField(EMPTY_STRING)
+                .verifyFillingEmailInputField(EMPTY_STRING)
+                .verifyFillingPasswordInputField(EMPTY_STRING)
+                .verifyFillingConfirmPasswordInputField(EMPTY_STRING);
+        return this;
+    }
+
+    private RegistrationPage verifyFillingInputField(WebElement inputField, String data) {
+        if (data != null) {
+            softAssert.assertEquals(inputField.getAttribute("value"), data);
+        }
+        return this;
     }
 
     public RegistrationPage verifyFillingFirstNameInputField(String data) {
-        if (data != null) {
-            softAssert.assertEquals(firstNameInputField.getAttribute("value"), data);
-        }
-        return this;
+        return verifyFillingInputField(firstNameInputField, data);
     }
 
     public RegistrationPage verifyFillingLastNameInputField(String data) {
-        softAssert.assertEquals(lastNameInputField.getAttribute("value"), data);
-        return this;
+        return verifyFillingInputField(lastNameInputField, data);
     }
 
     public RegistrationPage verifyFillingEmailInputField(String data) {
-        if (data != null) {
-            softAssert.assertEquals(emailInputField.getAttribute("value"), data);
-        }
-        return this;
+        return verifyFillingInputField(emailInputField, data);
     }
 
     public RegistrationPage verifyFillingPasswordInputField(String data) {
-        if (data != null) {
-            softAssert.assertEquals(passwordInputField.getAttribute("value"), data);
-        }
+        return verifyFillingInputField(passwordInputField, data);
+    }
+
+    public RegistrationPage verifyFillingConfirmPasswordInputField(String data) {
+        return verifyFillingInputField(confirmPasswordInputField, data);
+    }
+
+    //    endregion
+    // region Verify errors displayed
+    public RegistrationPage verifyErrorMessagesAreNotDisplayed() {
+        verifyFirstNameErrorIsDisplayed(false)
+                .verifyLastNameErrorIsDisplayed(false)
+                .verifyEmailErrorIsDisplayed(false)
+                .verifyPasswordErrorIsDisplayed(false)
+                .verifyConfirmPasswordErrorIsDisplayed(false);
         return this;
     }
 
-    // TODO verify confirmPasswordField is filled with asterisks
-    public RegistrationPage verifyFillingConfirmPasswordInputField(String data) {
-        if (data != null) {
-            softAssert.assertEquals(confirmPasswordInputField.getAttribute("value"), data);
-        }
+    private RegistrationPage verifyErrorIsDisplayed(WebElement errorField, boolean condition) {
+        boolean result = !errorField.getText().equals("");
+        softAssert.assertEquals(result, condition, "Error");
         return this;
     }
 
     public RegistrationPage verifyFirstNameErrorIsDisplayed(boolean condition) {
-        boolean result = !firstNameError.getText().equals("");
-        softAssert.assertEquals(result, condition);
+        return verifyErrorIsDisplayed(firstNameError, condition);
+    }
+
+    public RegistrationPage verifyLastNameErrorIsDisplayed(boolean condition) {
+        return verifyErrorIsDisplayed(lastNameError, condition);
+    }
+
+    public RegistrationPage verifyEmailErrorIsDisplayed(boolean condition) {
+        return verifyErrorIsDisplayed(emailError, condition);
+    }
+
+    public RegistrationPage verifyPasswordErrorIsDisplayed(boolean condition) {
+        return verifyErrorIsDisplayed(passwordError, condition);
+    }
+
+    public RegistrationPage verifyConfirmPasswordErrorIsDisplayed(boolean condition) {
+        return verifyErrorIsDisplayed(confirmPasswordError, condition);
+    }
+    //    endregion
+
+    //  region  Verify errors' messages
+    public RegistrationPage verifyErrorMessage(WebElement element, String expectedErrorMessage) {
+        if (expectedErrorMessage != null) {
+            softAssert.assertEquals(element.getText(), expectedErrorMessage);
+        }
         return this;
     }
 
     public RegistrationPage verifyFirstNameErrorMessage(String expectedErrorMessage) {
-        if (!firstNameError.getText().equals("")) {
-            softAssert.assertEquals(firstNameError.getText(), expectedErrorMessage);
-        }
-        return this;
-    }
-
-    public RegistrationPage verifyLastNameErrorIsDisplayed(boolean condition) {
-        boolean result = !lastNameError.getText().equals("");
-        softAssert.assertEquals(result, condition);
-        return this;
+        return verifyErrorMessage(firstNameError, expectedErrorMessage);
     }
 
     public RegistrationPage verifyLastNameErrorMessage(String expectedErrorMessage) {
-        if (expectedErrorMessage != null) {
-            softAssert.assertEquals(lastNameError.getText(), expectedErrorMessage);
-        }
-        return this;
-    }
-
-    public RegistrationPage verifyEmailErrorIsDisplayed(boolean condition) {
-        boolean result = !emailError.getText().equals("");
-        softAssert.assertEquals(result, condition);
-        return this;
+        return verifyErrorMessage(lastNameError, expectedErrorMessage);
     }
 
     public RegistrationPage verifyEmailErrorMessage(String expectedErrorMessage) {
-        if (expectedErrorMessage != null) {
-            softAssert.assertEquals(emailError.getText(), expectedErrorMessage);
-        }
-        return this;
-    }
-
-    public RegistrationPage verifyPasswordErrorIsDisplayed(boolean condition) {
-        boolean result = !passwordError.getText().equals("");
-        softAssert.assertEquals(result, condition);
-        return this;
+        return verifyErrorMessage(emailError, expectedErrorMessage);
     }
 
     public RegistrationPage verifyPasswordErrorMessage(String expectedErrorMessage) {
-        if (expectedErrorMessage != null) {
-            String actualResult = passwordError.getText();
-            softAssert.assertEquals(actualResult, expectedErrorMessage, "Password message is wrong" + confirmPasswordError.getText());
-        }
-        return this;
-    }
-
-    public RegistrationPage verifyConfirmPasswordErrorIsDisplayed(boolean condition) {
-        boolean result = !confirmPasswordError.getText().equals("");
-        softAssert.assertEquals(result, condition);
-        return this;
+        return verifyErrorMessage(passwordError, expectedErrorMessage);
     }
 
     public RegistrationPage verifyConfirmPasswordErrorMessage(String expectedErrorMessage) {
-        if (expectedErrorMessage != null) {
-            softAssert.assertEquals(confirmPasswordError.getText(), expectedErrorMessage, "ConfirmPassword message is wrong" + confirmPasswordError.getText());
-        }
-        return this;
+        return verifyErrorMessage(confirmPasswordError, expectedErrorMessage);
     }
+    //endregion
 
     public RegistrationPage verifySingInButtonIsEnabled() {
         softAssert.assertTrue(singUpButton.isEnabled());
@@ -225,34 +242,5 @@ public class RegistrationPage extends BaseElement {
         return this;
     }
 
-    public RegistrationPage verifyInputFieldsAreEmpty() {
-        this.verifyFillingFirstNameInputField("")
-                .verifyFillingLastNameInputField("")
-                .verifyFillingEmailInputField("")
-                .verifyFillingPasswordInputField("")
-                .verifyFillingConfirmPasswordInputField("");
-        return this;
-    }
 
-    public RegistrationPage verifyErrorMessagesAreNotDisplayed() {
-        this.verifyFirstNameErrorIsDisplayed(false)
-                .verifyLastNameErrorIsDisplayed(false)
-                .verifyEmailErrorIsDisplayed(false)
-                .verifyPasswordErrorIsDisplayed(false)
-                .verifyConfirmPasswordErrorIsDisplayed(false);
-        return this;
-    }
-
-    public RegistrationPage loseFocus() {
-        clickElement(pageTitleName);
-        return this;
-    }
-    public RegistrationPage isAt() {
-        try {
-            await().until(() -> driver.getCurrentUrl().equals(Endpoints.REGISTRATION));
-            return this;
-        } catch (Exception e) {
-            return null;
-        }
-    }
 }

@@ -52,17 +52,4 @@ public class RegistrationInvalidData {
         return passwordError;
     }
 
-    @Override
-    public String toString() {
-        return "RegistrationInvalidData{" +
-                "firstName='" + firstName + '\'' +
-                ", firstNameError='" + firstNameError + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", lastNameError='" + lastNameError + '\'' +
-                ", email='" + email + '\'' +
-                ", emailError='" + emailError + '\'' +
-                ", password='" + password + '\'' +
-                ", passwordError='" + passwordError + '\'' +
-                '}';
-    }
 }

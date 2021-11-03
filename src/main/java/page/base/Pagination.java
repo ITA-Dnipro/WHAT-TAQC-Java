@@ -34,4 +34,15 @@ public class Pagination extends BaseElement {
                 .findFirst().orElse(null);
         return pages.get(pages.size() - 1).getText().equals(currentPage.getText());
     }
+
+    public <T extends Page<T>> T openLastPage (T page){
+        if(pages.size()>2) {
+            clickElement(pages.get(pages.size() - 1));
+        }
+        return page;
+    }
+    public <T extends Page<T>> T openFirstPage (T page){
+        clickElement(pages.get(0));
+        return page;
+    }
 }

@@ -103,6 +103,12 @@ public class StudentEditDetailsTab extends StudentsEditDetailsPage<StudentEditDe
         softAssert.assertEquals(saveButton.isEnabled(), condition);
         return this;
     }
+    public StudentEditDetailsTab verifyButtonsAreEnabled(boolean exclude, boolean clear, boolean save){
+        verifyExcludeButtonIsEnabled(exclude);
+        verifyClearButtonIsEnabled(clear);
+        verifySaveButtonIsEnabled(save);
+        return this;
+    }
 
 
 

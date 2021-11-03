@@ -7,20 +7,20 @@ import java.util.Objects;
 
 public class RegisteredUser {
 
-    @JsonAlias({"first_name", "firstName"})
+    @JsonAlias({"first_name"})
     String firstName;
-    @JsonAlias({"last_name", "lastName"})
+    @JsonAlias({"last_name"})
     String lastName;
     @JsonAlias({"active"})
     protected Boolean isActive;
-
     protected Integer id;
     protected String email;
     protected Integer role;
     protected String token;
     protected String avatarUrl;
+    protected String password;
 
-    Map<String,String> roleList;
+    protected Map<String, String> roleList;
 
     public Map<String, String> getRoleList() {
         return roleList;
@@ -94,16 +94,12 @@ public class RegisteredUser {
         this.avatarUrl = avatarUrl;
     }
 
-    @Override
-    public String toString() {
-        return "RegisteredUser{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", id=" + id +
-                ", isActive=" + isActive +
-                ", email='" + email + '\'' +
-                ", roleList=" + roleList +
-                '}';
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -118,6 +114,6 @@ public class RegisteredUser {
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName,  email);
+        return Objects.hash(firstName, lastName, email);
     }
 }

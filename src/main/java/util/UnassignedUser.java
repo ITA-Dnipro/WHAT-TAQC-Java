@@ -1,6 +1,8 @@
 package util;
 
-public class UnassignedUser {
+import api.entities.users.User;
+
+public class UnassignedUser extends User {
     private String firstName;
     private String lastName;
     private String email;
@@ -32,10 +34,7 @@ public class UnassignedUser {
         return new UnassignedUser(firstName, lastName, email, password);
     }
     public static UnassignedUser getUnassignedUser(){
-        String firstName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        String lastName = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(5);
-        String password = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(9) + "1_";
-        String email = RandomStringsGenerator.getAlphabeticStringFirstUppercaseCharacters(7) + "@gmail.com";
-        return new UnassignedUser(firstName, lastName, email, password);
+        User user = User.getUserWithRandomValues();
+        return new UnassignedUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
     }
 }

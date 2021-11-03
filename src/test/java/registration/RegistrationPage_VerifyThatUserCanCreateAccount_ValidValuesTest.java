@@ -41,10 +41,12 @@ public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValuesTest ext
                 .fillInputConfirmPassword(user.getPassword())
                 .verifyFillingConfirmPasswordInputField(user.getPassword())
                 .clickSingUpButton()
+                .waitUntilModalWindowVisible()
                 .verifyModalWindowIsOpened()
-                .clickModalWindowBackButton()
+                .clickConfirmRegistrationModalWindowBackButton()
 
                 .logInAs(Role.ADMIN, StudentsPage.class)
+                .isAtPage(waitTime)
                 .redirectTo(Endpoints.UNASSIGNED_USERS, UnassignedUsersPage.class)
                 .isUserPresented(user.getEmail())
                 .assertAll();

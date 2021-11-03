@@ -19,7 +19,7 @@ public class APIConstants {
 
 
     static {
-        if (System.getProperty("urlAPI") != null) {
+        if(System.getProperty("urlAPI") != null){
             BASE_LINK = System.getProperty("urlAPI");
         } else {
             BASE_LINK = PathsToFiles.getProperty("urlAPI");
@@ -53,6 +53,7 @@ public class APIConstants {
         String GET_ALL_REGISTERED_USERS = "/accounts";
         String BAD_REQUEST_MESSAGE = "This account already assigned.";
         String NOT_FOUND_MESSAGE = "Account not found";
+        String EMAIL_EXISTED_MESSAGE = "Email already exists";
     }
 
     public interface Courses {
@@ -90,6 +91,7 @@ public class APIConstants {
 
     public interface Student {
         String STUDENT = "/students/";
+        String ACTIVE_STUDENTS = STUDENT + "active/";
     }
 
     public interface Secretary{
@@ -97,4 +99,5 @@ public class APIConstants {
         String ACTIVE_SECRETARY = SECRETARY +"active/";
         String GIVES_SECRETARY_ROLE = SECRETARY + "{accountId}";
     }
+
 }

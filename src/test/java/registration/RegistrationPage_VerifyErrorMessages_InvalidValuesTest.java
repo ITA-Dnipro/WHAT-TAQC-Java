@@ -1,6 +1,7 @@
 package registration;
 
 import base.BaseTest;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,23 +13,16 @@ import java.io.IOException;
 
 import static constants.PathsToFiles.Registration.REGISTRATION_INVALID_DATA;
 
-public class RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValuesTest extends BaseTest {
+public class RegistrationPage_VerifyErrorMessages_InvalidValuesTest extends BaseTest {
 
     private RegistrationInvalidData[] invalidData;
     private RegistrationPage registrationPage;
 
-    RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValuesTest() throws IOException {
-        invalidData = RegistrationInvalidData.getData(REGISTRATION_INVALID_DATA);
-    }
-
     @BeforeClass
     public void setUp() throws IOException {
+        invalidData = RegistrationInvalidData.getData(REGISTRATION_INVALID_DATA);
         registrationPage = AuthPage.init(driver)
-                .clickRegistrationLink()
-                .verifyInputFieldsAreEmpty()
-                .verifyErrorMessagesAreNotDisplayed()
-                .verifySingInButtonIsEnabled()
-                .verifyLogInLinkIsEnabled();
+                .clickRegistrationLink();
     }
 
     @DataProvider(name = "invalidData")
@@ -39,10 +33,8 @@ public class RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValuesTest 
         }
         return list;
     }
-
     @Test(description = "DP213-161", dataProvider = "invalidData")
-    public void verifyUserCantCreateAccount(RegistrationInvalidData data) throws IOException, InterruptedException {
-        System.out.println(data.toString());
+    public void verifyErrorMessages(RegistrationInvalidData data) {
         registrationPage
                 .fillInputFirstName(data.getFirstName())
                 .loseFocus()
@@ -53,16 +45,15 @@ public class RegistrationPage_VerifyThatUserCantCreateAccount_InvalidValuesTest 
                 .loseFocus()
                 .verifyLastNameErrorMessage(data.getLastNameError())
 
+                .fillInputPassword(data.getPassword())
+                .loseFocus()
+                .verifyPasswordErrorMessage(data.getPasswordError())
+
                 .fillInputEmail(data.getEmail())
                 .loseFocus()
                 .verifyEmailErrorMessage(data.getEmailError())
 
-                .fillInputPassword(data.getPassword())
-                .fillInputConfirmPassword(data.getPassword())
-                .loseFocus()
-                .verifyPasswordErrorMessage(data.getPasswordError())
-                .verifyConfirmPasswordErrorMessage(data.getPasswordError())
-
                 .assertAll();
     }
+
 }
