@@ -41,7 +41,7 @@ public class APIConstants {
         Integer UNAUTHORIZED = 401;
         Integer FORBIDDEN = 403;
         Integer ACCOUNT_NOT_FOUND = 404;
-        Integer CONFLICT = 409;
+        Integer NO_RIGHTS = 409;
         Integer BAD_REQUEST = 400;
         Integer UNPROCESSABLE_ENTITY = 422;
     }

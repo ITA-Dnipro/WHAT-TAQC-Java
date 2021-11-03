@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 import static api.APIConstants.AccountEndpoints.EMAIL_EXISTED_MESSAGE;
-import static api.APIConstants.StatusCodes.CONFLICT;
+import static api.APIConstants.StatusCodes.NO_RIGHTS;
 
 public class Accounts_VerifyAccountCantBeRegisteredWithExistingEmail_InvalidData_Test {
 
@@ -38,7 +38,7 @@ public class Accounts_VerifyAccountCantBeRegisteredWithExistingEmail_InvalidData
                         .then()
                         .assertThat()
                         .log().all()
-                        .statusCode(CONFLICT)
+                        .statusCode(NO_RIGHTS)
                         .extract()
                         .as(ResponseError.class);
         Assert.assertEquals(responseError.getError().getMessage(), EMAIL_EXISTED_MESSAGE);
