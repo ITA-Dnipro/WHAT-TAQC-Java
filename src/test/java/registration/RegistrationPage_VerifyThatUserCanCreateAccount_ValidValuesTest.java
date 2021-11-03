@@ -19,7 +19,6 @@ public class RegistrationPage_VerifyThatUserCanCreateAccount_ValidValuesTest ext
     @BeforeClass
     public void setUp() {
         user = UnassignedUser.getUnassignedUser();
-        waitTime = 3000;
     }
 
     @Test(description = "DP213-155")

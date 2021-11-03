@@ -173,7 +173,7 @@ public class RegistrationPage extends BaseElement implements Waiter{
 
     private RegistrationPage verifyErrorIsDisplayed(WebElement errorField, boolean condition) {
         boolean result = !errorField.getText().equals("");
-        softAssert.assertEquals(result, condition);
+        softAssert.assertEquals(result, condition, "Error");
         return this;
     }
 

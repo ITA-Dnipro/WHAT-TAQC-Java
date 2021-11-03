@@ -10,6 +10,7 @@ import page.unassigned.UnassignedUsersPage;
 import util.UnassignedUser;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static constants.Locators.StudentsPage.*;
@@ -85,7 +86,11 @@ public class StudentsPage extends Page<StudentsPage> {
     }
 
     public StudentsPage verifyAddStudentButtonIsDisplayed(boolean isDisplayed) {
+        try{
         softAssert.assertEquals(addStudentButton.isDisplayed(), isDisplayed);
+        } catch (NoSuchElementException e){
+            softAssert.assertFalse(isDisplayed);
+        }
         return this;
     }
 

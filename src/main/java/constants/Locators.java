@@ -287,6 +287,11 @@ public class Locators {
         String EXCLUDE_BUTTON_XPATH = "//button[text()= 'Exclude']";
         String CLEAR_BUTTON_XPATH = "//button[text()= 'Reset']";
         String SAVE_BUTTON_XPATH = "//button[text()= 'Save']";
+        String FIRST_NAME_ERROR_XPATH = "//input[@name='firstName']/parent::div/div";
+        String LAST_NAME_ERROR_XPATH = "//input[@name='lastName']/parent::div/div";
+        String EMAIL_ERROR_XPATH = "//input[@name='email']/parent::div/div";
+        String GROUPS_ERROR_XPATH = "//div[@class='d-flex flex-column col-md-8']/child::div[2]";
+
     }
 
     public interface MyProfile {

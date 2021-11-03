@@ -47,6 +47,11 @@ public class PathsToFiles {
     public interface Registration{
         String REGISTRATION_INVALID_DATA=BASE_PATH + "registration/RegistrationInvalidData.json";
     }
+    public interface EditStudentsDetailsTab{
+        String EDIT_STUDENTS_DETAILS_TAB_FIRST_NAME = BASE_PATH + "students/invalidFirstName.json";
+        String EDIT_STUDENTS_DETAILS_TAB_LAST_NAME = BASE_PATH + "students/invalidLastName.json";
+        String EDIT_STUDENTS_DETAILS_TAB_EMAIL = BASE_PATH + "students/invalidEmail.json";
+    }
 
         public interface Secretarys{
     String SECRETARYS_NAME = BASE_PATH +"secretarys/SecretarysName.json";
