@@ -4,6 +4,10 @@
                 <package name="api.lessons"/>
                 <package name="lessons"/>
                 <package name="api.mentors"/>
+                <package name="api.accounts"/>
+                <package name="api.students"/>
+                <package name="registration"/>
+                <package name="students"/>
             </packages>
         </test>
 </suite>
