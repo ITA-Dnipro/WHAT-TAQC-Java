@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import static api.APIConstants.CREDENTIALS;
+
 public class PathsToFiles {
 
     private PathsToFiles() {}
@@ -20,7 +22,11 @@ public class PathsToFiles {
 
 
     public static String getCredentials(){
-        return System.getProperty("creds");
+        String credentials = System.getProperty("creds");
+        if (credentials == null){
+            return getProperty(CREDENTIALS);
+        }
+        return credentials;
     }
 
     public static final String BASE_PATH = "./src/main/resources/";
