@@ -82,6 +82,19 @@ public class BaseRequests {
                 .response();
     }
 
+    public Response sendPut(String url, String body) {
+        return request.accept(APPLICATION_JSON)
+                .contentType(ContentType.JSON)
+                .headers(headers)
+                .and()
+                .body(body)
+                .when()
+                .put(BASE_LINK + url)
+                .then()
+                .extract()
+                .response();
+    }
+
     public Response sendPatch(String url, Integer id, String body) {
         return request.accept(APPLICATION_JSON)
                 .contentType(ContentType.JSON)

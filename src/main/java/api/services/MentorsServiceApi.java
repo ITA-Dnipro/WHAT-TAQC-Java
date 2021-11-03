@@ -23,7 +23,7 @@ public class MentorsServiceApi extends BaseService {
     }
 
     public Response getCourseOfMentor(Integer id) {
-        return requests.sendGet(MENTORS, COURSES_ENDPOINT, id);
+        return requests.sendGet(MENTORS, COURSES, id);
     }
 
     public Response getMentors() {
@@ -65,5 +65,4 @@ public class MentorsServiceApi extends BaseService {
     public void setRequests(BaseRequests requests) {
         this.requests = requests;
     }
-
 }
